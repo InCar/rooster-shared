@@ -6,6 +6,5 @@ package com.incarcloud.rooster.datapack;
 public enum ERespReason {
     NA,
     OK,
-    Failed,
-    Heartbeat
+    Failed
 }
