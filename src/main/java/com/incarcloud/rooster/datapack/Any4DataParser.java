@@ -5,7 +5,12 @@ import io.netty.buffer.ByteBuf;
 import java.util.ArrayList;
 import java.util.List;
 
-// 演示性质的DataParser,任意4个字节就解析成功
+/**
+ * 演示性质的DataParser,任意4个字节就解析成功
+ * 
+ * @author 熊广化
+ *
+ */
 public class Any4DataParser implements IDataParser {
     @Override
     public List<DataPack> extract(ByteBuf buffer){
