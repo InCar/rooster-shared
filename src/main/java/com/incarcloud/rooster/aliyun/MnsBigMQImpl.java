@@ -1,6 +1,9 @@
 package com.incarcloud.rooster.aliyun;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.incarcloud.rooster.mq.IBigMQ;
 import com.incarcloud.rooster.mq.MQMsg;
@@ -14,10 +17,25 @@ import com.incarcloud.rooster.mq.MqSendResult;
 *  
 */
 public class MnsBigMQImpl implements IBigMQ{
+	@Autowired
+	private MnsClient mnsClient;
+	
 
 	@Override
 	public List<MqSendResult> post(List<MQMsg> listMsgs) {
-		// TODO Auto-generated method stub
+		
+		if(null == listMsgs || 0 == listMsgs.size()){
+			throw new IllegalArgumentException("message list is null");
+		}
+		
+		
+		List<MqSendResult>  resultList = new ArrayList<>(listMsgs.size());
+		
+		
+		
+		
+		
+		
 		return null;
 	}
 
