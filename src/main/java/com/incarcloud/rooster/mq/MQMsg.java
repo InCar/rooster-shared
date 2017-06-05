@@ -4,11 +4,21 @@ import io.netty.buffer.ByteBuf;
 
 import java.util.Base64;
 
-// 消息队列里的数据模式
+/** 
+* @ClassName: MQMsg 
+* @Description: 消息队列里的数据模式
+* @author Xiong Guanghua
+* @date 2017年6月5日 上午10:46:34 
+*  
+*/
 public class MQMsg {
-    // 一个标记,比如 tricheer-adas-2.0.0
+    /**
+     * 一个标记,比如 tricheer-adas-2.0.0
+     */
     private String _mark;
-    // 数据
+    /**
+     * 数据
+     */
     private byte[] _data;
 
     public String getMark(){ return _mark; }

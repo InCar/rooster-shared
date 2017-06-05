@@ -18,6 +18,16 @@ public class MqSendResult {
 	private Object data;
 
 	/**
+	 * @param exception
+	 * @param data
+	 */
+	public MqSendResult(MQException exception, Object data) {
+		super();
+		this.exception = exception;
+		this.data = data;
+	}
+
+	/**
 	 * 获取 异常信息
 	 * 
 	 * @return exception
