@@ -58,7 +58,10 @@ public class MNSTest {
 				"http://1786089012649873.mns.cn-hangzhou.aliyuncs.com/");
 		MNSClient client = account.getMNSClient(); // 在程序中，CloudAccount以及MNSClient单例实现即可，多线程安全
 		CloudQueue queue = client.getQueueRef("rooster-dev");
-//		queue.b
+        Message message = new Message();
+        message.setMessageBody("I am test message ");
+        Message putMsg = queue.putMessage(message);
+        System.out.println("Send message id is: " + putMsg.getMessageId());
 		
 
 		client.close();

@@ -22,8 +22,15 @@ import com.incarcloud.rooster.mq.MqSendResult;
  */
 @Component
 public class MnsBigMQImpl implements IBigMQ {
-	@Autowired
+
 	private MnsClient mnsClient;
+
+	/**
+	 * @param mnsClient
+	 */
+	public MnsBigMQImpl(MnsClient mnsClient) {
+		this.mnsClient = mnsClient;
+	}
 
 	@Override
 	public List<MqSendResult> post(List<MQMsg> listMsgs) {
@@ -37,22 +44,22 @@ public class MnsBigMQImpl implements IBigMQ {
 		for (MQMsg msg : listMsgs) {
 
 			try {
-				mnsClient.sendMessage("rooster-dev", msg.getData());
+				String msgId = mnsClient.sendMessage("rooster-dev", msg.getData());
+				resultList.add(new MqSendResult(null, msgId));
 			} catch (ClientException ce) {
+
 				resultList.add(new MqSendResult(
 						new MQException("Something wrong with the network connection between client and MNS service."
 								+ "Please check your network and DNS availablity."),
 						null));
 				ce.printStackTrace();
 			} catch (ServiceException se) {
-
 				resultList.add(new MqSendResult(new MQException(se.getErrorCode()), null));
 				se.printStackTrace();
 			} catch (Exception e) {
 				resultList.add(new MqSendResult(new MQException(e.getMessage()), null));
 				e.printStackTrace();
 			}
-
 		}
 
 		return resultList;

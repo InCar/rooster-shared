@@ -2,6 +2,7 @@ package com.incarcloud.rooster.mq;
 
 import io.netty.buffer.ByteBuf;
 
+import java.util.Arrays;
 import java.util.Base64;
 
 /** 
@@ -34,4 +35,8 @@ public class MQMsg {
         _data = new byte[value.readableBytes()];
         value.getBytes(value.readerIndex(), _data);
     }
+	@Override
+	public String toString() {
+		return "MQMsg [_mark=" + _mark + ", _data=" + Arrays.toString(_data) + "]";
+	}
 }
