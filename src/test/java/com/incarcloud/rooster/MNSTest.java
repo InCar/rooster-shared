@@ -13,13 +13,12 @@ import com.aliyun.mns.model.Message;
 import com.aliyun.mns.model.QueueMeta;
 import com.aliyun.mns.model.SubscriptionMeta;
 import com.aliyun.mns.model.TopicMessage;
-import com.aliyun.mns.sample.HttpEndpoint;
 
 public class MNSTest {
 	@Test
 	public void testCreateQueue() {
-		CloudAccount account = new CloudAccount("qkjiPJf7YkkYhW39", "ruk48fvSGlLs7Izbo2D4NxqQjaaqPT",
-				"http://1786089012649873.mns.cn-hangzhou.aliyuncs.com/");
+		CloudAccount account = new CloudAccount("", "",
+				"");
 		MNSClient client = account.getMNSClient(); // 在程序中，CloudAccount以及MNSClient单例实现即可，多线程安全
 		String queueName = "TestQueue";
 		QueueMeta meta = new QueueMeta(); // 生成本地QueueMeta属性，有关队列属性详细介绍见https://help.aliyun.com/document_detail/27476.html
@@ -54,8 +53,8 @@ public class MNSTest {
 
 	@Test
 	public void testCreateSend() {
-		CloudAccount account = new CloudAccount("qkjiPJf7YkkYhW39", "ruk48fvSGlLs7Izbo2D4NxqQjaaqPT",
-				"http://1786089012649873.mns.cn-hangzhou.aliyuncs.com/");
+		CloudAccount account = new CloudAccount("LTAItjABmFIcoDen", "pu1zhsRFnSzR3M2sZenLxGrHsHrY8Y",
+				"");
 		MNSClient client = account.getMNSClient(); // 在程序中，CloudAccount以及MNSClient单例实现即可，多线程安全
 		CloudQueue queue = client.getQueueRef("rooster-dev");
         Message message = new Message();
@@ -72,8 +71,8 @@ public class MNSTest {
 	
 	@Test
 	public void testPop(){
-		CloudAccount account = new CloudAccount("qkjiPJf7YkkYhW39", "ruk48fvSGlLs7Izbo2D4NxqQjaaqPT",
-				"http://1786089012649873.mns.cn-hangzhou.aliyuncs.com/");
+		CloudAccount account = new CloudAccount("", "",
+				"");
 		MNSClient client = account.getMNSClient(); // 在程序中，CloudAccount以及MNSClient单例实现即可，多线程安全
 
 		 try{
@@ -124,8 +123,8 @@ public class MNSTest {
 	
 	@Test
 	public void testPublish(){
-		CloudAccount account = new CloudAccount("qkjiPJf7YkkYhW39", "ruk48fvSGlLs7Izbo2D4NxqQjaaqPT",
-				"http://1786089012649873.mns.cn-hangzhou.aliyuncs.com/");
+		CloudAccount account = new CloudAccount("", "",
+				"");
 		MNSClient client = account.getMNSClient(); // 在程序中，CloudAccount以及MNSClient单例实现即可，多线程安全
 
 		
@@ -146,8 +145,8 @@ public class MNSTest {
 
 	@Test
 	public void testSubsribe() {
-		CloudAccount account = new CloudAccount("qkjiPJf7YkkYhW39", "ruk48fvSGlLs7Izbo2D4NxqQjaaqPT",
-				"http://1786089012649873.mns.cn-hangzhou.aliyuncs.com/");
+		CloudAccount account = new CloudAccount("", "",
+				"");
 		MNSClient client = account.getMNSClient(); // 在程序中，CloudAccount以及MNSClient单例实现即可，多线程安全
 
 		CloudTopic topic = client.getTopicRef("rooster-dev");
