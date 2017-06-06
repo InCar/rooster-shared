@@ -1,5 +1,6 @@
 package com.incarcloud.rooster.aliyun;
 
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import com.aliyun.mns.client.CloudAccount;
@@ -17,7 +18,7 @@ import com.aliyun.mns.model.Message;
  */
 @Component
 public class MnsClient {
-
+	private static org.slf4j.Logger s_logger = LoggerFactory.getLogger(MnsClient.class);
 	/**
 	 * MNS 客户端(单例模式)
 	 */
@@ -65,6 +66,8 @@ public class MnsClient {
 		Message message = new Message();
 		message.setMessageBody(messageContent);
 		Message putMsg = queue.putMessage(message);
+		
+		s_logger.debug("******************"+putMsg.getMessageId());
 
 		return putMsg.getMessageId();
 

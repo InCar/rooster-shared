@@ -3,7 +3,7 @@ package com.incarcloud.rooster.aliyun;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import com.aliyun.mns.common.ClientException;
@@ -22,6 +22,8 @@ import com.incarcloud.rooster.mq.MqSendResult;
  */
 @Component
 public class MnsBigMQImpl implements IBigMQ {
+	
+	private static org.slf4j.Logger s_logger = LoggerFactory.getLogger(MnsBigMQImpl.class);
 
 	private MnsClient mnsClient;
 
@@ -52,13 +54,16 @@ public class MnsBigMQImpl implements IBigMQ {
 						new MQException("Something wrong with the network connection between client and MNS service."
 								+ "Please check your network and DNS availablity."),
 						null));
-				ce.printStackTrace();
+//				ce.printStackTrace();
+				s_logger.debug("58",ce.getMessage());
 			} catch (ServiceException se) {
 				resultList.add(new MqSendResult(new MQException(se.getErrorCode()), null));
-				se.printStackTrace();
+//				se.printStackTrace();
+				s_logger.debug("62",se.getMessage());
 			} catch (Exception e) {
 				resultList.add(new MqSendResult(new MQException(e.getMessage()), null));
-				e.printStackTrace();
+//				e.printStackTrace();
+				s_logger.debug("66",e.getMessage());
 			}
 		}
 
