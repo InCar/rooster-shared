@@ -22,7 +22,7 @@ dependencies {
     compile("org.jdeferred:jdeferred-core:1.2.+")
     compile("io.netty:netty-buffer:4.1.+")
     compile("org.slf4j:slf4j-api:1.7.+")
-    compile("com.aliyun.mns:aliyun-sdk-mns:1.1.8")
+    
     testCompile("junit:junit:4.+")
     testRuntime("org.apache.logging.log4j:log4j-slf4j-impl:2.8.+")
     testRuntime("org.apache.logging.log4j:log4j-core:2.8.+")
