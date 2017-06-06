@@ -4,7 +4,13 @@
 build
 out
 
+bin
+.settings
+
 *.log
 *.out
+.project
+.classpath
+
 
 gradle.properties
