@@ -4,6 +4,12 @@ import io.netty.buffer.ByteBuf;
 
 import java.util.Base64;
 
+/**
+ * @author Xiong Guanghua
+ * @ClassName: DataPackWrap
+ * @Description: gather解析出来的包
+ * @date 2017-06-07 17:34
+ */
 public class DataPack {
     final protected String _group;
     final protected String _name;
@@ -48,5 +54,15 @@ public class DataPack {
             _buf.release();
             _buf = null;
         }
+    }
+
+    @Override
+    public String toString() {
+        return "DataPack{" +
+                "_group='" + _group + '\'' +
+                ", _name='" + _name + '\'' +
+                ", _version='" + _version + '\'' +
+                ", _buf=" + _buf +
+                '}';
     }
 }
