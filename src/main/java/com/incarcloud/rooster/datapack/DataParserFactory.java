@@ -23,18 +23,13 @@ public class DataParserFactory {
         return _factory;
     }
 
-    public IDataParser register(String tag) {
-        try {
-            String pakage = "com.incarcloud.rooster.datapack";
-            switch (tag) {
-                case "china-landu-2.05":
-                case "china-landu-3.08":
-                    // LANDU协议解析器
-                    return (IDataParser) Class.forName(String.format("%s.%s", pakage, "DataParserLandu")).newInstance();
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
+    public IDataParser register(String tag) throws ClassNotFoundException, IllegalAccessException, InstantiationException {
+        String pakage = "com.incarcloud.rooster.datapack";
+        switch (tag) {
+            case "china-landu-2.05":
+            case "china-landu-3.08":
+                // LANDU协议解析器
+                return (IDataParser) Class.forName(String.format("%s.%s", pakage, "DataParserLandu")).newInstance();
         }
         return null;
     }
