@@ -1,9 +1,5 @@
 package com.incarcloud.rooster.dispatch;
 
-import com.incarcloud.rooster.dispatch.DataDispatch;
-import com.incarcloud.rooster.dispatch.DataPackTarget;
-import com.incarcloud.rooster.dispatch.DataTargetPosition;
-import com.incarcloud.rooster.dispatch.IDataExtractor;
 import org.junit.Ignore;
 import org.junit.Test;
 
