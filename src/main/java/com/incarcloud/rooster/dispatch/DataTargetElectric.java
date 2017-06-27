@@ -4,7 +4,7 @@ package com.incarcloud.rooster.dispatch;
  * 驱动电机数据
  *
  * @author Aaric, created on 2017-06-27T14:04.
- * @since 1.0-SNAPSHOT
+ * @since 2.0
  */
 public class DataTargetElectric {
 }

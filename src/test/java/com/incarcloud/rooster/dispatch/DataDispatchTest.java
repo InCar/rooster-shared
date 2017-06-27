@@ -1,5 +1,6 @@
 package com.incarcloud.rooster.dispatch;
 
+import com.incarcloud.rooster.datapack.IDataParser;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -9,15 +10,15 @@ import java.util.List;
  * DataDispatchTest
  *
  * @author Aaric, created on 2017-06-27T14:23.
- * @since 1.0-SNAPSHOT
+ * @since 2.0
  */
 public class DataDispatchTest {
 
     @Test
     @Ignore
     public void testExtract() throws Exception {
-        DataDispatch dataDispatch = new DataDispatch(null, (IDataExtractor) Class.forName("com.incarcloud.rooster.dispatch.DataExtractorLandu").newInstance());
-        List<DataPackTarget> dataPackTargetList = dataDispatch.extract();
+        DataDispatch dataDispatch = new DataDispatch(null, (IDataParser) Class.forName("com.incarcloud.rooster.datapack.DataParserLandu").newInstance());
+        List<DataPackTarget> dataPackTargetList = dataDispatch.extractBody();
         if(null != dataPackTargetList && 0 < dataPackTargetList.size()) {
             for (DataPackTarget dataPackTarget: dataPackTargetList) {
                 switch (dataPackTarget.getTargetType()) {

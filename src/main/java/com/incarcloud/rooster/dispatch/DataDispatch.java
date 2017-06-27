@@ -1,6 +1,7 @@
 package com.incarcloud.rooster.dispatch;
 
 import com.incarcloud.rooster.datapack.DataPack;
+import com.incarcloud.rooster.datapack.IDataParser;
 
 import java.util.List;
 
@@ -8,7 +9,7 @@ import java.util.List;
  * 数据分发器
  *
  * @author Aaric, created on 2017-06-27T11:25.
- * @since 1.0-SNAPSHOT
+ * @since 2.0
  */
 public class DataDispatch {
 
@@ -19,26 +20,31 @@ public class DataDispatch {
     /**
      * 提取器，由协议解析方提供
      */
-    private IDataExtractor _dataExtractor;
+    private IDataParser _dataParser;
 
     /**
      * 构造函数
      *
      * @param dataPack 数据包
-     * @param dataExtractor 提取器
+     * @param dataParser 解析器
      */
-    public DataDispatch(DataPack dataPack, IDataExtractor dataExtractor) {
+    public DataDispatch(DataPack dataPack, IDataParser dataParser) {
         if(null == dataPack) {
             throw new IllegalArgumentException("dataPack can't be null");
         }
-        if(null == dataExtractor) {
-            throw new IllegalArgumentException("dataExtractor can't be null");
+        if(null == dataParser) {
+            throw new IllegalArgumentException("dataParser can't be null");
         }
         _dataPack = dataPack;
-        _dataExtractor = dataExtractor;
+        _dataParser = dataParser;
     }
 
-    public List<DataPackTarget> extract() {
-        return _dataExtractor.extract(_dataPack);
+    /**
+     * 解析数据包完整消息体
+     *
+     * @return
+     */
+    public List<DataPackTarget> extractBody() {
+        return _dataParser.extractBody(_dataPack);
     }
 }
