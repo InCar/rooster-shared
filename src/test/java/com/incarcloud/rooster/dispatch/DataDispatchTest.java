@@ -1,4 +1,4 @@
-package com.incarcloud.rooster.datapack.dispatch;
+package com.incarcloud.rooster.dispatch;
 
 import com.incarcloud.rooster.dispatch.DataDispatch;
 import com.incarcloud.rooster.dispatch.DataPackTarget;
