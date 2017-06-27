@@ -1,5 +1,7 @@
 package com.incarcloud.rooster.dispatch;
 
+import com.incarcloud.rooster.datatarget.DataTarget;
+
 /**
  * 数据提取包
  *

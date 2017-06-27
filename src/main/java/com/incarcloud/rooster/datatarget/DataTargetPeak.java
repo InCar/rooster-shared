@@ -1,4 +1,4 @@
-package com.incarcloud.rooster.dispatch;
+package com.incarcloud.rooster.datatarget;
 
 /**
  * 极值数据
