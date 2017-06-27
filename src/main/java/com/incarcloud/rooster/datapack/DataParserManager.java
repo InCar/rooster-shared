@@ -4,12 +4,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * DataParser工厂
+ * DataParser关系管理类
  *
  * @author Aaric, created on 2017-06-27T17:11.
  * @since 2.0
  */
-public class DataParserFactory {
+public class DataParserManager {
 
     /**
      * 解析器关系
@@ -36,5 +36,5 @@ public class DataParserFactory {
         return dataParserMap.get(tag);
     }
 
-    private DataParserFactory() {};
+    private DataParserManager() {};
 }
