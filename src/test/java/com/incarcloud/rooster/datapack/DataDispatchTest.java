@@ -29,7 +29,7 @@ public class DataDispatchTest {
                     case BATTERY:
                         // 分发电池数据
                         break;
-                    case ELECTRIC:
+                    case MOTOR:
                         // 分发驱动电机数据
                         break;
                     case ENGINE:

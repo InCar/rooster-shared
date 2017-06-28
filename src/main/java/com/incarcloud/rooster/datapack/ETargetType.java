@@ -4,7 +4,7 @@ package com.incarcloud.rooster.datapack;
  * 数据对象类型
  *
  * @author Aaric, created on 2017-06-27T11:50.
- * @since 1.0-SNAPSHOT
+ * @since 2.0
  */
 public enum ETargetType {
 
@@ -19,7 +19,7 @@ public enum ETargetType {
     /**
      * 驱动电机数据
      */
-    ELECTRIC,
+    MOTOR,
     /**
      * 发动机数据
      */

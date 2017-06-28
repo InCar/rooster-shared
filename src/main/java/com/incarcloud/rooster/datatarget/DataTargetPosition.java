@@ -1,7 +1,12 @@
 package com.incarcloud.rooster.datatarget;
 
 /**
- * 位置数据
+ * 位置数据<br>
+ * <i>异常与无效定义：</i><br>
+ * <ul>
+ *     <li>0xFE-异常，0xFF-无效</li>
+ *     <li>0xFF,0xFE-异常，0xFF,0xFF-无效</li>
+ * </ul>
  *
  * @author Aaric, created on 2017-06-27T14:05.
  * @since 2.0
@@ -25,11 +30,11 @@ public class DataTargetPosition extends DataTarget {
      */
     private int status;
 
-    public DataTargetPosition(double longitude, double latitude, float direction, int status) {
-        this.longitude = longitude;
-        this.latitude = latitude;
-        this.direction = direction;
-        this.status = status;
+    public DataTargetPosition() {
+    }
+
+    public DataTargetPosition(DataTarget target) {
+        super(target);
     }
 
     public double getLongitude() {
