@@ -1,6 +1,5 @@
 package com.incarcloud.rooster.datapack;
 
-import com.incarcloud.rooster.dispatch.DataPackTarget;
 import io.netty.buffer.ByteBuf;
 
 import java.util.List;

@@ -1,7 +1,4 @@
-package com.incarcloud.rooster.dispatch;
-
-import com.incarcloud.rooster.datapack.DataPack;
-import com.incarcloud.rooster.datapack.IDataParser;
+package com.incarcloud.rooster.datapack;
 
 import java.util.List;
 

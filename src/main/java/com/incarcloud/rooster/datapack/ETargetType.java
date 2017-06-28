@@ -1,4 +1,4 @@
-package com.incarcloud.rooster.dispatch;
+package com.incarcloud.rooster.datapack;
 
 /**
  * 数据对象类型

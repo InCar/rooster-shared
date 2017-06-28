@@ -32,4 +32,9 @@ public class Any4DataParser implements IDataParser {
     public void destroyResponse(ByteBuf responseBuf) {
 
     }
+
+    @Override
+    public List<DataPackTarget> extractBody(DataPack dataPack) {
+        return null;
+    }
 }
