@@ -37,7 +37,7 @@ public enum ETargetType {
      */
     ALARM,
     /**
-     * 上报设备数据
+     * 上报设备信息
      */
     DEVICE
 }

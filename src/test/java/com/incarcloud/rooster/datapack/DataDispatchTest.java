@@ -1,5 +1,7 @@
 package com.incarcloud.rooster.dispatch;
 
+import com.incarcloud.rooster.datapack.DataPack;
+import com.incarcloud.rooster.datapack.DataParserManager;
 import com.incarcloud.rooster.datapack.IDataParser;
 import com.incarcloud.rooster.datatarget.DataTargetPosition;
 import org.junit.Ignore;
@@ -18,7 +20,8 @@ public class DataDispatchTest {
     @Test
     @Ignore
     public void testExtract() throws Exception {
-        DataDispatch dataDispatch = new DataDispatch(null, (IDataParser) Class.forName("com.incarcloud.rooster.datapack.DataParserLandu").newInstance());
+        IDataParser dataParser = (IDataParser) DataParserManager.getDataParserClass("china-landu-3.08").newInstance();
+        DataDispatch dataDispatch = new DataDispatch(null, dataParser);
         List<DataPackTarget> dataPackTargetList = dataDispatch.extractBody();
         if(null != dataPackTargetList && 0 < dataPackTargetList.size()) {
             for (DataPackTarget dataPackTarget: dataPackTargetList) {
