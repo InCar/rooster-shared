@@ -12,4 +12,60 @@ package com.incarcloud.rooster.datatarget;
  * @since 2.0
  */
 public class DataTargetAlarm extends DataTarget {
+
+    /**
+     * 报警名称
+     */
+    private String alarmName;
+    /**
+     * 故障代码
+     */
+    private String alarmCode;
+    /**
+     * 故障描述
+     */
+    private String alarmDesc;
+    /**
+     * 报警等级
+     */
+    private Integer alarmLevel;
+
+    public DataTargetAlarm() {
+    }
+
+    public DataTargetAlarm(DataTarget target) {
+        super(target);
+    }
+
+    public String getAlarmName() {
+        return alarmName;
+    }
+
+    public void setAlarmName(String alarmName) {
+        this.alarmName = alarmName;
+    }
+
+    public String getAlarmCode() {
+        return alarmCode;
+    }
+
+    public void setAlarmCode(String alarmCode) {
+        this.alarmCode = alarmCode;
+    }
+
+    public String getAlarmDesc() {
+        return alarmDesc;
+    }
+
+    public void setAlarmDesc(String alarmDesc) {
+        this.alarmDesc = alarmDesc;
+    }
+
+    public Integer getAlarmLevel() {
+        return alarmLevel;
+    }
+
+    public void setAlarmLevel(Integer alarmLevel) {
+        this.alarmLevel = alarmLevel;
+    }
 }

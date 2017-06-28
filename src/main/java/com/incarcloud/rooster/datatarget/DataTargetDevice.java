@@ -12,4 +12,60 @@ package com.incarcloud.rooster.datatarget;
  * @since 2.0
  */
 public class DataTargetDevice extends DataTarget {
+
+    /**
+     * 硬盘版本号
+     */
+    private String hardwareVersion;
+    /**
+     * 固件版本号
+     */
+    private String firmwareVersion;
+    /**
+     * 软件版本号
+     */
+    private String softwareVersion;
+    /**
+     * 诊断程序类型(LANDU)：0xFF 表示通用 OBDII 诊断程序，其他值待定义
+     */
+    private byte diagnoseProgramType;
+
+    public DataTargetDevice() {
+    }
+
+    public DataTargetDevice(DataTarget target) {
+        super(target);
+    }
+
+    public String getHardwareVersion() {
+        return hardwareVersion;
+    }
+
+    public void setHardwareVersion(String hardwareVersion) {
+        this.hardwareVersion = hardwareVersion;
+    }
+
+    public String getFirmwareVersion() {
+        return firmwareVersion;
+    }
+
+    public void setFirmwareVersion(String firmwareVersion) {
+        this.firmwareVersion = firmwareVersion;
+    }
+
+    public String getSoftwareVersion() {
+        return softwareVersion;
+    }
+
+    public void setSoftwareVersion(String softwareVersion) {
+        this.softwareVersion = softwareVersion;
+    }
+
+    public byte getDiagnoseProgramType() {
+        return diagnoseProgramType;
+    }
+
+    public void setDiagnoseProgramType(byte diagnoseProgramType) {
+        this.diagnoseProgramType = diagnoseProgramType;
+    }
 }

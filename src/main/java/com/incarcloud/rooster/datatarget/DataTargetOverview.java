@@ -38,7 +38,7 @@ public class DataTargetOverview extends DataTarget {
      */
     private Integer voltageTotal;
     /**
-     * 总电流（0.1A）
+     * 总电流（最小计量单元0.1A）
      */
     private Integer currentTotal;
     /**

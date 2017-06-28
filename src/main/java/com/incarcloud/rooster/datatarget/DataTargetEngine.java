@@ -12,4 +12,48 @@ package com.incarcloud.rooster.datatarget;
  * @since 2.0
  */
 public class DataTargetEngine extends DataTarget {
+
+    /**
+     * 发动机状态：0x01-启动，0x02-关闭
+     */
+    private Integer engineStatus;
+    /**
+     * 曲轴转速（最小计量单位1r/min）
+     */
+    private Integer rotateSpeed;
+    /**
+     * 燃料消耗率（最小计量单位0.01L/100km）
+     */
+    private Integer consumptionRate;
+
+    public DataTargetEngine() {
+    }
+
+    public DataTargetEngine(DataTarget target) {
+        super(target);
+    }
+
+    public Integer getEngineStatus() {
+        return engineStatus;
+    }
+
+    public void setEngineStatus(Integer engineStatus) {
+        this.engineStatus = engineStatus;
+    }
+
+    public Integer getRotateSpeed() {
+        return rotateSpeed;
+    }
+
+    public void setRotateSpeed(Integer rotateSpeed) {
+        this.rotateSpeed = rotateSpeed;
+    }
+
+    public Integer getConsumptionRate() {
+        return consumptionRate;
+    }
+
+    public void setConsumptionRate(Integer consumptionRate) {
+        this.consumptionRate = consumptionRate;
+    }
 }

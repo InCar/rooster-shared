@@ -13,7 +13,11 @@ public class DataTarget {
     /**
      * 唯一识别码（国标建议传输车辆数据采用车辆VIN）
      */
-    protected String identifer;
+    protected String id;
+    /**
+     * 采集设备名称
+     */
+    protected String deviceName;
     /**
      * tripId
      */
@@ -34,8 +38,9 @@ public class DataTarget {
     public DataTarget() {
     }
 
-    public DataTarget(String identifer, String tripId, String vid, String vin, Date receiveDate) {
-        this.identifer = identifer;
+    public DataTarget(String id, String deviceName, String tripId, String vid, String vin, Date receiveDate) {
+        this.id = id;
+        this.deviceName = deviceName;
         this.tripId = tripId;
         this.vid = vid;
         this.vin = vin;
@@ -43,19 +48,28 @@ public class DataTarget {
     }
 
     public DataTarget(DataTarget target) {
-        this.identifer = target.identifer;
+        this.deviceName = target.deviceName;
+        this.id = target.id;
         this.tripId = target.tripId;
         this.vid = target.vid;
         this.vin = target.vin;
         this.receiveDate = target.receiveDate;
     }
 
-    public String getIdentifer() {
-        return identifer;
+    public String getId() {
+        return id;
     }
 
-    public void setIdentifer(String identifer) {
-        this.identifer = identifer;
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getDeviceName() {
+        return deviceName;
+    }
+
+    public void setDeviceName(String deviceName) {
+        this.deviceName = deviceName;
     }
 
     public String getTripId() {

@@ -12,4 +12,60 @@ package com.incarcloud.rooster.datatarget;
  * @since 2.0
  */
 public class DataTargetPeak extends DataTarget {
+
+    /**
+     * 极值名称
+     */
+    private String peakName;
+    /**
+     * 极值值
+     */
+    private String peakValue;
+    /**
+     * 极值单位
+     */
+    private String peakUnit;
+    /**
+     * 极值描述
+     */
+    private String peakDesc;
+
+    public DataTargetPeak() {
+    }
+
+    public DataTargetPeak(DataTarget target) {
+        super(target);
+    }
+
+    public String getPeakName() {
+        return peakName;
+    }
+
+    public void setPeakName(String peakName) {
+        this.peakName = peakName;
+    }
+
+    public String getPeakValue() {
+        return peakValue;
+    }
+
+    public void setPeakValue(String peakValue) {
+        this.peakValue = peakValue;
+    }
+
+    public String getPeakUnit() {
+        return peakUnit;
+    }
+
+    public void setPeakUnit(String peakUnit) {
+        this.peakUnit = peakUnit;
+    }
+
+    public String getPeakDesc() {
+        return peakDesc;
+    }
+
+    public void setPeakDesc(String peakDesc) {
+        this.peakDesc = peakDesc;
+    }
 }
