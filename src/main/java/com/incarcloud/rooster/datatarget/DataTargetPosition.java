@@ -19,13 +19,13 @@ public class DataTargetPosition extends DataTarget {
     /**
      * 方向
      */
-    private double direction;
+    private float direction;
     /**
      * 定位状态
      */
     private int status;
 
-    public DataTargetPosition(double longitude, double latitude, double direction, int status) {
+    public DataTargetPosition(double longitude, double latitude, float direction, int status) {
         this.longitude = longitude;
         this.latitude = latitude;
         this.direction = direction;
@@ -48,11 +48,11 @@ public class DataTargetPosition extends DataTarget {
         this.latitude = latitude;
     }
 
-    public double getDirection() {
+    public float getDirection() {
         return direction;
     }
 
-    public void setDirection(double direction) {
+    public void setDirection(float direction) {
         this.direction = direction;
     }
 

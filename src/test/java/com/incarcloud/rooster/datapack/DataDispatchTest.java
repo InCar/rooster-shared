@@ -17,7 +17,7 @@ public class DataDispatchTest {
     @Test
     @Ignore
     public void testExtract() throws Exception {
-        IDataParser dataParser = (IDataParser) DataParserManager.getDataParserClass("china-landu-3.08").newInstance();
+        IDataParser dataParser = (IDataParser) DataParserManager.getDataParserClass("incar-any4-1.0.0").newInstance();
         DataDispatch dataDispatch = new DataDispatch(null, dataParser);
         List<DataPackTarget> dataPackTargetList = dataDispatch.extractBody();
         if(null != dataPackTargetList && 0 < dataPackTargetList.size()) {
@@ -47,7 +47,7 @@ public class DataDispatchTest {
                         // 分发报警数据
                         break;
                     case DEVICE:
-                        // 分发上报设备数据
+                        // 分发上报设备信息
                         break;
                 }
             }

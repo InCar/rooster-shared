@@ -19,14 +19,14 @@ public class DataPackTarget {
      */
     private DataTarget _dataTarget;
     /**
-     * 通知
+     * 消息内容（如果为空，忽略）
      */
-    private String _notice;
+    private String _msg;
 
-    public DataPackTarget(ETargetType targetType, DataTarget dataTarget, String notice) {
+    public DataPackTarget(ETargetType targetType, DataTarget dataTarget, String msg) {
         _targetType = targetType;
         _dataTarget = dataTarget;
-        _notice = notice;
+        _msg = msg;
     }
 
     public ETargetType getTargetType() {
@@ -37,7 +37,7 @@ public class DataPackTarget {
         return _dataTarget;
     }
 
-    public String getNotice() {
-        return _notice;
+    public String getMsg() {
+        return _msg;
     }
 }
