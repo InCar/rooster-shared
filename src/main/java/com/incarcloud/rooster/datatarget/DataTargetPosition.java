@@ -2,6 +2,7 @@ package com.incarcloud.rooster.datatarget;
 
 /**
  * 位置数据<br>
+ * <b>无效定位数据不记录，采用WGS-84坐标系</b>
  * <i>异常与无效定义：</i><br>
  * <ul>
  *     <li>0xFE-异常，0xFF-无效</li>
@@ -13,13 +14,6 @@ package com.incarcloud.rooster.datatarget;
  */
 public class DataTargetPosition extends DataTarget {
 
-    /**
-     * 定位状态：<br>
-     *     X00-----: 0-有效定位，1-无效定位
-     *     0X0-----: 0-北纬，1-南纬
-     *     00X-----：0-东经，1-西经
-     */
-    private Integer positionStatus;
     /**
      * 经度
      */
@@ -38,14 +32,6 @@ public class DataTargetPosition extends DataTarget {
 
     public DataTargetPosition(DataTarget target) {
         super(target);
-    }
-
-    public Integer getPositionStatus() {
-        return positionStatus;
-    }
-
-    public void setPositionStatus(Integer positionStatus) {
-        this.positionStatus = positionStatus;
     }
 
     public Double getLongitude() {
