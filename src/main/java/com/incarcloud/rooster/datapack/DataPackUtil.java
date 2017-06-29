@@ -89,9 +89,9 @@ public class DataPackUtil {
      * 读取4byte有符号整型
      *
      * @param buffer ByteBuf
-     * @return long
+     * @return integer
      */
-    public static long readInt4(ByteBuf buffer) {
+    public static int readInt4(ByteBuf buffer) {
         if(null == buffer) {
             throw new IllegalArgumentException("buffer is null");
         }
