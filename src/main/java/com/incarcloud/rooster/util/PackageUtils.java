@@ -1,4 +1,4 @@
-package com.ybwh.utils;
+package com.incarcloud.rooster.util;
 
 import java.io.File;
 import java.io.IOException;
@@ -19,6 +19,7 @@ import java.util.jar.JarFile;
  *
  */
 public class PackageUtils {
+	private PackageUtils(){}
 
 	/**
 	 * 加载包下所有类,包括引入的jar(必须是打包时Add directory entries)包中的
@@ -27,11 +28,11 @@ public class PackageUtils {
 	 *            包名
 	 * @param recursive
 	 *            是否递归子包
-	 * @return
+	 *
 	 * @throws IOException
 	 *             包路径不存在
 	 */
-	public void loadClassesOfPackage(String packageName, boolean recursive) throws IOException {
+	public static void loadClassesOfPackage(String packageName, boolean recursive) throws IOException {
 		List<String> clazzNames = getClassesNamesOfPackage(packageName, true);
 
 		for (String cn : clazzNames) {
@@ -132,10 +133,10 @@ public class PackageUtils {
 		List<String> clazzNames = new LinkedList<String>();
 
 		Enumeration<JarEntry> entries = jar.entries();
-		String packagePathPrefix = packageName.replace(".", "/") + "/";
+		String packagePathPrefix = packageName.replace(".", "/") + "/";//包路径前缀
 
 		while (entries.hasMoreElements()) {
-			// 获取jar里的一个实体 可以是目录 和一些jar包里的其他文件 如META-INF等文件
+			// 获取jar里的一个实体，可以是目录或jar包里的其他文件 如META-INF等文件
 			JarEntry entry = entries.nextElement();
 			String name = entry.getName();
 			// System.out.println(name);
@@ -176,24 +177,6 @@ public class PackageUtils {
 		}
 
 		return clazzNames;
-	}
-
-	public static void main(String[] args) throws IOException, URISyntaxException {
-		String packageName = "com.ybwh";
-
-		List<String> names = getClassesNamesOfPackage(packageName, true);
-
-		for (String s : names) {
-			System.out.println(s);
-			try {
-				Class.forName(s);
-			} catch (ClassNotFoundException e) {
-				// 能获取类名，肯定这个类存在，这里不会发生
-			} catch (NoClassDefFoundError e) {
-				// 这里抛异常是因为该类依赖某个其他包的类，而其他包有没有引入
-			}
-		}
-
 	}
 
 }
