@@ -1,5 +1,8 @@
 package com.incarcloud.rooster.datapack;
 
+import com.incarcloud.rooster.util.PackageUtils;
+
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -10,6 +13,13 @@ import java.util.Map;
  * @since 2.0
  */
 public class DataParserManager {
+    static {
+        try {
+            PackageUtils.loadClassesOfPackage("com.incarcloud.rooster.datapack", true);
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
 
     /**
      * 解析器关系
@@ -37,4 +47,15 @@ public class DataParserManager {
     }
 
     private DataParserManager() {};
+
+    public static void main(String[] args){
+        /*try {
+            PackageUtils.loadClassesOfPackage("com.incarcloud.rooster.datapack", true);
+        }catch (IOException e){
+            e.printStackTrace();
+        }*/
+        System.out.println(getDataParserClass("incar-any4-1.0.0") == Any4DataParser.class);
+    }
+
+
 }
