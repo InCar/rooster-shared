@@ -38,6 +38,10 @@ public class DataTarget {
     public DataTarget() {
     }
 
+    public DataTarget(String deviceName) {
+        this.deviceName = deviceName;
+    }
+
     public DataTarget(String id, String deviceName, String tripId, String vid, String vin, Date receiveDate) {
         this.id = id;
         this.deviceName = deviceName;
