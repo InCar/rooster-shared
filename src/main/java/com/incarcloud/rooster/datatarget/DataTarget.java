@@ -31,7 +31,7 @@ public class DataTarget {
      */
     protected String vid;
     /**
-     * 车辆识别码
+     * VIN
      */
     protected String vin;
     /**
