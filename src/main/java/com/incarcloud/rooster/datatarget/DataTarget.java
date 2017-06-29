@@ -19,6 +19,10 @@ public class DataTarget {
      */
     protected String deviceName;
     /**
+     * obdCode
+     */
+    protected String obdCode;
+    /**
      * tripId
      */
     protected String tripId;
@@ -42,18 +46,10 @@ public class DataTarget {
         this.deviceName = deviceName;
     }
 
-    public DataTarget(String id, String deviceName, String tripId, String vid, String vin, Date receiveDate) {
-        this.id = id;
-        this.deviceName = deviceName;
-        this.tripId = tripId;
-        this.vid = vid;
-        this.vin = vin;
-        this.receiveDate = receiveDate;
-    }
-
     public DataTarget(DataTarget target) {
-        this.deviceName = target.deviceName;
         this.id = target.id;
+        this.deviceName = target.deviceName;
+        this.obdCode = target.obdCode;
         this.tripId = target.tripId;
         this.vid = target.vid;
         this.vin = target.vin;
@@ -74,6 +70,14 @@ public class DataTarget {
 
     public void setDeviceName(String deviceName) {
         this.deviceName = deviceName;
+    }
+
+    public String getObdCode() {
+        return obdCode;
+    }
+
+    public void setObdCode(String obdCode) {
+        this.obdCode = obdCode;
     }
 
     public String getTripId() {
