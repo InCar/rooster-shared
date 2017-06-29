@@ -7,6 +7,14 @@ import java.util.List;
 
 // 演示性质的DataParser,任意4个字节就解析成功
 public class Any4DataParser implements IDataParser {
+
+    static {
+        /**
+         * 声明数据包版本与解析器类关系
+         */
+        DataParserManager.register("incar-any4-1.0.0", Any4DataParser.class);
+    }
+
     @Override
     public List<DataPack> extract(ByteBuf buffer){
         List<DataPack> listPacks = new ArrayList<>();
@@ -31,5 +39,10 @@ public class Any4DataParser implements IDataParser {
     @Override
     public void destroyResponse(ByteBuf responseBuf) {
 
+    }
+
+    @Override
+    public List<DataPackTarget> extractBody(DataPack dataPack) {
+        return null;
     }
 }

@@ -39,4 +39,12 @@ public interface IDataParser {
 	 * @param responseBuf 应答数据（二进制）
 	 */
 	void destroyResponse(ByteBuf responseBuf);
+
+	/**
+	 * 解析数据包完整消息体
+	 *
+	 * @param dataPack 数据包
+	 * @return
+	 */
+	List<DataPackTarget> extractBody(DataPack dataPack);
 }
