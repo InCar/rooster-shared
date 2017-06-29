@@ -143,5 +143,5 @@ public class DataPackUtil {
         return null;
     }
 
-    private DataPackUtil(){}
+    protected DataPackUtil(){}
 }
