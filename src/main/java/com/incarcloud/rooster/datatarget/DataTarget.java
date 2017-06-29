@@ -35,9 +35,9 @@ public class DataTarget {
      */
     protected String vin;
     /**
-     * 接收时间
+     * 检测时间
      */
-    protected Date receiveDate;
+    protected Date detectionDate;
 
     public DataTarget() {
     }
@@ -53,7 +53,7 @@ public class DataTarget {
         this.tripId = target.tripId;
         this.vid = target.vid;
         this.vin = target.vin;
-        this.receiveDate = target.receiveDate;
+        this.detectionDate = target.detectionDate;
     }
 
     public String getId() {
@@ -104,11 +104,11 @@ public class DataTarget {
         this.vin = vin;
     }
 
-    public Date getReceiveDate() {
-        return receiveDate;
+    public Date getDetectionDate() {
+        return detectionDate;
     }
 
-    public void setReceiveDate(Date receiveDate) {
-        this.receiveDate = receiveDate;
+    public void setDetectionDate(Date detectionDate) {
+        this.detectionDate = detectionDate;
     }
 }
