@@ -33,6 +33,10 @@ public class DataTargetOverview extends DataTarget {
     public DataTargetOverview() {
     }
 
+    public DataTargetOverview(DataTarget target) {
+        super(target);
+    }
+
     public Integer getStatus() {
         return status;
     }
