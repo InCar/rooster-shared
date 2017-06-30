@@ -1,5 +1,7 @@
 package com.incarcloud.rooster.datatarget;
 
+import java.util.Date;
+
 /**
  * 位置数据<br>
  * <b>无效定位数据不记录，采用WGS-84坐标系</b>
@@ -23,9 +25,18 @@ public class DataTargetPosition extends DataTarget {
      */
     private Double latitude;
     /**
-     * 方向
+     * 方向： 0~360, 正北为 0 度，顺时针旋转, 用字符串（无结束符）表示；如不支持，用“-“替代
      */
-    private Float direction;
+    private String direction;
+
+    /**
+     * 定位方式：0-无效数据，1-基站定位，2-GPS 定位
+     */
+    private Integer mode;
+    /**
+     * 定位时间
+     */
+    private Date positionDate;
 
     public DataTargetPosition() {
     }
@@ -50,11 +61,27 @@ public class DataTargetPosition extends DataTarget {
         this.latitude = latitude;
     }
 
-    public Float getDirection() {
+    public String getDirection() {
         return direction;
     }
 
-    public void setDirection(Float direction) {
+    public void setDirection(String direction) {
         this.direction = direction;
+    }
+
+    public Integer getMode() {
+        return mode;
+    }
+
+    public void setMode(Integer mode) {
+        this.mode = mode;
+    }
+
+    public Date getPositionDate() {
+        return positionDate;
+    }
+
+    public void setPositionDate(Date positionDate) {
+        this.positionDate = positionDate;
     }
 }
