@@ -32,7 +32,7 @@ public class DataTargetPosition extends DataTarget {
     /**
      * 定位方式：0-无效数据，1-基站定位，2-GPS 定位
      */
-    private Integer mode;
+    private Integer positioMode;
     /**
      * 定位时间
      */
@@ -69,12 +69,12 @@ public class DataTargetPosition extends DataTarget {
         this.direction = direction;
     }
 
-    public Integer getMode() {
-        return mode;
+    public Integer getPositioMode() {
+        return positioMode;
     }
 
-    public void setMode(Integer mode) {
-        this.mode = mode;
+    public void setPositioMode(Integer positioMode) {
+        this.positioMode = positioMode;
     }
 
     public Date getPositionDate() {
