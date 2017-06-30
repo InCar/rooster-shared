@@ -19,6 +19,14 @@ public class DataTarget {
      */
     protected String deviceName;
     /**
+     * 数据包ID
+     */
+    protected int packId;
+    /**
+     * 协议格式版本
+     */
+    protected String protocolVersion;
+    /**
      * obdCode
      */
     protected String obdCode;
@@ -49,6 +57,8 @@ public class DataTarget {
     public DataTarget(DataTarget target) {
         this.id = target.id;
         this.deviceName = target.deviceName;
+        this.packId = target.packId;
+        this.protocolVersion = target.protocolVersion;
         this.obdCode = target.obdCode;
         this.tripId = target.tripId;
         this.vid = target.vid;
@@ -70,6 +80,22 @@ public class DataTarget {
 
     public void setDeviceName(String deviceName) {
         this.deviceName = deviceName;
+    }
+
+    public int getPackId() {
+        return packId;
+    }
+
+    public void setPackId(int packId) {
+        this.packId = packId;
+    }
+
+    public String getProtocolVersion() {
+        return protocolVersion;
+    }
+
+    public void setProtocolVersion(String protocolVersion) {
+        this.protocolVersion = protocolVersion;
     }
 
     public String getObdCode() {
