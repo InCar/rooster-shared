@@ -25,12 +25,12 @@ public class KafkaConfig {
         return bootstrap_servers;
     }
 
-    @Value("rooster.kafka.bootstrapserver")
+    @Value("${rooster.kafka.bootstrapserver}")
     public void setBootstrap_servers(String bootstrap_servers) {
         this.bootstrap_servers = bootstrap_servers;
     }
 
-    @Value("rooster.kafka.topic")
+    @Value("${rooster.kafka.topic}")
     public void setTopic(String topic) {
         this.topic = topic;
     }
