@@ -1,4 +1,4 @@
-package com.incarcloud.rooster.datapack;
+package com.incarcloud.rooster.util;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufUtil;

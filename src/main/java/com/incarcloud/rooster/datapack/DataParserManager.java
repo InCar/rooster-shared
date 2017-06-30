@@ -1,6 +1,5 @@
 package com.incarcloud.rooster.datapack;
 
-import com.incarcloud.rooster.datapack.Any4DataParser;
 import com.incarcloud.rooster.util.PackageUtils;
 
 import java.io.IOException;
@@ -14,8 +13,6 @@ import java.util.Map;
  * @since 2.0
  */
 public class DataParserManager {
-    private DataParserManager() {
-    }
 
     /**
      * 解析器关系
@@ -25,7 +22,7 @@ public class DataParserManager {
     /**
      * 注册解析器类
      *
-     * @param tag   tag
+     * @param tag tag
      * @param clazz class
      */
     public static void register(String tag, Class<?> clazz) {
@@ -35,13 +32,12 @@ public class DataParserManager {
     /**
      * 获得解析类
      *
-     * @param tag
-     * @return
+     * @param tag tag
+     * @return class
      */
     public static Class<?> getDataParserClass(String tag) {
         return dataParserMap.get(tag);
     }
-
 
     /**
      * 会加载同一个包下的所有类
@@ -50,14 +46,9 @@ public class DataParserManager {
         try {
             PackageUtils.loadClassesOfPackage("com.incarcloud.rooster.datapack", true);
         } catch (IOException e) {
-            //
+            //e.printStackTrace();
         }
     }
 
-    public static void main(String[] args) {
-        loadClassOfSamePackage();
-        System.out.println(getDataParserClass("incar-any4-1.0.0"));
-    }
-
-
+    private DataParserManager() { }
 }

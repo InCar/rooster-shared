@@ -1,7 +1,6 @@
 package com.incarcloud.rooster.datapack;
 
 import org.junit.Assert;
-import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -13,9 +12,8 @@ import org.junit.Test;
 public class DataParserManagerTest {
 
     @Test
-    @Ignore
     public void testGetDataParserClass() throws Exception {
-        Class.forName("com.incarcloud.rooster.datapack.DataParserLandu");
-        Assert.assertEquals("DataParserLandu", DataParserManager.getDataParserClass("china-landu-2.05").getSimpleName());
+        DataParserManager.loadClassOfSamePackage();
+        Assert.assertEquals(true, Any4DataParser.class.equals(DataParserManager.getDataParserClass("incar-any4-1.0.0")));
     }
 }
