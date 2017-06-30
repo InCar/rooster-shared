@@ -23,6 +23,11 @@ public class DataPackTarget {
      */
     private String _msg;
 
+    public DataPackTarget(ETargetType targetType, DataTarget dataTarget) {
+        _targetType = targetType;
+        _dataTarget = dataTarget;
+    }
+
     public DataPackTarget(ETargetType targetType, DataTarget dataTarget, String msg) {
         _targetType = targetType;
         _dataTarget = dataTarget;

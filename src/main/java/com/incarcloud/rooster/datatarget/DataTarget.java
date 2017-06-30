@@ -19,41 +19,51 @@ public class DataTarget {
      */
     protected String deviceName;
     /**
+     * 数据包ID
+     */
+    protected int packId;
+    /**
+     * 协议格式版本
+     */
+    protected String protocolVersion;
+    /**
+     * obdCode
+     */
+    protected String obdCode;
+    /**
      * tripId
      */
-    protected String tripId;
+    protected Long tripId;
     /**
      * VID
      */
     protected String vid;
     /**
-     * 车辆识别码
+     * VIN
      */
     protected String vin;
     /**
-     * 接收时间
+     * 检测时间
      */
-    protected Date receiveDate;
+    protected Date detectionDate;
 
     public DataTarget() {
     }
 
-    public DataTarget(String id, String deviceName, String tripId, String vid, String vin, Date receiveDate) {
-        this.id = id;
+    public DataTarget(String deviceName) {
         this.deviceName = deviceName;
-        this.tripId = tripId;
-        this.vid = vid;
-        this.vin = vin;
-        this.receiveDate = receiveDate;
     }
 
     public DataTarget(DataTarget target) {
-        this.deviceName = target.deviceName;
         this.id = target.id;
+        this.deviceName = target.deviceName;
+        this.packId = target.packId;
+        this.protocolVersion = target.protocolVersion;
+        this.obdCode = target.obdCode;
         this.tripId = target.tripId;
         this.vid = target.vid;
         this.vin = target.vin;
-        this.receiveDate = target.receiveDate;
+        this.detectionDate = target.detectionDate;
     }
 
     public String getId() {
@@ -72,11 +82,35 @@ public class DataTarget {
         this.deviceName = deviceName;
     }
 
-    public String getTripId() {
+    public int getPackId() {
+        return packId;
+    }
+
+    public void setPackId(int packId) {
+        this.packId = packId;
+    }
+
+    public String getProtocolVersion() {
+        return protocolVersion;
+    }
+
+    public void setProtocolVersion(String protocolVersion) {
+        this.protocolVersion = protocolVersion;
+    }
+
+    public String getObdCode() {
+        return obdCode;
+    }
+
+    public void setObdCode(String obdCode) {
+        this.obdCode = obdCode;
+    }
+
+    public Long getTripId() {
         return tripId;
     }
 
-    public void setTripId(String tripId) {
+    public void setTripId(Long tripId) {
         this.tripId = tripId;
     }
 
@@ -96,11 +130,11 @@ public class DataTarget {
         this.vin = vin;
     }
 
-    public Date getReceiveDate() {
-        return receiveDate;
+    public Date getDetectionDate() {
+        return detectionDate;
     }
 
-    public void setReceiveDate(Date receiveDate) {
-        this.receiveDate = receiveDate;
+    public void setDetectionDate(Date detectionDate) {
+        this.detectionDate = detectionDate;
     }
 }

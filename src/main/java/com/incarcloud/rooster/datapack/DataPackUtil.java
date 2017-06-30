@@ -134,7 +134,11 @@ public class DataPackUtil {
             offset++;
         }
         int length = offset - buffer.readerIndex();
-        if(0 < length) {
+        if(0 == length) {
+            if(0x00 == buffer.readByte()) {
+                return "";
+            }
+        } else if(0 < length) {
             byte[] bytes = readBytes(buffer, length);
             if(0x00 == buffer.readByte()) {
                 return new String(bytes, "GBK");
@@ -143,5 +147,5 @@ public class DataPackUtil {
         return null;
     }
 
-    private DataPackUtil(){}
+    protected DataPackUtil(){}
 }

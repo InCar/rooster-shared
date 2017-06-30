@@ -14,49 +14,21 @@ package com.incarcloud.rooster.datatarget;
 public class DataTargetOverview extends DataTarget {
 
     /**
-     * 车辆状态：0x01-启动，0x02-熄火，0x03-其他状态
+     * 车辆状态：0x01-发动机点火时，0x02-发动机运行中，0x03-发动机熄火时，0x04-发动机熄火后，0x05-车辆不能检测
      */
-    private Integer vehicleStatus;
+    private Integer status;
     /**
-     * 充电状态：0x01-停车充电，0x02-行驶充电，0x03-未充电状态，0x04-充电完成，
+     * 车速（km/h）
      */
-    private Integer chargeStatus;
+    private Float speed;
     /**
-     * 运行模式：0x01-纯电，0x02-混动，0x03-燃油
+     * 当前行程行驶距离(m)
      */
-    private Integer runningMode;
+    private Integer travelDistance;
     /**
-     * 车速（最小计量单元0.1km/h）
+     * 电压（V）
      */
-    private Integer speed;
-    /**
-     * 累计里程（最小计量单元0.1km）
-     */
-    private Integer mileageTotal;
-    /**
-     * 总电压（最小计量单元0.1V）
-     */
-    private Integer voltageTotal;
-    /**
-     * 总电流（最小计量单元0.1A）
-     */
-    private Integer currentTotal;
-    /**
-     * SOC（最小计量单位1%）
-     */
-    private Integer soc;
-    /**
-     * DC-DC状态
-     */
-    private Integer dcdcStatus;
-    /**
-     * 档位（国标见附录A中A.1）
-     */
-    private Integer stalls;
-    /**
-     * 绝缘电阻（最小计量单元1kΩ）
-     */
-    private Integer resistanceValue;
+    private Float voltage;
 
     public DataTargetOverview() {
     }
@@ -65,91 +37,35 @@ public class DataTargetOverview extends DataTarget {
         super(target);
     }
 
-    public Integer getVehicleStatus() {
-        return vehicleStatus;
+    public Integer getStatus() {
+        return status;
     }
 
-    public void setVehicleStatus(Integer vehicleStatus) {
-        this.vehicleStatus = vehicleStatus;
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 
-    public Integer getChargeStatus() {
-        return chargeStatus;
-    }
-
-    public void setChargeStatus(Integer chargeStatus) {
-        this.chargeStatus = chargeStatus;
-    }
-
-    public Integer getRunningMode() {
-        return runningMode;
-    }
-
-    public void setRunningMode(Integer runningMode) {
-        this.runningMode = runningMode;
-    }
-
-    public Integer getSpeed() {
+    public Float getSpeed() {
         return speed;
     }
 
-    public void setSpeed(Integer speed) {
+    public void setSpeed(Float speed) {
         this.speed = speed;
     }
 
-    public Integer getMileageTotal() {
-        return mileageTotal;
+    public Integer getTravelDistance() {
+        return travelDistance;
     }
 
-    public void setMileageTotal(Integer mileageTotal) {
-        this.mileageTotal = mileageTotal;
+    public void setTravelDistance(Integer travelDistance) {
+        this.travelDistance = travelDistance;
     }
 
-    public Integer getVoltageTotal() {
-        return voltageTotal;
+    public Float getVoltage() {
+        return voltage;
     }
 
-    public void setVoltageTotal(Integer voltageTotal) {
-        this.voltageTotal = voltageTotal;
-    }
-
-    public Integer getCurrentTotal() {
-        return currentTotal;
-    }
-
-    public void setCurrentTotal(Integer currentTotal) {
-        this.currentTotal = currentTotal;
-    }
-
-    public Integer getSoc() {
-        return soc;
-    }
-
-    public void setSoc(Integer soc) {
-        this.soc = soc;
-    }
-
-    public Integer getDcdcStatus() {
-        return dcdcStatus;
-    }
-
-    public void setDcdcStatus(Integer dcdcStatus) {
-        this.dcdcStatus = dcdcStatus;
-    }
-
-    public Integer getStalls() {
-        return stalls;
-    }
-
-    public void setStalls(Integer stalls) {
-        this.stalls = stalls;
-    }
-
-    public Integer getResistanceValue() {
-        return resistanceValue;
-    }
-
-    public void setResistanceValue(Integer resistanceValue) {
-        this.resistanceValue = resistanceValue;
+    public void setVoltage(Float voltage) {
+        this.voltage = voltage;
     }
 }
