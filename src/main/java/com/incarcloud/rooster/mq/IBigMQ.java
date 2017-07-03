@@ -26,4 +26,14 @@ public interface IBigMQ {
 	 * @return 发送结果
 	 */
 	List<MqSendResult> post(List<MQMsg> listMsgs);
+
+
+	/**
+	 * 批量接收消息
+	 *
+	 * @param size 消息数量
+	 *
+	 * @return
+	 */
+	List<MQMsg> batchReceive(int size);
 }
