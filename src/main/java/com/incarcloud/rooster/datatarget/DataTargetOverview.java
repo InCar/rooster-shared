@@ -29,6 +29,54 @@ public class DataTargetOverview extends DataTarget {
      * 电压（V）
      */
     private Float voltage;
+    /**
+     * 发动机运行时间(秒)
+     */
+    private Integer engineRunningTime;
+    /**
+     * 本次平均油耗(0.01L/100km) 不支持用0xFFFF表示
+     */
+    private Float averageFuelConsumption;
+    /**
+     * 累计行驶里程(km)
+     */
+    private Integer totalTravelDistance;
+    /**
+     * 累计平均油耗(0.01L/km) 不支持用0xFFFF表示
+     */
+    private Float totalAverageFuelConsumption;
+    /**
+     * 设置的速度值(km/h)
+     */
+    private Integer[] speedSet;
+    /**
+     * 时间小计(秒)
+     */
+    private Integer[] subTotalTime;
+    /**
+     * 距离小计(m)
+     */
+    private Integer[] subTotalDistance;
+    /**
+     * 本次急加速次数
+     */
+    private Integer suddenUp;
+    /**
+     * 本次急减速次数
+     */
+    private Integer suddenDec;
+    /**
+     * 本次急转向次数
+     */
+    private Integer suddenTurn;
+    /**
+     * 本次时速超速行驶时间(秒)
+     */
+    private Integer speedingTime;
+    /**
+     * 最高车速(km/h)
+     */
+    private Integer maxSpeed;
 
     public DataTargetOverview() {
     }
@@ -67,5 +115,101 @@ public class DataTargetOverview extends DataTarget {
 
     public void setVoltage(Float voltage) {
         this.voltage = voltage;
+    }
+
+    public Integer[] getSpeedSet() {
+        return speedSet;
+    }
+
+    public void setSpeedSet(Integer[] speedSet) {
+        this.speedSet = speedSet;
+    }
+
+    public Integer getEngineRunningTime() {
+        return engineRunningTime;
+    }
+
+    public void setEngineRunningTime(Integer engineRunningTime) {
+        this.engineRunningTime = engineRunningTime;
+    }
+
+    public Float getAverageFuelConsumption() {
+        return averageFuelConsumption;
+    }
+
+    public void setAverageFuelConsumption(Float averageFuelConsumption) {
+        this.averageFuelConsumption = averageFuelConsumption;
+    }
+
+    public Integer getTotalTravelDistance() {
+        return totalTravelDistance;
+    }
+
+    public void setTotalTravelDistance(Integer totalTravelDistance) {
+        this.totalTravelDistance = totalTravelDistance;
+    }
+
+    public Float getTotalAverageFuelConsumption() {
+        return totalAverageFuelConsumption;
+    }
+
+    public void setTotalAverageFuelConsumption(Float totalAverageFuelConsumption) {
+        this.totalAverageFuelConsumption = totalAverageFuelConsumption;
+    }
+
+    public Integer[] getSubTotalTime() {
+        return subTotalTime;
+    }
+
+    public void setSubTotalTime(Integer[] subTotalTime) {
+        this.subTotalTime = subTotalTime;
+    }
+
+    public Integer[] getSubTotalDistance() {
+        return subTotalDistance;
+    }
+
+    public void setSubTotalDistance(Integer[] subTotalDistance) {
+        this.subTotalDistance = subTotalDistance;
+    }
+
+    public Integer getSuddenUp() {
+        return suddenUp;
+    }
+
+    public void setSuddenUp(Integer suddenUp) {
+        this.suddenUp = suddenUp;
+    }
+
+    public Integer getSuddenDec() {
+        return suddenDec;
+    }
+
+    public void setSuddenDec(Integer suddenDec) {
+        this.suddenDec = suddenDec;
+    }
+
+    public Integer getSuddenTurn() {
+        return suddenTurn;
+    }
+
+    public void setSuddenTurn(Integer suddenTurn) {
+        this.suddenTurn = suddenTurn;
+    }
+
+    public Integer getSpeedingTime() {
+        return speedingTime;
+    }
+
+    public void setSpeedingTime(Integer speedingTime) {
+        this.speedingTime = speedingTime;
+    }
+
+    public Integer getMaxSpeed() {
+        return maxSpeed;
+    }
+
+    public void setMaxSpeed(Integer maxSpeed) {
+        this.maxSpeed = maxSpeed;
     }
 }
