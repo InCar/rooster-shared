@@ -17,7 +17,7 @@ public class DataPack {
     // 务必小心处理_buf, 它需要手动释放freeBuffer() http://netty.io/wiki/reference-counted-objects.html#derived-buffers
     private ByteBuf _buf;
 
-    DataPack(String group, String name, String version){
+    public DataPack(String group, String name, String version){
         if(group == null || name == null || version == null)
             throw new IllegalArgumentException();
         if(group.isEmpty() || name.isEmpty() || version.isEmpty())
@@ -41,7 +41,7 @@ public class DataPack {
         return Base64.getEncoder().encodeToString(dst);
     }
 
-    void setBuf(ByteBuf buf){
+    public void setBuf(ByteBuf buf){
         // free previous buf
         freeBuf();
 
