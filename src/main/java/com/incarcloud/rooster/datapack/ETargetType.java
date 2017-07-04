@@ -33,6 +33,10 @@ public enum ETargetType {
      */
     PEAK,
     /**
+     * 极值数据集合
+     */
+    PEAKLIST,
+    /**
      * 报警数据
      */
     ALARM,
