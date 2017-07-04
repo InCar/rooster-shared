@@ -45,4 +45,14 @@ public class DataPackTarget {
     public String getMsg() {
         return _msg;
     }
+
+    @Override
+    public String toString() {
+        return "DataPackTarget{" +
+                "_targetType=" + _targetType +
+                ", _dataTarget=" + _dataTarget +
+                ", _msg='" + _msg + '\'' +
+                '}';
+    }
+
 }

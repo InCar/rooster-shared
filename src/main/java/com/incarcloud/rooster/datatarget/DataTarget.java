@@ -137,4 +137,20 @@ public class DataTarget {
     public void setDetectionDate(Date detectionDate) {
         this.detectionDate = detectionDate;
     }
+
+    @Override
+    public String toString() {
+        return "DataTarget{" +
+                "id='" + id + '\'' +
+                ", deviceName='" + deviceName + '\'' +
+                ", packId=" + packId +
+                ", protocolVersion='" + protocolVersion + '\'' +
+                ", obdCode='" + obdCode + '\'' +
+                ", tripId=" + tripId +
+                ", vid='" + vid + '\'' +
+                ", vin='" + vin + '\'' +
+                ", detectionDate=" + detectionDate +
+                '}';
+    }
+
 }
