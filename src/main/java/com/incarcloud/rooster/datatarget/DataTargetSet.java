@@ -3,12 +3,7 @@ package com.incarcloud.rooster.datatarget;
 import java.util.List;
 
 /**
- * 极值数据<br>
- * <i>异常与无效定义：</i><br>
- * <ul>
- *     <li>0xFE-异常，0xFF-无效</li>
- *     <li>0xFF,0xFE-异常，0xFF,0xFF-无效</li>
- * </ul>
+ * 数据集合
  *
  * @author sunjun, created on 2017-06-27T14:05.
  * @since 2.0
@@ -18,7 +13,7 @@ public class DataTargetSet extends DataTarget {
     /**
      * 极值集合
      */
-    private List<DataTargetPeak> dataTargetPeakList;
+    private List<?> dataTargetList;
 
     public DataTargetSet() {
     }
@@ -27,11 +22,11 @@ public class DataTargetSet extends DataTarget {
         super(target);
     }
 
-    public List<DataTargetPeak> getDataTargetPeakList() {
-        return dataTargetPeakList;
+    public List<?> getDataTargetList() {
+        return dataTargetList;
     }
 
-    public void setDataTargetPeakList(List<DataTargetPeak> dataTargetPeakList) {
-        this.dataTargetPeakList = dataTargetPeakList;
+    public void setDataTargetList(List<?> dataTargetList) {
+        this.dataTargetList = dataTargetList;
     }
 }

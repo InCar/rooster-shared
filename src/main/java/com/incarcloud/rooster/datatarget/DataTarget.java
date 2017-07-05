@@ -33,7 +33,7 @@ public class DataTarget {
     /**
      * tripId
      */
-    protected Long tripId;
+    protected Integer tripId;
     /**
      * VID
      */
@@ -106,11 +106,11 @@ public class DataTarget {
         this.obdCode = obdCode;
     }
 
-    public Long getTripId() {
+    public Integer getTripId() {
         return tripId;
     }
 
-    public void setTripId(Long tripId) {
+    public void setTripId(Integer tripId) {
         this.tripId = tripId;
     }
 
