@@ -49,7 +49,7 @@ public class MQMsgUtil {
 
         byte[] data = Base64.getDecoder().decode(mqMsg.getDataB64());
         ByteBuf buf = Unpooled.buffer(data.length);
-        buf.readBytes(data);
+        buf.writeBytes(data);
 
         dataPack.setBuf(buf);
         return dataPack;
