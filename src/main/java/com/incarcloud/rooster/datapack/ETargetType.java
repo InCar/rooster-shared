@@ -29,15 +29,31 @@ public enum ETargetType {
      */
     POSITION,
     /**
+     * 位置数据集合
+     */
+    POSITIONLIST,
+    /**
      * 极值数据
      */
     PEAK,
+    /**
+     * 极值数据集合
+     */
+    PEAKLIST,
     /**
      * 报警数据
      */
     ALARM,
     /**
+     * 报警数据集合
+     */
+    ALARMLIST,
+    /**
      * 上报设备信息
      */
-    DEVICE
+    DEVICE,
+    /**
+     * 设备返回下行集合执行结果
+     */
+    RESULT
 }
