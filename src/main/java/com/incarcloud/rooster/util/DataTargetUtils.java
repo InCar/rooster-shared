@@ -43,7 +43,7 @@ public class DataTargetUtils {
      * @return
      */
     public static  String  getTableName(ETargetType type){
-        return "";
+        return "test";
     }
 
 
