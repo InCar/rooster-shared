@@ -22,6 +22,7 @@ dependencies {
     compile("io.netty:netty-buffer:4.1.+")
     compile("org.slf4j:slf4j-api:1.7.+")
     compile("commons-codec:commons-codec:1.10+")
+    compile("com.google.code.gson:gson:2.2.2")
     
     testCompile("junit:junit:4.+")
     testRuntime("org.apache.logging.log4j:log4j-slf4j-impl:2.8.+")
