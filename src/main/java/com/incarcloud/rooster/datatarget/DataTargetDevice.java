@@ -14,7 +14,7 @@ package com.incarcloud.rooster.datatarget;
 public class DataTargetDevice extends DataTarget {
 
     /**
-     * 硬盘版本号
+     * 硬件版本号
      */
     private String hardwareVersion;
     /**
@@ -28,7 +28,15 @@ public class DataTargetDevice extends DataTarget {
     /**
      * 诊断程序类型(LANDU)：0xFF 表示通用 OBDII 诊断程序，其他值待定义
      */
-    private byte diagnoseProgramType;
+    private Integer diagnoseProgramType;
+    /**
+     * 恢复出厂设置序号
+     */
+    private Integer initCode;
+    /**
+     * 软件类别ID
+     */
+    private Integer softwareTypeId;
 
     public DataTargetDevice() {
     }
@@ -61,11 +69,27 @@ public class DataTargetDevice extends DataTarget {
         this.softwareVersion = softwareVersion;
     }
 
-    public byte getDiagnoseProgramType() {
+    public Integer getDiagnoseProgramType() {
         return diagnoseProgramType;
     }
 
-    public void setDiagnoseProgramType(byte diagnoseProgramType) {
+    public void setDiagnoseProgramType(Integer diagnoseProgramType) {
         this.diagnoseProgramType = diagnoseProgramType;
+    }
+
+    public Integer getInitCode() {
+        return initCode;
+    }
+
+    public void setInitCode(Integer initCode) {
+        this.initCode = initCode;
+    }
+
+    public Integer getSoftwareTypeId() {
+        return softwareTypeId;
+    }
+
+    public void setSoftwareTypeId(Integer softwareTypeId) {
+        this.softwareTypeId = softwareTypeId;
     }
 }

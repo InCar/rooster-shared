@@ -22,6 +22,10 @@ public class DataTargetAlarm extends DataTarget {
      */
     private String alarmCode;
     /**
+     * 故障属性
+     */
+    private String alarmValue;
+    /**
      * 故障描述
      */
     private String alarmDesc;
@@ -67,5 +71,13 @@ public class DataTargetAlarm extends DataTarget {
 
     public void setAlarmLevel(Integer alarmLevel) {
         this.alarmLevel = alarmLevel;
+    }
+
+    public String getAlarmValue() {
+        return alarmValue;
+    }
+
+    public void setAlarmValue(String alarmValue) {
+        this.alarmValue = alarmValue;
     }
 }
