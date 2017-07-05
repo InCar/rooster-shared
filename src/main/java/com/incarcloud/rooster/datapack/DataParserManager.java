@@ -26,7 +26,7 @@ public class DataParserManager {
      * @param clazz class
      */
     public static void register(String tag, Class<?> clazz) {
-        dataParserMap.put(tag, clazz);
+        dataParserMap.put(tag.trim(), clazz);
     }
 
     /**
@@ -36,7 +36,7 @@ public class DataParserManager {
      * @return class
      */
     public static Class<?> getDataParserClass(String tag) {
-        return dataParserMap.get(tag);
+        return dataParserMap.get(tag.trim());
     }
 
     /**
