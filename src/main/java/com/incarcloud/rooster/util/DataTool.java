@@ -23,7 +23,7 @@ import static io.netty.buffer.Unpooled.buffer;
 @Component
 public class DataTool {
 
-    private static final String DEFAULT_CHARSET="GBK";
+    private static final String DEFAULT_CHARSET="UTF-8";
     private Logger _logger = LoggerFactory.getLogger(DataTool.class);
 
     public static byte[] getIpBytes(String ip){
