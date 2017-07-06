@@ -41,6 +41,13 @@ public class DataPack {
         return Base64.getEncoder().encodeToString(dst);
     }
 
+    public byte[] getBytes(){
+        if(_buf == null) return null;
+        byte[] dst = new byte[_buf.readableBytes()];
+        _buf.getBytes(0, dst);
+        return dst;
+    }
+
     public void setBuf(ByteBuf buf){
         // free previous buf
         freeBuf();
