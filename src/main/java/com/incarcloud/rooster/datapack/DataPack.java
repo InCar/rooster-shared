@@ -45,7 +45,7 @@ public class DataPack {
      * 获取数据Base64加密后的字符串
      * @return
      */
-    private String getDataB64(){
+    public String getDataB64(){
         return Base64.getEncoder().encodeToString(getDataBytes());
     }
 
