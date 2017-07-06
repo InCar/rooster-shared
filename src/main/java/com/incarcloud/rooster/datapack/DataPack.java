@@ -1,7 +1,10 @@
 package com.incarcloud.rooster.datapack;
 
+import com.incarcloud.rooster.util.DataTool;
 import io.netty.buffer.ByteBuf;
+import io.netty.buffer.Unpooled;
 
+import java.io.UnsupportedEncodingException;
 import java.util.Base64;
 
 /**
@@ -30,23 +33,74 @@ public class DataPack {
         _version = version;
     }
 
+    /**
+     * 获取包标签
+     * @return
+     */
     public String getMark(){
         return String.format("%s-%s-%s", _group, _name, _version);
     }
 
-    public String getDataB64(){
-        if(_buf == null) return null;
-        byte[] dst = new byte[_buf.readableBytes()];
-        _buf.getBytes(0, dst);
-        return Base64.getEncoder().encodeToString(dst);
+    /**
+     * 获取数据Base64加密后的字符串
+     * @return
+     */
+    private String getDataB64(){
+        return Base64.getEncoder().encodeToString(getDataBytes());
     }
 
-    public byte[] getBytes(){
+
+
+
+    /**
+     * 获取数据字节数组
+     * @return
+     */
+    public byte[] getDataBytes(){
         if(_buf == null) return null;
         byte[] dst = new byte[_buf.readableBytes()];
         _buf.getBytes(0, dst);
         return dst;
     }
+
+
+    /**
+     * 序列化为字节数组
+     * @return
+     */
+    public byte[] serializeToBytes() throws UnsupportedEncodingException{
+        return  (getMark()+"->"+getDataB64()).getBytes("UTF-8");
+    }
+
+
+    /**
+     * 反序列化为DataPack对象
+     * @param bytes
+     * @return
+     * @throws UnsupportedEncodingException
+     */
+    public static DataPack deserializeFromBytes(byte [] bytes) throws UnsupportedEncodingException{
+
+        String s = new String(bytes,"UTF-8");
+        if(!s.contains("->")){
+            return null;
+        }
+
+        String mark = s.split("\\->")[0];
+        String dataB64 = s.split("\\->")[1];
+        DataPack dataPack = new DataPack(mark.split("\\-")[0], mark.split("\\-")[1], mark.split("\\-")[2]);
+
+        byte[] data = Base64.getDecoder().decode(dataB64);
+        ByteBuf buf = Unpooled.buffer(data.length);
+        buf.writeBytes(data);
+
+        dataPack.setBuf(buf);
+        return dataPack;
+    }
+
+
+
+
 
     public void setBuf(ByteBuf buf){
         // free previous buf
@@ -56,6 +110,9 @@ public class DataPack {
         _buf.retain();
     }
 
+    /**
+     * 释放数据
+     */
     public void freeBuf(){
         if(_buf != null) {
             _buf.release();
@@ -63,13 +120,16 @@ public class DataPack {
         }
     }
 
+
+
+
     @Override
     public String toString() {
         return "DataPack{" +
                 "_group='" + _group + '\'' +
                 ", _name='" + _name + '\'' +
                 ", _version='" + _version + '\'' +
-                ", _buf=" + _buf +
+                ", _buf=" + DataTool.bytes2hex(getDataBytes()) +
                 '}';
     }
 }
