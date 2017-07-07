@@ -18,6 +18,7 @@ repositories {
 }
 
 dependencies {
+    compile("io.netty:netty-all:4.1.+")
     compile("org.springframework:spring-context:4.3.+")
     compile("io.netty:netty-buffer:4.1.+")
     compile("org.slf4j:slf4j-api:1.7.+")
