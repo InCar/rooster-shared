@@ -36,4 +36,10 @@ public interface IBigMQ {
 	 * @return
 	 */
 	List<MQMsg> batchReceive(int size);
+
+
+	/**
+	 * 关闭
+	 */
+	public void close();
 }
