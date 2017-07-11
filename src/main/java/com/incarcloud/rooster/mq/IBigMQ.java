@@ -39,6 +39,12 @@ public interface IBigMQ {
 
 
 	/**
+	 * 释放当前连接
+	 */
+	public void releaseCurrentConn();
+
+
+	/**
 	 * 关闭
 	 */
 	public void close();
