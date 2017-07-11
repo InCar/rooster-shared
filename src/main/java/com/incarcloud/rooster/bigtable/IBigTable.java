@@ -21,5 +21,11 @@ public interface IBigTable {
     public void save(String rowKey, DataTarget data, String tableName) throws Exception;
 
 
+    /**
+     * 关闭，回收资源
+     */
+    public  void close();
+
+
 
 }
