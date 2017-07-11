@@ -39,7 +39,7 @@ public interface IBigMQ {
 
 
 	/**
-	 * 释放当前连接
+	 * 释放当前连接（线程安全的客户端无需实现此方法，有些客户端不是线程安全，比如kafka的消费者）
 	 */
 	public void releaseCurrentConn();
 
