@@ -1,15 +1,13 @@
-package com.incarcloud.rooster.command;/**
+package com.incarcloud.rooster.gather.rpc.session;/**
  * Created by fanbeibei on 2017/7/7.
  */
-
-import io.netty.channel.Channel;
 
 /**
  * @author Fan Beibei
  * @Description: 车辆连接gather的会话管理
  * @date 2017/7/7 12:14
  */
-public interface GatherSessionManager {
+public interface SessionManager {
 
 
     /**

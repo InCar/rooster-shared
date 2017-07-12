@@ -1,6 +1,8 @@
-package com.incarcloud.rooster.command;/**
+package com.incarcloud.rooster.gather.rpc.facade;/**
  * Created by fanbeibei on 2017/7/7.
  */
+
+import com.incarcloud.rooster.gather.rpc.cmd.CommandType;
 
 /**
  * @author Fan Beibei

@@ -1,4 +1,4 @@
-package com.incarcloud.rooster.command;/**
+package com.incarcloud.rooster.gather.rpc.cmd;/**
  * Created by fanbeibei on 2017/7/7.
  */
 
