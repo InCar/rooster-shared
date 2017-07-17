@@ -1,15 +1,15 @@
-package com.incarcloud.rooster.gather.rpc.facade;/**
- * Created by fanbeibei on 2017/7/7.
+package com.incarcloud.rooster.gather.cmd.client;/**
+ * Created by fanbeibei on 2017/7/17.
  */
 
-import com.incarcloud.rooster.gather.rpc.cmd.CommandType;
+import com.incarcloud.rooster.gather.cmd.CommandType;
 
 /**
  * @author Fan Beibei
- * @Description: 提供外部调用的接口
- * @date 2017/7/7 12:08
+ * @Description: 描述
+ * @date 2017/7/17 11:08
  */
-public interface GatherFacade {
+public interface CommandClient {
 
     /**
      * 向车辆发送指令（自动选择设备）
@@ -18,7 +18,5 @@ public interface GatherFacade {
      * @param command 指令类型
      */
     public void sendCommand(String vin, CommandType command) throws Exception;
-
-
 
 }
