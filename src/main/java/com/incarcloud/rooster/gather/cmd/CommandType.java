@@ -11,29 +11,15 @@ public enum CommandType {
     /**
      * 开车门
      */
-    OPEN_DOOR(1),
+    OPEN_DOOR,
 
     /**
      * 开空调
      */
-    START_AIR_CONDITIONER(2),
+    START_AIR_CONDITIONER,
 
     /**
      * 开双闪
      */
-    FLASH_LIGHTS_ON(3);
-
-
-    private int type;
-    private CommandType(int value){
-        this.type = value;
-    }
-
-    /**
-     * 获取枚举值
-     * @return
-     */
-    public int getType() {
-        return type;
-    }
+    FLASH_LIGHTS_ON
 }

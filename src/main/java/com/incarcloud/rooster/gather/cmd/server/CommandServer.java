@@ -2,6 +2,8 @@ package com.incarcloud.rooster.gather.cmd.server;/**
  * Created by fanbeibei on 2017/7/17.
  */
 
+import java.net.UnknownHostException;
+
 /**
  * @author Fan Beibei
  * @Description: 提供远程命令操作的服务接口
@@ -23,5 +25,5 @@ public interface CommandServer {
      *
      * @return
      */
-    public String getUrl();
+    public String getUrl() throws UnknownHostException;
 }
