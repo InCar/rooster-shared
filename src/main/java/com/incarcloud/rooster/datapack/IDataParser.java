@@ -50,8 +50,8 @@ public interface IDataParser {
 
 	/**
 	 * 从数据包中获取vin码，若数据包不包含vin数据，则返回空
-	 * @param dataPack
+	 * @param buffer
 	 * @return
 	 */
-	String getVin(DataPack dataPack);
+	String getVin(ByteBuf buffer);
 }
