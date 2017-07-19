@@ -52,8 +52,8 @@ public interface IDataParser {
 	/**
 	 * 解析数据包获取vin/设备号
 	 *
-	 * @param dataPack 数据包
+	 * @param buffer 数据包
 	 * @return
 	 */
-	Map<String, Object> getSerialNumber(DataPack dataPack);
+	Map<String, Object> getSerialNumber(ByteBuf buffer);
 }
