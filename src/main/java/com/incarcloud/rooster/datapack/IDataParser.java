@@ -48,10 +48,4 @@ public interface IDataParser {
 	 */
 	List<DataPackTarget> extractBody(DataPack dataPack);
 
-	/**
-	 * 从数据包中获取vin码，若数据包不包含vin数据，则返回空
-	 * @param buffer
-	 * @return
-	 */
-	String getVin(ByteBuf buffer);
 }

@@ -1,4 +1,4 @@
-package com.incarcloud.rooster.gather.cmd;
+package com.incarcloud.rooster.gather.cmd.device;
 
 /**
  * 设备连接容器
@@ -13,7 +13,7 @@ public interface DeviceConnectionContainer {
 	 * @param conn
 	 * @return
 	 */
-	public void addDeviceConnection(DeviceConnection conn) throws Exception;
+	public void addDeviceConnection(DeviceConnection conn);
 
 	/**
 	 * 移除设备连接
@@ -22,7 +22,7 @@ public interface DeviceConnectionContainer {
 	 *            车辆vin码
 	 * @return
 	 */
-	public void removeDeviceConnection(String vin) throws Exception;
+	public void removeDeviceConnection(String vin);
 
 	/**
 	 * 获取设备连接
@@ -32,5 +32,5 @@ public interface DeviceConnectionContainer {
 	 * @return
 	 * @throws Exception
 	 */
-	public DeviceConnection getDeviceConnection(String vin) throws Exception;
+	public DeviceConnection getDeviceConnection(String vin) ;
 }

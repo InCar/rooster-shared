@@ -1,4 +1,4 @@
-package com.incarcloud.rooster.gather.cmd;
+package com.incarcloud.rooster.gather.cmd.device;
 
 import io.netty.channel.Channel;
 
