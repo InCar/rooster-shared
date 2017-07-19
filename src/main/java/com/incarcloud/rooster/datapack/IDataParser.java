@@ -3,6 +3,7 @@ package com.incarcloud.rooster.datapack;
 import io.netty.buffer.ByteBuf;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @ClassName: IDataParser
@@ -48,4 +49,11 @@ public interface IDataParser {
 	 */
 	List<DataPackTarget> extractBody(DataPack dataPack);
 
+	/**
+	 * 解析数据包获取vin/设备号
+	 *
+	 * @param buffer 数据包
+	 * @return
+	 */
+	Map<String, Object> getSerialNumber(ByteBuf buffer);
 }
