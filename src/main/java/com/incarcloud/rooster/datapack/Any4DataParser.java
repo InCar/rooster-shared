@@ -4,6 +4,7 @@ import io.netty.buffer.ByteBuf;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 // 演示性质的DataParser,任意4个字节就解析成功
 public class Any4DataParser implements IDataParser {
@@ -43,6 +44,11 @@ public class Any4DataParser implements IDataParser {
 
     @Override
     public List<DataPackTarget> extractBody(DataPack dataPack) {
+        return null;
+    }
+
+    @Override
+    public Map<String, Object> getSerialNumber(DataPack dataPack) {
         return null;
     }
 }
