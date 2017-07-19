@@ -47,4 +47,11 @@ public interface IDataParser {
 	 * @return
 	 */
 	List<DataPackTarget> extractBody(DataPack dataPack);
+
+	/**
+	 * 从数据包中获取vin码，若数据包不包含vin数据，则返回空
+	 * @param dataPack
+	 * @return
+	 */
+	String getVin(DataPack dataPack);
 }
