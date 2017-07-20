@@ -12,10 +12,9 @@ public interface DeviceConnectionRemoteRegister {
     /**
      * 注册连接
      * @param vin
-     * @param protocal 设备协议
-     * @param serverUrl 连接服务器的url, 传输协议(tcp/udp/mqtt):ip:端口号
+     * @param cmdServerUrl 命令服务的url
      */
-    void registerConnection(String vin, String protocal, String serverUrl);
+    void registerConnection(String vin,  String cmdServerUrl);
 
 
 }
