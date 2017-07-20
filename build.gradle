@@ -34,6 +34,11 @@ compileJava{
     options.compilerArgs << "-Xlint:unchecked"
 }
 
+compileTestJava{
+    options.encoding = "utf-8"
+    options.compilerArgs << "-Xlint:unchecked"
+}
+
 test{
     testLogging {
         events "passed", "skipped", "failed"
