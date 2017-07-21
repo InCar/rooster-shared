@@ -15,8 +15,9 @@ public interface CommandFacotry {
      * 创建二进制命令,若不支持此命令则返回null
      *
      * @param type     命令类型
+     * @param protocol 设备当前使用的协议
      * @return
      */
-    byte[] createCommand(CommandType type);
+    byte[] createCommand(CommandType type, String protocol);
 
 }

@@ -50,7 +50,13 @@ public class DataPack {
     }
 
 
-
+    /**
+     * 获取设备当前使用的协议
+     * @return
+     */
+    public String getProtocol(){
+        return getMark();
+    }
 
     /**
      * 获取数据字节数组
