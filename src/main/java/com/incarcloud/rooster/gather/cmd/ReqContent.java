@@ -17,6 +17,13 @@ public class ReqContent {
      */
     private String vin;
 
+    public ReqContent() {
+    }
+
+    public ReqContent(CommandType cmdType, String vin) {
+        this.cmdType = cmdType;
+        this.vin = vin;
+    }
 
     public void setCmdType(CommandType cmdType) {
         this.cmdType = cmdType;

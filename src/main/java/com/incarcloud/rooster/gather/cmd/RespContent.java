@@ -2,8 +2,6 @@ package com.incarcloud.rooster.gather.cmd;/**
  * Created by fanbeibei on 2017/7/17.
  */
 
-import com.incarcloud.rooster.gather.cmd.server.CommandServerRespCode;
-
 /**
  * @author Fan Beibei
  * @Description: 回复内容格式
@@ -18,6 +16,14 @@ public class RespContent {
      * 结果描述信息
      */
     private String descInfo;
+
+    public RespContent() {
+    }
+
+    public RespContent(CommandServerRespCode code, String descInfo) {
+        this.code = code;
+        this.descInfo = descInfo;
+    }
 
     public void setCode(CommandServerRespCode code) {
         this.code = code;

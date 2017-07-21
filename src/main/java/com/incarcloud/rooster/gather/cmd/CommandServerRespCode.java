@@ -1,4 +1,4 @@
-package com.incarcloud.rooster.gather.cmd.server;/**
+package com.incarcloud.rooster.gather.cmd;/**
  * Created by fanbeibei on 2017/7/17.
  */
 

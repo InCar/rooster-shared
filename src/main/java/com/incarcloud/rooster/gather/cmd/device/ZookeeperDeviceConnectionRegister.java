@@ -23,7 +23,8 @@ public class ZookeeperDeviceConnectionRegister implements DeviceConnectionRemote
 
 
     public ZookeeperDeviceConnectionRegister(String zkSever){
-        zk = new ZkClient(zkSever);
+
+        zk = new ZkClient(zkSever,2000);
         init();
     }
 

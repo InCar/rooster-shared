@@ -19,15 +19,10 @@ public class DeviceConnection {
 	 */
 	private Channel channel;
 
-	/**
-	 * 通讯协议
-	 */
-	private String protocal;
 
-	public DeviceConnection(String vin, Channel channel, String protocal) {
+	public DeviceConnection(String vin, Channel channel) {
 		this.vin = vin;
 		this.channel = channel;
-		this.protocal = protocal;
 	}
 
 	public String getVin() {
@@ -36,10 +31,6 @@ public class DeviceConnection {
 
 	public Channel getChannel() {
 		return channel;
-	}
-
-	public String getProtocal() {
-		return protocal;
 	}
 
 }

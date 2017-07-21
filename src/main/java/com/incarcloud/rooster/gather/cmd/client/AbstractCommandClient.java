@@ -2,7 +2,9 @@ package com.incarcloud.rooster.gather.cmd.client;/**
  * Created by fanbeibei on 2017/7/17.
  */
 
+import com.incarcloud.rooster.gather.cmd.CommandServerRespCode;
 import com.incarcloud.rooster.gather.cmd.CommandType;
+import com.incarcloud.rooster.gather.cmd.RespContent;
 
 /**
  * @author Fan Beibei
@@ -12,9 +14,14 @@ import com.incarcloud.rooster.gather.cmd.CommandType;
 public abstract class AbstractCommandClient implements CommandClient {
 
     @Override
-    public void sendCommand(String vin, CommandType command) throws Exception {
+    public RespContent sendCommand(String vin, CommandType command) throws Exception {
         String url = getServerUrl(vin);
-        sendCommand(url, vin, command);
+
+        if(null ==url){
+            return new RespContent(CommandServerRespCode.DEV_OFFLINE,"device not connect");
+        }
+
+        return sendCommand(url, vin, command);
     }
 
     /**
@@ -31,7 +38,7 @@ public abstract class AbstractCommandClient implements CommandClient {
      * @param command 指令类型
      * @throws Exception
      */
-    public abstract void sendCommand(String url, String vin, CommandType command) throws Exception;
+    public abstract RespContent sendCommand(String url, String vin, CommandType command) throws Exception;
 
 
 }
