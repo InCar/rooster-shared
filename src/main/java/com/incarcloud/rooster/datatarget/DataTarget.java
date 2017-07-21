@@ -45,7 +45,7 @@ public class DataTarget {
     /**
      * 检测时间
      */
-    protected Date detectionDate;
+    protected String detectionDate;
 
     public DataTarget() {
     }
@@ -130,11 +130,11 @@ public class DataTarget {
         this.vin = vin;
     }
 
-    public Date getDetectionDate() {
+    public String getDetectionDate() {
         return detectionDate;
     }
 
-    public void setDetectionDate(Date detectionDate) {
+    public void setDetectionDate(String detectionDate) {
         this.detectionDate = detectionDate;
     }
 
