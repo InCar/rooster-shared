@@ -23,6 +23,6 @@ public abstract class AbstractRestfulCommandServer implements CommandServer {
 
     @Override
     public String getUrl() throws UnknownHostException {
-        return "http://"+ InetAddress.getLocalHost().getHostAddress()+port;
+        return "http://"+ InetAddress.getLocalHost().getHostAddress()+":"+port;
     }
 }
