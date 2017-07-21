@@ -13,7 +13,7 @@ public class CommandFacotryManager {
     /**
      * protocol -> CommandFacotry
      */
-    private static ConcurrentHashMap<String, Class<CommandFacotry>> commandFacotryClazzMap = new ConcurrentHashMap<>();
+    private static ConcurrentHashMap<String, Class<? extends CommandFacotry>> commandFacotryClazzMap = new ConcurrentHashMap<>();
 
     /**
      * 缓存工厂对象
@@ -26,7 +26,7 @@ public class CommandFacotryManager {
      * @param protocol
      * @param clazz
      */
-    public static void registerCommandFacotry(String protocol, Class<CommandFacotry> clazz) {
+    public static void registerCommandFacotry(String protocol, Class<? extends CommandFacotry> clazz) {
         commandFacotryClazzMap.put(protocol, clazz);
     }
 
@@ -47,7 +47,7 @@ public class CommandFacotryManager {
         }
 
 
-        Class<CommandFacotry> clazz = commandFacotryClazzMap.get(protocol);
+        Class<? extends  CommandFacotry> clazz = commandFacotryClazzMap.get(protocol);
         facotry = clazz.newInstance();
         commandFacotryCache.put(protocol, facotry);
 
