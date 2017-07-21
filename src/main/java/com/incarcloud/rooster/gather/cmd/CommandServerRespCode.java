@@ -21,6 +21,10 @@ public enum CommandServerRespCode {
      */
     DEV_OFFLINE,
     /**
+     * 请求参数错误
+     */
+    REQ_PARAM_ERROR,
+    /**
      * 其他错误
      */
     OTHER_ERROR
