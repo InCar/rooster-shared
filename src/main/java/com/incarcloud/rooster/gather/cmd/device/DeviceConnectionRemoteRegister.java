@@ -17,4 +17,11 @@ public interface DeviceConnectionRemoteRegister {
     void registerConnection(String vin,  String cmdServerUrl);
 
 
+    /**
+     * 移除连接
+     * @param vin
+     */
+    void removeConnection(String vin);
+
+
 }

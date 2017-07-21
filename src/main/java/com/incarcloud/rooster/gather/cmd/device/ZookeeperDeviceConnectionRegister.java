@@ -44,4 +44,13 @@ public class ZookeeperDeviceConnectionRegister implements DeviceConnectionRemote
 
         zk.writeData(nodePath,cmdServerUrl);
     }
+
+    @Override
+    public void removeConnection(String vin) {
+        String nodePath =  ROOT_PATH+"/"+vin;
+
+        if(zk.exists(nodePath)){
+            zk.deleteRecursive(nodePath);
+        }
+    }
 }
