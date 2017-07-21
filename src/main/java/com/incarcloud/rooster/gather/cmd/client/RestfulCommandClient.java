@@ -64,7 +64,7 @@ public class RestfulCommandClient extends AbstractCommandClient {
     private void loadVinUrlMap() {
         List<String> vinPath = zk.getChildren(ROOT_PATH);
         for (String path : vinPath) {
-            String url = zk.readData(path);
+            String url = zk.readData(ROOT_PATH+"/"+path);
             s_logger.debug("url:" + url);
             vinUrlMap.put(path, url);
         }
