@@ -15,7 +15,7 @@ import java.util.Map;
 public class DataParserManager {
 
     /**
-     * 解析器关系
+     * 解析器关系  protocol -> parser
      */
     private static Map<String, Class<?>> dataParserMap = new HashMap<>();
 

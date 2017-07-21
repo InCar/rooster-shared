@@ -1,5 +1,6 @@
 package com.incarcloud.rooster.gather.cmd.device;
 
+import com.incarcloud.rooster.util.StringUtil;
 import io.netty.channel.Channel;
 
 /**
@@ -26,6 +27,10 @@ public class DeviceConnection {
 
 
 	public DeviceConnection(String vin, Channel channel,String protocol) {
+		if(StringUtil.isBlank(vin) || null == channel || StringUtil.isBlank(protocol)){
+			throw new IllegalArgumentException();
+		}
+
 		this.vin = vin;
 		this.channel = channel;
 		this.protocol = protocol;

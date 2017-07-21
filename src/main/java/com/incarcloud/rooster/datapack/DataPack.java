@@ -17,6 +17,10 @@ public class DataPack {
     final protected String _group;
     final protected String _name;
     final protected String _version; // like 1.2.3
+    /**
+     * 协议(标签与协议不同的是标签是业务逻辑标识，便于后期扩展，协议是设备固定的不带业务逻辑)
+     */
+    protected String protocol;
     // 务必小心处理_buf, 它需要手动释放freeBuffer() http://netty.io/wiki/reference-counted-objects.html#derived-buffers
     private ByteBuf _buf;
 
@@ -34,7 +38,7 @@ public class DataPack {
     }
 
     /**
-     * 获取包标签
+     * 获取包标签(标签与协议不同的是标签是业务逻辑标识，便于后期扩展，协议是设备固定的不带业务逻辑)
      * @return
      */
     public String getMark(){
