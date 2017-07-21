@@ -1,6 +1,8 @@
-package com.incarcloud.rooster.gather.cmd;/**
+package com.incarcloud.rooster.datapack;/**
  * Created by fanbeibei on 2017/7/7.
  */
+
+import com.incarcloud.rooster.gather.cmd.CommandType;
 
 /**
  * @author Fan Beibei
@@ -10,12 +12,11 @@ package com.incarcloud.rooster.gather.cmd;/**
 public interface CommandFacotry {
 
     /**
-     * 创建二进制命令
+     * 创建二进制命令,若不支持此命令则返回null
      *
      * @param type     命令类型
-     * @param protocol 协议
      * @return
      */
-    byte[] createCommand(CommandType type, String protocol);
+    byte[] createCommand(CommandType type);
 
 }
