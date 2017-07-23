@@ -14,7 +14,7 @@ import org.junit.Test;
  * @date 2017/7/20 11:07
  */
 public class RestfulCommandClientTest {
-    @Test
+//    @Test
     public void testSend(){
         CommandClient client = new RestfulCommandClient("127.0.0.1:2181");
         try {
