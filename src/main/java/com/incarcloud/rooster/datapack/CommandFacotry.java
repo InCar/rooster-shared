@@ -3,6 +3,7 @@ package com.incarcloud.rooster.datapack;/**
  */
 
 import com.incarcloud.rooster.gather.cmd.CommandType;
+import io.netty.buffer.ByteBuf;
 
 /**
  * @author Fan Beibei
@@ -17,6 +18,6 @@ public interface CommandFacotry {
      * @param type     命令类型
      * @return
      */
-    byte[] createCommand(CommandType type);
+    ByteBuf createCommand(CommandType type);
 
 }
