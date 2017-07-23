@@ -10,7 +10,7 @@ import org.junit.Test;
  * @date 2017/7/20 10:35
  */
 public class HttpClientTest {
-    @Test
+//    @Test
     public void testPostJson(){
         String url = "http://127.0.0.1:6666/rest";
         String data = "{\"cmdType\":\"OPEN_DOOR\",\"vin\":\"333333333\"}";
