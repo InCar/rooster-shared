@@ -39,7 +39,8 @@ public class ZookeeperDeviceConnectionRegister implements DeviceConnectionRemote
         String nodePath =  ROOT_PATH+"/"+vin;
 
         if(!zk.exists(nodePath)){
-            zk.createPersistent(nodePath,true);
+//            zk.createPersistent(nodePath,true);
+            zk.createEphemeral(nodePath);
         }
 
         zk.writeData(nodePath,cmdServerUrl);
