@@ -2,6 +2,9 @@ package com.incarcloud.rooster.datapack;/**
  * Created by fanbeibei on 2017/7/21.
  */
 
+import com.incarcloud.rooster.util.PackageUtils;
+
+import java.io.IOException;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -54,5 +57,12 @@ public class CommandFacotryManager {
         return facotry;
     }
 
+    public static void loadCommandFacotryClass(){
+        try {
+            PackageUtils.loadClassesOfPackage("com.incarcloud.rooster.datapack", true);
+        } catch (IOException e) {
+            //e.printStackTrace();
+        }
+    }
 
 }
