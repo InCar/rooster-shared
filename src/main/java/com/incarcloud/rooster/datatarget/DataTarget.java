@@ -29,7 +29,7 @@ public class DataTarget {
     /**
      * obdCode
      */
-    protected String obdCode;
+    protected String deviceId;
     /**
      * tripId
      */
@@ -59,7 +59,7 @@ public class DataTarget {
         this.deviceName = target.deviceName;
         this.packId = target.packId;
         this.protocolVersion = target.protocolVersion;
-        this.obdCode = target.obdCode;
+        this.deviceId = target.deviceId;
         this.tripId = target.tripId;
         this.vid = target.vid;
         this.vin = target.vin;
@@ -98,12 +98,12 @@ public class DataTarget {
         this.protocolVersion = protocolVersion;
     }
 
-    public String getObdCode() {
-        return obdCode;
+    public String getDeviceId() {
+        return deviceId;
     }
 
-    public void setObdCode(String obdCode) {
-        this.obdCode = obdCode;
+    public void setDeviceId(String deviceId) {
+        this.deviceId = deviceId;
     }
 
     public Long getTripId() {
@@ -145,12 +145,11 @@ public class DataTarget {
                 ", deviceName='" + deviceName + '\'' +
                 ", packId=" + packId +
                 ", protocolVersion='" + protocolVersion + '\'' +
-                ", obdCode='" + obdCode + '\'' +
+                ", deviceId='" + deviceId + '\'' +
                 ", tripId=" + tripId +
                 ", vid='" + vid + '\'' +
                 ", vin='" + vin + '\'' +
                 ", detectionDate=" + detectionDate +
                 '}';
     }
-
 }
