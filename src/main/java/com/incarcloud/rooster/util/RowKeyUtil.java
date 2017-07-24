@@ -19,11 +19,11 @@ public class RowKeyUtil {
     private static final DateTimeFormatter dtFormat = DateTimeFormatter.ofPattern("yyyyMMddHHmmssSSS");
 
     /**
-     * 生成数据区的主键列值 规则：MD5(ID)前4位+车辆VIN码(20位)+数据类型(15位)+创建时间(17位)
+     * 生成数据区的主键列值 规则：MD5(ID)前4位+车辆VIN码(20位)+数据类型(15位)+采集时间(18位，最后一位为N表示设备没有上传采集时间，由系统自动加上当前时间作为采集时间)
      *
      * @param vin 车辆vin码
      * @param dataType 数据类型
-     * @param receiveTime 数据上传时间
+     * @param receiveTime 数据采集时间
      * @return
      */
     public static String makeRowKey(String vin, String dataType, String receiveTime) {
@@ -33,7 +33,7 @@ public class RowKeyUtil {
 
         return String.format("%s%s%s%s", MD5Util.calcMd5(vin).substring(0, 4),
                 prependForceLen(vin, 20), appendForceLen(dataType, 15),
-                appendForceLen(receiveTime, 17));
+                appendForceLen(receiveTime, 18));
     }
 
 
