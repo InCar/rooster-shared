@@ -23,11 +23,15 @@ public class DataTarget {
      */
     protected Integer packId;
     /**
+     * 协议格式名称
+     */
+    protected String protocolName;
+    /**
      * 协议格式版本
      */
     protected String protocolVersion;
     /**
-     * obdCode
+     * 设备ID
      */
     protected String deviceId;
     /**
@@ -58,6 +62,7 @@ public class DataTarget {
         this.id = target.id;
         this.deviceName = target.deviceName;
         this.packId = target.packId;
+        this.protocolName = target.protocolName;
         this.protocolVersion = target.protocolVersion;
         this.deviceId = target.deviceId;
         this.tripId = target.tripId;
@@ -88,6 +93,14 @@ public class DataTarget {
 
     public void setPackId(Integer packId) {
         this.packId = packId;
+    }
+
+    public String getProtocolName() {
+        return protocolName;
+    }
+
+    public void setProtocolName(String protocolName) {
+        this.protocolName = protocolName;
     }
 
     public String getProtocolVersion() {
@@ -144,6 +157,7 @@ public class DataTarget {
                 "id='" + id + '\'' +
                 ", deviceName='" + deviceName + '\'' +
                 ", packId=" + packId +
+                ", protocolName='" + protocolName + '\'' +
                 ", protocolVersion='" + protocolVersion + '\'' +
                 ", deviceId='" + deviceId + '\'' +
                 ", tripId=" + tripId +
