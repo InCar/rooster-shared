@@ -1,6 +1,4 @@
-package com.incarcloud.rooster.datatarget;
-
-import java.util.Date;
+package com.incarcloud.rooster.datapack;
 
 /**
  * 设备回复下行命令执行结果
@@ -8,17 +6,14 @@ import java.util.Date;
  * @author sunjun, created on 2017-06-27T14:05.
  * @since 2.0
  */
-public class DataTargetResult extends DataTarget {
+public class DataPackResult extends DataPackObject {
 
     /**
      * 经度
      */
     private Integer resultCode;
 
-    public DataTargetResult() {
-    }
-
-    public DataTargetResult(DataTarget target) {
+    public DataPackResult(DataPackObject target) {
         super(target);
     }
 

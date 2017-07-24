@@ -1,4 +1,4 @@
-package com.incarcloud.rooster.datatarget;
+package com.incarcloud.rooster.datapack;
 
 /**
  * 驱动电机数据<br>
@@ -11,7 +11,7 @@ package com.incarcloud.rooster.datatarget;
  * @author Aaric, created on 2017-06-27T14:04.
  * @since 2.0
  */
-public class DataTargetMotor extends DataTarget {
+public class DataPackMotor extends DataPackObject {
 
     /**
      * 驱动电机个数
@@ -50,10 +50,7 @@ public class DataTargetMotor extends DataTarget {
      */
     private Integer controllerDirectCurrent;
 
-    public DataTargetMotor() {
-    }
-
-    public DataTargetMotor(DataTarget target) {
+    public DataPackMotor(DataPackObject target) {
         super(target);
     }
 

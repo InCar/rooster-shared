@@ -1,4 +1,4 @@
-package com.incarcloud.rooster.datatarget;
+package com.incarcloud.rooster.datapack;
 
 import java.util.Date;
 
@@ -8,7 +8,7 @@ import java.util.Date;
  * @author Aaric, created on 2017-06-27T13:51.
  * @since 2.0
  */
-public class DataTarget {
+public class DataPackObject extends DataPack {
 
     /**
      * 唯一识别码（国标建议传输车辆数据采用车辆VIN）
@@ -51,24 +51,22 @@ public class DataTarget {
      */
     protected Date detectionDate;
 
-    public DataTarget() {
+    public DataPackObject(String group, String name, String version) {
+        super(group, name, version);
     }
 
-    public DataTarget(String deviceName) {
-        this.deviceName = deviceName;
-    }
-
-    public DataTarget(DataTarget target) {
-        this.id = target.id;
-        this.deviceName = target.deviceName;
-        this.packId = target.packId;
-        this.protocolName = target.protocolName;
-        this.protocolVersion = target.protocolVersion;
-        this.deviceId = target.deviceId;
-        this.tripId = target.tripId;
-        this.vid = target.vid;
-        this.vin = target.vin;
-        this.detectionDate = target.detectionDate;
+    public DataPackObject(DataPackObject object) {
+        super(object._group, object._name, object._version);
+        this.id = object.id;
+        this.deviceName = object.deviceName;
+        this.packId = object.packId;
+        this.protocolName = object.protocolName;
+        this.protocolVersion = object.protocolVersion;
+        this.deviceId = object.deviceId;
+        this.tripId = object.tripId;
+        this.vid = object.vid;
+        this.vin = object.vin;
+        this.detectionDate = object.detectionDate;
     }
 
     public String getId() {

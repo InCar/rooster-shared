@@ -1,8 +1,6 @@
-package com.incarcloud.rooster.bigtable;/**
- * Created by fanbeibei on 2017/7/5.
- */
+package com.incarcloud.rooster.bigtable;
 
-import com.incarcloud.rooster.datatarget.DataTarget;
+import com.incarcloud.rooster.datapack.DataPackObject;
 
 /**
  * @author Fan Beibei
@@ -18,14 +16,10 @@ public interface IBigTable {
      * @param tableName 表格名
      * @throws Exception
      */
-    public void save(String rowKey, DataTarget data, String tableName) throws Exception;
-
-
+    public void save(String rowKey, DataPackObject data, String tableName) throws Exception;
+    
     /**
      * 关闭，回收资源
      */
     public  void close();
-
-
-
 }

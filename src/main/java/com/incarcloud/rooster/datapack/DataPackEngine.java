@@ -1,4 +1,4 @@
-package com.incarcloud.rooster.datatarget;
+package com.incarcloud.rooster.datapack;
 
 /**
  * 发动机数据<br>
@@ -11,7 +11,7 @@ package com.incarcloud.rooster.datatarget;
  * @author Aaric, created on 2017-06-27T14:05.
  * @since 2.0
  */
-public class DataTargetEngine extends DataTarget {
+public class DataPackEngine extends DataPackObject {
 
     /**
      * 发动机状态：0x01-启动，0x02-关闭
@@ -26,10 +26,7 @@ public class DataTargetEngine extends DataTarget {
      */
     private Integer consumptionRate;
 
-    public DataTargetEngine() {
-    }
-
-    public DataTargetEngine(DataTarget target) {
+    public DataPackEngine(DataPackObject target) {
         super(target);
     }
 

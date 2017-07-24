@@ -1,4 +1,4 @@
-package com.incarcloud.rooster.datatarget;
+package com.incarcloud.rooster.datapack;
 
 import java.util.Date;
 
@@ -14,7 +14,7 @@ import java.util.Date;
  * @author Aaric, created on 2017-06-27T14:05.
  * @since 2.0
  */
-public class DataTargetPosition extends DataTarget {
+public class DataPackPosition extends DataPackObject {
 
     /**
      * 经度
@@ -38,10 +38,7 @@ public class DataTargetPosition extends DataTarget {
      */
     private Date positionDate;
 
-    public DataTargetPosition() {
-    }
-
-    public DataTargetPosition(DataTarget target) {
+    public DataPackPosition(DataPackObject target) {
         super(target);
     }
 

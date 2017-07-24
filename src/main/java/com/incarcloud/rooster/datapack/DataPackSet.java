@@ -1,4 +1,4 @@
-package com.incarcloud.rooster.datatarget;
+package com.incarcloud.rooster.datapack;
 
 import java.util.List;
 
@@ -8,17 +8,14 @@ import java.util.List;
  * @author sunjun, created on 2017-06-27T14:05.
  * @since 2.0
  */
-public class DataTargetSet extends DataTarget {
+public class DataPackSet extends DataPackObject {
 
     /**
      * 极值集合
      */
     private List<?> dataTargetList;
 
-    public DataTargetSet() {
-    }
-
-    public DataTargetSet(DataTarget target) {
+    public DataPackSet(DataPackObject target) {
         super(target);
     }
 
