@@ -21,7 +21,7 @@ public class DataTarget {
     /**
      * 数据包ID
      */
-    protected int packId;
+    protected Integer packId;
     /**
      * 协议格式版本
      */
@@ -33,7 +33,7 @@ public class DataTarget {
     /**
      * tripId
      */
-    protected Integer tripId;
+    protected Long tripId;
     /**
      * VID
      */
@@ -45,7 +45,7 @@ public class DataTarget {
     /**
      * 检测时间
      */
-    protected String detectionDate;
+    protected Date detectionDate;
 
     public DataTarget() {
     }
@@ -82,11 +82,11 @@ public class DataTarget {
         this.deviceName = deviceName;
     }
 
-    public int getPackId() {
+    public Integer getPackId() {
         return packId;
     }
 
-    public void setPackId(int packId) {
+    public void setPackId(Integer packId) {
         this.packId = packId;
     }
 
@@ -106,11 +106,11 @@ public class DataTarget {
         this.obdCode = obdCode;
     }
 
-    public Integer getTripId() {
+    public Long getTripId() {
         return tripId;
     }
 
-    public void setTripId(Integer tripId) {
+    public void setTripId(Long tripId) {
         this.tripId = tripId;
     }
 
@@ -130,11 +130,11 @@ public class DataTarget {
         this.vin = vin;
     }
 
-    public String getDetectionDate() {
+    public Date getDetectionDate() {
         return detectionDate;
     }
 
-    public void setDetectionDate(String detectionDate) {
+    public void setDetectionDate(Date detectionDate) {
         this.detectionDate = detectionDate;
     }
 
