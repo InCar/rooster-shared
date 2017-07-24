@@ -1,11 +1,7 @@
-package com.incarcloud.rooster.util;/**
- * Created by fanbeibei on 2017/7/5.
- */
-
+package com.incarcloud.rooster.util;
 
 import com.google.gson.Gson;
-import com.incarcloud.rooster.datapack.ETargetType;
-import com.incarcloud.rooster.datatarget.DataPackObject;
+import com.incarcloud.rooster.datapack.DataPackObject;
 
 /**
  * @author Fan Beibei
@@ -35,16 +31,12 @@ public class DataTargetUtils {
         return  gson.fromJson(json,DataPackObject.class);
     }
 
-
     /**
      * 获取表名
      *
-     * @param type
      * @return
      */
-    public static  String  getTableName(ETargetType type){
+    public static  String  getTableName(){
         return "maxus_tbox";
     }
-
-
 }
