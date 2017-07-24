@@ -48,7 +48,7 @@ public class Any4DataParser implements IDataParser {
     }
 
     @Override
-    public Map<String, Object> getSerialNumber(ByteBuf buffer) {
+    public Map<String, Object> getMetaData(ByteBuf buffer) {
         return null;
     }
 }
