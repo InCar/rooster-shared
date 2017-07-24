@@ -51,8 +51,8 @@ public class DataPackObject extends DataPack {
      */
     protected Date detectionDate;
 
-    public DataPackObject(String group, String name, String version) {
-        super(group, name, version);
+    public DataPackObject(DataPack dataPack) {
+        super(dataPack._group, dataPack._name, dataPack._version);
     }
 
     public DataPackObject(DataPackObject object) {
