@@ -1,4 +1,4 @@
-package com.incarcloud.rooster.datatarget;
+package com.incarcloud.rooster.datapack;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ import java.util.List;
  * @author Aaric, created on 2017-06-27T14:04.
  * @since 2.0
  */
-public class DataTargetBattery extends DataTarget {
+public class DataPackBattery extends DataPackObject {
 
     /**
      * 燃料电池电压（最小计量单元0.1V）
@@ -64,10 +64,7 @@ public class DataTargetBattery extends DataTarget {
      */
     private Integer dcdcStatus;
 
-    public DataTargetBattery() {
-    }
-
-    public DataTargetBattery(DataTarget target) {
+    public DataPackBattery(DataPackObject target) {
         super(target);
     }
 

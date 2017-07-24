@@ -1,4 +1,4 @@
-package com.incarcloud.rooster.datatarget;
+package com.incarcloud.rooster.datapack;
 
 /**
  * 报警数据<br>
@@ -11,7 +11,7 @@ package com.incarcloud.rooster.datatarget;
  * @author Aaric, created on 2017-06-27T14:05.
  * @since 2.0
  */
-public class DataTargetAlarm extends DataTarget {
+public class DataPackAlarm extends DataPackObject {
 
     /**
      * 报警名称
@@ -34,10 +34,7 @@ public class DataTargetAlarm extends DataTarget {
      */
     private Integer alarmLevel;
 
-    public DataTargetAlarm() {
-    }
-
-    public DataTargetAlarm(DataTarget target) {
+    public DataPackAlarm(DataPackObject target) {
         super(target);
     }
 

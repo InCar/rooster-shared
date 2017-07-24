@@ -2,7 +2,7 @@ package com.incarcloud.rooster.bigtable;/**
  * Created by fanbeibei on 2017/7/5.
  */
 
-import com.incarcloud.rooster.datatarget.DataTarget;
+import com.incarcloud.rooster.datatarget.DataPackObject;
 
 /**
  * @author Fan Beibei
@@ -18,7 +18,7 @@ public interface IBigTable {
      * @param tableName 表格名
      * @throws Exception
      */
-    public void save(String rowKey, DataTarget data, String tableName) throws Exception;
+    public void save(String rowKey, DataPackObject data, String tableName) throws Exception;
 
 
     /**

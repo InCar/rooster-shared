@@ -1,7 +1,5 @@
 package com.incarcloud.rooster.datapack;
 
-import com.incarcloud.rooster.datatarget.DataTarget;
-
 /**
  * 数据提取包
  *
@@ -11,35 +9,25 @@ import com.incarcloud.rooster.datatarget.DataTarget;
 public class DataPackTarget {
 
     /**
-     * 数据对象类型
-     */
-    private ETargetType _targetType;
-    /**
      * 数据对象
      */
-    private DataTarget _dataTarget;
+    private DataPackObject _dataPackObject;
     /**
      * 消息内容（如果为空，忽略）
      */
     private String _msg;
 
-    public DataPackTarget(ETargetType targetType, DataTarget dataTarget) {
-        _targetType = targetType;
-        _dataTarget = dataTarget;
+    public DataPackTarget(DataPackObject dataPackObject) {
+        _dataPackObject = dataPackObject;
     }
 
-    public DataPackTarget(ETargetType targetType, DataTarget dataTarget, String msg) {
-        _targetType = targetType;
-        _dataTarget = dataTarget;
+    public DataPackTarget(DataPackObject dataPackObject, String msg) {
+        _dataPackObject = dataPackObject;
         _msg = msg;
     }
 
-    public ETargetType getTargetType() {
-        return _targetType;
-    }
-
-    public DataTarget getDataTarget() {
-        return _dataTarget;
+    public DataPackObject getDataPackObject() {
+        return _dataPackObject;
     }
 
     public String getMsg() {
@@ -49,10 +37,8 @@ public class DataPackTarget {
     @Override
     public String toString() {
         return "DataPackTarget{" +
-                "_targetType=" + _targetType +
-                ", _dataTarget=" + _dataTarget +
+                "_dataPackObject=" + _dataPackObject +
                 ", _msg='" + _msg + '\'' +
                 '}';
     }
-
 }

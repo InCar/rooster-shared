@@ -1,4 +1,4 @@
-package com.incarcloud.rooster.datatarget;
+package com.incarcloud.rooster.datapack;
 
 /**
  * 极值数据<br>
@@ -11,7 +11,7 @@ package com.incarcloud.rooster.datatarget;
  * @author Aaric, created on 2017-06-27T14:05.
  * @since 2.0
  */
-public class DataTargetPeak extends DataTarget {
+public class DataPackPeak extends DataPackObject {
 
     /**
      * 极值名称
@@ -30,10 +30,7 @@ public class DataTargetPeak extends DataTarget {
      */
     private String peakDesc;
 
-    public DataTargetPeak() {
-    }
-
-    public DataTargetPeak(DataTarget target) {
+    public DataPackPeak(DataPackObject target) {
         super(target);
     }
 

@@ -1,4 +1,4 @@
-package com.incarcloud.rooster.datatarget;
+package com.incarcloud.rooster.datapack;
 
 /**
  * 整车数据<br>
@@ -11,7 +11,7 @@ package com.incarcloud.rooster.datatarget;
  * @author Aaric, created on 2017-06-27T14:04.
  * @since 2.0
  */
-public class DataTargetOverview extends DataTarget {
+public class DataPackOverview extends DataPackObject {
 
     /**
      * 车辆状态：0x01-发动机点火时，0x02-发动机运行中，0x03-发动机熄火时，0x04-发动机熄火后，0x05-车辆不能检测
@@ -78,10 +78,7 @@ public class DataTargetOverview extends DataTarget {
      */
     private Integer maxSpeed;
 
-    public DataTargetOverview() {
-    }
-
-    public DataTargetOverview(DataTarget target) {
+    public DataPackOverview(DataPackObject target) {
         super(target);
     }
 

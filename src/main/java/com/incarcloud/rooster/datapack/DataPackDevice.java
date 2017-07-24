@@ -1,4 +1,4 @@
-package com.incarcloud.rooster.datatarget;
+package com.incarcloud.rooster.datapack;
 
 /**
  * 上报设备信息<br>
@@ -11,7 +11,7 @@ package com.incarcloud.rooster.datatarget;
  * @author Aaric, created on 2017-06-27T14:54.
  * @since 2.0
  */
-public class DataTargetDevice extends DataTarget {
+public class DataPackDevice extends DataPackObject {
 
     /**
      * 硬件版本号
@@ -38,10 +38,7 @@ public class DataTargetDevice extends DataTarget {
      */
     private Integer softwareTypeId;
 
-    public DataTargetDevice() {
-    }
-
-    public DataTargetDevice(DataTarget target) {
+    public DataPackDevice(DataPackObject target) {
         super(target);
     }
 

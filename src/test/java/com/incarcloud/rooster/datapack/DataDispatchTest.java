@@ -1,6 +1,5 @@
 package com.incarcloud.rooster.datapack;
 
-import com.incarcloud.rooster.datatarget.DataTargetPosition;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -21,34 +20,29 @@ public class DataDispatchTest {
         DataDispatch dataDispatch = new DataDispatch(null, dataParser);
         List<DataPackTarget> dataPackTargetList = dataDispatch.extractBody();
         if(null != dataPackTargetList && 0 < dataPackTargetList.size()) {
+            DataPackObject dataPackObject;
             for (DataPackTarget dataPackTarget: dataPackTargetList) {
-                switch (dataPackTarget.getTargetType()) {
-                    case OVERVIEW:
+                if(null != dataPackTarget && null != dataPackTarget.getDataPackObject()) {
+                    dataPackObject = dataPackTarget.getDataPackObject();
+                    if(dataPackObject instanceof DataPackOverview) {
                         // 分发整车数据
-                        break;
-                    case BATTERY:
+                    } else if(dataPackObject instanceof DataPackBattery) {
                         // 分发电池数据
-                        break;
-                    case MOTOR:
+                    } else if(dataPackObject instanceof DataPackMotor) {
                         // 分发驱动电机数据
-                        break;
-                    case ENGINE:
+                    } else if(dataPackObject instanceof DataPackEngine) {
                         // 分发发动机数据
-                        break;
-                    case POSITION:
+                    } else if(dataPackObject instanceof DataPackPosition) {
                         // 分发位置数据
-                        DataTargetPosition position = (DataTargetPosition) dataPackTarget.getDataTarget();
+                        DataPackPosition position = (DataPackPosition) dataPackTarget.getDataPackObject();
                         System.out.println(position.getLongitude() + ":" + position.getLatitude());
-                        break;
-                    case PEAK:
+                    } else if(dataPackObject instanceof DataPackPeak) {
                         // 分发极值数据
-                        break;
-                    case ALARM:
+                    } else if(dataPackObject instanceof DataPackAlarm) {
                         // 分发报警数据
-                        break;
-                    case DEVICE:
+                    } else if(dataPackObject instanceof DataPackDevice) {
                         // 分发上报设备信息
-                        break;
+                    }
                 }
             }
         }
