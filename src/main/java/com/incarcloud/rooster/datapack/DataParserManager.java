@@ -32,11 +32,11 @@ public class DataParserManager {
     /**
      * 获得解析类
      *
-     * @param tag tag
+     * @param protocol
      * @return class
      */
-    public static Class<?> getDataParserClass(String tag) {
-        return dataParserMap.get(tag.trim());
+    public static Class<?> getDataParserClass(String protocol) {
+        return dataParserMap.get(protocol.trim());
     }
 
     /**
