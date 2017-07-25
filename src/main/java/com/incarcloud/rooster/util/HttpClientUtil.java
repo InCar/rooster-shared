@@ -158,7 +158,6 @@ public class HttpClientUtil {
      * @param json    要发送的json数据
      * @param charset 编码
      * @param timeout 超时时间（毫秒）
-     * @param proxy   代理
      * @return
      */
     public static String postJson(String url,  String json, String charset, int timeout) {
@@ -172,8 +171,6 @@ public class HttpClientUtil {
      * @param url     请求地址
      * @param json    要发送的json数据
      * @param charset 编码
-     * @param timeout 超时时间（毫秒）
-     * @param proxy   代理
      * @return
      */
     public static String postJson(String url,  String json, String charset) {
