@@ -83,11 +83,6 @@ public class DataPackObjectUtils {
             // 分发上报设备信息
             return "DEVICE";
         }
-        if (dataPackObject instanceof DataPackSet) {
-            //数据集合
-            return "PACKLIST";
-        }
-
         if (dataPackObject instanceof DataPackResult) {
             //设备回复下行命令执行结果
             return "RESULT";
@@ -132,10 +127,6 @@ public class DataPackObjectUtils {
         if ("DEVICE".equals(dataType)) {
             // 分发上报设备信息
             return DataPackDevice.class;
-        }
-        if ("PACKLIST".equals(dataType)) {
-            //数据集合
-            return DataPackSet.class;
         }
         if ("RESULT".equals(dataType)) {
             //设备回复下行命令执行结果
