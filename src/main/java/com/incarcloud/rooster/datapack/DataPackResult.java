@@ -13,8 +13,8 @@ public class DataPackResult extends DataPackObject {
      */
     private Integer resultCode;
 
-    public DataPackResult(DataPackObject target) {
-        super(target);
+    public DataPackResult(DataPackObject object) {
+        super(object);
     }
 
     public Integer getResultCode() {

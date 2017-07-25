@@ -30,8 +30,8 @@ public class DataPackPeak extends DataPackObject {
      */
     private String peakDesc;
 
-    public DataPackPeak(DataPackObject target) {
-        super(target);
+    public DataPackPeak(DataPackObject object) {
+        super(object);
     }
 
     public String getPeakName() {

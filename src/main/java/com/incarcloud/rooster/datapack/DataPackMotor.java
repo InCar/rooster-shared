@@ -50,8 +50,8 @@ public class DataPackMotor extends DataPackObject {
      */
     private Integer controllerDirectCurrent;
 
-    public DataPackMotor(DataPackObject target) {
-        super(target);
+    public DataPackMotor(DataPackObject object) {
+        super(object);
     }
 
     public Integer getMotorTotal() {

@@ -38,8 +38,8 @@ public class DataPackDevice extends DataPackObject {
      */
     private Integer softwareTypeId;
 
-    public DataPackDevice(DataPackObject target) {
-        super(target);
+    public DataPackDevice(DataPackObject object) {
+        super(object);
     }
 
     public String getHardwareVersion() {

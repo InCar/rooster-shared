@@ -78,8 +78,8 @@ public class DataPackOverview extends DataPackObject {
      */
     private Integer maxSpeed;
 
-    public DataPackOverview(DataPackObject target) {
-        super(target);
+    public DataPackOverview(DataPackObject object) {
+        super(object);
     }
 
     public Integer getStatus() {

@@ -26,8 +26,8 @@ public class DataPackEngine extends DataPackObject {
      */
     private Integer consumptionRate;
 
-    public DataPackEngine(DataPackObject target) {
-        super(target);
+    public DataPackEngine(DataPackObject object) {
+        super(object);
     }
 
     public Integer getEngineStatus() {

@@ -38,8 +38,8 @@ public class DataPackPosition extends DataPackObject {
      */
     private Date positionDate;
 
-    public DataPackPosition(DataPackObject target) {
-        super(target);
+    public DataPackPosition(DataPackObject object) {
+        super(object);
     }
 
     public Double getLongitude() {

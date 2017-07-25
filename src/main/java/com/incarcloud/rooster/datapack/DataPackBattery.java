@@ -64,8 +64,8 @@ public class DataPackBattery extends DataPackObject {
      */
     private Integer dcdcStatus;
 
-    public DataPackBattery(DataPackObject target) {
-        super(target);
+    public DataPackBattery(DataPackObject object) {
+        super(object);
     }
 
     public Integer getVoltage() {
