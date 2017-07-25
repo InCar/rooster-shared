@@ -9,26 +9,29 @@ import com.incarcloud.rooster.datapack.*;
  * @date 2017/7/5 14:50
  */
 public class DataPackObjectUtils {
-    private static Gson gson = GsonFactory.newInstance("yyyyMMddHHmmssSSS").createGson();
+    private static Gson gson = GsonFactory.newInstance("yyyyMMddHHmmssSSS", "_group", "_name", "_version", "_buf").createGson();
 
-    private DataPackObjectUtils(){}
+    private DataPackObjectUtils() {
+    }
 
     /**
      * 转换为json字符串
+     *
      * @param target
      * @return
      */
-    public static  String  toJson(DataPackObject target){
-        return  gson.toJson(target);
+    public static String toJson(DataPackObject target) {
+        return gson.toJson(target);
     }
 
     /**
      * json转换为DataTarget对象
+     *
      * @param json
      * @return
      */
-    public static DataPackObject fromJson(String json){
-        return  gson.fromJson(json,DataPackObject.class);
+    public static <T extends DataPackObject> T fromJson(String json, Class<T> clazz) {
+        return gson.fromJson(json, clazz);
     }
 
     /**
@@ -36,43 +39,110 @@ public class DataPackObjectUtils {
      *
      * @return
      */
-    public static  String  getTableName(String dataType){
+    public static String getTableName(String dataType) {
         return "telemetry";
     }
 
-    public  static String  getDataType(DataPackObject dataPackObject){
-        if(dataPackObject instanceof DataPackOverview) {
+    /**
+     * 获取数据类型
+     *
+     * @param dataPackObject
+     * @return
+     */
+    public static String getDataType(DataPackObject dataPackObject) {
+        if (dataPackObject instanceof DataPackOverview) {
             // 分发整车数据
             return "OVERVIEW";
-        } else if(dataPackObject instanceof DataPackBattery) {
+        }
+        if (dataPackObject instanceof DataPackBattery) {
             // 分发电池数据
             return "BATTERY";
-        } else if(dataPackObject instanceof DataPackMotor) {
+        }
+        if (dataPackObject instanceof DataPackMotor) {
             // 分发驱动电机数据
             return "MOTOR";
 
-        } else if(dataPackObject instanceof DataPackEngine) {
+        }
+        if (dataPackObject instanceof DataPackEngine) {
             // 分发发动机数据
             return "ENGINE";
-        } else if(dataPackObject instanceof DataPackPosition) {
+        }
+        if (dataPackObject instanceof DataPackPosition) {
             // 分发位置数据
             return "POSITION";
-        } else if(dataPackObject instanceof DataPackPeak) {
+        }
+        if (dataPackObject instanceof DataPackPeak) {
             // 分发极值数据
             return "PEAK";
-        } else if(dataPackObject instanceof DataPackAlarm) {
+        }
+        if (dataPackObject instanceof DataPackAlarm) {
             // 分发报警数据
             return "ALARM";
-        } else if(dataPackObject instanceof DataPackDevice) {
+        }
+        if (dataPackObject instanceof DataPackDevice) {
             // 分发上报设备信息
             return "DEVICE";
-        }else if (dataPackObject instanceof  DataPackSet){
-
         }
-        else if (dataPackObject instanceof  DataPackResult){
+        if (dataPackObject instanceof DataPackSet) {
+            //数据集合
+            return "PACKLIST";
+        }
 
+        if (dataPackObject instanceof DataPackResult) {
+            //设备回复下行命令执行结果
+            return "RESULT";
         }
 
         return null;
     }
+
+
+    public static Class<?> getDataPackObjectClass(String dataType) {
+
+        if ("OVERVIEW".equals(dataType)) {
+            // 分发整车数据
+            return DataPackOverview.class;
+        }
+
+        if ("BATTERY".equals(dataType)) {
+            // 分发电池数据
+            return DataPackBattery.class;
+        }
+        if ("MOTOR".equals(dataType)) {
+            // 分发驱动电机数据
+            return DataPackMotor.class;
+
+        }
+        if ("ENGINE".equals(dataType)) {
+            // 分发发动机数据
+            return DataPackEngine.class;
+        }
+        if ("POSITION".equals(dataType)) {
+            // 分发位置数据
+            return DataPackPosition.class;
+        }
+        if ("PEAK".equals(dataType)) {
+            // 分发极值数据
+            return DataPackPeak.class;
+        }
+        if ("ALARM".equals(dataType)) {
+            // 分发报警数据
+            return DataPackAlarm.class;
+        }
+        if ("DEVICE".equals(dataType)) {
+            // 分发上报设备信息
+            return DataPackDevice.class;
+        }
+        if ("PACKLIST".equals(dataType)) {
+            //数据集合
+            return DataPackSet.class;
+        }
+        if ("RESULT".equals(dataType)) {
+            //设备回复下行命令执行结果
+            return DataPackResult.class;
+        }
+
+        return null;
+    }
+
 }
