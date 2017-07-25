@@ -4,6 +4,7 @@ package com.incarcloud.rooster.util;/**
 
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.Random;
 
 /**
  * @author Fan Beibei
@@ -17,12 +18,14 @@ public class RowKeyUtil {
     private static final String c_zero32 = "00000000000000000000000000000000";
 
     private static final DateTimeFormatter dtFormat = DateTimeFormatter.ofPattern("yyyyMMddHHmmssSSS");
+    private static final Random random = new Random();
 
     /**
      * 生成数据区的主键列值 规则：MD5(ID)前4位+车辆VIN码(20位)+数据类型(15位)+采集时间(18位，最后一位为N表示设备没有上传采集时间，由系统自动加上当前时间作为采集时间)
+     * + 随机数（4位，解决同一时间上传一个数据包，里头包含两个告警数据）
      *
-     * @param vin 车辆vin码
-     * @param dataType 数据类型
+     * @param vin         车辆vin码
+     * @param dataType    数据类型
      * @param receiveTime 数据采集时间
      * @return
      */
@@ -31,9 +34,19 @@ public class RowKeyUtil {
             throw new IllegalArgumentException("param error");
         }
 
-        return String.format("%s%s%s%s", MD5Util.calcMd5(vin).substring(0, 4),
+        return String.format("%s%s%s%s%s", MD5Util.calcMd5(vin).substring(0, 4),
                 prependForceLen(vin, 20), appendForceLen(dataType, 15),
-                appendForceLen(receiveTime, 18));
+                appendForceLen(receiveTime, 18), get4NumRandomInt());
+    }
+
+
+    /**
+     * 获取4位的随机整数
+     *
+     * @return
+     */
+    public static int get4NumRandomInt() {
+        return random.nextInt(9999 - 1000 + 1) + 1000;
     }
 
 

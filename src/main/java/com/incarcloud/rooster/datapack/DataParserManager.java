@@ -1,10 +1,13 @@
 package com.incarcloud.rooster.datapack;
 
 import com.incarcloud.rooster.util.PackageUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * DataParser关系管理类
@@ -13,11 +16,23 @@ import java.util.Map;
  * @since 2.0
  */
 public class DataParserManager {
+    private static Logger s_logger = LoggerFactory.getLogger(DataParserManager.class);
+
+
+
+    private DataParserManager() { }
+
 
     /**
      * 解析器关系  protocol -> parser
      */
-    private static Map<String, Class<?>> dataParserMap = new HashMap<>();
+    private static Map<String, Class<?>> dataParserMap = new ConcurrentHashMap<>();
+
+    /**
+     * 缓存解析器对象避免Eden区频繁GC
+     */
+    private static Map<String, IDataParser> dataParserCache = new ConcurrentHashMap<>();
+
 
     /**
      * 注册解析器类
@@ -50,5 +65,36 @@ public class DataParserManager {
         }
     }
 
-    private DataParserManager() { }
+
+
+    /**
+     * 获取解析器对象
+     *
+     * @param protocol
+     * @return
+     */
+    public static IDataParser getDataParser(String protocol) {
+        IDataParser dataParser = dataParserCache.get(protocol);
+        if (null != dataParser) {
+            return dataParser;
+        }
+
+        Class<?> clazz = getDataParserClass(protocol);
+        if (null == clazz) {
+            return null;
+        }
+
+
+        try {
+            dataParser = (IDataParser) clazz.newInstance();
+
+            if (null != dataParser) {
+                dataParserCache.put(protocol, dataParser);
+            }
+        } catch (Exception e) {
+            s_logger.error(clazz + " newInstance error!!! " + e.getMessage());
+        }
+
+        return dataParser;
+    }
 }

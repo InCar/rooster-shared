@@ -43,6 +43,45 @@ public class DataPackObjectUtils {
         return "telemetry";
     }
 
+
+    /**
+     * 整车数据
+     */
+    public static final String OVERVIEW = "OVERVIEW";
+    /**
+     * 电池数据
+     */
+    public static final String BATTERY = "BATTERY";
+    /**
+     * 驱动电机数据
+     */
+    public static final String MOTOR = "MOTOR";
+    /**
+     * 发动机数据
+     */
+    public static final String ENGINE = "ENGINE";
+    /**
+     * 位置数据
+     */
+    public static final String POSITION = "POSITION";
+    /**
+     * 极值数据
+     */
+    public static final String PEAK = "PEAK";
+    /**
+     * 报警数据
+     */
+    public static final String ALARM = "ALARM";
+    /**
+     * 上报设备信息
+     */
+    public static final String DEVICE = "DEVICE";
+    /**
+     * 设备回复下行命令执行结果
+     */
+    public static final String RESULT = "RESULT";
+
+
     /**
      * 获取数据类型
      *
@@ -51,41 +90,42 @@ public class DataPackObjectUtils {
      */
     public static String getDataType(DataPackObject dataPackObject) {
         if (dataPackObject instanceof DataPackOverview) {
-            // 分发整车数据
-            return "OVERVIEW";
+            // 整车数据
+            return OVERVIEW;
         }
         if (dataPackObject instanceof DataPackBattery) {
-            // 分发电池数据
-            return "BATTERY";
+            // 电池数据
+            return BATTERY;
         }
         if (dataPackObject instanceof DataPackMotor) {
-            // 分发驱动电机数据
-            return "MOTOR";
+            // 驱动电机数据
+            return MOTOR;
 
         }
         if (dataPackObject instanceof DataPackEngine) {
-            // 分发发动机数据
-            return "ENGINE";
+            // 发动机数据
+            return ENGINE;
         }
         if (dataPackObject instanceof DataPackPosition) {
-            // 分发位置数据
-            return "POSITION";
+            // 位置数据
+            return POSITION;
         }
         if (dataPackObject instanceof DataPackPeak) {
-            // 分发极值数据
-            return "PEAK";
+            // 极值数据
+            return PEAK;
         }
         if (dataPackObject instanceof DataPackAlarm) {
-            // 分发报警数据
-            return "ALARM";
+            // 报警数据
+            return ALARM;
         }
         if (dataPackObject instanceof DataPackDevice) {
-            // 分发上报设备信息
-            return "DEVICE";
+            // 上报设备信息
+            return DEVICE;
         }
+
         if (dataPackObject instanceof DataPackResult) {
             //设备回复下行命令执行结果
-            return "RESULT";
+            return RESULT;
         }
 
         return null;
@@ -94,41 +134,42 @@ public class DataPackObjectUtils {
 
     public static Class<?> getDataPackObjectClass(String dataType) {
 
-        if ("OVERVIEW".equals(dataType)) {
+        if (OVERVIEW.equals(dataType)) {
             // 分发整车数据
             return DataPackOverview.class;
         }
 
-        if ("BATTERY".equals(dataType)) {
+        if (BATTERY.equals(dataType)) {
             // 分发电池数据
             return DataPackBattery.class;
         }
-        if ("MOTOR".equals(dataType)) {
+        if (MOTOR.equals(dataType)) {
             // 分发驱动电机数据
             return DataPackMotor.class;
 
         }
-        if ("ENGINE".equals(dataType)) {
+        if (ENGINE.equals(dataType)) {
             // 分发发动机数据
             return DataPackEngine.class;
         }
-        if ("POSITION".equals(dataType)) {
+        if (POSITION.equals(dataType)) {
             // 分发位置数据
             return DataPackPosition.class;
         }
-        if ("PEAK".equals(dataType)) {
+        if (PEAK.equals(dataType)) {
             // 分发极值数据
             return DataPackPeak.class;
         }
-        if ("ALARM".equals(dataType)) {
+        if (ALARM.equals(dataType)) {
             // 分发报警数据
             return DataPackAlarm.class;
         }
-        if ("DEVICE".equals(dataType)) {
+        if (DEVICE.equals(dataType)) {
             // 分发上报设备信息
             return DataPackDevice.class;
         }
-        if ("RESULT".equals(dataType)) {
+
+        if (RESULT.equals(dataType)) {
             //设备回复下行命令执行结果
             return DataPackResult.class;
         }

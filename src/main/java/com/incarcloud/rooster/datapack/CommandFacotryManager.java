@@ -51,6 +51,9 @@ public class CommandFacotryManager {
 
 
         Class<? extends  CommandFacotry> clazz = commandFacotryClazzMap.get(protocol);
+        if(null == clazz){
+            return null;
+        }
         facotry = clazz.newInstance();
         commandFacotryCache.put(protocol, facotry);
 
