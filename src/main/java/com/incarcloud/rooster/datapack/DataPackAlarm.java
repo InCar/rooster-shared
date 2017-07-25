@@ -34,8 +34,8 @@ public class DataPackAlarm extends DataPackObject {
      */
     private Integer alarmLevel;
 
-    public DataPackAlarm(DataPackObject target) {
-        super(target);
+    public DataPackAlarm(DataPackObject object) {
+        super(object);
     }
 
     public String getAlarmName() {

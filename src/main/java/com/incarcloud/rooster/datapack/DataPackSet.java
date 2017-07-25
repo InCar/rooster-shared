@@ -11,19 +11,19 @@ import java.util.List;
 public class DataPackSet extends DataPackObject {
 
     /**
-     * 极值集合
+     * DataPack集合（例如极值集合）
      */
-    private List<?> dataTargetList;
+    private List<DataPackObject> dataPackList;
 
-    public DataPackSet(DataPackObject target) {
-        super(target);
+    public DataPackSet(DataPackObject object) {
+        super(object);
     }
 
-    public List<?> getDataTargetList() {
-        return dataTargetList;
+    public List<DataPackObject> getDataPackList() {
+        return dataPackList;
     }
 
-    public void setDataTargetList(List<?> dataTargetList) {
-        this.dataTargetList = dataTargetList;
+    public void setDataPackList(List<DataPackObject> dataPackList) {
+        this.dataPackList = dataPackList;
     }
 }
