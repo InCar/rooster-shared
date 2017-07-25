@@ -37,7 +37,7 @@ public class DataPackObjectUtils {
      * @return
      */
     public static  String  getTableName(String dataType){
-        return "maxus_tbox";
+        return "telemetry";
     }
 
     public  static String  getDataType(DataPackObject dataPackObject){
