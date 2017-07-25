@@ -9,7 +9,7 @@ import com.incarcloud.rooster.datapack.*;
  * @date 2017/7/5 14:50
  */
 public class DataPackObjectUtils {
-    private static Gson gson = GsonFactory.newInstance("yyyyMMddHHmmssSSS","_group","_name","_version","_buf").createGson();
+    private static Gson gson = GsonFactory.newInstance("yyyyMMddHHmmssSSS", "_group", "_name", "_version", "_buf").createGson();
 
     private DataPackObjectUtils() {
     }
@@ -30,8 +30,8 @@ public class DataPackObjectUtils {
      * @param json
      * @return
      */
-    public static DataPackObject fromJson(String json) {
-        return gson.fromJson(json, DataPackObject.class);
+    public static <T extends DataPackObject> T fromJson(String json, Class<T> clazz) {
+        return gson.fromJson(json, clazz);
     }
 
     /**
