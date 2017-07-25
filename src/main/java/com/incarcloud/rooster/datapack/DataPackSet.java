@@ -13,17 +13,17 @@ public class DataPackSet extends DataPackObject {
     /**
      * DataPack集合（例如极值集合）
      */
-    private List<DataPackObject> dataPackList;
+    private List<? extends DataPackObject> dataPackList;
 
     public DataPackSet(DataPackObject object) {
         super(object);
     }
 
-    public List<DataPackObject> getDataPackList() {
+    public List<? extends DataPackObject> getDataPackList() {
         return dataPackList;
     }
 
-    public void setDataPackList(List<DataPackObject> dataPackList) {
+    public void setDataPackList(List<? extends DataPackObject> dataPackList) {
         this.dataPackList = dataPackList;
     }
 }
