@@ -14,6 +14,10 @@ package com.incarcloud.rooster.datapack;
 public class DataPackPeak extends DataPackObject {
 
     /**
+     * 极值ID
+     */
+    private Integer peakId;
+    /**
      * 极值名称
      */
     private String peakName;
@@ -32,6 +36,14 @@ public class DataPackPeak extends DataPackObject {
 
     public DataPackPeak(DataPackObject object) {
         super(object);
+    }
+
+    public Integer getPeakId() {
+        return peakId;
+    }
+
+    public void setPeakId(Integer peakId) {
+        this.peakId = peakId;
     }
 
     public String getPeakName() {
