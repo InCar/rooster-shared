@@ -3,7 +3,6 @@ package com.incarcloud.rooster.util;/**
  */
 
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.Random;
 
 /**
@@ -39,6 +38,18 @@ public class RowKeyUtil {
                 appendForceLen(receiveTime, 18), get4NumRandomInt());
     }
 
+    /**
+     * 根据rowkey获得json字符串类型标识
+     *
+     * @param rowkey rowkey
+     * @return
+     */
+    public static String getDataTypeFromRowKey(String rowkey) {
+        if(null == rowkey && 40 > rowkey.length()) {
+            throw new IllegalArgumentException("rowkey is error");
+        }
+        return rowkey.substring(24, 39).replaceAll("#", "");
+    }
 
     /**
      * 获取4位的随机整数
@@ -114,21 +125,6 @@ public class RowKeyUtil {
                 return sbX.toString();
             }
         }
-    }
-
-    public static void main(String[] args) {
-
-        // String s = prependForceLen("123456789",64);
-//		String s = appendForceLen("123456789", 18);
-//		System.out.println(s.length() + "位:" + s);
-//
-//		System.out.println(dtFormat.format(LocalDateTime.now()));
-
-//		System.out.println(makeSecondIndexPk("USER_NAME", "MIKE", "3fcdINCAR_USER#00000001492526612447"));
-
-//        System.out.println(makeDataPk("123456789"));
-
-
     }
 
 }

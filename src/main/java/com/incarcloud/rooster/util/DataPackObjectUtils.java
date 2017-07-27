@@ -132,7 +132,7 @@ public class DataPackObjectUtils {
     }
 
 
-    public static Class<?> getDataPackObjectClass(String dataType) {
+    public static Class<? extends DataPackObject> getDataPackObjectClass(String dataType) {
 
         if (OVERVIEW.equals(dataType)) {
             // 分发整车数据
