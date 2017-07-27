@@ -5,7 +5,11 @@ import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 
 import java.io.UnsupportedEncodingException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Base64;
+import java.util.Date;
 
 /**
  * @author Xiong Guanghua
@@ -14,12 +18,19 @@ import java.util.Base64;
  * @date 2017-06-07 17:34
  */
 public class DataPack {
+    private static final DateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmssSSS");
+
     final protected String _group;
     final protected String _name;
     final protected String _version; // like 1.2.3
 
     // 务必小心处理_buf, 它需要手动释放freeBuffer() http://netty.io/wiki/reference-counted-objects.html#derived-buffers
     private ByteBuf _buf;
+
+    /**
+     * 数据包接收时间
+     */
+    private Date reciveTime;
 
     public DataPack(String group, String name, String version){
         if(group == null || name == null || version == null)
@@ -76,7 +87,11 @@ public class DataPack {
      * @return
      */
     public byte[] serializeToBytes() throws UnsupportedEncodingException{
-        return  (getMark()+"->"+getDataB64()).getBytes("UTF-8");
+        if(null == reciveTime){
+            throw new IllegalArgumentException("reciveTime is null");
+        }
+
+        return  (getMark()+"#"+dateFormat.format(getReciveTime())+"#"+getDataB64()).getBytes("UTF-8");
     }
 
 
@@ -86,16 +101,20 @@ public class DataPack {
      * @return
      * @throws UnsupportedEncodingException
      */
-    public static DataPack deserializeFromBytes(byte [] bytes) throws UnsupportedEncodingException{
+    public static DataPack deserializeFromBytes(byte [] bytes) throws UnsupportedEncodingException,ParseException{
 
         String s = new String(bytes,"UTF-8");
-        if(!s.contains("->")){
+        if(!s.contains("#")){
             return null;
         }
 
-        String mark = s.split("\\->")[0];
-        String dataB64 = s.split("\\->")[1];
+        String mark = s.split("#")[0];
+        String reciveTime = s.split("#")[1];
+        String dataB64 = s.split("#")[2];
+
         DataPack dataPack = new DataPack(mark.split("\\-")[0], mark.split("\\-")[1], mark.split("\\-")[2]);
+
+        dataPack.setReciveTime(dateFormat.parse(reciveTime));
 
         byte[] data = Base64.getDecoder().decode(dataB64);
         ByteBuf buf = Unpooled.buffer(data.length);
@@ -127,8 +146,13 @@ public class DataPack {
         }
     }
 
+    public Date getReciveTime() {
+        return reciveTime;
+    }
 
-
+    public void setReciveTime(Date reciveTime) {
+        this.reciveTime = reciveTime;
+    }
 
     @Override
     public String toString() {
