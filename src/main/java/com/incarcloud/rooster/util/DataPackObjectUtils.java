@@ -3,6 +3,10 @@ package com.incarcloud.rooster.util;
 import com.google.gson.Gson;
 import com.incarcloud.rooster.datapack.*;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  * @author Fan Beibei
  * @Description: 描述
@@ -11,7 +15,35 @@ import com.incarcloud.rooster.datapack.*;
 public class DataPackObjectUtils {
     private static Gson gson = GsonFactory.newInstance("yyyyMMddHHmmssSSS", "_group", "_name", "_version", "_buf").createGson();
 
+    /**
+     * 最小采集时间
+     */
+    private static Date minDetectionDate ;
+    static {
+        try {
+            minDetectionDate = new SimpleDateFormat("yyyyMMddHHmmss").parse("19770101000000");
+        }catch (ParseException e){
+            e.printStackTrace();
+        }
+
+    }
+
     private DataPackObjectUtils() {
+    }
+
+
+    /**
+     * 判断采集时间是否合法
+     *
+     * @param detectionDate
+     * @return
+     */
+    public static boolean isLegalDetectionDate(Date detectionDate){
+        if (null == detectionDate || minDetectionDate.compareTo(detectionDate) > 0){
+            return false;
+        }
+
+        return true;
     }
 
     /**
