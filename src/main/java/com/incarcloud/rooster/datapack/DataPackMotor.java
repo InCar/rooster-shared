@@ -125,4 +125,33 @@ public class DataPackMotor extends DataPackObject {
     public void setControllerDirectCurrent(Integer controllerDirectCurrent) {
         this.controllerDirectCurrent = controllerDirectCurrent;
     }
+
+
+    @Override
+    public String toString() {
+        return "DataPackMotor{" +
+                "motorTotal=" + motorTotal +
+                ", motorSeq=" + motorSeq +
+                ", motorStatus=" + motorStatus +
+                ", controllerTemperature=" + controllerTemperature +
+                ", speed=" + speed +
+                ", torque=" + torque +
+                ", motorTemperature=" + motorTemperature +
+                ", controllerInputVoltage=" + controllerInputVoltage +
+                ", controllerDirectCurrent=" + controllerDirectCurrent +
+                ", id='" + id + '\'' +
+                ", deviceName='" + deviceName + '\'' +
+                ", packId=" + packId +
+                ", protocolName='" + protocolName + '\'' +
+                ", protocolVersion='" + protocolVersion + '\'' +
+                ", deviceId='" + deviceId + '\'' +
+                ", tripId=" + tripId +
+                ", vid='" + vid + '\'' +
+                ", vin='" + vin + '\'' +
+                ", detectionDate=" + detectionDate +
+                ", _group='" + _group + '\'' +
+                ", _name='" + _name + '\'' +
+                ", _version='" + _version + '\'' +
+                '}';
+    }
 }

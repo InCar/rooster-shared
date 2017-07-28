@@ -81,4 +81,28 @@ public class DataPackPosition extends DataPackObject {
     public void setPositionDate(Date positionDate) {
         this.positionDate = positionDate;
     }
+
+    @Override
+    public String toString() {
+        return "DataPackPosition{" +
+                "longitude=" + longitude +
+                ", latitude=" + latitude +
+                ", direction='" + direction + '\'' +
+                ", positioMode=" + positioMode +
+                ", positionDate=" + positionDate +
+                ", id='" + id + '\'' +
+                ", deviceName='" + deviceName + '\'' +
+                ", packId=" + packId +
+                ", protocolName='" + protocolName + '\'' +
+                ", protocolVersion='" + protocolVersion + '\'' +
+                ", deviceId='" + deviceId + '\'' +
+                ", tripId=" + tripId +
+                ", vid='" + vid + '\'' +
+                ", vin='" + vin + '\'' +
+                ", detectionDate=" + detectionDate +
+                ", _group='" + _group + '\'' +
+                ", _name='" + _name + '\'' +
+                ", _version='" + _version + '\'' +
+                '}';
+    }
 }

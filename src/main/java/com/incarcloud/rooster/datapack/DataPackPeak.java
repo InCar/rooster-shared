@@ -77,4 +77,28 @@ public class DataPackPeak extends DataPackObject {
     public void setPeakDesc(String peakDesc) {
         this.peakDesc = peakDesc;
     }
+
+    @Override
+    public String toString() {
+        return "DataPackPeak{" +
+                "peakId=" + peakId +
+                ", peakName='" + peakName + '\'' +
+                ", peakValue='" + peakValue + '\'' +
+                ", peakUnit='" + peakUnit + '\'' +
+                ", peakDesc='" + peakDesc + '\'' +
+                ", id='" + id + '\'' +
+                ", deviceName='" + deviceName + '\'' +
+                ", packId=" + packId +
+                ", protocolName='" + protocolName + '\'' +
+                ", protocolVersion='" + protocolVersion + '\'' +
+                ", deviceId='" + deviceId + '\'' +
+                ", tripId=" + tripId +
+                ", vid='" + vid + '\'' +
+                ", vin='" + vin + '\'' +
+                ", detectionDate=" + detectionDate +
+                ", _group='" + _group + '\'' +
+                ", _name='" + _name + '\'' +
+                ", _version='" + _version + '\'' +
+                '}';
+    }
 }
