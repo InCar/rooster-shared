@@ -3,6 +3,7 @@ package com.incarcloud.rooster.util;
 import com.google.gson.Gson;
 import com.incarcloud.rooster.datapack.*;
 
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -18,11 +19,12 @@ public class DataPackObjectUtils {
     /**
      * 最小采集时间
      */
-    private static Date minDetectionDate ;
+    private static Date minDetectionDate;
+
     static {
         try {
             minDetectionDate = new SimpleDateFormat("yyyyMMddHHmmss").parse("19770101000000");
-        }catch (ParseException e){
+        } catch (ParseException e) {
             e.printStackTrace();
         }
 
@@ -38,13 +40,73 @@ public class DataPackObjectUtils {
      * @param detectionDate
      * @return
      */
-    public static boolean isLegalDetectionDate(Date detectionDate){
-        if (null == detectionDate || minDetectionDate.compareTo(detectionDate) > 0){
+    public static boolean isLegalDetectionDate(Date detectionDate) {
+        if (null == detectionDate || minDetectionDate.compareTo(detectionDate) > 0) {
             return false;
         }
 
         return true;
     }
+
+    /**
+     * 检查并校正数据采集时间
+     *
+     * @param packObject
+     * @param reciveTime 数据接收时间
+     * @return 如果用reciveTime重置了数据采集时间（数据不带有采集时间）则返回true，否则返回fasle
+     */
+    public static boolean checkAndResetIlllegalDetectionDate(DataPackObject packObject, Date reciveTime) {
+        if (null == packObject || !isLegalDetectionDate(reciveTime)) {
+            throw new IllegalArgumentException();
+        }
+
+        if (packObject instanceof DataPackPosition) {
+            DataPackPosition position = (DataPackPosition) packObject;
+            //对于位置数据，位置时间和采集时间哪个合法用哪个,否则采用接收时间
+            if (DataPackObjectUtils.isLegalDetectionDate(position.getPositionDate())) {
+                position.setDetectionDate(position.getPositionDate());
+            } else if (DataPackObjectUtils.isLegalDetectionDate(position.getDetectionDate())) {
+                position.setPositionDate(position.getDetectionDate());
+            } else {
+                position.setDetectionDate(reciveTime);
+                position.setPositionDate(reciveTime);
+                return true;
+            }
+        } else if (!DataPackObjectUtils.isLegalDetectionDate(packObject.getDetectionDate())) {//非位置数据采集时间非法
+            packObject.setDetectionDate(reciveTime);
+            return true;
+        }
+
+
+        return false;
+
+    }
+
+
+    /*-------以下两个方法主要是为了统一采集时间和字符串之间的转换，减少由于日期格式不一致的错误的发生--------------*/
+    private static final DateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmssSSS");
+
+    /**
+     * 将采集时间转换为字符串
+     *
+     * @param detectionDate
+     * @return
+     */
+    public static String convertDetectionDateToString(Date detectionDate) {
+        return dateFormat.format(detectionDate);
+    }
+
+    /**
+     * 字符串转换为采集时间
+     *
+     * @param dateStr
+     * @return
+     */
+    public static Date convertStringToDetectionDate(String dateStr) throws ParseException {
+        return dateFormat.parse(dateStr);
+    }
+    /*--------------------------------------------------------------------------------------------------------*/
+
 
     /**
      * 转换为json字符串
@@ -65,6 +127,10 @@ public class DataPackObjectUtils {
     public static <T extends DataPackObject> T fromJson(String json, Class<T> clazz) {
         return gson.fromJson(json, clazz);
     }
+    /*--------------------------------------------------------------------------------------------------------*/
+
+
+
 
     /**
      * 获取表名
@@ -76,6 +142,9 @@ public class DataPackObjectUtils {
     }
 
 
+
+
+/*--------------------------------------------------------------------------------------------------------*/
     /**
      * 整车数据
      */
@@ -164,6 +233,12 @@ public class DataPackObjectUtils {
     }
 
 
+    /**
+     * 根据数据类型判断是哪种DataPackObject
+     *
+     * @param dataType
+     * @return
+     */
     public static Class<? extends DataPackObject> getDataPackObjectClass(String dataType) {
 
         if (OVERVIEW.equals(dataType)) {
@@ -208,5 +283,5 @@ public class DataPackObjectUtils {
 
         return null;
     }
-
+/*--------------------------------------------------------------------------------------------------------*/
 }
