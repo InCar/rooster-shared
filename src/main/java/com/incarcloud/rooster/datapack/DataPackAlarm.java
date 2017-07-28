@@ -1,5 +1,7 @@
 package com.incarcloud.rooster.datapack;
 
+import java.util.List;
+
 /**
  * 报警数据<br>
  * <i>异常与无效定义：</i><br>
@@ -14,91 +16,111 @@ package com.incarcloud.rooster.datapack;
 public class DataPackAlarm extends DataPackObject {
 
     /**
-     * 报警名称
+     * 报警数据
      */
-    private String alarmName;
-    /**
-     * 故障代码
-     */
-    private String alarmCode;
-    /**
-     * 故障属性
-     */
-    private String alarmValue;
-    /**
-     * 故障描述
-     */
-    private String alarmDesc;
-    /**
-     * 报警等级
-     */
-    private Integer alarmLevel;
+    private List<Alarm> alarmList;
 
     public DataPackAlarm(DataPackObject object) {
         super(object);
     }
 
-    public String getAlarmName() {
-        return alarmName;
+    public List<Alarm> getAlarmList() {
+        return alarmList;
     }
 
-    public void setAlarmName(String alarmName) {
-        this.alarmName = alarmName;
-    }
-
-    public String getAlarmCode() {
-        return alarmCode;
-    }
-
-    public void setAlarmCode(String alarmCode) {
-        this.alarmCode = alarmCode;
-    }
-
-    public String getAlarmDesc() {
-        return alarmDesc;
-    }
-
-    public void setAlarmDesc(String alarmDesc) {
-        this.alarmDesc = alarmDesc;
-    }
-
-    public Integer getAlarmLevel() {
-        return alarmLevel;
-    }
-
-    public void setAlarmLevel(Integer alarmLevel) {
-        this.alarmLevel = alarmLevel;
-    }
-
-    public String getAlarmValue() {
-        return alarmValue;
-    }
-
-    public void setAlarmValue(String alarmValue) {
-        this.alarmValue = alarmValue;
+    public void setAlarmList(List<Alarm> alarmList) {
+        this.alarmList = alarmList;
     }
 
     @Override
     public String toString() {
         return "DataPackAlarm{" +
-                "alarmName='" + alarmName + '\'' +
-                ", alarmCode='" + alarmCode + '\'' +
-                ", alarmValue='" + alarmValue + '\'' +
-                ", alarmDesc='" + alarmDesc + '\'' +
-                ", alarmLevel=" + alarmLevel +
-                ", id='" + id + '\'' +
-                ", deviceName='" + deviceName + '\'' +
-                ", packId=" + packId +
-                ", protocolName='" + protocolName + '\'' +
-                ", protocolVersion='" + protocolVersion + '\'' +
-                ", deviceId='" + deviceId + '\'' +
-                ", tripId=" + tripId +
-                ", vid='" + vid + '\'' +
-                ", vin='" + vin + '\'' +
-                ", detectionDate=" + detectionDate +
-                ", _group='" + _group + '\'' +
-                ", _name='" + _name + '\'' +
-                ", _version='" + _version + '\'' +
+                "alarmList=" + alarmList +
                 '}';
+    }
+
+    /**
+     * 单个报警对象
+     */
+    public static class Alarm {
+
+        /**
+         * 报警名称
+         */
+        private String alarmName;
+        /**
+         * 故障代码
+         */
+        private String alarmCode;
+        /**
+         * 故障属性
+         */
+        private String alarmValue;
+        /**
+         * 故障描述
+         */
+        private String alarmDesc;
+        /**
+         * 报警等级
+         */
+        private Integer alarmLevel;
+
+        public Alarm() {
+        }
+
+        public Alarm(String alarmName) {
+            this.alarmName = alarmName;
+        }
+
+        public String getAlarmName() {
+            return alarmName;
+        }
+
+        public void setAlarmName(String alarmName) {
+            this.alarmName = alarmName;
+        }
+
+        public String getAlarmCode() {
+            return alarmCode;
+        }
+
+        public void setAlarmCode(String alarmCode) {
+            this.alarmCode = alarmCode;
+        }
+
+        public String getAlarmValue() {
+            return alarmValue;
+        }
+
+        public void setAlarmValue(String alarmValue) {
+            this.alarmValue = alarmValue;
+        }
+
+        public String getAlarmDesc() {
+            return alarmDesc;
+        }
+
+        public void setAlarmDesc(String alarmDesc) {
+            this.alarmDesc = alarmDesc;
+        }
+
+        public Integer getAlarmLevel() {
+            return alarmLevel;
+        }
+
+        public void setAlarmLevel(Integer alarmLevel) {
+            this.alarmLevel = alarmLevel;
+        }
+
+        @Override
+        public String toString() {
+            return "Alarm{" +
+                    "alarmName='" + alarmName + '\'' +
+                    ", alarmCode='" + alarmCode + '\'' +
+                    ", alarmValue='" + alarmValue + '\'' +
+                    ", alarmDesc='" + alarmDesc + '\'' +
+                    ", alarmLevel=" + alarmLevel +
+                    '}';
+        }
     }
 }
