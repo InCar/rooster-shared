@@ -89,4 +89,29 @@ public class DataPackDevice extends DataPackObject {
     public void setSoftwareTypeId(Integer softwareTypeId) {
         this.softwareTypeId = softwareTypeId;
     }
+
+    @Override
+    public String toString() {
+        return "DataPackDevice{" +
+                "hardwareVersion='" + hardwareVersion + '\'' +
+                ", firmwareVersion='" + firmwareVersion + '\'' +
+                ", softwareVersion='" + softwareVersion + '\'' +
+                ", diagnoseProgramType=" + diagnoseProgramType +
+                ", initCode=" + initCode +
+                ", softwareTypeId=" + softwareTypeId +
+                ", id='" + id + '\'' +
+                ", deviceName='" + deviceName + '\'' +
+                ", packId=" + packId +
+                ", protocolName='" + protocolName + '\'' +
+                ", protocolVersion='" + protocolVersion + '\'' +
+                ", deviceId='" + deviceId + '\'' +
+                ", tripId=" + tripId +
+                ", vid='" + vid + '\'' +
+                ", vin='" + vin + '\'' +
+                ", detectionDate=" + detectionDate +
+                ", _group='" + _group + '\'' +
+                ", _name='" + _name + '\'' +
+                ", _version='" + _version + '\'' +
+                '}';
+    }
 }

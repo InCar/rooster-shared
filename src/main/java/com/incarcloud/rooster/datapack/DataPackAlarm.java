@@ -77,4 +77,28 @@ public class DataPackAlarm extends DataPackObject {
     public void setAlarmValue(String alarmValue) {
         this.alarmValue = alarmValue;
     }
+
+    @Override
+    public String toString() {
+        return "DataPackAlarm{" +
+                "alarmName='" + alarmName + '\'' +
+                ", alarmCode='" + alarmCode + '\'' +
+                ", alarmValue='" + alarmValue + '\'' +
+                ", alarmDesc='" + alarmDesc + '\'' +
+                ", alarmLevel=" + alarmLevel +
+                ", id='" + id + '\'' +
+                ", deviceName='" + deviceName + '\'' +
+                ", packId=" + packId +
+                ", protocolName='" + protocolName + '\'' +
+                ", protocolVersion='" + protocolVersion + '\'' +
+                ", deviceId='" + deviceId + '\'' +
+                ", tripId=" + tripId +
+                ", vid='" + vid + '\'' +
+                ", vin='" + vin + '\'' +
+                ", detectionDate=" + detectionDate +
+                ", _group='" + _group + '\'' +
+                ", _name='" + _name + '\'' +
+                ", _version='" + _version + '\'' +
+                '}';
+    }
 }

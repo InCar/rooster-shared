@@ -1,5 +1,7 @@
 package com.incarcloud.rooster.datapack;
 
+import java.util.Arrays;
+
 /**
  * 整车数据<br>
  * <i>异常与无效定义：</i><br>
@@ -208,5 +210,40 @@ public class DataPackOverview extends DataPackObject {
 
     public void setMaxSpeed(Integer maxSpeed) {
         this.maxSpeed = maxSpeed;
+    }
+
+    @Override
+    public String toString() {
+        return "DataPackOverview{" +
+                "status=" + status +
+                ", speed=" + speed +
+                ", travelDistance=" + travelDistance +
+                ", voltage=" + voltage +
+                ", engineRunningTime=" + engineRunningTime +
+                ", averageFuelConsumption=" + averageFuelConsumption +
+                ", totalTravelDistance=" + totalTravelDistance +
+                ", totalAverageFuelConsumption=" + totalAverageFuelConsumption +
+                ", speedSet=" + Arrays.toString(speedSet) +
+                ", subTotalTime=" + Arrays.toString(subTotalTime) +
+                ", subTotalDistance=" + Arrays.toString(subTotalDistance) +
+                ", suddenUp=" + suddenUp +
+                ", suddenDec=" + suddenDec +
+                ", suddenTurn=" + suddenTurn +
+                ", speedingTime=" + speedingTime +
+                ", maxSpeed=" + maxSpeed +
+                ", id='" + id + '\'' +
+                ", deviceName='" + deviceName + '\'' +
+                ", packId=" + packId +
+                ", protocolName='" + protocolName + '\'' +
+                ", protocolVersion='" + protocolVersion + '\'' +
+                ", deviceId='" + deviceId + '\'' +
+                ", tripId=" + tripId +
+                ", vid='" + vid + '\'' +
+                ", vin='" + vin + '\'' +
+                ", detectionDate=" + detectionDate +
+                ", _group='" + _group + '\'' +
+                ", _name='" + _name + '\'' +
+                ", _version='" + _version + '\'' +
+                '}';
     }
 }

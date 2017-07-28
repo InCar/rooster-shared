@@ -151,7 +151,7 @@ public class DataPackObject extends DataPack {
 
     @Override
     public String toString() {
-        return "DataTarget{" +
+        return "DataPackObject{" +
                 "id='" + id + '\'' +
                 ", deviceName='" + deviceName + '\'' +
                 ", packId=" + packId +
@@ -162,6 +162,9 @@ public class DataPackObject extends DataPack {
                 ", vid='" + vid + '\'' +
                 ", vin='" + vin + '\'' +
                 ", detectionDate=" + detectionDate +
+                ", _group='" + _group + '\'' +
+                ", _name='" + _name + '\'' +
+                ", _version='" + _version + '\'' +
                 '}';
     }
 }
