@@ -2,7 +2,8 @@ package com.incarcloud.rooster.gather.cmd.server;/**
  * Created by fanbeibei on 2017/7/17.
  */
 
-import java.net.InetAddress;
+import com.incarcloud.rooster.util.NetUtils;
+
 import java.net.UnknownHostException;
 
 /**
@@ -23,6 +24,6 @@ public abstract class AbstractRestfulCommandServer implements CommandServer {
 
     @Override
     public String getUrl() throws UnknownHostException {
-        return "http://"+ InetAddress.getLocalHost().getHostAddress()+":"+port;
+        return "http://" + NetUtils.getAvailableHostOfLocal() + ":" + port;
     }
 }
