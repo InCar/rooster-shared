@@ -2,7 +2,6 @@ package com.incarcloud.rooster.util;/**
  * Created by fanbeibei on 2017/7/4.
  */
 
-import java.time.format.DateTimeFormatter;
 import java.util.Random;
 
 /**
@@ -13,15 +12,15 @@ import java.util.Random;
 public class RowKeyUtil {
 
     // 固定32个字符,用来补充长度不足的字串
-    private static final String c_sharp32 = "################################";
-    private static final String c_zero32 = "00000000000000000000000000000000";
+    private static final String C_SHARP32 = "################################";
+    private static final String C_ZERO32 = "00000000000000000000000000000000";
 
-    private static final DateTimeFormatter dtFormat = DateTimeFormatter.ofPattern("yyyyMMddHHmmssSSS");
-    private static final Random random = new Random();
+    private static final Random RANDOM = new Random();
 
     /**
-     * 生成数据区的主键列值 规则：MD5(ID)前4位+车辆VIN码(20位)+数据类型(15位)+采集时间(18位，最后一位为N表示设备没有上传采集时间，由系统自动加上当前时间作为采集时间)
-     * + 随机数（4位，解决同一时间上传一个数据包，里头包含两个告警数据）
+     * 生成数据区的主键列值 规则：MD5(ID)前4位+车辆VIN码(20位)+数据类型(15位)
+     * +采集时间(18位，前14位为年月日时分秒，第15位为N表示设备没有上传采集时间，由系统自动加上当前时间作为采集时间)
+     * + 随机数（4位，解决同一时间上传一个数据包，里头包含两个告警数据导致数据覆盖的问题）
      *
      * @param vin         车辆vin码
      * @param dataType    数据类型
@@ -57,7 +56,7 @@ public class RowKeyUtil {
      * @return
      */
     public static int get4NumRandomInt() {
-        return random.nextInt(9999 - 1000 + 1) + 1000;
+        return RANDOM.nextInt(9999 - 1000 + 1) + 1000;
     }
 
 
@@ -80,8 +79,8 @@ public class RowKeyUtil {
         else {
             // 为了提高性能,不太长的字符串不使用StringBuilder来补足
             int lenPad = len - value.length();
-            if (lenPad <= c_sharp32.length()) {
-                return value + c_sharp32.substring(0, lenPad);
+            if (lenPad <= C_SHARP32.length()) {
+                return value + C_SHARP32.substring(0, lenPad);
             } else {
                 StringBuilder sbX = new StringBuilder(len);
                 sbX.append(value);
@@ -112,8 +111,8 @@ public class RowKeyUtil {
         else {
             // 为了提高性能,不太长的字符串不使用StringBuilder来补足
             int lenPad = len - value.length();
-            if (lenPad <= c_zero32.length()) {
-                return c_zero32.substring(0, lenPad) + value;
+            if (lenPad <= C_ZERO32.length()) {
+                return C_ZERO32.substring(0, lenPad) + value;
             } else {
                 int sbXlen = len - value.length();
                 StringBuilder sbX = new StringBuilder(sbXlen);
