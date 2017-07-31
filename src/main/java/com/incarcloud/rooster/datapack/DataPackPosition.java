@@ -17,6 +17,14 @@ import java.util.Date;
 public class DataPackPosition extends DataPackObject {
 
     /**
+     * 车速（km/h）
+     */
+    private Float speed;
+    /**
+     * 当前行程行驶距离(m)
+     */
+    private Integer travelDistance;
+    /**
      * 经度
      */
     private Double longitude;
@@ -27,12 +35,16 @@ public class DataPackPosition extends DataPackObject {
     /**
      * 方向： 0~360, 正北为 0 度，顺时针旋转, 用字符串（无结束符）表示；如不支持，用“-“替代
      */
-    private String direction;
+    private Float direction;
 
     /**
      * 定位方式：0-无效数据，1-基站定位，2-GPS 定位
      */
     private Integer positioMode;
+    /**
+     * 定位方式描述
+     */
+    private String positioModeDesc;
     /**
      * 定位时间
      */
@@ -40,6 +52,22 @@ public class DataPackPosition extends DataPackObject {
 
     public DataPackPosition(DataPackObject object) {
         super(object);
+    }
+
+    public Float getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(Float speed) {
+        this.speed = speed;
+    }
+
+    public Integer getTravelDistance() {
+        return travelDistance;
+    }
+
+    public void setTravelDistance(Integer travelDistance) {
+        this.travelDistance = travelDistance;
     }
 
     public Double getLongitude() {
@@ -58,11 +86,11 @@ public class DataPackPosition extends DataPackObject {
         this.latitude = latitude;
     }
 
-    public String getDirection() {
+    public Float getDirection() {
         return direction;
     }
 
-    public void setDirection(String direction) {
+    public void setDirection(Float direction) {
         this.direction = direction;
     }
 
@@ -72,6 +100,14 @@ public class DataPackPosition extends DataPackObject {
 
     public void setPositioMode(Integer positioMode) {
         this.positioMode = positioMode;
+    }
+
+    public String getPositioModeDesc() {
+        return positioModeDesc;
+    }
+
+    public void setPositioModeDesc(String positioModeDesc) {
+        this.positioModeDesc = positioModeDesc;
     }
 
     public Date getPositionDate() {
@@ -85,24 +121,14 @@ public class DataPackPosition extends DataPackObject {
     @Override
     public String toString() {
         return "DataPackPosition{" +
-                "longitude=" + longitude +
+                "speed=" + speed +
+                ", travelDistance=" + travelDistance +
+                ", longitude=" + longitude +
                 ", latitude=" + latitude +
-                ", direction='" + direction + '\'' +
+                ", direction=" + direction +
                 ", positioMode=" + positioMode +
+                ", positioModeDesc=" + positioModeDesc +
                 ", positionDate=" + positionDate +
-                ", id='" + id + '\'' +
-                ", deviceName='" + deviceName + '\'' +
-                ", packId=" + packId +
-                ", protocolName='" + protocolName + '\'' +
-                ", protocolVersion='" + protocolVersion + '\'' +
-                ", deviceId='" + deviceId + '\'' +
-                ", tripId=" + tripId +
-                ", vid='" + vid + '\'' +
-                ", vin='" + vin + '\'' +
-                ", detectionDate=" + detectionDate +
-                ", _group='" + _group + '\'' +
-                ", _name='" + _name + '\'' +
-                ", _version='" + _version + '\'' +
                 '}';
     }
 }

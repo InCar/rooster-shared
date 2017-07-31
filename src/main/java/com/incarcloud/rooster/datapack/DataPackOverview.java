@@ -20,10 +20,6 @@ public class DataPackOverview extends DataPackObject {
      */
     private Integer status;
     /**
-     * 车速（km/h）
-     */
-    private Float speed;
-    /**
      * 当前行程行驶距离(m)
      */
     private Integer travelDistance;
@@ -92,14 +88,6 @@ public class DataPackOverview extends DataPackObject {
         this.status = status;
     }
 
-    public Float getSpeed() {
-        return speed;
-    }
-
-    public void setSpeed(Float speed) {
-        this.speed = speed;
-    }
-
     public Integer getTravelDistance() {
         return travelDistance;
     }
@@ -114,14 +102,6 @@ public class DataPackOverview extends DataPackObject {
 
     public void setVoltage(Float voltage) {
         this.voltage = voltage;
-    }
-
-    public Integer[] getSpeedSet() {
-        return speedSet;
-    }
-
-    public void setSpeedSet(Integer[] speedSet) {
-        this.speedSet = speedSet;
     }
 
     public Integer getEngineRunningTime() {
@@ -154,6 +134,14 @@ public class DataPackOverview extends DataPackObject {
 
     public void setTotalAverageFuelConsumption(Float totalAverageFuelConsumption) {
         this.totalAverageFuelConsumption = totalAverageFuelConsumption;
+    }
+
+    public Integer[] getSpeedSet() {
+        return speedSet;
+    }
+
+    public void setSpeedSet(Integer[] speedSet) {
+        this.speedSet = speedSet;
     }
 
     public Integer[] getSubTotalTime() {
@@ -216,7 +204,6 @@ public class DataPackOverview extends DataPackObject {
     public String toString() {
         return "DataPackOverview{" +
                 "status=" + status +
-                ", speed=" + speed +
                 ", travelDistance=" + travelDistance +
                 ", voltage=" + voltage +
                 ", engineRunningTime=" + engineRunningTime +
@@ -231,19 +218,6 @@ public class DataPackOverview extends DataPackObject {
                 ", suddenTurn=" + suddenTurn +
                 ", speedingTime=" + speedingTime +
                 ", maxSpeed=" + maxSpeed +
-                ", id='" + id + '\'' +
-                ", deviceName='" + deviceName + '\'' +
-                ", packId=" + packId +
-                ", protocolName='" + protocolName + '\'' +
-                ", protocolVersion='" + protocolVersion + '\'' +
-                ", deviceId='" + deviceId + '\'' +
-                ", tripId=" + tripId +
-                ", vid='" + vid + '\'' +
-                ", vin='" + vin + '\'' +
-                ", detectionDate=" + detectionDate +
-                ", _group='" + _group + '\'' +
-                ", _name='" + _name + '\'' +
-                ", _version='" + _version + '\'' +
                 '}';
     }
 }
