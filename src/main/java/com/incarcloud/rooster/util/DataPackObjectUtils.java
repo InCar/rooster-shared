@@ -14,7 +14,8 @@ import java.util.Date;
  * @date 2017/7/5 14:50
  */
 public class DataPackObjectUtils {
-    private static Gson gson = GsonFactory.newInstance("yyyyMMddHHmmssSSS", "_group", "_name", "_version", "_buf").createGson();
+    private static final  String DATE_PATTERN = "yyyyMMddHHmmss";
+    private static Gson gson = GsonFactory.newInstance(DATE_PATTERN, "_group", "_name", "_version", "_buf").createGson();
 
     /**
      * 最小采集时间
@@ -23,7 +24,7 @@ public class DataPackObjectUtils {
 
     static {
         try {
-            minDetectionDate = new SimpleDateFormat("yyyyMMddHHmmss").parse("19770101000000");
+            minDetectionDate = new SimpleDateFormat(DATE_PATTERN).parse("19770101000000");
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -84,7 +85,7 @@ public class DataPackObjectUtils {
 
 
     /*-------以下两个方法主要是为了统一采集时间和字符串之间的转换，减少由于日期格式不一致的错误的发生--------------*/
-    private static final DateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmssSSS");
+    private static final DateFormat dateFormat = new SimpleDateFormat(DATE_PATTERN);
 
     /**
      * 将采集时间转换为字符串
