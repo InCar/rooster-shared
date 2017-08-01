@@ -179,19 +179,6 @@ public class DataPackBattery extends DataPackObject {
                 ", hydrogenMaxPressure=" + hydrogenMaxPressure +
                 ", hydrogenMaxPressureSensorCode=" + hydrogenMaxPressureSensorCode +
                 ", dcdcStatus=" + dcdcStatus +
-                ", id='" + id + '\'' +
-                ", deviceName='" + deviceName + '\'' +
-                ", packId=" + packId +
-                ", protocolName='" + protocolName + '\'' +
-                ", protocolVersion='" + protocolVersion + '\'' +
-                ", deviceId='" + deviceId + '\'' +
-                ", tripId=" + tripId +
-                ", vid='" + vid + '\'' +
-                ", vin='" + vin + '\'' +
-                ", detectionDate=" + detectionDate +
-                ", _group='" + _group + '\'' +
-                ", _name='" + _name + '\'' +
-                ", _version='" + _version + '\'' +
                 '}';
     }
 }
