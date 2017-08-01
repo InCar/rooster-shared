@@ -19,7 +19,7 @@ public class DataPackPosition extends DataPackObject {
     /**
      * 车速（km/h）
      */
-    private Float speed;
+    private Integer speed;
     /**
      * 当前行程行驶距离(m)
      */
@@ -48,17 +48,17 @@ public class DataPackPosition extends DataPackObject {
     /**
      * 定位时间
      */
-    private Date positionDate;
+    private Date positionTime;
 
     public DataPackPosition(DataPackObject object) {
         super(object);
     }
 
-    public Float getSpeed() {
+    public Integer getSpeed() {
         return speed;
     }
 
-    public void setSpeed(Float speed) {
+    public void setSpeed(Integer speed) {
         this.speed = speed;
     }
 
@@ -110,12 +110,12 @@ public class DataPackPosition extends DataPackObject {
         this.positioModeDesc = positioModeDesc;
     }
 
-    public Date getPositionDate() {
-        return positionDate;
+    public Date getPositionTime() {
+        return positionTime;
     }
 
-    public void setPositionDate(Date positionDate) {
-        this.positionDate = positionDate;
+    public void setPositionTime(Date positionTime) {
+        this.positionTime = positionTime;
     }
 
     @Override
@@ -127,8 +127,8 @@ public class DataPackPosition extends DataPackObject {
                 ", latitude=" + latitude +
                 ", direction=" + direction +
                 ", positioMode=" + positioMode +
-                ", positioModeDesc=" + positioModeDesc +
-                ", positionDate=" + positionDate +
+                ", positioModeDesc='" + positioModeDesc + '\'' +
+                ", positionTime=" + positionTime +
                 '}';
     }
 }

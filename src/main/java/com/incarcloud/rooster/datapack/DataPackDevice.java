@@ -99,19 +99,6 @@ public class DataPackDevice extends DataPackObject {
                 ", diagnoseProgramType=" + diagnoseProgramType +
                 ", initCode=" + initCode +
                 ", softwareTypeId=" + softwareTypeId +
-                ", id='" + id + '\'' +
-                ", deviceName='" + deviceName + '\'' +
-                ", packId=" + packId +
-                ", protocolName='" + protocolName + '\'' +
-                ", protocolVersion='" + protocolVersion + '\'' +
-                ", deviceId='" + deviceId + '\'' +
-                ", tripId=" + tripId +
-                ", vid='" + vid + '\'' +
-                ", vin='" + vin + '\'' +
-                ", detectionDate=" + detectionDate +
-                ", _group='" + _group + '\'' +
-                ", _name='" + _name + '\'' +
-                ", _version='" + _version + '\'' +
                 '}';
     }
 }

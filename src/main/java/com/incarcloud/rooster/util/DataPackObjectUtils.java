@@ -63,17 +63,17 @@ public class DataPackObjectUtils {
         if (packObject instanceof DataPackPosition) {
             DataPackPosition position = (DataPackPosition) packObject;
             //对于位置数据，位置时间和采集时间哪个合法用哪个,否则采用接收时间
-            if (DataPackObjectUtils.isLegalDetectionDate(position.getPositionDate())) {
-                position.setDetectionDate(position.getPositionDate());
-            } else if (DataPackObjectUtils.isLegalDetectionDate(position.getDetectionDate())) {
-                position.setPositionDate(position.getDetectionDate());
+            if (DataPackObjectUtils.isLegalDetectionDate(position.getPositionTime())) {
+                position.setDetectionTime(position.getPositionTime());
+            } else if (DataPackObjectUtils.isLegalDetectionDate(position.getDetectionTime())) {
+                position.setPositionTime(position.getDetectionTime());
             } else {
-                position.setDetectionDate(reciveTime);
-                position.setPositionDate(reciveTime);
+                position.setDetectionTime(reciveTime);
+                position.setPositionTime(reciveTime);
                 return true;
             }
-        } else if (!DataPackObjectUtils.isLegalDetectionDate(packObject.getDetectionDate())) {//非位置数据采集时间非法
-            packObject.setDetectionDate(reciveTime);
+        } else if (!DataPackObjectUtils.isLegalDetectionDate(packObject.getDetectionTime())) {//非位置数据采集时间非法
+            packObject.setDetectionTime(reciveTime);
             return true;
         }
 
