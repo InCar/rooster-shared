@@ -19,6 +19,10 @@ public class DataPackAlarm extends DataPackObject {
      * 报警数据
      */
     private List<Alarm> alarmList;
+    /**
+     * 位置数据
+     */
+    private DataPackPosition position;
 
     public DataPackAlarm(DataPackObject object) {
         super(object);
@@ -32,10 +36,19 @@ public class DataPackAlarm extends DataPackObject {
         this.alarmList = alarmList;
     }
 
+    public DataPackPosition getPosition() {
+        return position;
+    }
+
+    public void setPosition(DataPackPosition position) {
+        this.position = position;
+    }
+
     @Override
     public String toString() {
         return "DataPackAlarm{" +
                 "alarmList=" + alarmList +
+                ", position=" + position +
                 '}';
     }
 
