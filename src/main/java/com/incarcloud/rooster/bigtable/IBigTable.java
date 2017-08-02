@@ -10,13 +10,19 @@ import com.incarcloud.rooster.datapack.DataPackObject;
 public interface IBigTable {
 
     /**
-     * 保存数据
+     * 保存采集的数据
      * @param rowKey 行健
      * @param data 数据
-     * @param tableName 表格名
      * @throws Exception
      */
-    public void save(String rowKey, DataPackObject data, String tableName) throws Exception;
+    public void saveDataPackObject(String rowKey, DataPackObject data) throws Exception;
+
+
+    /**
+     * 保存vin码
+     * @param vin
+     */
+    public void saveVin(String vin);
     
     /**
      * 关闭，回收资源
