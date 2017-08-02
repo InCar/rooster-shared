@@ -22,7 +22,7 @@ public interface IBigTable {
      * 保存vin码
      * @param vin
      */
-    public void saveVin(String vin);
+    public void saveVin(String vin)throws Exception ;
     
     /**
      * 关闭，回收资源
