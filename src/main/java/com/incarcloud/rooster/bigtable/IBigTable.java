@@ -44,5 +44,5 @@ public interface IBigTable {
     /**
      * 关闭，回收资源
      */
-    public  void close();
+    void close();
 }
