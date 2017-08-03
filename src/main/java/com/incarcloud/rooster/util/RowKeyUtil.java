@@ -37,6 +37,24 @@ public class RowKeyUtil {
                 appendForceLen(receiveTime, 18), get4NumRandomInt());
     }
 
+
+    /**
+     * 采集时间索引
+     */
+    public  static final String INDEX_DETECTIONTIME = "DETECTIONTIME";
+
+    /**
+     * 创建采集时间的二级索引的主键
+     *
+     * @param detectionTime 采集时间
+     * @param vin           vin码
+     * @param dataType      数据类型
+     * @return
+     */
+    public static String makeDetectionTimeIndexRowKey(String detectionTime, String vin, String dataType) {
+        return INDEX_DETECTIONTIME + "_" + detectionTime + "_" + vin + dataType+get4NumRandomInt();
+    }
+
     /**
      * 根据rowkey获得json字符串类型标识
      *
@@ -44,7 +62,7 @@ public class RowKeyUtil {
      * @return
      */
     public static String getDataTypeFromRowKey(String rowkey) {
-        if(null == rowkey && 40 > rowkey.length()) {
+        if (null == rowkey && 40 > rowkey.length()) {
             throw new IllegalArgumentException("rowkey is error");
         }
         return rowkey.substring(24, 39).replaceAll("#", "");
