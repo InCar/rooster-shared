@@ -49,7 +49,7 @@ public class DataPackObject extends DataPack {
     /**
      * 检测时间
      */
-    protected Date detectionDate;
+    protected Date detectionTime;
 
     public DataPackObject(DataPack dataPack) {
         super(dataPack._group, dataPack._name, dataPack._version);
@@ -66,7 +66,7 @@ public class DataPackObject extends DataPack {
         this.tripId = object.tripId;
         this.vid = object.vid;
         this.vin = object.vin;
-        this.detectionDate = object.detectionDate;
+        this.detectionTime = object.detectionTime;
     }
 
     public String getId() {
@@ -141,12 +141,12 @@ public class DataPackObject extends DataPack {
         this.vin = vin;
     }
 
-    public Date getDetectionDate() {
-        return detectionDate;
+    public Date getDetectionTime() {
+        return detectionTime;
     }
 
-    public void setDetectionDate(Date detectionDate) {
-        this.detectionDate = detectionDate;
+    public void setDetectionTime(Date detectionTime) {
+        this.detectionTime = detectionTime;
     }
 
     @Override
@@ -161,10 +161,7 @@ public class DataPackObject extends DataPack {
                 ", tripId=" + tripId +
                 ", vid='" + vid + '\'' +
                 ", vin='" + vin + '\'' +
-                ", detectionDate=" + detectionDate +
-                ", _group='" + _group + '\'' +
-                ", _name='" + _name + '\'' +
-                ", _version='" + _version + '\'' +
+                ", detectionTime=" + detectionTime +
                 '}';
     }
 }

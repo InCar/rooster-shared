@@ -14,7 +14,9 @@ import java.util.Date;
  * @date 2017/7/5 14:50
  */
 public class DataPackObjectUtils {
-    private static Gson gson = GsonFactory.newInstance("yyyyMMddHHmmssSSS", "_group", "_name", "_version", "_buf").createGson();
+    private static final  String DATE_PATTERN = "yyyyMMddHHmmss";
+    private static final DateFormat DATE_FORMAT = new SimpleDateFormat(DATE_PATTERN);
+    private static Gson gson = GsonFactory.newInstance(DATE_PATTERN, "_group", "_name", "_version", "_buf").createGson();
 
     /**
      * 最小采集时间
@@ -23,11 +25,9 @@ public class DataPackObjectUtils {
 
     static {
         try {
-            minDetectionDate = new SimpleDateFormat("yyyyMMddHHmmss").parse("19770101000000");
+            minDetectionDate = DATE_FORMAT.parse("19770101000000");
         } catch (ParseException e) {
-            e.printStackTrace();
         }
-
     }
 
     private DataPackObjectUtils() {
@@ -63,17 +63,17 @@ public class DataPackObjectUtils {
         if (packObject instanceof DataPackPosition) {
             DataPackPosition position = (DataPackPosition) packObject;
             //对于位置数据，位置时间和采集时间哪个合法用哪个,否则采用接收时间
-            if (DataPackObjectUtils.isLegalDetectionDate(position.getPositionDate())) {
-                position.setDetectionDate(position.getPositionDate());
-            } else if (DataPackObjectUtils.isLegalDetectionDate(position.getDetectionDate())) {
-                position.setPositionDate(position.getDetectionDate());
+            if (DataPackObjectUtils.isLegalDetectionDate(position.getPositionTime())) {
+                position.setDetectionTime(position.getPositionTime());
+            } else if (DataPackObjectUtils.isLegalDetectionDate(position.getDetectionTime())) {
+                position.setPositionTime(position.getDetectionTime());
             } else {
-                position.setDetectionDate(reciveTime);
-                position.setPositionDate(reciveTime);
+                position.setDetectionTime(reciveTime);
+                position.setPositionTime(reciveTime);
                 return true;
             }
-        } else if (!DataPackObjectUtils.isLegalDetectionDate(packObject.getDetectionDate())) {//非位置数据采集时间非法
-            packObject.setDetectionDate(reciveTime);
+        } else if (!DataPackObjectUtils.isLegalDetectionDate(packObject.getDetectionTime())) {//非位置数据采集时间非法
+            packObject.setDetectionTime(reciveTime);
             return true;
         }
 
@@ -84,7 +84,6 @@ public class DataPackObjectUtils {
 
 
     /*-------以下两个方法主要是为了统一采集时间和字符串之间的转换，减少由于日期格式不一致的错误的发生--------------*/
-    private static final DateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmssSSS");
 
     /**
      * 将采集时间转换为字符串
@@ -93,7 +92,7 @@ public class DataPackObjectUtils {
      * @return
      */
     public static String convertDetectionDateToString(Date detectionDate) {
-        return dateFormat.format(detectionDate);
+        return DATE_FORMAT.format(detectionDate);
     }
 
     /**
@@ -103,7 +102,7 @@ public class DataPackObjectUtils {
      * @return
      */
     public static Date convertStringToDetectionDate(String dateStr) throws ParseException {
-        return dateFormat.parse(dateStr);
+        return DATE_FORMAT.parse(dateStr);
     }
     /*--------------------------------------------------------------------------------------------------------*/
 

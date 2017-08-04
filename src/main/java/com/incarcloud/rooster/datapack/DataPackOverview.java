@@ -1,6 +1,6 @@
 package com.incarcloud.rooster.datapack;
 
-import java.util.Arrays;
+import java.util.List;
 
 /**
  * 整车数据<br>
@@ -18,59 +18,53 @@ public class DataPackOverview extends DataPackObject {
     /**
      * 车辆状态：0x01-发动机点火时，0x02-发动机运行中，0x03-发动机熄火时，0x04-发动机熄火后，0x05-车辆不能检测
      */
-    private Integer status;
-    /**
-     * 车速（km/h）
-     */
-    private Float speed;
-    /**
-     * 当前行程行驶距离(m)
-     */
-    private Integer travelDistance;
+    private Integer carStatus;
     /**
      * 电压（V）
      */
     private Float voltage;
     /**
-     * 发动机运行时间(秒)
+     * 位置信息
      */
-    private Integer engineRunningTime;
+    private DataPackPosition position;
     /**
-     * 本次平均油耗(0.01L/100km) 不支持用0xFFFF表示
+     * 本次发动机运行时间(秒)
      */
-    private Float averageFuelConsumption;
+    private Integer runTime;
+    /**
+     * 本次行驶距离(米)
+     */
+    private Integer currentMileage;
+    /**
+     * 本次平均油耗(0.01L/100km)<br>
+     *     /100F转Float
+     */
+    private Float currentAvgOilUsed;
     /**
      * 累计行驶里程(km)
      */
-    private Integer totalTravelDistance;
+    private Integer mileage;
     /**
-     * 累计平均油耗(0.01L/km) 不支持用0xFFFF表示
+     * 累计平均油耗(0.01L/100km)
+     *     /100F转Float
      */
-    private Float totalAverageFuelConsumption;
+    private Float avgOilUsed;
     /**
-     * 设置的速度值(km/h)
+     * 本行程车速分组统计
      */
-    private Integer[] speedSet;
-    /**
-     * 时间小计(秒)
-     */
-    private Integer[] subTotalTime;
-    /**
-     * 距离小计(m)
-     */
-    private Integer[] subTotalDistance;
+    private List<Speed> speedGroup;
     /**
      * 本次急加速次数
      */
-    private Integer suddenUp;
+    private Integer speedUpTimes;
     /**
      * 本次急减速次数
      */
-    private Integer suddenDec;
+    private Integer speedDownTimes;
     /**
      * 本次急转向次数
      */
-    private Integer suddenTurn;
+    private Integer sharpTurnTimes;
     /**
      * 本次时速超速行驶时间(秒)
      */
@@ -84,28 +78,12 @@ public class DataPackOverview extends DataPackObject {
         super(object);
     }
 
-    public Integer getStatus() {
-        return status;
+    public Integer getCarStatus() {
+        return carStatus;
     }
 
-    public void setStatus(Integer status) {
-        this.status = status;
-    }
-
-    public Float getSpeed() {
-        return speed;
-    }
-
-    public void setSpeed(Float speed) {
-        this.speed = speed;
-    }
-
-    public Integer getTravelDistance() {
-        return travelDistance;
-    }
-
-    public void setTravelDistance(Integer travelDistance) {
-        this.travelDistance = travelDistance;
+    public void setCarStatus(Integer carStatus) {
+        this.carStatus = carStatus;
     }
 
     public Float getVoltage() {
@@ -116,84 +94,84 @@ public class DataPackOverview extends DataPackObject {
         this.voltage = voltage;
     }
 
-    public Integer[] getSpeedSet() {
-        return speedSet;
+    public DataPackPosition getPosition() {
+        return position;
     }
 
-    public void setSpeedSet(Integer[] speedSet) {
-        this.speedSet = speedSet;
+    public void setPosition(DataPackPosition position) {
+        this.position = position;
     }
 
-    public Integer getEngineRunningTime() {
-        return engineRunningTime;
+    public Integer getRunTime() {
+        return runTime;
     }
 
-    public void setEngineRunningTime(Integer engineRunningTime) {
-        this.engineRunningTime = engineRunningTime;
+    public void setRunTime(Integer runTime) {
+        this.runTime = runTime;
     }
 
-    public Float getAverageFuelConsumption() {
-        return averageFuelConsumption;
+    public Integer getCurrentMileage() {
+        return currentMileage;
     }
 
-    public void setAverageFuelConsumption(Float averageFuelConsumption) {
-        this.averageFuelConsumption = averageFuelConsumption;
+    public void setCurrentMileage(Integer currentMileage) {
+        this.currentMileage = currentMileage;
     }
 
-    public Integer getTotalTravelDistance() {
-        return totalTravelDistance;
+    public Float getCurrentAvgOilUsed() {
+        return currentAvgOilUsed;
     }
 
-    public void setTotalTravelDistance(Integer totalTravelDistance) {
-        this.totalTravelDistance = totalTravelDistance;
+    public void setCurrentAvgOilUsed(Float currentAvgOilUsed) {
+        this.currentAvgOilUsed = currentAvgOilUsed;
     }
 
-    public Float getTotalAverageFuelConsumption() {
-        return totalAverageFuelConsumption;
+    public Integer getMileage() {
+        return mileage;
     }
 
-    public void setTotalAverageFuelConsumption(Float totalAverageFuelConsumption) {
-        this.totalAverageFuelConsumption = totalAverageFuelConsumption;
+    public void setMileage(Integer mileage) {
+        this.mileage = mileage;
     }
 
-    public Integer[] getSubTotalTime() {
-        return subTotalTime;
+    public Float getAvgOilUsed() {
+        return avgOilUsed;
     }
 
-    public void setSubTotalTime(Integer[] subTotalTime) {
-        this.subTotalTime = subTotalTime;
+    public void setAvgOilUsed(Float avgOilUsed) {
+        this.avgOilUsed = avgOilUsed;
     }
 
-    public Integer[] getSubTotalDistance() {
-        return subTotalDistance;
+    public List<Speed> getSpeedGroup() {
+        return speedGroup;
     }
 
-    public void setSubTotalDistance(Integer[] subTotalDistance) {
-        this.subTotalDistance = subTotalDistance;
+    public void setSpeedGroup(List<Speed> speedGroup) {
+        this.speedGroup = speedGroup;
     }
 
-    public Integer getSuddenUp() {
-        return suddenUp;
+    public Integer getSpeedUpTimes() {
+        return speedUpTimes;
     }
 
-    public void setSuddenUp(Integer suddenUp) {
-        this.suddenUp = suddenUp;
+    public void setSpeedUpTimes(Integer speedUpTimes) {
+        this.speedUpTimes = speedUpTimes;
     }
 
-    public Integer getSuddenDec() {
-        return suddenDec;
+    public Integer getSpeedDownTimes() {
+        return speedDownTimes;
     }
 
-    public void setSuddenDec(Integer suddenDec) {
-        this.suddenDec = suddenDec;
+    public void setSpeedDownTimes(Integer speedDownTimes) {
+        this.speedDownTimes = speedDownTimes;
     }
 
-    public Integer getSuddenTurn() {
-        return suddenTurn;
+    public Integer getSharpTurnTimes() {
+        return sharpTurnTimes;
     }
 
-    public void setSuddenTurn(Integer suddenTurn) {
-        this.suddenTurn = suddenTurn;
+    public void setSharpTurnTimes(Integer sharpTurnTimes) {
+        this.sharpTurnTimes = sharpTurnTimes;
     }
 
     public Integer getSpeedingTime() {
@@ -215,35 +193,72 @@ public class DataPackOverview extends DataPackObject {
     @Override
     public String toString() {
         return "DataPackOverview{" +
-                "status=" + status +
-                ", speed=" + speed +
-                ", travelDistance=" + travelDistance +
+                "carStatus=" + carStatus +
                 ", voltage=" + voltage +
-                ", engineRunningTime=" + engineRunningTime +
-                ", averageFuelConsumption=" + averageFuelConsumption +
-                ", totalTravelDistance=" + totalTravelDistance +
-                ", totalAverageFuelConsumption=" + totalAverageFuelConsumption +
-                ", speedSet=" + Arrays.toString(speedSet) +
-                ", subTotalTime=" + Arrays.toString(subTotalTime) +
-                ", subTotalDistance=" + Arrays.toString(subTotalDistance) +
-                ", suddenUp=" + suddenUp +
-                ", suddenDec=" + suddenDec +
-                ", suddenTurn=" + suddenTurn +
+                ", position=" + position +
+                ", runTime=" + runTime +
+                ", currentMileage=" + currentMileage +
+                ", currentAvgOilUsed=" + currentAvgOilUsed +
+                ", mileage=" + mileage +
+                ", avgOilUsed=" + avgOilUsed +
+                ", speedGroup=" + speedGroup +
+                ", speedUpTimes=" + speedUpTimes +
+                ", speedDownTimes=" + speedDownTimes +
+                ", sharpTurnTimes=" + sharpTurnTimes +
                 ", speedingTime=" + speedingTime +
                 ", maxSpeed=" + maxSpeed +
-                ", id='" + id + '\'' +
-                ", deviceName='" + deviceName + '\'' +
-                ", packId=" + packId +
-                ", protocolName='" + protocolName + '\'' +
-                ", protocolVersion='" + protocolVersion + '\'' +
-                ", deviceId='" + deviceId + '\'' +
-                ", tripId=" + tripId +
-                ", vid='" + vid + '\'' +
-                ", vin='" + vin + '\'' +
-                ", detectionDate=" + detectionDate +
-                ", _group='" + _group + '\'' +
-                ", _name='" + _name + '\'' +
-                ", _version='" + _version + '\'' +
                 '}';
+    }
+
+    /**
+     * 单个速度信息
+     */
+    public static class Speed {
+
+        /**
+         * 设置速度值(km/h)
+         */
+        private Integer speed;
+        /**
+         * 时间小计(秒)
+         */
+        private Integer consumeTime;
+        /**
+         * 距离小计(米)
+         */
+        private Integer travelDistance;
+
+        public Speed() {
+        }
+
+        public Speed(Integer speed, Integer consumeTime, Integer travelDistance) {
+            this.speed = speed;
+            this.consumeTime = consumeTime;
+            this.travelDistance = travelDistance;
+        }
+
+        public Integer getSpeed() {
+            return speed;
+        }
+
+        public void setSpeed(Integer speed) {
+            this.speed = speed;
+        }
+
+        public Integer getConsumeTime() {
+            return consumeTime;
+        }
+
+        public void setConsumeTime(Integer consumeTime) {
+            this.consumeTime = consumeTime;
+        }
+
+        public Integer getTravelDistance() {
+            return travelDistance;
+        }
+
+        public void setTravelDistance(Integer travelDistance) {
+            this.travelDistance = travelDistance;
+        }
     }
 }

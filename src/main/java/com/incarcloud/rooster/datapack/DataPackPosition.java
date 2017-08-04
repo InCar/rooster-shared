@@ -17,6 +17,14 @@ import java.util.Date;
 public class DataPackPosition extends DataPackObject {
 
     /**
+     * 车速（km/h）
+     */
+    private Integer speed;
+    /**
+     * 当前行程行驶距离(m)
+     */
+    private Integer travelDistance;
+    /**
      * 经度
      */
     private Double longitude;
@@ -27,19 +35,39 @@ public class DataPackPosition extends DataPackObject {
     /**
      * 方向： 0~360, 正北为 0 度，顺时针旋转, 用字符串（无结束符）表示；如不支持，用“-“替代
      */
-    private String direction;
+    private Float direction;
 
     /**
      * 定位方式：0-无效数据，1-基站定位，2-GPS 定位
      */
     private Integer positioMode;
     /**
+     * 定位方式描述
+     */
+    private String positioModeDesc;
+    /**
      * 定位时间
      */
-    private Date positionDate;
+    private Date positionTime;
 
     public DataPackPosition(DataPackObject object) {
         super(object);
+    }
+
+    public Integer getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(Integer speed) {
+        this.speed = speed;
+    }
+
+    public Integer getTravelDistance() {
+        return travelDistance;
+    }
+
+    public void setTravelDistance(Integer travelDistance) {
+        this.travelDistance = travelDistance;
     }
 
     public Double getLongitude() {
@@ -58,11 +86,11 @@ public class DataPackPosition extends DataPackObject {
         this.latitude = latitude;
     }
 
-    public String getDirection() {
+    public Float getDirection() {
         return direction;
     }
 
-    public void setDirection(String direction) {
+    public void setDirection(Float direction) {
         this.direction = direction;
     }
 
@@ -74,35 +102,33 @@ public class DataPackPosition extends DataPackObject {
         this.positioMode = positioMode;
     }
 
-    public Date getPositionDate() {
-        return positionDate;
+    public String getPositioModeDesc() {
+        return positioModeDesc;
     }
 
-    public void setPositionDate(Date positionDate) {
-        this.positionDate = positionDate;
+    public void setPositioModeDesc(String positioModeDesc) {
+        this.positioModeDesc = positioModeDesc;
+    }
+
+    public Date getPositionTime() {
+        return positionTime;
+    }
+
+    public void setPositionTime(Date positionTime) {
+        this.positionTime = positionTime;
     }
 
     @Override
     public String toString() {
         return "DataPackPosition{" +
-                "longitude=" + longitude +
+                "speed=" + speed +
+                ", travelDistance=" + travelDistance +
+                ", longitude=" + longitude +
                 ", latitude=" + latitude +
-                ", direction='" + direction + '\'' +
+                ", direction=" + direction +
                 ", positioMode=" + positioMode +
-                ", positionDate=" + positionDate +
-                ", id='" + id + '\'' +
-                ", deviceName='" + deviceName + '\'' +
-                ", packId=" + packId +
-                ", protocolName='" + protocolName + '\'' +
-                ", protocolVersion='" + protocolVersion + '\'' +
-                ", deviceId='" + deviceId + '\'' +
-                ", tripId=" + tripId +
-                ", vid='" + vid + '\'' +
-                ", vin='" + vin + '\'' +
-                ", detectionDate=" + detectionDate +
-                ", _group='" + _group + '\'' +
-                ", _name='" + _name + '\'' +
-                ", _version='" + _version + '\'' +
+                ", positioModeDesc='" + positioModeDesc + '\'' +
+                ", positionTime=" + positionTime +
                 '}';
     }
 }
