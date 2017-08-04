@@ -17,7 +17,7 @@ public interface CommandClient {
     /**
      * 向车辆发送指令（自动选择设备）
      *
-     * @param vin     车辆vin码
+     * @param vin     车辆vin码（没有vin码时候, DEVICEID+#+设备号  代替vin码）
      * @param command 指令类型
      */
     public RespContent sendCommand(String vin, CommandType command)  throws IOException;
