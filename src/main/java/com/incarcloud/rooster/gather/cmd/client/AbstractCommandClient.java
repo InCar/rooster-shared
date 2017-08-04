@@ -6,6 +6,8 @@ import com.incarcloud.rooster.gather.cmd.CommandServerRespCode;
 import com.incarcloud.rooster.gather.cmd.CommandType;
 import com.incarcloud.rooster.gather.cmd.RespContent;
 
+import java.io.IOException;
+
 /**
  * @author Fan Beibei
  * @Description: CommandClient的抽象
@@ -14,7 +16,7 @@ import com.incarcloud.rooster.gather.cmd.RespContent;
 public abstract class AbstractCommandClient implements CommandClient {
 
     @Override
-    public RespContent sendCommand(String vin, CommandType command) throws Exception {
+    public RespContent sendCommand(String vin, CommandType command)  throws IOException {
         String url = getServerUrl(vin);
 
         if(null ==url){
@@ -38,7 +40,7 @@ public abstract class AbstractCommandClient implements CommandClient {
      * @param command 指令类型
      * @throws Exception
      */
-    public abstract RespContent sendCommand(String url, String vin, CommandType command) throws Exception;
+    public abstract RespContent sendCommand(String url, String vin, CommandType command)  throws IOException;
 
 
 }

@@ -5,6 +5,8 @@ package com.incarcloud.rooster.gather.cmd.client;/**
 import com.incarcloud.rooster.gather.cmd.CommandType;
 import com.incarcloud.rooster.gather.cmd.RespContent;
 
+import java.io.IOException;
+
 /**
  * @author Fan Beibei
  * @Description: 描述
@@ -18,6 +20,6 @@ public interface CommandClient {
      * @param vin     车辆vin码
      * @param command 指令类型
      */
-    public RespContent sendCommand(String vin, CommandType command) throws Exception;
+    public RespContent sendCommand(String vin, CommandType command)  throws IOException;
 
 }
