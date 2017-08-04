@@ -17,7 +17,6 @@ public interface IBigTable {
      */
     void saveDataPackObject(String rowKey, DataPackObject data) throws Exception;
 
-
     /**
      * 保存vin码
      * @param vin
@@ -30,19 +29,32 @@ public interface IBigTable {
      * @param startTimeString 开始时间字符串
      * @return
      */
-    String queryMinTimeRowKey(String startTimeString);
+    String queryRowKey(String startTimeString);
 
     /**
-     * 转移数据并存储数据
+     * 根据开始时间点循环读取数据
      *
      * @param startTimeRowKey 开始时间RowKey
-     * @param transferStorage 转移与数据存储助手
+     * @param dataReadable 读取数据接口
      * @return
      */
-    String transferToStorage(String startTimeRowKey, ITransferStorage transferStorage);
+    String queryData(String startTimeRowKey, IDataReadable dataReadable);
     
     /**
      * 关闭，回收资源
      */
     void close();
+
+    /**
+     * 大数据读取接口
+     */
+    interface IDataReadable {
+
+        /**
+         * 读取数据
+         *
+         * @param object 数据流
+         */
+        void onRead(Object object);
+    }
 }
