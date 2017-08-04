@@ -36,7 +36,7 @@ public interface IBigTable {
      *
      * @param startTimeRowKey 开始时间RowKey
      * @param dataReadable 读取数据接口
-     * @return
+     * @return 读取完毕后的最后一个RowKey字符串
      */
     String queryData(String startTimeRowKey, IDataReadable dataReadable);
     
