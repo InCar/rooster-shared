@@ -180,7 +180,10 @@ public class DataPackObjectUtils {
      * 设备回复下行命令执行结果
      */
     public static final String RESULT = "RESULT";
-
+    /**
+     * 行为位置数据
+     */
+    public static final String BEHAVIOR = "BEHAVIOR";
 
     /**
      * 获取数据类型
@@ -224,8 +227,13 @@ public class DataPackObjectUtils {
         }
 
         if (dataPackObject instanceof DataPackResult) {
-            //设备回复下行命令执行结果
+            // 设备回复下行命令执行结果
             return RESULT;
+        }
+
+        if(dataPackObject instanceof DataPackBehavior) {
+            // 行为位置数据
+            return BEHAVIOR;
         }
 
         return null;
@@ -276,8 +284,13 @@ public class DataPackObjectUtils {
         }
 
         if (RESULT.equals(dataType)) {
-            //设备回复下行命令执行结果
+            // 设备回复下行命令执行结果
             return DataPackResult.class;
+        }
+
+        if (BEHAVIOR.equals(dataType)) {
+            // 行为位置数据
+            return DataPackBehavior.class;
         }
 
         return null;
