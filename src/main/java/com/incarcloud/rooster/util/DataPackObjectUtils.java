@@ -51,8 +51,8 @@ public class DataPackObjectUtils {
     /**
      * 检查并校正数据采集时间
      *
-     * @param packObject
-     * @param reciveTime 数据接收时间
+     * @param packObject 数据对象
+     * @param reciveTime 数据接收时间（gather服务器接收时间，非设备采集时间）
      * @return 如果用reciveTime重置了数据采集时间（数据不带有采集时间）则返回true，否则返回fasle
      */
     public static boolean checkAndResetIlllegalDetectionDate(DataPackObject packObject, Date reciveTime) {
@@ -88,7 +88,7 @@ public class DataPackObjectUtils {
     /**
      * 将采集时间转换为字符串
      *
-     * @param detectionDate
+     * @param detectionDate 数据采集时间
      * @return
      */
     public static String convertDetectionDateToString(Date detectionDate) {
