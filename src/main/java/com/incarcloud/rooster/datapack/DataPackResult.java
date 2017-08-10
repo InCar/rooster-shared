@@ -9,7 +9,7 @@ package com.incarcloud.rooster.datapack;
 public class DataPackResult extends DataPackObject {
 
     /**
-     * 经度
+     * 错误代码
      */
     private Integer resultCode;
 
