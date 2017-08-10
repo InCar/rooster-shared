@@ -1,9 +1,9 @@
 package com.incarcloud.rooster.datapack;
 
-import com.incarcloud.rooster.util.DataTool;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 
+import javax.xml.bind.DatatypeConverter;
 import java.io.UnsupportedEncodingException;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -160,7 +160,7 @@ public class DataPack {
                 "_group='" + _group + '\'' +
                 ", _name='" + _name + '\'' +
                 ", _version='" + _version + '\'' +
-                ", _buf=" + DataTool.bytes2hex(getDataBytes()) +
+                ", _buf=" + DatatypeConverter.printHexBinary(getDataBytes()) +
                 '}';
     }
 }
