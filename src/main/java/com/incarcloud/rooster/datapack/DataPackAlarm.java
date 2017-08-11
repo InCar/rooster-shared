@@ -77,6 +77,10 @@ public class DataPackAlarm extends DataPackObject {
          * 报警等级
          */
         private Integer alarmLevel;
+        /**
+         * 报警等级描述
+         */
+        private String alarmLevelDesc;
 
         public Alarm() {
         }
@@ -125,6 +129,14 @@ public class DataPackAlarm extends DataPackObject {
             this.alarmLevel = alarmLevel;
         }
 
+        public String getAlarmLevelDesc() {
+            return alarmLevelDesc;
+        }
+
+        public void setAlarmLevelDesc(String alarmLevelDesc) {
+            this.alarmLevelDesc = alarmLevelDesc;
+        }
+
         @Override
         public String toString() {
             return "Alarm{" +
@@ -133,6 +145,7 @@ public class DataPackAlarm extends DataPackObject {
                     ", alarmValue='" + alarmValue + '\'' +
                     ", alarmDesc='" + alarmDesc + '\'' +
                     ", alarmLevel=" + alarmLevel +
+                    ", alarmLevelDesc='" + alarmLevelDesc + '\'' +
                     '}';
         }
     }
