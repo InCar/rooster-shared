@@ -15,11 +15,12 @@ public class DataPackBehavior extends DataPackObject {
 
     /**
      * 行为类型：
-     * 0x01  超速记录
-     * 0x02  急加速记录
-     * 0x03  急减速记录
-     * 0x04  急转弯记录
-     * 其它值  无效
+     *   0x01-超速记录
+     *   0x02-急加速记录
+     *   0x03-急减速记录
+     *   0x04-急转弯记录
+     *   0xF0-拔下OBD记录
+     *   其它值-无效
      */
     private Integer behaviorId;
     /**
