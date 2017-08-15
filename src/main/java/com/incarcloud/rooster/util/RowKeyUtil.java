@@ -16,7 +16,6 @@ public class RowKeyUtil {
     private static final String C_ZERO32 = "00000000000000000000000000000000";
     private static final String C_LOW_Z32 = "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz";
 
-
     private static final Random RANDOM = new Random();
 
     public static  final  int ROWKEY_LENGTH = 61;//4+20+15+18+4
@@ -41,7 +40,6 @@ public class RowKeyUtil {
                 appendForceLen(receiveTime, 18), get4NumRandomInt());
     }
 
-
     /**
      * 生成最大的rowkey（方便查询）
      *
@@ -60,7 +58,6 @@ public class RowKeyUtil {
                 appendForceLenWithLowZ(receiveTime, 18), "zzzz");
     }
 
-
     /**
      * 生成最大的rowkey（方便查询）
      *
@@ -78,7 +75,6 @@ public class RowKeyUtil {
                 appendForceLenWithLowZ(null, 18), "zzzz");
     }
 
-
     /**
      * 生成最大的rowkey（方便查询）
      *
@@ -94,7 +90,6 @@ public class RowKeyUtil {
                 prependForceLen(vin, 20), appendForceLenWithLowZ(null, 15),
                 appendForceLenWithLowZ(null, 18), "zzzz");
     }
-
 
     /**
      * 产生最小的rowkey（方便查询）
@@ -122,6 +117,7 @@ public class RowKeyUtil {
                 prependForceLen(vin, 20), appendForceLen(dataType, 15),
                 appendForceLen(null, 18), "####");
     }
+
     /**
      * 产生最小的rowkey（方便查询）
      *
@@ -133,10 +129,6 @@ public class RowKeyUtil {
                 prependForceLen(vin, 20), appendForceLen(null, 15),
                 appendForceLen(null, 18), "####");
     }
-
-
-
-
 
     /**
      * 采集时间索引
@@ -157,7 +149,7 @@ public class RowKeyUtil {
 
     /**
      * 最小的采集时间索引rowkey（方便查询）
-     * @param detectionTime
+     * @param detectionTime 查询时间，格式：yyyyMMddHHmmss
      * @return
      */
     public static String makeMinDetectionTimeIndexRowKey(String detectionTime) {
@@ -166,14 +158,12 @@ public class RowKeyUtil {
 
     /**
      * 最大的采集时间索引rowkey（方便查询）
-     * @param detectionTime
+     * @param detectionTime 查询时间，格式：yyyyMMddHHmmss
      * @return
      */
     public static String makeMaxDetectionTimeIndexRowKey(String detectionTime) {
         return INDEX_DETECTIONTIME + "_" + detectionTime + "_" + appendForceLenWithLowZ(null,20)+ appendForceLenWithLowZ(null,15) + "zzzz";
     }
-
-
 
     /**
      * 根据rowkey获得json字符串类型标识
@@ -264,10 +254,6 @@ public class RowKeyUtil {
         }
     }
 
-
-
-
-
     /**
      * 追加小写z方式强制字符串长度
      *
@@ -299,5 +285,4 @@ public class RowKeyUtil {
             }
         }
     }
-
 }
