@@ -29,17 +29,10 @@ public interface IBigTable {
     void saveVin(String vin) throws Exception;
 
     /**
-     * 根据开始时间字符串查询开始时间RowKey
+     * 根据开始时间RowKey循环读取数据到INF_MAX
      *
-     * @param startTimeString 开始时间字符串
-     * @return
-     */
-    String queryRowKey(String startTimeString);
-
-    /**
-     * 根据开始时间点循环读取数据
-     *
-     * @param startTimeRowKey 开始时间RowKey
+     * @param startTimeRowKey 开始时间RowKey，格式：DETECTIONTIME_yyyyMMddHHmmss_#######################################
+     *                        @see com.incarcloud.rooster.util.RowKeyUtil#makeMinDetectionTimeIndexRowKey(String)
      * @param dataReadable    读取数据接口
      * @return 读取完毕后的最后一个RowKey字符串
      */
