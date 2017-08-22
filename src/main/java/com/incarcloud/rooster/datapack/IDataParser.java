@@ -17,7 +17,7 @@ public interface IDataParser {
 	 * 抽取出完整有效的数据包,并从buffer丢弃掉已经解析或无用的字节
 	 * 
 	 * @param buffer
-	 *            二进制数据包
+	 *            二进制数据包（InHandler对象中的累积缓冲的buffer）
 	 * @return
 	 */
 	List<DataPack> extract(ByteBuf buffer);
@@ -52,7 +52,7 @@ public interface IDataParser {
 	/**
 	 * 解析数据包获取vin/设备号/协议
 	 *
-	 * @param buffer 数据包
+	 * @param buffer 数据包（InHandler对象中的累积缓冲的buffer）
 	 * @return
 	 */
 	Map<String, Object> getMetaData(ByteBuf buffer);
