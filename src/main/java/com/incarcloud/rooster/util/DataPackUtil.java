@@ -5,7 +5,7 @@ import io.netty.buffer.ByteBuf;
 import java.io.UnsupportedEncodingException;
 
 /**
- * DataPack工具类
+ * DataPack工具类(readXXX方法均是调用ByteBuf的readXXX方法，会移动ByteBuf的读指针)
  *
  * @author Aaric, created on 2017-06-29T09:39.
  * @since 2.0
