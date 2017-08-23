@@ -52,7 +52,7 @@ public interface IDataParser {
 	/**
 	 * 解析数据包获取vin/设备号/协议
 	 *
-	 * @param buffer 数据包（InHandler对象中的累积缓冲的buffer）
+	 * @param buffer 数据包（完整的数据包）
 	 * @return
 	 */
 	Map<String, Object> getMetaData(ByteBuf buffer);
