@@ -17,6 +17,21 @@ import java.util.Date;
 public class DataPackPosition extends DataPackObject {
 
     /**
+     * 定位方式：0-无效数据
+     */
+    public static final int POSITION_MODE_INVALID = 0;
+
+    /**
+     * 定位方式：1-基站定位
+     */
+    public static final int POSITION_MODE_BASE_STATION = 1;
+
+    /**
+     * 定位方式：2-GPS 定位
+     */
+    public static final int POSITION_MODE_GPS = 2;
+
+    /**
      * 车速（km/h）
      */
     private Integer speed;
