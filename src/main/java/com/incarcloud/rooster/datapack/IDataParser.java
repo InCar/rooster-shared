@@ -53,7 +53,11 @@ public interface IDataParser {
 	 * 解析数据包获取vin/设备号/协议
 	 *
 	 * @param buffer 数据包（完整的数据包）
-	 * @return
+	 * @return {
+	 *     protocol： 协议
+	 *     deviceId： 设备ID
+	 *     vin:  车辆vin码
+	 * }
 	 */
 	Map<String, Object> getMetaData(ByteBuf buffer);
 }
