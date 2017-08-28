@@ -31,6 +31,12 @@ public class DataPackPosition extends DataPackObject {
      */
     public static final int POSITION_MODE_GPS = 2;
 
+
+    /**
+     *有效星数
+     */
+    private Integer validStar;
+
     /**
      * 车速（km/h）
      */
@@ -145,10 +151,20 @@ public class DataPackPosition extends DataPackObject {
         this.positionTime = positionTime;
     }
 
+
+    public Integer getValidStar() {
+        return validStar;
+    }
+
+    public void setValidStar(Integer validStar) {
+        this.validStar = validStar;
+    }
+
     @Override
     public String toString() {
         return "DataPackPosition{" +
-                "speed=" + speed +
+                "validStar=" + validStar +
+                ", speed=" + speed +
                 ", travelDistance=" + travelDistance +
                 ", longitude=" + longitude +
                 ", latitude=" + latitude +
@@ -157,6 +173,16 @@ public class DataPackPosition extends DataPackObject {
                 ", positioMode=" + positioMode +
                 ", positioModeDesc='" + positioModeDesc + '\'' +
                 ", positionTime=" + positionTime +
+                ", id='" + id + '\'' +
+                ", deviceName='" + deviceName + '\'' +
+                ", packId=" + packId +
+                ", protocolName='" + protocolName + '\'' +
+                ", protocolVersion='" + protocolVersion + '\'' +
+                ", deviceId='" + deviceId + '\'' +
+                ", tripId=" + tripId +
+                ", vid='" + vid + '\'' +
+                ", vin='" + vin + '\'' +
+                ", detectionTime=" + detectionTime +
                 '}';
     }
 }
