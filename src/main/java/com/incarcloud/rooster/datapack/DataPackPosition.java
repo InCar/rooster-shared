@@ -38,6 +38,21 @@ public class DataPackPosition extends DataPackObject {
     private Integer validStar;
 
     /**
+     * 定位方式：3-北斗卫星定位
+     */
+    public static final int POSITION_MODE_BEIDOU = 3;
+
+    /**
+     * 定位方式：4-GLONASS卫星定位
+     */
+    public static final int POSITION_MODE_GLONASS = 4;
+
+    /**
+     * 定位方式：5-Galileo卫星定位
+     */
+    public static final int POSITION_MODE_GALILEO = 5;
+
+    /**
      * 车速（km/h）
      */
     private Float speed;
@@ -63,7 +78,7 @@ public class DataPackPosition extends DataPackObject {
      */
     private Float direction;
     /**
-     * 定位方式：0-无效数据，1-基站定位，2-GPS 定位
+     * 定位方式：0-无效数据，1-基站定位，2-GPS 定位，3-北斗定位，4-GLONASS卫星定位，5-Galileo卫星定位
      */
     private Integer positioMode;
     /**
