@@ -8,11 +8,11 @@ package com.incarcloud.rooster.gather.cmd;/**
  * @date 2017/7/7 17:24
  */
 public enum CommandType {
+
     /**
      * 开车门
      */
     OPEN_DOOR,
-
     /**
      * 开空调
      */
@@ -21,5 +21,9 @@ public enum CommandType {
     /**
      * 开双闪
      */
-    FLASH_LIGHTS_ON
+    FLASH_LIGHTS_ON,
+    /**
+     * 补发数据包
+     */
+    REISSUE_PACK
 }
