@@ -30,7 +30,7 @@ public class DataPack {
     /**
      * 数据包接收时间
      */
-    private Date reciveTime;
+    private Date receiveTime;
 
     public DataPack(String group, String name, String version){
         if(group == null || name == null || version == null)
@@ -87,11 +87,11 @@ public class DataPack {
      * @return
      */
     public byte[] serializeToBytes() throws UnsupportedEncodingException{
-        if(null == reciveTime){
+        if(null == receiveTime){
             throw new IllegalArgumentException("reciveTime is null");
         }
 
-        return  (getMark()+"#"+dateFormat.format(getReciveTime())+"#"+getDataB64()).getBytes("UTF-8");
+        return  (getMark()+"#"+dateFormat.format(getReceiveTime())+"#"+getDataB64()).getBytes("UTF-8");
     }
 
 
@@ -114,7 +114,7 @@ public class DataPack {
 
         DataPack dataPack = new DataPack(mark.split("\\-")[0], mark.split("\\-")[1], mark.split("\\-")[2]);
 
-        dataPack.setReciveTime(dateFormat.parse(reciveTime));
+        dataPack.setReceiveTime(dateFormat.parse(reciveTime));
 
         byte[] data = Base64.getDecoder().decode(dataB64);
         ByteBuf buf = Unpooled.buffer(data.length);
@@ -146,12 +146,12 @@ public class DataPack {
         }
     }
 
-    public Date getReciveTime() {
-        return reciveTime;
+    public Date getReceiveTime() {
+        return receiveTime;
     }
 
-    public void setReciveTime(Date reciveTime) {
-        this.reciveTime = reciveTime;
+    public void setReceiveTime(Date reciveTime) {
+        this.receiveTime = reciveTime;
     }
 
     @Override
