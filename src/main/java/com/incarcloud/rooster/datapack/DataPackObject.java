@@ -46,10 +46,16 @@ public class DataPackObject extends DataPack {
      * VIN
      */
     protected String vin;
+
     /**
      * 检测时间
      */
     protected Date detectionTime;
+
+    /**
+     * 数据接收时间
+     */
+    protected Date receiveTime;
 
     public DataPackObject(DataPack dataPack) {
         super(dataPack._group, dataPack._name, dataPack._version);
@@ -149,6 +155,15 @@ public class DataPackObject extends DataPack {
         this.detectionTime = detectionTime;
     }
 
+    public Date getReceiveTime() {
+        return receiveTime;
+    }
+
+    public void setReceiveTime(Date receiveTime) {
+        this.receiveTime = receiveTime;
+    }
+
+
     @Override
     public String toString() {
         return "DataPackObject{" +
@@ -162,6 +177,7 @@ public class DataPackObject extends DataPack {
                 ", vid='" + vid + '\'' +
                 ", vin='" + vin + '\'' +
                 ", detectionTime=" + detectionTime +
+                ", receiveTime=" + receiveTime +
                 '}';
     }
 }
