@@ -120,6 +120,25 @@ public class DataPackUtil {
     }
 
     /**
+     * 读取7个字节无符号整数
+     *
+     * @param buffer
+     * @return
+     */
+    public static long readUInt7(ByteBuf buffer){
+
+        byte [] bytes = readBytes(buffer,7);
+
+        return 0 | (bytes[0] & 0xFFL) << 48
+                | (bytes[1] & 0xFFL) << 40
+                | (bytes[2] & 0xFFL) << 32
+                | (bytes[3] & 0xFFL) << 24
+                | (bytes[4] & 0xFFL) << 16
+                | (bytes[5] & 0xFF) << 8
+                | (bytes[6] & 0xFF) ;
+    }
+
+    /**
      * 读取以"0x00"结束的字符串
      *
      * @param buffer ByteBuf
