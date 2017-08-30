@@ -33,5 +33,13 @@ public enum CommandType {
     /**
      * 查询终端参数
      */
-    QUERY_PARAMS
+    QUERY_ALL_PARAMS,
+    /**
+     * 查询指定终端参数
+     */
+    QUERY_CUSTOM_PARAMS,
+    /**
+     * 终端控制
+     */
+    TERMINAL_CONTROL
 }
