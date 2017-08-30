@@ -3,10 +3,13 @@ package com.incarcloud.rooster.util;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufUtil;
 import io.netty.buffer.Unpooled;
+import io.netty.util.ReferenceCountUtil;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+
+import javax.xml.bind.DatatypeConverter;
 
 /**
  * DataPackUtilTest
@@ -70,5 +73,25 @@ public class DataPackUtilTest {
         Assert.assertEquals(-2, DataPackUtil.readInt1(buffer));
         Assert.assertEquals("ABC", DataPackUtil.readString(buffer));
         Assert.assertEquals("abc", DataPackUtil.readString(buffer));
+    }
+
+    @Test
+    public void testReadBCD() {
+        ByteBuf buffer = Unpooled.wrappedBuffer(new byte[]{0x02, 0x00, 0x00, 0x00, 0x00, 0x15});
+        Assert.assertEquals("020000000015", DataPackUtil.readBCD(buffer, 6));
+        ReferenceCountUtil.release(buffer);
+    }
+
+    @Test
+    public void testGetIntegerBytes() {
+        int integer = 0x87654321 & 0xFFFFFFFF;
+        Assert.assertEquals("21", DatatypeConverter.printHexBinary(DataPackUtil.getIntegerBytes(integer, 1)));
+        Assert.assertEquals("4321", DatatypeConverter.printHexBinary(DataPackUtil.getIntegerBytes(integer, 2)));
+        Assert.assertEquals("87654321", DatatypeConverter.printHexBinary(DataPackUtil.getIntegerBytes(integer, 4)));
+    }
+
+    @Test
+    public void testGetBCDBytes() {
+        Assert.assertEquals("012345678901", DatatypeConverter.printHexBinary(DataPackUtil.getBCDBytes("012345678901")));
     }
 }
