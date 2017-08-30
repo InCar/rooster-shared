@@ -24,6 +24,13 @@ public class DataPackCondition {
         this.conditionList = conditionList;
     }
 
+    @Override
+    public String toString() {
+        return "DataPackCondition{" +
+                "conditionList=" + conditionList +
+                '}';
+    }
+
     /**
      * 车身各部件的状态
      */
