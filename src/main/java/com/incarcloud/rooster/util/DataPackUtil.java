@@ -3,6 +3,7 @@ package com.incarcloud.rooster.util;
 import io.netty.buffer.ByteBuf;
 
 import java.io.UnsupportedEncodingException;
+import java.util.regex.Pattern;
 
 /**
  * DataPack工具类(readXXX方法均是调用ByteBuf的readXXX方法，会移动ByteBuf的读指针)
@@ -11,6 +12,16 @@ import java.io.UnsupportedEncodingException;
  * @since 2.0
  */
 public class DataPackUtil {
+
+    /**
+     * 默认字符集GBK常量字符串
+     */
+    public static final String DEFAULT_CHARSET_GBK = "GBK";
+
+    /**
+     * 默认字符集UTF-8常量字符串
+     */
+    public static final String DEFAULT_CHARSET_UTF8 = "UTF-8";
 
     /**
      * 读取1byte有符号整型
@@ -160,10 +171,78 @@ public class DataPackUtil {
         } else if(0 < length) {
             byte[] bytes = readBytes(buffer, length);
             if(0x00 == buffer.readByte()) {
-                return new String(bytes, "GBK");
+                return new String(bytes, DEFAULT_CHARSET_GBK);
             }
         }
         return null;
+    }
+
+    /**
+     * 读取指定长度BCD码字符串数据<br>
+     *     使用复合BCD码，一个字节表示2个十进制数字
+     *
+     * @param buffer ByteBuf
+     * @param length 指定长度
+     * @return
+     */
+    public static String readBCD(ByteBuf buffer, int length) {
+        if(null == buffer) {
+            throw new IllegalArgumentException("buffer is null");
+        }
+        if(0 < length) {
+            int number;
+            StringBuffer stringBuffer = new StringBuffer();
+            for (int i = 0; i < length; i++) {
+                number = readUInt1(buffer);
+                stringBuffer.append(number >> 4 & 0x0F);
+                stringBuffer.append(number & 0x0F);
+            }
+            return stringBuffer.toString();
+        }
+        return null;
+    }
+
+    /**
+     * 获得整型数值的字节码信息<br>
+     *     高位在前，低位在后
+     *
+     * @param integer 数值
+     * @param length 字节数组长度，取值1,2,4
+     * @return
+     */
+    public static byte[] getIntegerBytes(int integer, int length) {
+        if(1 > length || 4 < length) {
+            throw new IllegalArgumentException("the length is bigger than 0 or less than 4");
+        }
+        byte[] returnBytes = new byte[length];
+        for (int i = 0; i < length; i++) {
+            returnBytes[length - i - 1] = (byte) ((integer >> (8 * i)) & 0xFF);
+        }
+        return returnBytes;
+    }
+
+    /**
+     * 获得复合BCD码字符串的字节码信息<br>
+     *     复合BCD码字符：一个字节表示2个数字
+     *
+     * @param number 复合BCD码字符串，字符串长度必须是偶数
+     * @return
+     */
+    public static byte[] getBCDBytes(String number) {
+        if(null == number) {
+            throw new IllegalArgumentException("number is null");
+        }
+        if(0 != number.length()%2) {
+            throw new IllegalArgumentException("the length of number is odd");
+        }
+        if(Pattern.matches("\\\\b*", number)) {
+            throw new IllegalArgumentException("number is not bcd string");
+        }
+        byte[] returnBytes = new byte[number.length()/2];
+        for (int i = 0; i < number.length(); i = i + 2) {
+            returnBytes[i / 2] = Integer.valueOf(number.charAt(i)  + "" + number.charAt(i + 1), 16).byteValue();
+        }
+        return returnBytes;
     }
 
     protected DataPackUtil(){}
