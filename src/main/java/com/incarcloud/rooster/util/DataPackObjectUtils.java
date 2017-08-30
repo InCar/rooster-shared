@@ -186,6 +186,22 @@ public class DataPackObjectUtils {
     public static final String BEHAVIOR = "BEHAVIOR";
 
     /**
+     * 标识牌识别
+     */
+    public static  final String  SIGN_INFO = "SIGN_INFO";
+
+
+    /**
+     * 标识牌类型
+     */
+    public static  final String  SIGN_TYPE = "SIGN_TYPE";
+
+    /**
+     * 整车数据
+     */
+    public static final  String  CONDITION = "CONDITION";
+
+    /**
      * 获取数据类型
      *
      * @param dataPackObject
@@ -234,6 +250,19 @@ public class DataPackObjectUtils {
         if(dataPackObject instanceof DataPackBehavior) {
             // 行为位置数据
             return BEHAVIOR;
+        }
+
+
+        if(dataPackObject instanceof  DataPackCondition){
+            return CONDITION;
+        }
+
+        if(dataPackObject instanceof DataPackSignInfo){
+            return  SIGN_INFO;
+        }
+
+        if(dataPackObject instanceof DataPackSignType){
+            return  SIGN_TYPE;
         }
 
         return null;
@@ -292,6 +321,19 @@ public class DataPackObjectUtils {
             // 行为位置数据
             return DataPackBehavior.class;
         }
+
+        if(CONDITION.equals(dataType)){
+            return DataPackCondition.class;
+        }
+
+        if(SIGN_INFO.equals(dataType) ){
+            return  DataPackSignInfo.class;
+        }
+
+        if(SIGN_TYPE.equals(dataType)){
+            return  DataPackSignType.class;
+        }
+
 
         return null;
     }
