@@ -61,5 +61,13 @@ public enum CommandType {
     /**
      * 人工确认报警消息
      */
-    CONFIRM_ALARM
+    CONFIRM_ALARM,
+    /**
+     * 文本信息下发
+     */
+    SEND_TEXT,
+    /**
+     * 事件设置
+     */
+    SET_EVENT
 }
