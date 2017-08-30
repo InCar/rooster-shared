@@ -25,5 +25,13 @@ public enum CommandType {
     /**
      * 补发数据包
      */
-    REISSUE_PACK
+    REISSUE_PACK,
+    /**
+     * 设置终端参数
+     */
+    SET_PARAMS,
+    /**
+     * 查询终端参数
+     */
+    QUERY_PARAMS
 }
