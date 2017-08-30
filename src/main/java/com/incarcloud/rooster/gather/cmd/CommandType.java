@@ -41,5 +41,25 @@ public enum CommandType {
     /**
      * 终端控制
      */
-    TERMINAL_CONTROL
+    TERMINAL_CONTROL,
+    /**
+     * 查询终端属性
+     */
+    QUERY_ALL_ATTRS,
+    /**
+     * 下发终端升级包
+     */
+    UPGRADE,
+    /**
+     * 位置信息查询
+     */
+    QUERY_POSITION,
+    /**
+     * 临时位置跟踪控制
+     */
+    TRACKING_POSITION,
+    /**
+     * 人工确认报警消息
+     */
+    CONFIRM_ALARM
 }
