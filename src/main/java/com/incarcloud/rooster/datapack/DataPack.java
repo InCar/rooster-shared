@@ -30,7 +30,7 @@ public class DataPack {
     /**
      * 数据包接收时间
      */
-    private Date receiveTime;
+    protected Date receiveTime;
 
     public DataPack(String group, String name, String version){
         if(group == null || name == null || version == null)
