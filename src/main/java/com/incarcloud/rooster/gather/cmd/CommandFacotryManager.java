@@ -1,8 +1,7 @@
-package com.incarcloud.rooster.datapack;/**
+package com.incarcloud.rooster.gather.cmd;/**
  * Created by fanbeibei on 2017/7/21.
  */
 
-import com.incarcloud.rooster.gather.cmd.CommandFactory;
 import com.incarcloud.rooster.util.PackageUtils;
 
 import java.io.IOException;
