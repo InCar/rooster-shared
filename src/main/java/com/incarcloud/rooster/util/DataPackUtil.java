@@ -177,6 +177,38 @@ public class DataPackUtil {
         return null;
     }
 
+
+
+    /**
+     * 读取以"0x00"结束的字符串
+     *
+     * @param buffer ByteBuf
+     * @param charset 字符编码
+     *                
+     * @return gbk string
+     */
+    public static String readString(ByteBuf buffer,String charset) throws UnsupportedEncodingException {
+        if(null == buffer) {
+            throw new IllegalArgumentException("buffer is null");
+        }
+        int offset = buffer.readerIndex();
+        while (0x00 != buffer.getByte(offset) && offset < buffer.writerIndex()) {
+            offset++;
+        }
+        int length = offset - buffer.readerIndex();
+        if(0 == length) {
+            if(0x00 == buffer.readByte()) {
+                return "";
+            }
+        } else if(0 < length) {
+            byte[] bytes = readBytes(buffer, length);
+            if(0x00 == buffer.readByte()) {
+                return new String(bytes, charset);
+            }
+        }
+        return null;
+    }
+
     /**
      * 读取指定长度BCD码字符串数据<br>
      *     使用复合BCD码，一个字节表示2个十进制数字
