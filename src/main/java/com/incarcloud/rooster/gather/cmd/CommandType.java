@@ -69,5 +69,13 @@ public enum CommandType {
     /**
      * 事件设置
      */
-    SET_EVENT
+    SET_EVENT,
+    /**
+     * 提问下发
+     */
+    QUIZ,
+    /**
+     * 信息点播菜单设置
+     */
+    SET_INFO_DEMAND_MENU
 }
