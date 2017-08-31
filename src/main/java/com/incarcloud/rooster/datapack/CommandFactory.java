@@ -18,6 +18,7 @@ public interface CommandFactory {
      * @param type 命令类型
      * @param args 参数列表
      * @return
+     * @throws Exception
      */
-    ByteBuf createCommand(CommandType type, Object... args);
+    ByteBuf createCommand(CommandType type, Object... args) throws Exception;
 }
