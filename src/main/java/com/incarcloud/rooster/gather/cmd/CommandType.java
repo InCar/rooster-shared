@@ -77,5 +77,17 @@ public enum CommandType {
     /**
      * 信息点播菜单设置
      */
-    SET_INFO_DEMAND_MENU
+    SET_INFO_DEMAND_MENU,
+    /**
+     * 信息服务
+     */
+    INFO_SERVICE,
+    /**
+     * 电话回拨
+     */
+    PHONE_DIAL,
+    /**
+     * 设置电话本
+     */
+    SET_PHONE_LIST
 }
