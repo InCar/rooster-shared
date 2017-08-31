@@ -89,5 +89,41 @@ public enum CommandType {
     /**
      * 设置电话本
      */
-    SET_PHONE_LIST
+    SET_PHONE_LIST,
+    /**
+     * 车辆控制
+     */
+    VEHICLE_CONTROL,
+    /**
+     * 设置圆形区域
+     */
+    SET_AREA_CIRCULAR,
+    /**
+     * 删除圆形区域
+     */
+    DELETE_AREA_CIRCULAR,
+    /**
+     * 设置矩形区域
+     */
+    SET_AREA_RECTANGLE,
+    /**
+     * 删除矩形区域
+     */
+    DELETE_AREA_RECTANGLE,
+    /**
+     * 设置多边形区域
+     */
+    SET_AREA_POLYGON,
+    /**
+     * 删除多边形区域
+     */
+    DELETE_AREA_POLYGON,
+    /**
+     * 设置路线
+     */
+    SET_LINE,
+    /**
+     * 删除路线
+     */
+    DELETE_LINE
 }
