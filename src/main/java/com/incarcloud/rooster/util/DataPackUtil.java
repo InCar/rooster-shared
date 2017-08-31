@@ -6,7 +6,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.regex.Pattern;
 
 /**
- * DataPack工具类
+ * DataPack工具类(readXXX方法均是调用ByteBuf的readXXX方法，会移动ByteBuf的读指针)
  *
  * @author Aaric, created on 2017-06-29T09:39.
  * @since 2.0
@@ -131,6 +131,25 @@ public class DataPackUtil {
     }
 
     /**
+     * 读取7个字节无符号整数
+     *
+     * @param buffer
+     * @return
+     */
+    public static long readUInt7(ByteBuf buffer){
+
+        byte [] bytes = readBytes(buffer,7);
+
+        return 0 | (bytes[0] & 0xFFL) << 48
+                | (bytes[1] & 0xFFL) << 40
+                | (bytes[2] & 0xFFL) << 32
+                | (bytes[3] & 0xFFL) << 24
+                | (bytes[4] & 0xFFL) << 16
+                | (bytes[5] & 0xFF) << 8
+                | (bytes[6] & 0xFF) ;
+    }
+
+    /**
      * 读取以"0x00"结束的字符串
      *
      * @param buffer ByteBuf
@@ -153,6 +172,38 @@ public class DataPackUtil {
             byte[] bytes = readBytes(buffer, length);
             if(0x00 == buffer.readByte()) {
                 return new String(bytes, DEFAULT_CHARSET_GBK);
+            }
+        }
+        return null;
+    }
+
+
+
+    /**
+     * 读取以"0x00"结束的字符串
+     *
+     * @param buffer ByteBuf
+     * @param charset 字符编码
+     *                
+     * @return gbk string
+     */
+    public static String readString(ByteBuf buffer,String charset) throws UnsupportedEncodingException {
+        if(null == buffer) {
+            throw new IllegalArgumentException("buffer is null");
+        }
+        int offset = buffer.readerIndex();
+        while (0x00 != buffer.getByte(offset) && offset < buffer.writerIndex()) {
+            offset++;
+        }
+        int length = offset - buffer.readerIndex();
+        if(0 == length) {
+            if(0x00 == buffer.readByte()) {
+                return "";
+            }
+        } else if(0 < length) {
+            byte[] bytes = readBytes(buffer, length);
+            if(0x00 == buffer.readByte()) {
+                return new String(bytes, charset);
             }
         }
         return null;
