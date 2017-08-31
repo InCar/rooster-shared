@@ -125,5 +125,33 @@ public enum CommandType {
     /**
      * 删除路线
      */
-    DELETE_LINE
+    DELETE_LINE,
+    /**
+     * 上报驾驶员身份信息请求
+     */
+    SEND_DRIVER_ID,
+    /**
+     * 摄像头立即拍摄命令
+     */
+    TAKE_PHOTO,
+    /**
+     * 存储多媒体数据检索
+     */
+    QUERY_MEDIA,
+    /**
+     * 存储多媒体数据上传命令
+     */
+    UPDATE_MEDIA,
+    /**
+     * 录音开始命令
+     */
+    SOUND_RECORDING,
+    /**
+     * 单条存储多媒体数据检索上传命令
+     */
+    UPDATE_SINGLE_MEDIA,
+    /**
+     * RSA 公钥
+     */
+    RSA
 }
