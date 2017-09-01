@@ -85,4 +85,32 @@ public class DataPackSignType extends  DataPackObject{
     public int getSupplementarySignTypeD4() {
         return supplementarySignTypeD4;
     }
+
+    @Override
+    public String toString() {
+        return "DataPackSignType{" +
+                "signTypeD1=" + signTypeD1 +
+                ", supplementarySignTypeD1=" + supplementarySignTypeD1 +
+                ", signTypeD2=" + signTypeD2 +
+                ", supplementarySignTypeD2=" + supplementarySignTypeD2 +
+                ", signTypeD3=" + signTypeD3 +
+                ", supplementarySignTypeD3=" + supplementarySignTypeD3 +
+                ", signTypeD4=" + signTypeD4 +
+                ", supplementarySignTypeD4=" + supplementarySignTypeD4 +
+                ", id='" + id + '\'' +
+                ", deviceName='" + deviceName + '\'' +
+                ", packId=" + packId +
+                ", protocolName='" + protocolName + '\'' +
+                ", protocolVersion='" + protocolVersion + '\'' +
+                ", deviceId='" + deviceId + '\'' +
+                ", tripId=" + tripId +
+                ", vid='" + vid + '\'' +
+                ", vin='" + vin + '\'' +
+                ", detectionTime=" + detectionTime +
+                ", _group='" + _group + '\'' +
+                ", _name='" + _name + '\'' +
+                ", _version='" + _version + '\'' +
+                ", receiveTime=" + receiveTime +
+                '}';
+    }
 }

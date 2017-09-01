@@ -207,6 +207,20 @@ public class DataPackOverview extends DataPackObject {
                 ", sharpTurnTimes=" + sharpTurnTimes +
                 ", speedingTime=" + speedingTime +
                 ", maxSpeed=" + maxSpeed +
+                ", id='" + id + '\'' +
+                ", deviceName='" + deviceName + '\'' +
+                ", packId=" + packId +
+                ", protocolName='" + protocolName + '\'' +
+                ", protocolVersion='" + protocolVersion + '\'' +
+                ", deviceId='" + deviceId + '\'' +
+                ", tripId=" + tripId +
+                ", vid='" + vid + '\'' +
+                ", vin='" + vin + '\'' +
+                ", detectionTime=" + detectionTime +
+                ", _group='" + _group + '\'' +
+                ", _name='" + _name + '\'' +
+                ", _version='" + _version + '\'' +
+                ", receiveTime=" + receiveTime +
                 '}';
     }
 

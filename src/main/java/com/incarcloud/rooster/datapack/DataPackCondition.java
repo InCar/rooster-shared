@@ -32,6 +32,20 @@ public class DataPackCondition extends DataPackObject{
     public String toString() {
         return "DataPackCondition{" +
                 "conditionList=" + conditionList +
+                ", id='" + id + '\'' +
+                ", deviceName='" + deviceName + '\'' +
+                ", packId=" + packId +
+                ", protocolName='" + protocolName + '\'' +
+                ", protocolVersion='" + protocolVersion + '\'' +
+                ", deviceId='" + deviceId + '\'' +
+                ", tripId=" + tripId +
+                ", vid='" + vid + '\'' +
+                ", vin='" + vin + '\'' +
+                ", detectionTime=" + detectionTime +
+                ", _group='" + _group + '\'' +
+                ", _name='" + _name + '\'' +
+                ", _version='" + _version + '\'' +
+                ", receiveTime=" + receiveTime +
                 '}';
     }
 

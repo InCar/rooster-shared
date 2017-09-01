@@ -70,4 +70,30 @@ public class DataPackSignInfo extends  DataPackObject{
     public int getFilterType() {
         return filterType;
     }
+
+    @Override
+    public String toString() {
+        return "DataPackSignInfo{" +
+                "signType=" + signType +
+                ", supplementarySignType=" + supplementarySignType +
+                ", signPosX=" + signPosX +
+                ", signPosY=" + signPosY +
+                ", signPosZ=" + signPosZ +
+                ", filterType=" + filterType +
+                ", id='" + id + '\'' +
+                ", deviceName='" + deviceName + '\'' +
+                ", packId=" + packId +
+                ", protocolName='" + protocolName + '\'' +
+                ", protocolVersion='" + protocolVersion + '\'' +
+                ", deviceId='" + deviceId + '\'' +
+                ", tripId=" + tripId +
+                ", vid='" + vid + '\'' +
+                ", vin='" + vin + '\'' +
+                ", detectionTime=" + detectionTime +
+                ", _group='" + _group + '\'' +
+                ", _name='" + _name + '\'' +
+                ", _version='" + _version + '\'' +
+                ", receiveTime=" + receiveTime +
+                '}';
+    }
 }

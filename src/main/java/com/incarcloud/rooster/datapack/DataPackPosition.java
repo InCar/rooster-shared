@@ -198,6 +198,10 @@ public class DataPackPosition extends DataPackObject {
                 ", vid='" + vid + '\'' +
                 ", vin='" + vin + '\'' +
                 ", detectionTime=" + detectionTime +
+                ", _group='" + _group + '\'' +
+                ", _name='" + _name + '\'' +
+                ", _version='" + _version + '\'' +
+                ", receiveTime=" + receiveTime +
                 '}';
     }
 }
