@@ -19,7 +19,7 @@ public class DataPackObject extends DataPack {
      */
     protected String deviceName;
     /**
-     * 数据包ID
+     * 数据包ID(JTT808:消息流水号)
      */
     protected Integer packId;
     /**
@@ -48,21 +48,38 @@ public class DataPackObject extends DataPack {
     protected String vin;
 
     /**
+     * 车牌号
+     */
+    protected String license;
+
+    /**
+     * 消息包信息-总数
+     */
+    protected Integer subPackTotal;
+
+    /**
+     * 消息包信息-包序号
+     */
+    protected Integer subPackIndex;
+
+    /**
+     * 加密方式：例如RSA
+     */
+    protected String encryptName;
+
+    /**
      * 检测时间
      */
     protected Date detectionTime;
 
-    /**
-     * 数据接收时间
-     */
-//    protected Date receiveTime;
-
     public DataPackObject(DataPack dataPack) {
         super(dataPack._group, dataPack._name, dataPack._version);
+        this.receiveTime = dataPack.receiveTime;
     }
 
     public DataPackObject(DataPackObject object) {
         super(object._group, object._name, object._version);
+        this.receiveTime = object.receiveTime;
         this.id = object.id;
         this.deviceName = object.deviceName;
         this.packId = object.packId;
@@ -72,6 +89,10 @@ public class DataPackObject extends DataPack {
         this.tripId = object.tripId;
         this.vid = object.vid;
         this.vin = object.vin;
+        this.license = object.license;
+        this.subPackTotal = object.subPackTotal;
+        this.subPackIndex = object.subPackIndex;
+        this.encryptName = object.encryptName;
         this.detectionTime = object.detectionTime;
     }
 
@@ -147,6 +168,38 @@ public class DataPackObject extends DataPack {
         this.vin = vin;
     }
 
+    public String getLicense() {
+        return license;
+    }
+
+    public void setLicense(String license) {
+        this.license = license;
+    }
+
+    public Integer getSubPackTotal() {
+        return subPackTotal;
+    }
+
+    public void setSubPackTotal(Integer subPackTotal) {
+        this.subPackTotal = subPackTotal;
+    }
+
+    public Integer getSubPackIndex() {
+        return subPackIndex;
+    }
+
+    public void setSubPackIndex(Integer subPackIndex) {
+        this.subPackIndex = subPackIndex;
+    }
+
+    public String getEncryptName() {
+        return encryptName;
+    }
+
+    public void setEncryptName(String encryptName) {
+        this.encryptName = encryptName;
+    }
+
     public Date getDetectionTime() {
         return detectionTime;
     }
@@ -154,15 +207,6 @@ public class DataPackObject extends DataPack {
     public void setDetectionTime(Date detectionTime) {
         this.detectionTime = detectionTime;
     }
-
-//    public Date getReceiveTime() {
-//        return receiveTime;
-//    }
-//
-//    public void setReceiveTime(Date receiveTime) {
-//        this.receiveTime = receiveTime;
-//    }
-
 
     @Override
     public String toString() {
@@ -176,8 +220,11 @@ public class DataPackObject extends DataPack {
                 ", tripId=" + tripId +
                 ", vid='" + vid + '\'' +
                 ", vin='" + vin + '\'' +
+                ", license='" + license + '\'' +
+                ", subPackTotal=" + subPackTotal +
+                ", subPackIndex=" + subPackIndex +
+                ", encryptName='" + encryptName + '\'' +
                 ", detectionTime=" + detectionTime +
-                ", receiveTime=" + receiveTime +
                 '}';
     }
 }
