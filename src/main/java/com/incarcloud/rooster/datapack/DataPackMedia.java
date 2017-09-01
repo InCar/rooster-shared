@@ -1,7 +1,5 @@
 package com.incarcloud.rooster.datapack;
 
-import java.util.Arrays;
-
 /**
  * 多媒体数据
  *
@@ -32,9 +30,10 @@ public class DataPackMedia extends DataPackObject {
      */
     private Integer channelId;
     /**
-     * 多媒体数据包，多个分包的mediaBytes组成媒体数据
+     * 多媒体分包数据，多个分包的data合并媒体文件<br>
+     * 数据存储为Base64加密后的字符串
      */
-    private byte[] data;
+    private String data;
     /**
      * 位置数据
      */
@@ -84,11 +83,11 @@ public class DataPackMedia extends DataPackObject {
         this.channelId = channelId;
     }
 
-    public byte[] getData() {
+    public String getData() {
         return data;
     }
 
-    public void setData(byte[] data) {
+    public void setData(String data) {
         this.data = data;
     }
 
@@ -108,7 +107,7 @@ public class DataPackMedia extends DataPackObject {
                 ", format=" + format +
                 ", eventCode=" + eventCode +
                 ", channelId=" + channelId +
-                ", data=" + Arrays.toString(data) +
+                ", data='" + data + '\'' +
                 ", position=" + position +
                 '}';
     }
