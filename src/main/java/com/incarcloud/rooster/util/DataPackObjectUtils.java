@@ -202,6 +202,35 @@ public class DataPackObjectUtils {
     public static final  String  CONDITION = "CONDITION";
 
     /**
+     * 心跳数据
+     */
+    public static final String HEARTBEAT = "HEARTBEAT";
+    /**
+     * 注册数据
+     */
+    public static final String REGISTER = "REGISTER";
+    /**
+     * 注销数据
+     */
+    public static final String REVOKE = "REVOKE";
+    /**
+     * 终端鉴权数据
+     */
+    public static final String AUTHENTICATION = "AUTHENTICATION";
+    /**
+     * 驾驶员数据
+     */
+    public static final String DRIVER = "DRIVER";
+    /**
+     * 多媒体数据
+     */
+    public static final String MEDIA = "MEDIA";
+    /**
+     * RSA数据
+     */
+    public static final String RSA = "RSA";
+
+    /**
      * 获取数据类型
      *
      * @param dataPackObject
@@ -263,6 +292,35 @@ public class DataPackObjectUtils {
 
         if(dataPackObject instanceof DataPackSignType){
             return  SIGN_TYPE;
+        }
+
+        if(dataPackObject instanceof DataPackHeartbeat){
+            // 心跳数据
+            return HEARTBEAT;
+        }
+        if(dataPackObject instanceof DataPackRegister){
+            // 注册数据
+            return REGISTER;
+        }
+        if(dataPackObject instanceof DataPackRevoke){
+            // 注销数据
+            return REVOKE;
+        }
+        if(dataPackObject instanceof DataPackAuthentication){
+            // 终端鉴权数据
+            return AUTHENTICATION;
+        }
+        if(dataPackObject instanceof DataPackDriver){
+            // 驾驶员数据
+            return DRIVER;
+        }
+        if(dataPackObject instanceof DataPackMedia){
+            // 多媒体数据
+            return MEDIA;
+        }
+        if(dataPackObject instanceof DataPackRsa){
+            // RSA数据
+            return RSA;
         }
 
         return null;
@@ -334,6 +392,34 @@ public class DataPackObjectUtils {
             return  DataPackSignType.class;
         }
 
+        if(HEARTBEAT.equals(dataType)) {
+            // 心跳数据
+            return DataPackHeartbeat.class;
+        }
+        if(REGISTER.equals(dataType)) {
+            // 注册数据
+            return DataPackRegister.class;
+        }
+        if(REVOKE.equals(dataType)) {
+            // 注销数据
+            return DataPackRevoke.class;
+        }
+        if(AUTHENTICATION.equals(dataType)) {
+            // 终端鉴权数据
+            return DataPackAuthentication.class;
+        }
+        if(DRIVER.equals(dataType)) {
+            // 驾驶员数据
+            return DataPackDriver.class;
+        }
+        if(MEDIA.equals(dataType)) {
+            // 多媒体数据
+            return DataPackMedia.class;
+        }
+        if(RSA.equals(dataType)) {
+            // RSA数据
+            return DataPackRsa.class;
+        }
 
         return null;
     }
