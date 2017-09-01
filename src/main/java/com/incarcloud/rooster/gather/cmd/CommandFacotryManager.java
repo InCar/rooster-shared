@@ -1,4 +1,4 @@
-package com.incarcloud.rooster.datapack;/**
+package com.incarcloud.rooster.gather.cmd;/**
  * Created by fanbeibei on 2017/7/21.
  */
 
@@ -16,12 +16,12 @@ public class CommandFacotryManager {
     /**
      * protocol -> CommandFacotry
      */
-    private static ConcurrentHashMap<String, Class<? extends CommandFacotry>> commandFacotryClazzMap = new ConcurrentHashMap<>();
+    private static ConcurrentHashMap<String, Class<? extends CommandFactory>> commandFacotryClazzMap = new ConcurrentHashMap<>();
 
     /**
      * 缓存工厂对象
      */
-    private static ConcurrentHashMap<String, CommandFacotry> commandFacotryCache = new ConcurrentHashMap<>();
+    private static ConcurrentHashMap<String, CommandFactory> commandFacotryCache = new ConcurrentHashMap<>();
 
     /**
      * 注册命令工厂类
@@ -29,7 +29,7 @@ public class CommandFacotryManager {
      * @param protocol
      * @param clazz
      */
-    public static void registerCommandFacotry(String protocol, Class<? extends CommandFacotry> clazz) {
+    public static void registerCommandFacotry(String protocol, Class<? extends CommandFactory> clazz) {
         commandFacotryClazzMap.put(protocol, clazz);
     }
 
@@ -42,15 +42,15 @@ public class CommandFacotryManager {
      * @throws InstantiationException
      * @throws IllegalAccessException
      */
-    public static CommandFacotry getCommandFacotry(String protocol) throws InstantiationException, IllegalAccessException {
-        CommandFacotry facotry = commandFacotryCache.get(protocol);
+    public static CommandFactory getCommandFacotry(String protocol) throws InstantiationException, IllegalAccessException {
+        CommandFactory facotry = commandFacotryCache.get(protocol);
 
         if (null != facotry) {
             return facotry;
         }
 
 
-        Class<? extends  CommandFacotry> clazz = commandFacotryClazzMap.get(protocol);
+        Class<? extends CommandFactory> clazz = commandFacotryClazzMap.get(protocol);
         if(null == clazz){
             return null;
         }

@@ -31,10 +31,31 @@ public class DataPackPosition extends DataPackObject {
      */
     public static final int POSITION_MODE_GPS = 2;
 
+
+    /**
+     *有效星数
+     */
+    private Integer validStar;
+
+    /**
+     * 定位方式：3-北斗卫星定位
+     */
+    public static final int POSITION_MODE_BEIDOU = 3;
+
+    /**
+     * 定位方式：4-GLONASS卫星定位
+     */
+    public static final int POSITION_MODE_GLONASS = 4;
+
+    /**
+     * 定位方式：5-Galileo卫星定位
+     */
+    public static final int POSITION_MODE_GALILEO = 5;
+
     /**
      * 车速（km/h）
      */
-    private Integer speed;
+    private Float speed;
     /**
      * 当前行程行驶距离(m)
      */
@@ -48,12 +69,16 @@ public class DataPackPosition extends DataPackObject {
      */
     private Double latitude;
     /**
+     * 海拔高度，单位为米（m）<br>
+     *     JTT808新增
+     */
+    private Integer altitude;
+    /**
      * 方向： 0~360, 正北为 0 度，顺时针旋转, 用字符串（无结束符）表示；如不支持，用“-“替代
      */
     private Float direction;
-
     /**
-     * 定位方式：0-无效数据，1-基站定位，2-GPS 定位
+     * 定位方式：0-无效数据，1-基站定位，2-GPS 定位，3-北斗定位，4-GLONASS卫星定位，5-Galileo卫星定位
      */
     private Integer positioMode;
     /**
@@ -69,11 +94,11 @@ public class DataPackPosition extends DataPackObject {
         super(object);
     }
 
-    public Integer getSpeed() {
+    public Float getSpeed() {
         return speed;
     }
 
-    public void setSpeed(Integer speed) {
+    public void setSpeed(Float speed) {
         this.speed = speed;
     }
 
@@ -99,6 +124,14 @@ public class DataPackPosition extends DataPackObject {
 
     public void setLatitude(Double latitude) {
         this.latitude = latitude;
+    }
+
+    public Integer getAltitude() {
+        return altitude;
+    }
+
+    public void setAltitude(Integer altitude) {
+        this.altitude = altitude;
     }
 
     public Float getDirection() {
@@ -133,17 +166,42 @@ public class DataPackPosition extends DataPackObject {
         this.positionTime = positionTime;
     }
 
+
+    public Integer getValidStar() {
+        return validStar;
+    }
+
+    public void setValidStar(Integer validStar) {
+        this.validStar = validStar;
+    }
+
     @Override
     public String toString() {
         return "DataPackPosition{" +
-                "speed=" + speed +
+                "validStar=" + validStar +
+                ", speed=" + speed +
                 ", travelDistance=" + travelDistance +
                 ", longitude=" + longitude +
                 ", latitude=" + latitude +
+                ", altitude=" + altitude +
                 ", direction=" + direction +
                 ", positioMode=" + positioMode +
                 ", positioModeDesc='" + positioModeDesc + '\'' +
                 ", positionTime=" + positionTime +
+                ", id='" + id + '\'' +
+                ", deviceName='" + deviceName + '\'' +
+                ", packId=" + packId +
+                ", protocolName='" + protocolName + '\'' +
+                ", protocolVersion='" + protocolVersion + '\'' +
+                ", deviceId='" + deviceId + '\'' +
+                ", tripId=" + tripId +
+                ", vid='" + vid + '\'' +
+                ", vin='" + vin + '\'' +
+                ", detectionTime=" + detectionTime +
+                ", _group='" + _group + '\'' +
+                ", _name='" + _name + '\'' +
+                ", _version='" + _version + '\'' +
+                ", receiveTime=" + receiveTime +
                 '}';
     }
 }
