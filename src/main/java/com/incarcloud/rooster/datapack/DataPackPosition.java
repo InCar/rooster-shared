@@ -7,8 +7,8 @@ import java.util.Date;
  * <b>无效定位数据不记录，采用WGS-84坐标系</b>
  * <i>异常与无效定义：</i><br>
  * <ul>
- *     <li>0xFE-异常，0xFF-无效</li>
- *     <li>0xFF,0xFE-异常，0xFF,0xFF-无效</li>
+ * <li>0xFE-异常，0xFF-无效</li>
+ * <li>0xFF,0xFE-异常，0xFF,0xFF-无效</li>
  * </ul>
  *
  * @author Aaric, created on 2017-06-27T14:05.
@@ -31,9 +31,13 @@ public class DataPackPosition extends DataPackObject {
      */
     public static final int POSITION_MODE_GPS = 2;
 
-
     /**
-     *有效星数
+     * 定义状态 D2S协议添加
+     * 0:有效定位； 1:无效定位（当数据通信正常，而不能获取定位信息时，发送最后一次有效定位信息，并将定位状态置为无效。
+     */
+    private Integer isValidate;
+    /**
+     * 有效星数
      */
     private Integer validStar;
 
@@ -70,9 +74,9 @@ public class DataPackPosition extends DataPackObject {
     private Double latitude;
     /**
      * 海拔高度，单位为米（m）<br>
-     *     JTT808新增
+     * JTT808新增
      */
-    private Integer altitude;
+    private Double altitude;
     /**
      * 方向： 0~360, 正北为 0 度，顺时针旋转, 用字符串（无结束符）表示；如不支持，用“-“替代
      */
@@ -92,6 +96,14 @@ public class DataPackPosition extends DataPackObject {
 
     public DataPackPosition(DataPackObject object) {
         super(object);
+    }
+
+    public Integer getIsValidate() {
+        return isValidate;
+    }
+
+    public void setIsValidate(Integer isValidate) {
+        this.isValidate = isValidate;
     }
 
     public Float getSpeed() {
@@ -126,11 +138,11 @@ public class DataPackPosition extends DataPackObject {
         this.latitude = latitude;
     }
 
-    public Integer getAltitude() {
+    public Double getAltitude() {
         return altitude;
     }
 
-    public void setAltitude(Integer altitude) {
+    public void setAltitude(Double altitude) {
         this.altitude = altitude;
     }
 
@@ -178,7 +190,8 @@ public class DataPackPosition extends DataPackObject {
     @Override
     public String toString() {
         return "DataPackPosition{" +
-                "validStar=" + validStar +
+                "isValidate=" + isValidate +
+                ", validStar=" + validStar +
                 ", speed=" + speed +
                 ", travelDistance=" + travelDistance +
                 ", longitude=" + longitude +
@@ -197,6 +210,10 @@ public class DataPackPosition extends DataPackObject {
                 ", tripId=" + tripId +
                 ", vid='" + vid + '\'' +
                 ", vin='" + vin + '\'' +
+                ", license='" + license + '\'' +
+                ", subPackTotal=" + subPackTotal +
+                ", subPackIndex=" + subPackIndex +
+                ", encryptName='" + encryptName + '\'' +
                 ", detectionTime=" + detectionTime +
                 ", _group='" + _group + '\'' +
                 ", _name='" + _name + '\'' +

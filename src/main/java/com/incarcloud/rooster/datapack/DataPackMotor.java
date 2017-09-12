@@ -36,7 +36,7 @@ public class DataPackMotor extends DataPackObject {
     /**
      * 驱动电机转矩（最小计量单位0.1N·m）
      */
-    private Integer torque;
+    private Float torque;
     /**
      * 驱动电机温度（最小计量单位1℃）
      */
@@ -44,11 +44,11 @@ public class DataPackMotor extends DataPackObject {
     /**
      * 电机控制器输入电压（最小计量单元0.1V）
      */
-    private Integer controllerInputVoltage;
+    private Float controllerInputVoltage;
     /**
      * 电机控制器直流母线电流（最小计量单位0.1A）
      */
-    private Integer controllerDirectCurrent;
+    private Float controllerDirectCurrent;
 
     public DataPackMotor(DataPackObject object) {
         super(object);
@@ -94,11 +94,11 @@ public class DataPackMotor extends DataPackObject {
         this.speed = speed;
     }
 
-    public Integer getTorque() {
+    public Float getTorque() {
         return torque;
     }
 
-    public void setTorque(Integer torque) {
+    public void setTorque(Float torque) {
         this.torque = torque;
     }
 
@@ -110,19 +110,19 @@ public class DataPackMotor extends DataPackObject {
         this.motorTemperature = motorTemperature;
     }
 
-    public Integer getControllerInputVoltage() {
+    public Float getControllerInputVoltage() {
         return controllerInputVoltage;
     }
 
-    public void setControllerInputVoltage(Integer controllerInputVoltage) {
+    public void setControllerInputVoltage(Float controllerInputVoltage) {
         this.controllerInputVoltage = controllerInputVoltage;
     }
 
-    public Integer getControllerDirectCurrent() {
+    public Float getControllerDirectCurrent() {
         return controllerDirectCurrent;
     }
 
-    public void setControllerDirectCurrent(Integer controllerDirectCurrent) {
+    public void setControllerDirectCurrent(Float controllerDirectCurrent) {
         this.controllerDirectCurrent = controllerDirectCurrent;
     }
 
