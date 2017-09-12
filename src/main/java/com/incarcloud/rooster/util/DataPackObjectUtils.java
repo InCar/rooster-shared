@@ -197,6 +197,11 @@ public class DataPackObjectUtils {
     public static  final String  SIGN_TYPE = "SIGN_TYPE";
 
     /**
+     * 车信号
+     */
+    public  static final  String CAR_SIGNALS = "CAR_SIGNALS";
+
+    /**
      * 整车数据
      */
     public static final  String  CONDITION = "CONDITION";
@@ -292,6 +297,10 @@ public class DataPackObjectUtils {
 
         if(dataPackObject instanceof DataPackSignType){
             return  SIGN_TYPE;
+        }
+
+        if(dataPackObject instanceof  DataPackCarSignals){
+            return  CAR_SIGNALS;
         }
 
         if(dataPackObject instanceof DataPackHeartbeat){
@@ -390,6 +399,10 @@ public class DataPackObjectUtils {
 
         if(SIGN_TYPE.equals(dataType)){
             return  DataPackSignType.class;
+        }
+
+        if(CAR_SIGNALS.equals(dataType)){
+            return DataPackCarSignals.class;
         }
 
         if(HEARTBEAT.equals(dataType)) {
