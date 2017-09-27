@@ -15,6 +15,14 @@ public class DataPackStatus extends DataPackObject {
      */
     private List<Status> statusList = new ArrayList<>();
 
+    public List<Status> getStatusList() {
+        return statusList;
+    }
+
+    public void setStatusList(List<Status> statusList) {
+        this.statusList = statusList;
+    }
+
     public DataPackStatus(DataPack dataPack) {
         super(dataPack);
     }
