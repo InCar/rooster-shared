@@ -93,9 +93,33 @@ public class DataPackPosition extends DataPackObject {
      * 定位时间
      */
     private Date positionTime;
+    /**
+     * 主电源状态
+     */
+    private String mainPowerStatus;
+    /**
+     * 通电状态
+     */
+    private String energizedStatus;
 
     public DataPackPosition(DataPackObject object) {
         super(object);
+    }
+
+    public String getMainPowerStatus() {
+        return mainPowerStatus;
+    }
+
+    public void setMainPowerStatus(String mainPowerStatus) {
+        this.mainPowerStatus = mainPowerStatus;
+    }
+
+    public String getEnergizedStatus() {
+        return energizedStatus;
+    }
+
+    public void setEnergizedStatus(String energizedStatus) {
+        this.energizedStatus = energizedStatus;
     }
 
     public Integer getIsValidate() {
