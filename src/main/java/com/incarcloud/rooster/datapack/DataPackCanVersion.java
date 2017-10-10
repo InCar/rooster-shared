@@ -7,9 +7,7 @@ package com.incarcloud.rooster.datapack;
  * @date 2017-09-11 14:19
  */
 public class DataPackCanVersion extends DataPackObject {
-    public DataPackCanVersion(DataPack dataPack) {
-        super(dataPack);
-    }
+
 
     //模块名称
     private String canModelName;
@@ -40,6 +38,10 @@ public class DataPackCanVersion extends DataPackObject {
 
     public void setCanId(Integer canId) {
         this.canId = canId;
+    }
+
+    public DataPackCanVersion(DataPack dataPack) {
+        super(dataPack);
     }
 
     @Override
