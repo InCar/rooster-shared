@@ -23,7 +23,7 @@ public class DataPackStatus extends DataPackObject {
         this.statusList = statusList;
     }
 
-    public DataPackStatus(DataPack dataPack) {
+    public DataPackStatus(DataPackObject dataPack) {
         super(dataPack);
     }
 
