@@ -17,7 +17,7 @@ public class DataPackCanAdas extends DataPackObject {
     private Integer invalidInfo; // 无效信息
 
 
-    public DataPackCanAdas(DataPack dataPack) {
+    public DataPackCanAdas(DataPackObject dataPack) {
         super(dataPack);
     }
 

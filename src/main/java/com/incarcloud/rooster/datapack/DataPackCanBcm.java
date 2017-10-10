@@ -52,7 +52,7 @@ public class DataPackCanBcm extends DataPackObject {
     private Integer isKeyVoltageLow; // 遥控钥匙电池电量是否低（PEPS指令）
     private Integer isBrakeStatus; // 非法入侵状态
 
-    public DataPackCanBcm(DataPack dataPack) {
+    public DataPackCanBcm(DataPackObject dataPack) {
         super(dataPack);
     }
 

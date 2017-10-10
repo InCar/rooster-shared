@@ -39,7 +39,7 @@ public class DataPackCanVms extends DataPackObject {
     private Integer gprsLockCommand; // GPRS总正接触器锁止指令
     private Integer vmsSoc; // 电池SOC
 
-    public DataPackCanVms(DataPack dataPack) {
+    public DataPackCanVms(DataPackObject dataPack) {
         super(dataPack);
     }
 

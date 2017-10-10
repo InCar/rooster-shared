@@ -57,7 +57,7 @@ public class DataPackBattery extends DataPackObject {
      */
     private Integer batteryPacketNumber;
 
-    public DataPackBattery(DataPack dataPack) {
+    public DataPackBattery(DataPackObject dataPack) {
         super(dataPack);
     }
 

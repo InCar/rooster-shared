@@ -19,7 +19,7 @@ public class DataPackCanHvac extends DataPackObject {
     private Integer errEvalsensor; // 蒸发器传感器故障
     private Integer errTempSensor; // 回风温度传感器故障
 
-    public DataPackCanHvac(DataPack dataPack) {
+    public DataPackCanHvac(DataPackObject dataPack) {
         super(dataPack);
     }
 

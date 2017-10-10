@@ -26,7 +26,7 @@ public class DataPackCanEps extends DataPackObject{
     private Integer isTempLowerLmt;//温度传感器超下限
     private Integer isTempUpperLmt;//温度传感器超上限
 
-    public DataPackCanEps(DataPack dataPack) {
+    public DataPackCanEps(DataPackObject dataPack) {
         super(dataPack);
     }
 
