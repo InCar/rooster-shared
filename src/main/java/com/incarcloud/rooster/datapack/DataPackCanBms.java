@@ -126,14 +126,9 @@ public class DataPackCanBms extends DataPackObject {
     private Float[] voltage; // 单体电池电压数组
     private Integer[] temprature; // 探头温度数组
 
-    public static void main(String[] args) {
-        DataPackCanBms bms = new DataPackCanBms(new DataPackObject(new DataPack("1", "2", "3")));
-
-
-
-
+    public DataPackCanBms(DataPack dataPack) {
+        super(dataPack);
     }
-
     @Override
     public String toString() {
         return "DataPackCanBms{" +
@@ -286,9 +281,7 @@ public class DataPackCanBms extends DataPackObject {
         this.temprature = temprature;
     }
 
-    public DataPackCanBms(DataPack dataPack) {
-        super(dataPack);
-    }
+
 
     public float getVoltageHighest() {
         return voltageHighest;

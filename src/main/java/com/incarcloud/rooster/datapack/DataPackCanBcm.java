@@ -7,9 +7,7 @@ package com.incarcloud.rooster.datapack;
  * @date 2017-09-14 11:19
  */
 public class DataPackCanBcm extends DataPackObject {
-    public DataPackCanBcm(DataPack dataPack) {
-        super(dataPack);
-    }
+
     private Integer runStatus; // BCM运行状态
     private Integer errLevel; // BCM故障等级
     private Integer brakeStatus; // 脚刹状态
@@ -53,6 +51,10 @@ public class DataPackCanBcm extends DataPackObject {
     private Integer isHornOn; // 喇叭是否开
     private Integer isKeyVoltageLow; // 遥控钥匙电池电量是否低（PEPS指令）
     private Integer isBrakeStatus; // 非法入侵状态
+
+    public DataPackCanBcm(DataPack dataPack) {
+        super(dataPack);
+    }
 
     @Override
     public String toString() {

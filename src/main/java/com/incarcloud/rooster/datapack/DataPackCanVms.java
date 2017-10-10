@@ -7,9 +7,7 @@ package com.incarcloud.rooster.datapack;
  * @date 2017-09-14 13:46
  */
 public class DataPackCanVms extends DataPackObject {
-    public DataPackCanVms(DataPack dataPack) {
-        super(dataPack);
-    }
+
     private Integer motorStatus; // 电机当前状态
     private Integer isMotorTempHigh; // 电机温度是否过高
     private Integer isMotorControlerTempHigh; // 电机控制器温度是否过高
@@ -40,6 +38,10 @@ public class DataPackCanVms extends DataPackObject {
     private Integer carType; // 车型类别
     private Integer gprsLockCommand; // GPRS总正接触器锁止指令
     private Integer vmsSoc; // 电池SOC
+
+    public DataPackCanVms(DataPack dataPack) {
+        super(dataPack);
+    }
 
     @Override
     public String toString() {

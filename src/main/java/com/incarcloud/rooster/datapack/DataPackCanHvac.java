@@ -7,10 +7,6 @@ package com.incarcloud.rooster.datapack;
  * @date 2017-09-14 10:12
  */
 public class DataPackCanHvac extends DataPackObject {
-    public DataPackCanHvac(DataPack dataPack) {
-        super(dataPack);
-    }
-
     private Integer runStatus; // 空调启动状态
     private Integer hvacLevel; // 空调风机档位
     private Integer power; // 空调功率
@@ -23,6 +19,9 @@ public class DataPackCanHvac extends DataPackObject {
     private Integer errEvalsensor; // 蒸发器传感器故障
     private Integer errTempSensor; // 回风温度传感器故障
 
+    public DataPackCanHvac(DataPack dataPack) {
+        super(dataPack);
+    }
 
     @Override
     public String toString() {
@@ -145,5 +144,13 @@ public class DataPackCanHvac extends DataPackObject {
 
     public void setErrTempSensor(Integer errTempSensor) {
         this.errTempSensor = errTempSensor;
+    }
+
+    public void setExTemp(Float exTemp) {
+        this.exTemp = exTemp;
+    }
+
+    public void setInnerTemp(Float innerTemp) {
+        this.innerTemp = innerTemp;
     }
 }
