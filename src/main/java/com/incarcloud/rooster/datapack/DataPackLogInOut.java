@@ -2,11 +2,11 @@ package com.incarcloud.rooster.datapack;
 
 /**
  * @author ChenZhao
- * @ClassName: DataPackLog
+ * @ClassName: DataPackLogInOut
  * @Description: 车辆登入
  * @date 2017-09-06 14:11
  */
-public class DataPackLog extends DataPackObject {
+public class DataPackLogInOut extends DataPackObject {
     //登录类型 0 车辆登入 1 车辆登出
     private int loginType;
     //可充电储能子系统数
@@ -18,7 +18,7 @@ public class DataPackLog extends DataPackObject {
     //登入登出流水号
     private int serialNo;
 
-    public DataPackLog(DataPack dataPack) {
+    public DataPackLogInOut(DataPack dataPack) {
         super(dataPack);
     }
 
