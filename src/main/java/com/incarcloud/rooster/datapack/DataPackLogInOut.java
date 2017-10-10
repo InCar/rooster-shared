@@ -18,7 +18,7 @@ public class DataPackLogInOut extends DataPackObject {
     //登入登出流水号
     private int serialNo;
 
-    public DataPackLogInOut(DataPack dataPack) {
+    public DataPackLogInOut(DataPackObject dataPack) {
         super(dataPack);
     }
 

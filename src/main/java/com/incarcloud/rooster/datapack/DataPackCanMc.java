@@ -57,7 +57,7 @@ public class DataPackCanMc extends DataPackObject{
     private String supplierCode;
 
 
-    public DataPackCanMc(DataPack dataPack) {
+    public DataPackCanMc(DataPackObject dataPack) {
         super(dataPack);
     }
 

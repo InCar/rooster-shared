@@ -35,7 +35,7 @@ public class DataPackCanPeps extends DataPackObject {
     private Integer eSpeed; // 电机转速
 
 
-    public DataPackCanPeps(DataPack dataPack) {
+    public DataPackCanPeps(DataPackObject dataPack) {
         super(dataPack);
     }
 

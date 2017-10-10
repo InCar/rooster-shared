@@ -126,7 +126,7 @@ public class DataPackCanBms extends DataPackObject {
     private Float[] voltage; // 单体电池电压数组
     private Integer[] temprature; // 探头温度数组
 
-    public DataPackCanBms(DataPack dataPack) {
+    public DataPackCanBms(DataPackObject dataPack) {
         super(dataPack);
     }
     @Override

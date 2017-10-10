@@ -40,7 +40,7 @@ public class DataPackCanVersion extends DataPackObject {
         this.canId = canId;
     }
 
-    public DataPackCanVersion(DataPack dataPack) {
+    public DataPackCanVersion(DataPackObject dataPack) {
         super(dataPack);
     }
 

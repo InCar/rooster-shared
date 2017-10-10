@@ -38,7 +38,7 @@ public class DataPackCanObc extends DataPackObject{
     private Integer v12OutvolError;
     private Integer v12UpdervolError;
 
-    public DataPackCanObc(DataPack dataPack) {
+    public DataPackCanObc(DataPackObject dataPack) {
         super(dataPack);
     }
 
