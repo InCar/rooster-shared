@@ -282,6 +282,10 @@ public class DataPackObjectUtils {
      * can模块状态数据
      */
     public static final String STATUS = "STATUS";
+    /**
+     * 车辆登录数据
+     */
+    public static final String LOGINOUT = "LOGINOUT";
 
     /**
      * 获取数据类型
@@ -418,6 +422,10 @@ public class DataPackObjectUtils {
         if (dataPackObject instanceof DataPackStatus) {
             // CAN STATUS数据
             return STATUS;
+        }
+        if (dataPackObject instanceof DataPackLogInOut) {
+            //车辆登录数据
+            return LOGINOUT;
         }
 
         return null;
@@ -560,6 +568,10 @@ public class DataPackObjectUtils {
         if (STATUS.equals(dataType)) {
             // STATUS数据
             return DataPackStatus.class;
+        }
+        if (LOGINOUT.equals(dataType)) {
+            // LOGINOUT数据
+            return DataPackLogInOut.class;
         }
 
         return null;
