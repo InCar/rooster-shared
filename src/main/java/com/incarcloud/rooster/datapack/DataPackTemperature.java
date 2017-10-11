@@ -31,7 +31,7 @@ public class DataPackTemperature extends DataPackObject {
      */
     private List<Integer> temperatureList;
 
-    public DataPackTemperature(DataPack dataPack) {
+    public DataPackTemperature(DataPackObject dataPack) {
         super(dataPack);
     }
 
