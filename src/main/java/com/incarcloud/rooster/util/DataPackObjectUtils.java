@@ -14,7 +14,7 @@ import java.util.Date;
  * @date 2017/7/5 14:50
  */
 public class DataPackObjectUtils {
-    private static final  String DATE_PATTERN = "yyyyMMddHHmmss";
+    private static final String DATE_PATTERN = "yyyyMMddHHmmss";
     private static final DateFormat DATE_FORMAT = new SimpleDateFormat(DATE_PATTERN);
     private static Gson gson = GsonFactory.newInstance(DATE_PATTERN, "_group", "_name", "_version", "_buf").createGson();
 
@@ -129,8 +129,6 @@ public class DataPackObjectUtils {
     /*--------------------------------------------------------------------------------------------------------*/
 
 
-
-
     /**
      * 获取表名
      *
@@ -188,23 +186,23 @@ public class DataPackObjectUtils {
     /**
      * 标识牌识别
      */
-    public static  final String  SIGN_INFO = "SIGN_INFO";
+    public static final String SIGN_INFO = "SIGN_INFO";
 
 
     /**
      * 标识牌类型
      */
-    public static  final String  SIGN_TYPE = "SIGN_TYPE";
+    public static final String SIGN_TYPE = "SIGN_TYPE";
 
     /**
      * 车信号
      */
-    public  static final  String CAR_SIGNALS = "CAR_SIGNALS";
+    public static final String CAR_SIGNALS = "CAR_SIGNALS";
 
     /**
      * 整车数据
      */
-    public static final  String  CONDITION = "CONDITION";
+    public static final String CONDITION = "CONDITION";
 
     /**
      * 心跳数据
@@ -234,6 +232,56 @@ public class DataPackObjectUtils {
      * RSA数据
      */
     public static final String RSA = "RSA";
+
+    /**
+     * ADAS数据
+     */
+    public static final String ADAS = "ADAS";
+
+    /**
+     * BCM数据
+     */
+    public static final String BCM = "BCM";
+
+    /**
+     * BMS数据
+     */
+    public static final String BMS = "BMS";
+
+    /**
+     * EPS数据
+     */
+    public static final String EPS = "EPS";
+
+    /**
+     * HVAC数据
+     */
+    public static final String HVAC = "HVAC";
+
+    /**
+     * MC数据
+     */
+    public static final String MC = "MC";
+
+    /**
+     * OBC数据
+     */
+    public static final String OBC = "OBC";
+
+    /**
+     * PEPS数据
+     */
+    public static final String PEPS = "PEPS";
+
+    /**
+     * VMS数据
+     */
+    public static final String VMS = "VMS";
+
+    /**
+     * can模块状态数据
+     */
+    public static final String STATUS = "STATUS";
 
     /**
      * 获取数据类型
@@ -281,55 +329,95 @@ public class DataPackObjectUtils {
             return RESULT;
         }
 
-        if(dataPackObject instanceof DataPackBehavior) {
+        if (dataPackObject instanceof DataPackBehavior) {
             // 行为位置数据
             return BEHAVIOR;
         }
 
 
-        if(dataPackObject instanceof  DataPackCondition){
+        if (dataPackObject instanceof DataPackCondition) {
             return CONDITION;
         }
 
-        if(dataPackObject instanceof DataPackSignInfo){
-            return  SIGN_INFO;
+        if (dataPackObject instanceof DataPackSignInfo) {
+            return SIGN_INFO;
         }
 
-        if(dataPackObject instanceof DataPackSignType){
-            return  SIGN_TYPE;
+        if (dataPackObject instanceof DataPackSignType) {
+            return SIGN_TYPE;
         }
 
-        if(dataPackObject instanceof  DataPackCarSignals){
-            return  CAR_SIGNALS;
+        if (dataPackObject instanceof DataPackCarSignals) {
+            return CAR_SIGNALS;
         }
 
-        if(dataPackObject instanceof DataPackHeartbeat){
+        if (dataPackObject instanceof DataPackHeartbeat) {
             // 心跳数据
             return HEARTBEAT;
         }
-        if(dataPackObject instanceof DataPackRegister){
+        if (dataPackObject instanceof DataPackRegister) {
             // 注册数据
             return REGISTER;
         }
-        if(dataPackObject instanceof DataPackRevoke){
+        if (dataPackObject instanceof DataPackRevoke) {
             // 注销数据
             return REVOKE;
         }
-        if(dataPackObject instanceof DataPackAuthentication){
+        if (dataPackObject instanceof DataPackAuthentication) {
             // 终端鉴权数据
             return AUTHENTICATION;
         }
-        if(dataPackObject instanceof DataPackDriver){
+        if (dataPackObject instanceof DataPackDriver) {
             // 驾驶员数据
             return DRIVER;
         }
-        if(dataPackObject instanceof DataPackMedia){
+        if (dataPackObject instanceof DataPackMedia) {
             // 多媒体数据
             return MEDIA;
         }
-        if(dataPackObject instanceof DataPackRsa){
+        if (dataPackObject instanceof DataPackRsa) {
             // RSA数据
             return RSA;
+        }
+        if (dataPackObject instanceof DataPackCanAdas) {
+            // ADAS数据
+            return ADAS;
+        }
+        if (dataPackObject instanceof DataPackCanBcm) {
+            // BCM数据
+            return BCM;
+        }
+        if (dataPackObject instanceof DataPackCanBms) {
+            // BMS数据
+            return BMS;
+        }
+        if (dataPackObject instanceof DataPackCanEps) {
+            // EPS数据
+            return EPS;
+        }
+        if (dataPackObject instanceof DataPackCanHvac) {
+            // HVAC数据
+            return HVAC;
+        }
+        if (dataPackObject instanceof DataPackCanMc) {
+            // MC数据
+            return MC;
+        }
+        if (dataPackObject instanceof DataPackCanObc) {
+            // OBC数据
+            return OBC;
+        }
+        if (dataPackObject instanceof DataPackCanPeps) {
+            // PEPS数据
+            return PEPS;
+        }
+        if (dataPackObject instanceof DataPackCanVms) {
+            // VMS数据
+            return VMS;
+        }
+        if (dataPackObject instanceof DataPackStatus) {
+            // CAN STATUS数据
+            return STATUS;
         }
 
         return null;
@@ -389,49 +477,89 @@ public class DataPackObjectUtils {
             return DataPackBehavior.class;
         }
 
-        if(CONDITION.equals(dataType)){
+        if (CONDITION.equals(dataType)) {
             return DataPackCondition.class;
         }
 
-        if(SIGN_INFO.equals(dataType) ){
-            return  DataPackSignInfo.class;
+        if (SIGN_INFO.equals(dataType)) {
+            return DataPackSignInfo.class;
         }
 
-        if(SIGN_TYPE.equals(dataType)){
-            return  DataPackSignType.class;
+        if (SIGN_TYPE.equals(dataType)) {
+            return DataPackSignType.class;
         }
 
-        if(CAR_SIGNALS.equals(dataType)){
+        if (CAR_SIGNALS.equals(dataType)) {
             return DataPackCarSignals.class;
         }
 
-        if(HEARTBEAT.equals(dataType)) {
+        if (HEARTBEAT.equals(dataType)) {
             // 心跳数据
             return DataPackHeartbeat.class;
         }
-        if(REGISTER.equals(dataType)) {
+        if (REGISTER.equals(dataType)) {
             // 注册数据
             return DataPackRegister.class;
         }
-        if(REVOKE.equals(dataType)) {
+        if (REVOKE.equals(dataType)) {
             // 注销数据
             return DataPackRevoke.class;
         }
-        if(AUTHENTICATION.equals(dataType)) {
+        if (AUTHENTICATION.equals(dataType)) {
             // 终端鉴权数据
             return DataPackAuthentication.class;
         }
-        if(DRIVER.equals(dataType)) {
+        if (DRIVER.equals(dataType)) {
             // 驾驶员数据
             return DataPackDriver.class;
         }
-        if(MEDIA.equals(dataType)) {
+        if (MEDIA.equals(dataType)) {
             // 多媒体数据
             return DataPackMedia.class;
         }
-        if(RSA.equals(dataType)) {
+        if (RSA.equals(dataType)) {
             // RSA数据
             return DataPackRsa.class;
+        }
+        if (ADAS.equals(dataType)) {
+            // ADAS数据
+            return DataPackCanAdas.class;
+        }
+        if (BCM.equals(dataType)) {
+            // BCM数据
+            return DataPackCanBcm.class;
+        }
+        if (BMS.equals(dataType)) {
+            // BMS数据
+            return DataPackCanBms.class;
+        }
+        if (EPS.equals(dataType)) {
+            // EPS数据
+            return DataPackCanEps.class;
+        }
+        if (HVAC.equals(dataType)) {
+            // HVAC数据
+            return DataPackCanHvac.class;
+        }
+        if (MC.equals(dataType)) {
+            // MC数据
+            return DataPackCanMc.class;
+        }
+        if (OBC.equals(dataType)) {
+            // OBC数据
+            return DataPackCanObc.class;
+        }
+        if (PEPS.equals(dataType)) {
+            // PEPS数据
+            return DataPackCanPeps.class;
+        }
+        if (VMS.equals(dataType)) {
+            // VMS
+            return DataPackCanVms.class;
+        }
+        if (STATUS.equals(dataType)) {
+            // STATUS数据
+            return DataPackStatus.class;
         }
 
         return null;
