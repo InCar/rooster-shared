@@ -20,7 +20,7 @@ public enum CommandType {
     /**
      * 远程后备箱解锁 D2S
      */
-    BACK_DOOR_LOCK,
+    BACK_DOOR_UNLOCK,
     /**
      * 远程寻车（车辆鸣笛、闪灯） D2S
      */
