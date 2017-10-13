@@ -58,11 +58,11 @@ public enum CommandType {
      */
     COND_COLD_CLOSE,
     /**
-     * 车辆动力通断控制
+     * 车辆动力通断控制-动力导通
      */
     VEHICLE_POWER_ON,
     /**
-     * 车辆动力通断控制
+     * 车辆动力通断控制-动力断开
      */
     VEHICLE_POWER_OFF,
     /**
