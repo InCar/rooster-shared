@@ -13,6 +13,10 @@ public class ReqContent {
      */
     private CommandType cmdType;
     /**
+     * 命令参数
+     */
+    private Object[] args;
+    /**
      * 车辆vin码
      */
     private String vin;
@@ -20,9 +24,19 @@ public class ReqContent {
     public ReqContent() {
     }
 
-    public ReqContent(CommandType cmdType, String vin) {
+    public ReqContent(CommandType cmdType, String vin,Object[] args) {
         this.cmdType = cmdType;
         this.vin = vin;
+        this.args = args;
+    }
+
+
+    public Object[] getArgs() {
+        return args;
+    }
+
+    public void setArgs(Object[] args) {
+        this.args = args;
     }
 
     public void setCmdType(CommandType cmdType) {
