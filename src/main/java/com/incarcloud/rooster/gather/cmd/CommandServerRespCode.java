@@ -24,6 +24,11 @@ public enum CommandServerRespCode {
      * 请求参数错误
      */
     REQ_PARAM_ERROR,
+
+    /**
+     * 请求超时
+     */
+    REQ_TIMEOUT,
     /**
      * 其他错误
      */
