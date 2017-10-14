@@ -16,14 +16,14 @@ import java.io.IOException;
 public abstract class AbstractCommandClient implements CommandClient {
 
     @Override
-    public RespContent sendCommand(String vin, CommandType command)  throws IOException {
+    public RespContent sendCommand(String vin, CommandType command, Object[] args) throws IOException {
         String url = getServerUrl(vin);
 
-        if(null ==url){
-            return new RespContent(CommandServerRespCode.DEV_OFFLINE,"device not connect");
+        if (null == url) {
+            return new RespContent(CommandServerRespCode.DEV_OFFLINE, "device not connect");
         }
 
-        return sendCommand(url, vin, command);
+        return sendCommand(url, vin, command, args);
     }
 
     /**
@@ -38,9 +38,10 @@ public abstract class AbstractCommandClient implements CommandClient {
      * @param url     服务端地址
      * @param vin     车辆vin码
      * @param command 指令类型
+     * @param args    指令参数
      * @throws Exception
      */
-    public abstract RespContent sendCommand(String url, String vin, CommandType command)  throws IOException;
+    public abstract RespContent sendCommand(String url, String vin, CommandType command, Object[] args) throws IOException;
 
 
 }
