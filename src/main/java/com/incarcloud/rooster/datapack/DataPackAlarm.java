@@ -81,6 +81,11 @@ public class DataPackAlarm extends DataPackObject {
          * 报警等级描述
          */
         private String alarmLevelDesc;
+        
+        /**
+         * 用户自定义信息
+         */
+        private String customInfo;
 
         public Alarm() {
         }
@@ -154,5 +159,23 @@ public class DataPackAlarm extends DataPackObject {
                     ", alarmLevelDesc='" + alarmLevelDesc + '\'' +
                     '}';
         }
+
+		/**  
+		 * 获取customInfo  
+		 * @return customInfo customInfo  
+		 */
+		public String getCustomInfo() {
+			return customInfo;
+		}
+		
+
+		/**  
+		 * 设置customInfo  
+		 * @param customInfo customInfo  
+		 */
+		public void setCustomInfo(String customInfo) {
+			this.customInfo = customInfo;
+		}
+		
     }
 }
