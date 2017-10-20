@@ -1,8 +1,10 @@
 package com.incarcloud.rooster.bigtable;
 
 import com.incarcloud.rooster.datapack.DataPackObject;
+import com.incarcloud.rooster.datapack.DataPackPosition;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author Fan Beibei
@@ -37,6 +39,16 @@ public interface IBigTable {
      * @return 读取完毕后的最后一个RowKey字符串
      */
     String queryData(String startTimeRowKey, IDataReadable dataReadable);
+
+    /**
+     * 查询位置数据列表
+     *
+     * @param vinOrCode 据vin码或设备号
+     * @param startTime 查询开始时间
+     * @param endTime　查询结束时间
+     * @return 位置数据集合
+     */
+    List<DataPackPosition> queryLocationData(String vinOrCode, Date startTime, Date endTime);
 
     /**
      * 关闭，回收资源
