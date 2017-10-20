@@ -290,147 +290,147 @@ public class DataPackObjectUtils {
     /**
      * 获取数据类型
      *
-     * @param dataPackObject
+     * @param clazz
      * @return
      */
-    public static String getDataType(DataPackObject dataPackObject) {
-        if (dataPackObject instanceof DataPackOverview) {
+    public static <T extends DataPackObject> String getDataType(Class<T> clazz) {
+        if (clazz.equals(DataPackOverview.class)) {
             // 整车数据
             return OVERVIEW;
         }
-        if (dataPackObject instanceof DataPackBattery) {
+        if (clazz.equals(DataPackBattery.class)) {
             // 电池数据
             return BATTERY;
         }
-        if (dataPackObject instanceof DataPackMotor) {
+        if (clazz.equals(DataPackMotor.class)) {
             // 驱动电机数据
             return MOTOR;
 
         }
-        if (dataPackObject instanceof DataPackEngine) {
+        if (clazz.equals(DataPackEngine.class)) {
             // 发动机数据
             return ENGINE;
         }
-        if (dataPackObject instanceof DataPackPosition) {
+        if (clazz.equals(DataPackPosition.class)) {
             // 位置数据
             return POSITION;
         }
-        if (dataPackObject instanceof DataPackPeak) {
+        if (clazz.equals(DataPackPeak.class)) {
             // 极值数据
             return PEAK;
         }
-        if (dataPackObject instanceof DataPackAlarm) {
+        if (clazz.equals(DataPackAlarm.class)) {
             // 报警数据
             return ALARM;
         }
-        if (dataPackObject instanceof DataPackDevice) {
+        if (clazz.equals(DataPackDevice.class)) {
             // 上报设备信息
             return DEVICE;
         }
-
-        if (dataPackObject instanceof DataPackResult) {
+        if (clazz.equals(DataPackResult.class)) {
             // 设备回复下行命令执行结果
             return RESULT;
         }
-
-        if (dataPackObject instanceof DataPackBehavior) {
+        if (clazz.equals(DataPackBehavior.class)) {
             // 行为位置数据
             return BEHAVIOR;
         }
-
-
-        if (dataPackObject instanceof DataPackCondition) {
+        if (clazz.equals(DataPackCondition.class)) {
             return CONDITION;
         }
-
-        if (dataPackObject instanceof DataPackSignInfo) {
+        if (clazz.equals(DataPackSignInfo.class)) {
             return SIGN_INFO;
         }
-
-        if (dataPackObject instanceof DataPackSignType) {
+        if (clazz.equals(DataPackSignType.class)) {
             return SIGN_TYPE;
         }
-
-        if (dataPackObject instanceof DataPackCarSignals) {
+        if (clazz.equals(DataPackCarSignals.class)) {
             return CAR_SIGNALS;
         }
-
-        if (dataPackObject instanceof DataPackHeartbeat) {
+        if (clazz.equals(DataPackHeartbeat.class)) {
             // 心跳数据
             return HEARTBEAT;
         }
-        if (dataPackObject instanceof DataPackRegister) {
+        if (clazz.equals(DataPackRegister.class)) {
             // 注册数据
             return REGISTER;
         }
-        if (dataPackObject instanceof DataPackRevoke) {
+        if (clazz.equals(DataPackRevoke.class)) {
             // 注销数据
             return REVOKE;
         }
-        if (dataPackObject instanceof DataPackAuthentication) {
+        if (clazz.equals(DataPackAuthentication.class)) {
             // 终端鉴权数据
             return AUTHENTICATION;
         }
-        if (dataPackObject instanceof DataPackDriver) {
+        if (clazz.equals(DataPackDriver.class)) {
             // 驾驶员数据
             return DRIVER;
         }
-        if (dataPackObject instanceof DataPackMedia) {
+        if (clazz.equals(DataPackMedia.class)) {
             // 多媒体数据
             return MEDIA;
         }
-        if (dataPackObject instanceof DataPackRsa) {
+        if (clazz.equals(DataPackRsa.class)) {
             // RSA数据
             return RSA;
         }
-        if (dataPackObject instanceof DataPackCanAdas) {
+        if (clazz.equals(DataPackCanAdas.class)) {
             // ADAS数据
             return ADAS;
         }
-        if (dataPackObject instanceof DataPackCanBcm) {
+        if (clazz.equals(DataPackCanBcm.class)) {
             // BCM数据
             return BCM;
         }
-        if (dataPackObject instanceof DataPackCanBms) {
+        if (clazz.equals(DataPackCanBms.class)) {
             // BMS数据
             return BMS;
         }
-        if (dataPackObject instanceof DataPackCanEps) {
+        if (clazz.equals(DataPackCanEps.class)) {
             // EPS数据
             return EPS;
         }
-        if (dataPackObject instanceof DataPackCanHvac) {
+        if (clazz.equals(DataPackCanHvac.class)) {
             // HVAC数据
             return HVAC;
         }
-        if (dataPackObject instanceof DataPackCanMc) {
+        if (clazz.equals(DataPackCanMc.class)) {
             // MC数据
             return MC;
         }
-        if (dataPackObject instanceof DataPackCanObc) {
+        if (clazz.equals(DataPackCanObc.class)) {
             // OBC数据
             return OBC;
         }
-        if (dataPackObject instanceof DataPackCanPeps) {
+        if (clazz.equals(DataPackCanPeps.class)) {
             // PEPS数据
             return PEPS;
         }
-        if (dataPackObject instanceof DataPackCanVms) {
+        if (clazz.equals(DataPackCanVms.class)) {
             // VMS数据
             return VMS;
         }
-        if (dataPackObject instanceof DataPackStatus) {
+        if (clazz.equals(DataPackStatus.class)) {
             // CAN STATUS数据
             return STATUS;
         }
-        if (dataPackObject instanceof DataPackLogInOut) {
+        if (clazz.equals(DataPackLogInOut.class)) {
             //车辆登录数据
             return LOGINOUT;
         }
-
         return null;
     }
 
+    /**
+     * 获取数据类型
+     *
+     * @param dataPackObject
+     * @return
+     */
+    public static String getDataType(DataPackObject dataPackObject) {
+        return getDataType(dataPackObject.getClass());
+    }
 
     /**
      * 根据数据类型判断是哪种DataPackObject
