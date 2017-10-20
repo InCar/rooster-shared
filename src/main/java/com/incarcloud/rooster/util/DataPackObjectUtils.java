@@ -294,130 +294,132 @@ public class DataPackObjectUtils {
      * @return
      */
     public static <T extends DataPackObject> String getDataType(Class<T> clazz) {
-        if (clazz.equals(DataPackOverview.class)) {
-            // 整车数据
-            return OVERVIEW;
-        }
-        if (clazz.equals(DataPackBattery.class)) {
-            // 电池数据
-            return BATTERY;
-        }
-        if (clazz.equals(DataPackMotor.class)) {
-            // 驱动电机数据
-            return MOTOR;
+        if(null != clazz) {
+            if (clazz.equals(DataPackOverview.class)) {
+                // 整车数据
+                return OVERVIEW;
+            }
+            if (clazz.equals(DataPackBattery.class)) {
+                // 电池数据
+                return BATTERY;
+            }
+            if (clazz.equals(DataPackMotor.class)) {
+                // 驱动电机数据
+                return MOTOR;
 
-        }
-        if (clazz.equals(DataPackEngine.class)) {
-            // 发动机数据
-            return ENGINE;
-        }
-        if (clazz.equals(DataPackPosition.class)) {
-            // 位置数据
-            return POSITION;
-        }
-        if (clazz.equals(DataPackPeak.class)) {
-            // 极值数据
-            return PEAK;
-        }
-        if (clazz.equals(DataPackAlarm.class)) {
-            // 报警数据
-            return ALARM;
-        }
-        if (clazz.equals(DataPackDevice.class)) {
-            // 上报设备信息
-            return DEVICE;
-        }
-        if (clazz.equals(DataPackResult.class)) {
-            // 设备回复下行命令执行结果
-            return RESULT;
-        }
-        if (clazz.equals(DataPackBehavior.class)) {
-            // 行为位置数据
-            return BEHAVIOR;
-        }
-        if (clazz.equals(DataPackCondition.class)) {
-            return CONDITION;
-        }
-        if (clazz.equals(DataPackSignInfo.class)) {
-            return SIGN_INFO;
-        }
-        if (clazz.equals(DataPackSignType.class)) {
-            return SIGN_TYPE;
-        }
-        if (clazz.equals(DataPackCarSignals.class)) {
-            return CAR_SIGNALS;
-        }
-        if (clazz.equals(DataPackHeartbeat.class)) {
-            // 心跳数据
-            return HEARTBEAT;
-        }
-        if (clazz.equals(DataPackRegister.class)) {
-            // 注册数据
-            return REGISTER;
-        }
-        if (clazz.equals(DataPackRevoke.class)) {
-            // 注销数据
-            return REVOKE;
-        }
-        if (clazz.equals(DataPackAuthentication.class)) {
-            // 终端鉴权数据
-            return AUTHENTICATION;
-        }
-        if (clazz.equals(DataPackDriver.class)) {
-            // 驾驶员数据
-            return DRIVER;
-        }
-        if (clazz.equals(DataPackMedia.class)) {
-            // 多媒体数据
-            return MEDIA;
-        }
-        if (clazz.equals(DataPackRsa.class)) {
-            // RSA数据
-            return RSA;
-        }
-        if (clazz.equals(DataPackCanAdas.class)) {
-            // ADAS数据
-            return ADAS;
-        }
-        if (clazz.equals(DataPackCanBcm.class)) {
-            // BCM数据
-            return BCM;
-        }
-        if (clazz.equals(DataPackCanBms.class)) {
-            // BMS数据
-            return BMS;
-        }
-        if (clazz.equals(DataPackCanEps.class)) {
-            // EPS数据
-            return EPS;
-        }
-        if (clazz.equals(DataPackCanHvac.class)) {
-            // HVAC数据
-            return HVAC;
-        }
-        if (clazz.equals(DataPackCanMc.class)) {
-            // MC数据
-            return MC;
-        }
-        if (clazz.equals(DataPackCanObc.class)) {
-            // OBC数据
-            return OBC;
-        }
-        if (clazz.equals(DataPackCanPeps.class)) {
-            // PEPS数据
-            return PEPS;
-        }
-        if (clazz.equals(DataPackCanVms.class)) {
-            // VMS数据
-            return VMS;
-        }
-        if (clazz.equals(DataPackStatus.class)) {
-            // CAN STATUS数据
-            return STATUS;
-        }
-        if (clazz.equals(DataPackLogInOut.class)) {
-            //车辆登录数据
-            return LOGINOUT;
+            }
+            if (clazz.equals(DataPackEngine.class)) {
+                // 发动机数据
+                return ENGINE;
+            }
+            if (clazz.equals(DataPackPosition.class)) {
+                // 位置数据
+                return POSITION;
+            }
+            if (clazz.equals(DataPackPeak.class)) {
+                // 极值数据
+                return PEAK;
+            }
+            if (clazz.equals(DataPackAlarm.class)) {
+                // 报警数据
+                return ALARM;
+            }
+            if (clazz.equals(DataPackDevice.class)) {
+                // 上报设备信息
+                return DEVICE;
+            }
+            if (clazz.equals(DataPackResult.class)) {
+                // 设备回复下行命令执行结果
+                return RESULT;
+            }
+            if (clazz.equals(DataPackBehavior.class)) {
+                // 行为位置数据
+                return BEHAVIOR;
+            }
+            if (clazz.equals(DataPackCondition.class)) {
+                return CONDITION;
+            }
+            if (clazz.equals(DataPackSignInfo.class)) {
+                return SIGN_INFO;
+            }
+            if (clazz.equals(DataPackSignType.class)) {
+                return SIGN_TYPE;
+            }
+            if (clazz.equals(DataPackCarSignals.class)) {
+                return CAR_SIGNALS;
+            }
+            if (clazz.equals(DataPackHeartbeat.class)) {
+                // 心跳数据
+                return HEARTBEAT;
+            }
+            if (clazz.equals(DataPackRegister.class)) {
+                // 注册数据
+                return REGISTER;
+            }
+            if (clazz.equals(DataPackRevoke.class)) {
+                // 注销数据
+                return REVOKE;
+            }
+            if (clazz.equals(DataPackAuthentication.class)) {
+                // 终端鉴权数据
+                return AUTHENTICATION;
+            }
+            if (clazz.equals(DataPackDriver.class)) {
+                // 驾驶员数据
+                return DRIVER;
+            }
+            if (clazz.equals(DataPackMedia.class)) {
+                // 多媒体数据
+                return MEDIA;
+            }
+            if (clazz.equals(DataPackRsa.class)) {
+                // RSA数据
+                return RSA;
+            }
+            if (clazz.equals(DataPackCanAdas.class)) {
+                // ADAS数据
+                return ADAS;
+            }
+            if (clazz.equals(DataPackCanBcm.class)) {
+                // BCM数据
+                return BCM;
+            }
+            if (clazz.equals(DataPackCanBms.class)) {
+                // BMS数据
+                return BMS;
+            }
+            if (clazz.equals(DataPackCanEps.class)) {
+                // EPS数据
+                return EPS;
+            }
+            if (clazz.equals(DataPackCanHvac.class)) {
+                // HVAC数据
+                return HVAC;
+            }
+            if (clazz.equals(DataPackCanMc.class)) {
+                // MC数据
+                return MC;
+            }
+            if (clazz.equals(DataPackCanObc.class)) {
+                // OBC数据
+                return OBC;
+            }
+            if (clazz.equals(DataPackCanPeps.class)) {
+                // PEPS数据
+                return PEPS;
+            }
+            if (clazz.equals(DataPackCanVms.class)) {
+                // VMS数据
+                return VMS;
+            }
+            if (clazz.equals(DataPackStatus.class)) {
+                // CAN STATUS数据
+                return STATUS;
+            }
+            if (clazz.equals(DataPackLogInOut.class)) {
+                //车辆登录数据
+                return LOGINOUT;
+            }
         }
         return null;
     }
