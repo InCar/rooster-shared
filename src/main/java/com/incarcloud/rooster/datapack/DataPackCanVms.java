@@ -8,93 +8,129 @@ package com.incarcloud.rooster.datapack;
  */
 public class DataPackCanVms extends DataPackObject {
 
-    private Integer motorStatus; // 电机当前状态
-    private Integer isMotorTempHigh; // 电机温度是否过高
-    private Integer isMotorControlerTempHigh; // 电机控制器温度是否过高
-    private Integer isMotorControlerErr; // 电机控制器是否故障
+    /**
+     * 电机当前状态
+     */
+    private Integer motorStatus;
+    /**
+     * 电机温度是否过高
+     */
+    private Integer isMotorTempHigh;
+    /**
+     * 电机控制器温度是否过高
+     */
+    private Integer isMotorControlerTempHigh;
+    /**
+     * 电机控制器是否故障
+     */
+    private Integer isMotorControlerErr;
+    /**
+     * 电机直流母线电压
+     */
     private Float voltageRange;
+    /**
+     * 加速踏板开度
+     */
     private Integer aprRate;
-    private Integer outAlarmInfoNumber; // 动力输出报警提示
-    private Float batteryGroupCurrent; // 电池组电流
-    private Float batteryGroupVoltage; // 电池组电压
-    private Integer leaveBattery; // 剩余电量
-    private Float speed; // 车速
-    private Integer motorSysTemp; // 电机系统温度
-    private Integer gearStatus; // 档位信息
-    private Integer keyPos; // 钥匙位置信息
+    /**
+     * 动力输出报警提示
+     */
+    private Integer outAlarmInfoNumber;
+    /**
+     * 电池组电流
+     */
+    private Float batteryGroupCurrent;
+    /**
+     * 电池组电压
+     */
+    private Float batteryGroupVoltage;
+    /**
+     * 剩余电量
+     */
+    private Integer leaveBattery;
+    /**
+     * 车速
+     */
+    private Float speed;
+    /**
+     * 电机系统温度
+     */
+    private Integer motorSysTemp;
+    /**
+     * 档位信息
+     */
+    private Integer gearStatus;
+    /**
+     * 钥匙位置信息
+     */
+    private Integer keyPos;
+    /**
+     * 车辆降功率运行状态
+     */
     private Integer lowPowerStatus;
-    private Integer isAirconOpen; // 空调使能
-    private Integer pepsStatus; // PEPS认真状态
-    private Integer isReady; // READY信号
-    private Integer contactorControlCommand; // 接触器控制指令
-    private Integer workType; // 工作模式
-    private Integer gear; // 档位
-    private Integer brakStatus; // 制动状态
-    private Integer powerCtrl;//电源控制
-    private Integer deratStatus; // 降功率等级
-    private Integer keyPosition; // 点火钥匙位置信息
-    private Integer outchargelineConStatus; // 外接充电线连接状态
-    private Integer tochargeConStatus; // 与充电机通讯状态
-    private Integer carType; // 车型类别
-    private Integer gprsLockCommand; // GPRS总正接触器锁止指令
-    private Integer vmsSoc; // 电池SOC
+    /**
+     * 空调使能
+     */
+    private Integer isAirconOpen;
+    /**
+     * PEPS认真状态
+     */
+    private Integer pepsStatus;
+    /**
+     * READY信号
+     */
+    private Integer isReady;
+    /**
+     * 接触器控制指令
+     */
+    private Integer contactorControlCommand;
+    /**
+     * 工作模式
+     */
+    private Integer workType;
+    /**
+     * 档位
+     */
+    private Integer gear;
+    /**
+     * 制动状态
+     */
+    private Integer brakStatus;
+    /**
+     * 电源控制
+     */
+    private Integer powerCtrl;
+    /**
+     * 降功率等级
+     */
+    private Integer deratStatus;
+    /**
+     * 点火钥匙位置信息
+     */
+    private Integer keyPosition;
+    /**
+     * 外接充电线连接状态
+     */
+    private Integer outchargelineConStatus;
+    /**
+     * 与充电机通讯状态
+     */
+    private Integer tochargeConStatus;
+    /**
+     * 车型类别
+     */
+    private Integer carType;
+    /**
+     * GPRS总正接触器锁止指令
+     */
+    private Integer gprsLockCommand;
+    /**
+     * 电池SOC
+     */
+    private Integer vmsSoc;
 
     public DataPackCanVms(DataPackObject dataPack) {
         super(dataPack);
-    }
-
-    @Override
-    public String toString() {
-        return "DataPackCanVms{" +
-                "motorStatus=" + motorStatus +
-                ", isMotorTempHigh=" + isMotorTempHigh +
-                ", isMotorControlerTempHigh=" + isMotorControlerTempHigh +
-                ", isMotorControlerErr=" + isMotorControlerErr +
-                ", voltageRange=" + voltageRange +
-                ", aprRate=" + aprRate +
-                ", outAlarmInfoNumber=" + outAlarmInfoNumber +
-                ", batteryGroupCurrent=" + batteryGroupCurrent +
-                ", batteryGroupVoltage=" + batteryGroupVoltage +
-                ", leaveBattery=" + leaveBattery +
-                ", speed=" + speed +
-                ", motorSysTemp=" + motorSysTemp +
-                ", gearStatus=" + gearStatus +
-                ", keyPos=" + keyPos +
-                ", lowPowerStatus=" + lowPowerStatus +
-                ", isAirconOpen=" + isAirconOpen +
-                ", pepsStatus=" + pepsStatus +
-                ", isReady=" + isReady +
-                ", contactorControlCommand=" + contactorControlCommand +
-                ", workType=" + workType +
-                ", gear=" + gear +
-                ", brakStatus=" + brakStatus +
-                ", powerCtrl=" + powerCtrl +
-                ", deratStatus=" + deratStatus +
-                ", keyPosition=" + keyPosition +
-                ", outchargelineConStatus=" + outchargelineConStatus +
-                ", tochargeConStatus=" + tochargeConStatus +
-                ", carType=" + carType +
-                ", gprsLockCommand=" + gprsLockCommand +
-                ", vmsSoc=" + vmsSoc +
-                ", id='" + id + '\'' +
-                ", deviceName='" + deviceName + '\'' +
-                ", packId=" + packId +
-                ", protocolName='" + protocolName + '\'' +
-                ", protocolVersion='" + protocolVersion + '\'' +
-                ", deviceId='" + deviceId + '\'' +
-                ", tripId=" + tripId +
-                ", vid='" + vid + '\'' +
-                ", vin='" + vin + '\'' +
-                ", license='" + license + '\'' +
-                ", subPackTotal=" + subPackTotal +
-                ", subPackIndex=" + subPackIndex +
-                ", encryptName='" + encryptName + '\'' +
-                ", detectionTime=" + detectionTime +
-                ", _group='" + _group + '\'' +
-                ", _name='" + _name + '\'' +
-                ", _version='" + _version + '\'' +
-                ", receiveTime=" + receiveTime +
-                '}';
     }
 
     public Integer getMotorStatus() {
@@ -335,5 +371,41 @@ public class DataPackCanVms extends DataPackObject {
 
     public void setVmsSoc(Integer vmsSoc) {
         this.vmsSoc = vmsSoc;
+    }
+
+    @Override
+    public String toString() {
+        return "DataPackCanVms{" +
+                "motorStatus=" + motorStatus +
+                ", isMotorTempHigh=" + isMotorTempHigh +
+                ", isMotorControlerTempHigh=" + isMotorControlerTempHigh +
+                ", isMotorControlerErr=" + isMotorControlerErr +
+                ", voltageRange=" + voltageRange +
+                ", aprRate=" + aprRate +
+                ", outAlarmInfoNumber=" + outAlarmInfoNumber +
+                ", batteryGroupCurrent=" + batteryGroupCurrent +
+                ", batteryGroupVoltage=" + batteryGroupVoltage +
+                ", leaveBattery=" + leaveBattery +
+                ", speed=" + speed +
+                ", motorSysTemp=" + motorSysTemp +
+                ", gearStatus=" + gearStatus +
+                ", keyPos=" + keyPos +
+                ", lowPowerStatus=" + lowPowerStatus +
+                ", isAirconOpen=" + isAirconOpen +
+                ", pepsStatus=" + pepsStatus +
+                ", isReady=" + isReady +
+                ", contactorControlCommand=" + contactorControlCommand +
+                ", workType=" + workType +
+                ", gear=" + gear +
+                ", brakStatus=" + brakStatus +
+                ", powerCtrl=" + powerCtrl +
+                ", deratStatus=" + deratStatus +
+                ", keyPosition=" + keyPosition +
+                ", outchargelineConStatus=" + outchargelineConStatus +
+                ", tochargeConStatus=" + tochargeConStatus +
+                ", carType=" + carType +
+                ", gprsLockCommand=" + gprsLockCommand +
+                ", vmsSoc=" + vmsSoc +
+                '}';
     }
 }

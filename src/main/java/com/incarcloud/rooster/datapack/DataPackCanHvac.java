@@ -7,55 +7,54 @@ package com.incarcloud.rooster.datapack;
  * @date 2017-09-14 10:12
  */
 public class DataPackCanHvac extends DataPackObject {
-    private Integer runStatus; // 空调启动状态
-    private Integer hvacLevel; // 空调风机档位
-    private Integer power; // 空调功率
-    private Float exTemp; // 车外温度
-    private Float innerTemp; // 车内温度
-    private Integer crondDirection; // 空调风向状态
-    private Integer cirleModel; // 空调循环模式状态
-    private Integer errModel; // 模式电机故障
-    private Integer errTemp; // 温度电机故障
-    private Integer errEvalsensor; // 蒸发器传感器故障
-    private Integer errTempSensor; // 回风温度传感器故障
+
+    /**
+     * 空调启动状态
+     */
+    private Integer runStatus;
+    /**
+     * 空调风机档位
+     */
+    private Integer hvacLevel;
+    /**
+     * 空调功率
+     */
+    private Integer power;
+    /**
+     * 车外温度
+     */
+    private Float exTemp;
+    /**
+     * 车内温度
+     */
+    private Float innerTemp;
+    /**
+     * 空调风向状态
+     */
+    private Integer crondDirection;
+    /**
+     * 空调循环模式状态
+     */
+    private Integer cirleModel;
+    /**
+     * 模式电机故障
+     */
+    private Integer errModel;
+    /**
+     * 温度电机故障
+     */
+    private Integer errTemp;
+    /**
+     * 蒸发器传感器故障
+     */
+    private Integer errEvalsensor;
+    /**
+     * 回风温度传感器故障
+     */
+    private Integer errTempSensor;
 
     public DataPackCanHvac(DataPackObject dataPack) {
         super(dataPack);
-    }
-
-    @Override
-    public String toString() {
-        return "DataPackCanHvac{" +
-                "runStatus=" + runStatus +
-                ", hvacLevel=" + hvacLevel +
-                ", power=" + power +
-                ", exTemp=" + exTemp +
-                ", innerTemp=" + innerTemp +
-                ", crondDirection=" + crondDirection +
-                ", cirleModel=" + cirleModel +
-                ", errModel=" + errModel +
-                ", errTemp=" + errTemp +
-                ", errEvalsensor=" + errEvalsensor +
-                ", errTempSensor=" + errTempSensor +
-                ", id='" + id + '\'' +
-                ", deviceName='" + deviceName + '\'' +
-                ", packId=" + packId +
-                ", protocolName='" + protocolName + '\'' +
-                ", protocolVersion='" + protocolVersion + '\'' +
-                ", deviceId='" + deviceId + '\'' +
-                ", tripId=" + tripId +
-                ", vid='" + vid + '\'' +
-                ", vin='" + vin + '\'' +
-                ", license='" + license + '\'' +
-                ", subPackTotal=" + subPackTotal +
-                ", subPackIndex=" + subPackIndex +
-                ", encryptName='" + encryptName + '\'' +
-                ", detectionTime=" + detectionTime +
-                ", _group='" + _group + '\'' +
-                ", _name='" + _name + '\'' +
-                ", _version='" + _version + '\'' +
-                ", receiveTime=" + receiveTime +
-                '}';
     }
 
     public Integer getRunStatus() {
@@ -152,5 +151,22 @@ public class DataPackCanHvac extends DataPackObject {
 
     public void setInnerTemp(Float innerTemp) {
         this.innerTemp = innerTemp;
+    }
+
+    @Override
+    public String toString() {
+        return "DataPackCanHvac{" +
+                "runStatus=" + runStatus +
+                ", hvacLevel=" + hvacLevel +
+                ", power=" + power +
+                ", exTemp=" + exTemp +
+                ", innerTemp=" + innerTemp +
+                ", crondDirection=" + crondDirection +
+                ", cirleModel=" + cirleModel +
+                ", errModel=" + errModel +
+                ", errTemp=" + errTemp +
+                ", errEvalsensor=" + errEvalsensor +
+                ", errTempSensor=" + errTempSensor +
+                '}';
     }
 }

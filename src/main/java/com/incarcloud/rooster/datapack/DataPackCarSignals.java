@@ -12,139 +12,154 @@ public class DataPackCarSignals extends DataPackObject {
     /**
      * 远光灯
      */
-    private int hightBeam;
-
+    private Integer hightBeam;
     /**
      * 近光灯
      */
-    private int lowBeam;
-
-
+    private Integer lowBeam;
     /**
      * 雨刮
      */
-    private int wipers;
-
+    private Integer wipers;
     /**
      * 右转向灯
      */
-    private int  rightSignal;
+    private Integer rightSignal;
     /**
      * 左转向灯
      */
-    private int leftSignal;
-
+    private Integer leftSignal;
     /**
      * 刹车灯
      */
-    private int  brakeSignal;
+    private Integer brakeSignal;
     /**
      * 车速
      */
-    private int speend;
-
-
-    private int wipersAvailable;
-
-    private int hightBeamAvailable;
-
-
-    private int lowBeamAvailable;
-
-    private int speendAvailable;
-
-
-
+    private Integer speend;
+    /**
+     * wipersAvailable
+     */
+    private Integer wipersAvailable;
+    /**
+     * hightBeamAvailable
+     */
+    private Integer hightBeamAvailable;
+    /**
+     * lowBeamAvailable
+     */
+    private Integer lowBeamAvailable;
+    /**
+     * speendAvailable
+     */
+    private Integer speendAvailable;
 
     public DataPackCarSignals(DataPackObject object) {
         super(object);
     }
 
-    public void setHightBeam(int hightBeam) {
-        this.hightBeam = hightBeam;
-    }
-
-    public void setLowBeam(int lowBeam) {
-        this.lowBeam = lowBeam;
-    }
-
-    public void setWipers(int wipers) {
-        this.wipers = wipers;
-    }
-
-    public void setRightSignal(int rightSignal) {
-        this.rightSignal = rightSignal;
-    }
-
-    public void setLeftSignal(int leftSignal) {
-        this.leftSignal = leftSignal;
-    }
-
-    public void setBrakeSignal(int brakeSignal) {
-        this.brakeSignal = brakeSignal;
-    }
-
-    public void setSpeend(int speend) {
-        this.speend = speend;
-    }
-
-    public void setWipersAvailable(int wipersAvailable) {
-        this.wipersAvailable = wipersAvailable;
-    }
-
-    public void setHightBeamAvailable(int hightBeamAvailable) {
-        this.hightBeamAvailable = hightBeamAvailable;
-    }
-
-    public void setLowBeamAvailable(int lowBeamAvailable) {
-        this.lowBeamAvailable = lowBeamAvailable;
-    }
-
-    public void setSpeendAvailable(int speendAvailable) {
-        this.speendAvailable = speendAvailable;
-    }
-
-    public int getHightBeam() {
+    public Integer getHightBeam() {
         return hightBeam;
     }
 
-    public int getLowBeam() {
+    public void setHightBeam(Integer hightBeam) {
+        this.hightBeam = hightBeam;
+    }
+
+    public Integer getLowBeam() {
         return lowBeam;
     }
 
-    public int getWipers() {
+    public void setLowBeam(Integer lowBeam) {
+        this.lowBeam = lowBeam;
+    }
+
+    public Integer getWipers() {
         return wipers;
     }
 
-    public int getRightSignal() {
+    public void setWipers(Integer wipers) {
+        this.wipers = wipers;
+    }
+
+    public Integer getRightSignal() {
         return rightSignal;
     }
 
-    public int getLeftSignal() {
+    public void setRightSignal(Integer rightSignal) {
+        this.rightSignal = rightSignal;
+    }
+
+    public Integer getLeftSignal() {
         return leftSignal;
     }
 
-    public int getBrakeSignal() {
+    public void setLeftSignal(Integer leftSignal) {
+        this.leftSignal = leftSignal;
+    }
+
+    public Integer getBrakeSignal() {
         return brakeSignal;
     }
 
-    public int getSpeend() {
+    public void setBrakeSignal(Integer brakeSignal) {
+        this.brakeSignal = brakeSignal;
+    }
+
+    public Integer getSpeend() {
         return speend;
     }
 
-    public int getWipersAvailable() {
+    public void setSpeend(Integer speend) {
+        this.speend = speend;
+    }
+
+    public Integer getWipersAvailable() {
         return wipersAvailable;
     }
 
-    public int getHightBeamAvailable() {
+    public void setWipersAvailable(Integer wipersAvailable) {
+        this.wipersAvailable = wipersAvailable;
+    }
+
+    public Integer getHightBeamAvailable() {
         return hightBeamAvailable;
     }
 
-    public int getLowBeamAvailable() {
+    public void setHightBeamAvailable(Integer hightBeamAvailable) {
+        this.hightBeamAvailable = hightBeamAvailable;
+    }
+
+    public Integer getLowBeamAvailable() {
         return lowBeamAvailable;
     }
 
-    public int getSpeendAvailable() {
+    public void setLowBeamAvailable(Integer lowBeamAvailable) {
+        this.lowBeamAvailable = lowBeamAvailable;
+    }
+
+    public Integer getSpeendAvailable() {
         return speendAvailable;
+    }
+
+    public void setSpeendAvailable(Integer speendAvailable) {
+        this.speendAvailable = speendAvailable;
+    }
+
+    @Override
+    public String toString() {
+        return "DataPackCarSignals{" +
+                "hightBeam=" + hightBeam +
+                ", lowBeam=" + lowBeam +
+                ", wipers=" + wipers +
+                ", rightSignal=" + rightSignal +
+                ", leftSignal=" + leftSignal +
+                ", brakeSignal=" + brakeSignal +
+                ", speend=" + speend +
+                ", wipersAvailable=" + wipersAvailable +
+                ", hightBeamAvailable=" + hightBeamAvailable +
+                ", lowBeamAvailable=" + lowBeamAvailable +
+                ", speendAvailable=" + speendAvailable +
+                '}';
     }
 }

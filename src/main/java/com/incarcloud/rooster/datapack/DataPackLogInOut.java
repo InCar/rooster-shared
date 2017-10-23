@@ -7,50 +7,62 @@ package com.incarcloud.rooster.datapack;
  * @date 2017-09-06 14:11
  */
 public class DataPackLogInOut extends DataPackObject {
-    //登录类型 0 车辆登入 1 车辆登出
-    private int loginType;
-    //可充电储能子系统数
-    private int sysNumber;
-    //可充电储能系统编码长度
-    private int codeLength;
-    //可充电储能系统编码
+
+    /**
+     * 登录类型：0-登录
+     */
+    public static final int LOGIN_TYPE_LOGIN = 0;
+    /**
+     * 登录类型：1-登出
+     */
+    public static final int LOGIN_TYPE_LOGOUT = 1;
+
+    /**
+     * 登录类型 0 车辆登入 1 车辆登出
+     */
+    private Integer loginType;
+    /**
+     * 可充电储能子系统数
+     */
+    private Integer sysNumber;
+    /**
+     * 可充电储能系统编码长度
+     */
+    private Integer codeLength;
+    /**
+     * 可充电储能系统编码
+     */
     private String sysCode;
-    //登入登出流水号
-    private int serialNo;
+    /**
+     * 登入登出流水号
+     */
+    private Integer serialNo;
 
     public DataPackLogInOut(DataPackObject dataPack) {
         super(dataPack);
     }
 
-    public int getSerialNo() {
-        return serialNo;
-    }
-
-    public void setSerialNo(int serialNo) {
-        this.serialNo = serialNo;
-    }
-
-    public int getLoginType() {
+    public Integer getLoginType() {
         return loginType;
     }
 
-    public void setLoginType(int loginType) {
+    public void setLoginType(Integer loginType) {
         this.loginType = loginType;
     }
 
-    public int getSysNumber() {
+    public Integer getSysNumber() {
         return sysNumber;
     }
 
-    public void setSysNumber(int sysNumber) {
+    public void setSysNumber(Integer sysNumber) {
         this.sysNumber = sysNumber;
     }
 
-    public int getCodeLength() {
+    public Integer getCodeLength() {
         return codeLength;
     }
 
-    public void setCodeLength(int codeLength) {
+    public void setCodeLength(Integer codeLength) {
         this.codeLength = codeLength;
     }
 
@@ -60,5 +72,24 @@ public class DataPackLogInOut extends DataPackObject {
 
     public void setSysCode(String sysCode) {
         this.sysCode = sysCode;
+    }
+
+    public Integer getSerialNo() {
+        return serialNo;
+    }
+
+    public void setSerialNo(Integer serialNo) {
+        this.serialNo = serialNo;
+    }
+
+    @Override
+    public String toString() {
+        return "DataPackLogInOut{" +
+                "loginType=" + loginType +
+                ", sysNumber=" + sysNumber +
+                ", codeLength=" + codeLength +
+                ", sysCode='" + sysCode + '\'' +
+                ", serialNo=" + serialNo +
+                '}';
     }
 }
