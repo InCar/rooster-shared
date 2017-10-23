@@ -30,7 +30,6 @@ public class DataPackStatus extends DataPackObject {
     /**
      * 单个状态信息
      */
-
     public static class Status {
 
         public Status() {
@@ -94,24 +93,6 @@ public class DataPackStatus extends DataPackObject {
     public String toString() {
         return "DataPackStatus{" +
                 "statusList=" + statusList +
-                ", id='" + id + '\'' +
-                ", deviceName='" + deviceName + '\'' +
-                ", packId=" + packId +
-                ", protocolName='" + protocolName + '\'' +
-                ", protocolVersion='" + protocolVersion + '\'' +
-                ", deviceId='" + deviceId + '\'' +
-                ", tripId=" + tripId +
-                ", vid='" + vid + '\'' +
-                ", vin='" + vin + '\'' +
-                ", license='" + license + '\'' +
-                ", subPackTotal=" + subPackTotal +
-                ", subPackIndex=" + subPackIndex +
-                ", encryptName='" + encryptName + '\'' +
-                ", detectionTime=" + detectionTime +
-                ", _group='" + _group + '\'' +
-                ", _name='" + _name + '\'' +
-                ", _version='" + _version + '\'' +
-                ", receiveTime=" + receiveTime +
                 '}';
     }
 }

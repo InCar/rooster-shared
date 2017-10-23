@@ -3,72 +3,87 @@ package com.incarcloud.rooster.datapack;/**
  */
 
 /**
- * TODO
  * @author Fan Beibei
  * @Description: 标识牌识别
  * @date 2017/8/30 15:14
  */
-public class DataPackSignInfo extends  DataPackObject{
+public class DataPackSignInfo extends DataPackObject {
 
-    private int signType;
-    private int supplementarySignType;
-    private int signPosX;
-    private int signPosY;
-    private int signPosZ;
-
-    private int filterType;
-
+    /**
+     * signType
+     */
+    private Integer signType;
+    /**
+     * supplementarySignType
+     */
+    private Integer supplementarySignType;
+    /**
+     * signPosX
+     */
+    private Integer signPosX;
+    /**
+     * signPosY
+     */
+    private Integer signPosY;
+    /**
+     * signPosZ
+     */
+    private Integer signPosZ;
+    /**
+     * filterType
+     */
+    private Integer filterType;
 
     public DataPackSignInfo(DataPackObject object) {
         super(object);
     }
 
-    public void setSignType(int signType) {
-        this.signType = signType;
-    }
-
-    public void setSupplementarySignType(int supplementarySignType) {
-        this.supplementarySignType = supplementarySignType;
-    }
-
-    public void setSignPosX(int signPosX) {
-        this.signPosX = signPosX;
-    }
-
-    public void setSignPosY(int signPosY) {
-        this.signPosY = signPosY;
-    }
-
-    public void setSignPosZ(int signPosZ) {
-        this.signPosZ = signPosZ;
-    }
-
-    public void setFilterType(int filterType) {
-        this.filterType = filterType;
-    }
-
-    public int getSignType() {
+    public Integer getSignType() {
         return signType;
     }
 
-    public int getSupplementarySignType() {
+    public void setSignType(Integer signType) {
+        this.signType = signType;
+    }
+
+    public Integer getSupplementarySignType() {
         return supplementarySignType;
     }
 
-    public int getSignPosX() {
+    public void setSupplementarySignType(Integer supplementarySignType) {
+        this.supplementarySignType = supplementarySignType;
+    }
+
+    public Integer getSignPosX() {
         return signPosX;
     }
 
-    public int getSignPosY() {
+    public void setSignPosX(Integer signPosX) {
+        this.signPosX = signPosX;
+    }
+
+    public Integer getSignPosY() {
         return signPosY;
     }
 
-    public int getSignPosZ() {
+    public void setSignPosY(Integer signPosY) {
+        this.signPosY = signPosY;
+    }
+
+    public Integer getSignPosZ() {
         return signPosZ;
     }
 
-    public int getFilterType() {
+    public void setSignPosZ(Integer signPosZ) {
+        this.signPosZ = signPosZ;
+    }
+
+    public Integer getFilterType() {
         return filterType;
+    }
+
+    public void setFilterType(Integer filterType) {
+        this.filterType = filterType;
     }
 
     @Override
@@ -80,20 +95,6 @@ public class DataPackSignInfo extends  DataPackObject{
                 ", signPosY=" + signPosY +
                 ", signPosZ=" + signPosZ +
                 ", filterType=" + filterType +
-                ", id='" + id + '\'' +
-                ", deviceName='" + deviceName + '\'' +
-                ", packId=" + packId +
-                ", protocolName='" + protocolName + '\'' +
-                ", protocolVersion='" + protocolVersion + '\'' +
-                ", deviceId='" + deviceId + '\'' +
-                ", tripId=" + tripId +
-                ", vid='" + vid + '\'' +
-                ", vin='" + vin + '\'' +
-                ", detectionTime=" + detectionTime +
-                ", _group='" + _group + '\'' +
-                ", _name='" + _name + '\'' +
-                ", _version='" + _version + '\'' +
-                ", receiveTime=" + receiveTime +
                 '}';
     }
 }

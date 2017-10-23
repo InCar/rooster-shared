@@ -8,12 +8,17 @@ package com.incarcloud.rooster.datapack;
  */
 public class DataPackCanVersion extends DataPackObject {
 
-
-    //模块名称
-    private String canModelName;
-    //ID
+    /**
+     * ID
+     */
     private Integer canId;
-    //版本信息
+    /**
+     * 模块名称
+     */
+    private String canModelName;
+    /**
+     * 版本信息
+     */
     private String version;
 
     public String getCanModelName() {
@@ -47,27 +52,9 @@ public class DataPackCanVersion extends DataPackObject {
     @Override
     public String toString() {
         return "DataPackCanVersion{" +
-                "canModelName='" + canModelName + '\'' +
-                ", canId=" + canId +
+                "canId=" + canId +
+                ", canModelName='" + canModelName + '\'' +
                 ", version='" + version + '\'' +
-                ", id='" + id + '\'' +
-                ", deviceName='" + deviceName + '\'' +
-                ", packId=" + packId +
-                ", protocolName='" + protocolName + '\'' +
-                ", protocolVersion='" + protocolVersion + '\'' +
-                ", deviceId='" + deviceId + '\'' +
-                ", tripId=" + tripId +
-                ", vid='" + vid + '\'' +
-                ", vin='" + vin + '\'' +
-                ", license='" + license + '\'' +
-                ", subPackTotal=" + subPackTotal +
-                ", subPackIndex=" + subPackIndex +
-                ", encryptName='" + encryptName + '\'' +
-                ", detectionTime=" + detectionTime +
-                ", _group='" + _group + '\'' +
-                ", _name='" + _name + '\'' +
-                ", _version='" + _version + '\'' +
-                ", receiveTime=" + receiveTime +
                 '}';
     }
 }
