@@ -10,325 +10,460 @@ import java.util.Arrays;
  * @date 2017-09-14 14:44
  */
 public class DataPackCanBms extends DataPackObject {
-    private Float totalCurrent;//总电流
+
+    /**
+     * 总电流
+     */
+    private Float totalCurrent;
+    /**
+     * 总电压
+     */
     private Float totalVoltage;
+    /**
+     * 外接充电线连接状态
+     */
     private Integer isChargerConnected;
+    /**
+     * CP信号
+     */
     private Integer cpSignal;
+    /**
+     * 总负接触器KS状态
+     */
     private Integer ksStatus;
+    /**
+     * 开关S2状态
+     */
     private Integer s2Status;
+    /**
+     * 与充电机通讯状态
+     */
     private Integer isConnectCharger;
+    /**
+     * 电池包均衡状态
+     */
     private Integer isBatteryGroupBalance;
+    /**
+     * 冷却风扇状态
+     */
     private Integer coldFanStatus;
+    /**
+     * 电池组当前的SOC
+     */
     private Integer soc;
+    /**
+     * 电池组当前状态
+     */
     private Integer batteryGroupStatus;
+    /**
+     * 故障等级
+     */
     private Integer errorLevel;
+    /**
+     * 动力电池报警指示
+     */
     private Integer batteryAlarmIndication;
+    /**
+     * 降功率等级
+     */
     private Integer descPowerLevel;
+    /**
+     * 绝缘超低
+     */
     private Integer isInsuLowest;
+    /**
+     * BMS故障码
+     */
     private Integer bmsError;
+    /**
+     * 最高允许充电端电压
+     */
     private Float alowableVoltage;
+    /**
+     * 最高允许充电电流
+     */
     private Float alowableCurrent;
+    /**
+     * 负载类型
+     */
     private Integer loadType;
+    /**
+     * 加热继电器状态
+     */
     private Integer heaterStatus;
+    /**
+     * 充电次数
+     */
     private Integer chargerCount;
+    /**
+     * 动力电池包10S最大放电功率
+     */
     private Integer discharge10SPower;
+    /**
+     * 动力电池包30S最大放电功率
+     */
     private Integer discharge30SPower;
+    /**
+     * 动力电池包持续最大放电功率
+     */
     private Integer dischargeMaximumPower;
+    /**
+     * 动力电池包最大放电电流限值
+     */
     private Integer dischargeMaximumCurrent;
+    /**
+     * 动力电池包 10S 最大充电功率
+     */
     private Integer charge10SPower;
+    /**
+     * 动力电池包 30S 最大充电功率
+     */
     private Integer charge30SPower;
+    /**
+     * 动力电池包持续最大充电功率
+     */
     private Integer chargeMaximumPower;
+    /**
+     * 动力电池包最大充电电流限值
+     */
     private Integer chargeMaximumCurrent;
+    /**
+     * 单体电压超高-充电-4级
+     */
     private Integer sellVolHighestChargerl4;
+    /**
+     * 单体电压超高-回馈-3级
+     */
     private Integer sellVolHighestFbl3;
+    /**
+     * 单体电压超高-3级
+     */
     private Integer sellVolHighestL3;
+    /**
+     * 总电压超高-充电-4级
+     */
     private Integer totalVolHighestChargerl4;
+    /**
+     * 总电压超高-回馈-3级
+     */
     private Integer totalVolHighestFbl3;
+    /**
+     * 总电压超高-3级
+     */
     private Integer totalVolHighestl3;
+    /**
+     * 单体电压过低-1级降功率
+     */
     private Integer sellVolLowerl1;
+    /**
+     * 单体电压过低-2级降功率
+     */
     private Integer sellVolLowerl2;
+    /**
+     * 单体电压过低-3级降功率
+     */
     private Integer sellVolLowerl3;
+    /**
+     * 总电压过低-1级降功率
+     */
     private Integer totalVolLowerl1;
+    /**
+     * 总电压过低-2级降功率
+     */
     private Integer totalVolLowerl2;
+    /**
+     * 总电压过低-3级降功率
+     */
     private Integer totalVolLowerl3;
+    /**
+     * 单体电压超低-3级
+     */
     private Integer sellVolLowestl3;
+    /**
+     * 单体电压超低-4级
+     */
     private Integer sellVolLowestl4;
+    /**
+     * 单体电压超低-充电
+     */
     private Integer sellVolLowestCharger;
+    /**
+     * 总电压超低-3级
+     */
     private Integer totalVolLowestl3;
+    /**
+     * 总电压超低-4级
+     */
     private Integer totalVolLowestl4;
+    /**
+     * 总电压超低-充电
+     */
     private Integer totalVolLowestCharger;
+    /**
+     * 压差过大-1级降功率
+     */
     private Integer volPlusBiggerl1;
+    /**
+     * 压差过大-2级降功率
+     */
     private Integer volPlusBiggerl2;
+    /**
+     * 压差过大-3级降功率
+     */
     private Integer volPlusBiggerl3;
+    /**
+     * SOC过低-1级降功率
+     */
     private Integer socLowerl1;
+    /**
+     * SOC过低-2级降功率
+     */
     private Integer socLowerl2;
+    /**
+     * SOC过低-3级降功率
+     */
     private Integer socLowerl3;
+    /**
+     * 放电电流过大-1级降功率
+     */
     private Integer dischargerCurrentBiggerl1;
+    /**
+     * 放电电流过大-2级降功率
+     */
     private Integer dischargerCurrentBiggerl2;
+    /**
+     * 放电电流过大-3级降功率
+     */
     private Integer dischargerCurrentBiggerl3;
+    /**
+     * 放电电流超大-3级
+     */
     private Integer dischargerCurrentBiggestl3;
+    /**
+     * 充电电流超大-3级
+     */
     private Integer chargerCurrentBiggestl3;
+    /**
+     * 充电电流超大-4级
+     */
     private Integer chargerCurrentBiggestl4;
+    /**
+     * 回馈电流超大-3级
+     */
     private Integer feedbackCurrentBiggestl3;
+    /**
+     * 回馈电流超大-4级
+     */
     private Integer feedbackCurrentBiggestl4;
+    /**
+     * 温度过高-1级降功率
+     */
     private Integer tempratureHigherl1;
+    /**
+     * 温度过高-2级降功率
+     */
     private Integer tempratureHigherl2;
+    /**
+     * 温度过高-3级降功率
+     */
     private Integer tempratureHigherl3;
+    /**
+     * 温度超高-3级
+     */
     private Integer tempratureHighestl3;
+    /**
+     * 温度超高-4级
+     */
     private Integer tempratureHighestl4;
+    /**
+     * 加热膜温度超高
+     */
     private Integer heatMoTempratureHighest;
+    /**
+     * 温度过低-1级降功率
+     */
     private Integer tempLowerl1;
+    /**
+     * 温度过低-2级降功率
+     */
     private Integer tempLowerl2;
+    /**
+     * 温度过低-3级降功率
+     */
     private Integer tempLowerl3;
+    /**
+     * 温度超低-3级
+     */
     private Integer tempLowestl3;
+    /**
+     * 温差过高1级降功率
+     */
     private Integer tempPlusHigherl1;
+    /**
+     * 温差过高2级降功率
+     */
     private Integer tempPlusHigherl2;
+    /**
+     * 温差过高3级降功率
+     */
     private Integer tempPlusHigherl3;
+    /**
+     * 温升速度过高2级降功率
+     */
     private Integer tempRiseSpeedBiggerl2;
+    /**
+     * 温升速度过高4级降功率
+     */
     private Integer tempRiseSpeedBiggestl4;
+    /**
+     * 绝缘过低1级
+     */
     private Integer insuLowl1;
+    /**
+     * 绝缘过低2级降功率
+     */
     private Integer insuLowl2;
+    /**
+     * 绝缘过低4级
+     */
     private Integer insuLowl4;
+    /**
+     * 充电时间超长
+     */
     private Integer chargeTimeLong;
+    /**
+     * 加热时间超长
+     */
     private Integer heatTimeLong;
+    /**
+     * BMS系统故障
+     */
     private Integer bmsSysErr;
+    /**
+     * 与充电机通信故障
+     */
     private Integer chargerNetErr;
+    /**
+     * 电压采集断开4级
+     */
     private Integer volDisconnectl4;
+    /**
+     * 电压采集断开2级降功率
+     */
     private Integer volDisconnectl2;
+    /**
+     * 温度采集断开-4级
+     */
     private Integer tempDisconnectl4;
+    /**
+     * 温度采集端口-2级降功率
+     */
     private Integer tempDisconnectl2;
+    /**
+     * 加热故障
+     */
     private Integer heatErr;
+    /**
+     * 负极接触器故障：不能闭合
+     */
     private Integer negErrClose;
+    /**
+     * 负极接触器故障：粘连
+     */
     private Integer negErrPaste;
 
-
+    /**
+     * DC_DC状态
+     */
     private Integer dcdcStatus;
+    /**
+     * 运行状态
+     */
     private Integer runStatus;
+    /**
+     * SOC过高报警
+     */
     private Integer socHigherAlarm;
+    /**
+     * SOC跳变报警
+     */
     private Integer socJumpAlarm;
+    /**
+     * 可充电储能系统不匹配报警
+     */
     private Integer batterySysDismatch;
+    /**
+     * DC_DC温度报警
+     */
     private Integer dcdcTempAlarm;
+    /**
+     * DC_DC状态报警
+     */
     private Integer dcdcStatusAlarm;
+    /**
+     * 生产厂商代码
+     */
     private String batterySupplierCode;
+    /**
+     * 车载储能装置类型代码
+     */
     private Integer batteryTypeCode;
+    /**
+     * 额定能量
+     */
     private Float nominalEnergy;
+    /**
+     * 额定电压
+     */
     private Float nominalVoltage;
+    /**
+     * 可充电储能系统生产日期
+     */
     private String batteryProDate;
+    /**
+     * 流水号
+     */
     private Integer batteryProSn;
+    /**
+     * 可充电储能系统编码长度
+     */
     private Integer batteryCodeLength;
 
-    private float voltageHighest;//最高单体电压
-    private int voltageHighestNo;//最高单体电池号
-    private float voltageLowest;//最低单体电压
-    private int voltageLowestNo;//最低单体电池号
-    private int tempHighest;// 最高温度点温度
-    private int tempHighestNo;//最高温度点电池号
-    private Float[] voltage; // 单体电池电压数组
-    private Integer[] temprature; // 探头温度数组
+    /**
+     * 最高单体电压
+     */
+    private Float voltageHighest;
+    /**
+     * 最高单体电池号
+     */
+    private Integer voltageHighestNo;
+    /**
+     * 最低单体电压
+     */
+    private Float voltageLowest;
+    /**
+     * 最低单体电池号
+     */
+    private Integer voltageLowestNo;
+    /**
+     * 最高温度点温度
+     */
+    private Integer tempHighest;
+    /**
+     * 最高温度点电池号
+     */
+    private Integer tempHighestNo;
+    /**
+     * 单体电池电压数组
+     */
+    private Float[] voltage;
+    /**
+     * 探头温度数组
+     */
+    private Integer[] temprature;
 
     public DataPackCanBms(DataPackObject dataPack) {
         super(dataPack);
-    }
-    @Override
-    public String toString() {
-        return "DataPackCanBms{" +
-                "totalCurrent=" + totalCurrent +
-                ", totalVoltage=" + totalVoltage +
-                ", isChargerConnected=" + isChargerConnected +
-                ", cpSignal=" + cpSignal +
-                ", ksStatus=" + ksStatus +
-                ", s2Status=" + s2Status +
-                ", isConnectCharger=" + isConnectCharger +
-                ", isBatteryGroupBalance=" + isBatteryGroupBalance +
-                ", coldFanStatus=" + coldFanStatus +
-                ", soc=" + soc +
-                ", batteryGroupStatus=" + batteryGroupStatus +
-                ", errorLevel=" + errorLevel +
-                ", batteryAlarmIndication=" + batteryAlarmIndication +
-                ", descPowerLevel=" + descPowerLevel +
-                ", isInsuLowest=" + isInsuLowest +
-                ", bmsError=" + bmsError +
-                ", alowableVoltage=" + alowableVoltage +
-                ", alowableCurrent=" + alowableCurrent +
-                ", loadType=" + loadType +
-                ", heaterStatus=" + heaterStatus +
-                ", chargerCount=" + chargerCount +
-                ", discharge10SPower=" + discharge10SPower +
-                ", discharge30SPower=" + discharge30SPower +
-                ", dischargeMaximumPower=" + dischargeMaximumPower +
-                ", dischargeMaximumCurrent=" + dischargeMaximumCurrent +
-                ", charge10SPower=" + charge10SPower +
-                ", charge30SPower=" + charge30SPower +
-                ", chargeMaximumPower=" + chargeMaximumPower +
-                ", chargeMaximumCurrent=" + chargeMaximumCurrent +
-                ", sellVolHighestChargerl4=" + sellVolHighestChargerl4 +
-                ", sellVolHighestFbl3=" + sellVolHighestFbl3 +
-                ", sellVolHighestL3=" + sellVolHighestL3 +
-                ", totalVolHighestChargerl4=" + totalVolHighestChargerl4 +
-                ", totalVolHighestFbl3=" + totalVolHighestFbl3 +
-                ", totalVolHighestl3=" + totalVolHighestl3 +
-                ", sellVolLowerl1=" + sellVolLowerl1 +
-                ", sellVolLowerl2=" + sellVolLowerl2 +
-                ", sellVolLowerl3=" + sellVolLowerl3 +
-                ", totalVolLowerl1=" + totalVolLowerl1 +
-                ", totalVolLowerl2=" + totalVolLowerl2 +
-                ", totalVolLowerl3=" + totalVolLowerl3 +
-                ", sellVolLowestl3=" + sellVolLowestl3 +
-                ", sellVolLowestl4=" + sellVolLowestl4 +
-                ", sellVolLowestCharger=" + sellVolLowestCharger +
-                ", totalVolLowestl3=" + totalVolLowestl3 +
-                ", totalVolLowestl4=" + totalVolLowestl4 +
-                ", totalVolLowestCharger=" + totalVolLowestCharger +
-                ", volPlusBiggerl1=" + volPlusBiggerl1 +
-                ", volPlusBiggerl2=" + volPlusBiggerl2 +
-                ", volPlusBiggerl3=" + volPlusBiggerl3 +
-                ", socLowerl1=" + socLowerl1 +
-                ", socLowerl2=" + socLowerl2 +
-                ", socLowerl3=" + socLowerl3 +
-                ", dischargerCurrentBiggerl1=" + dischargerCurrentBiggerl1 +
-                ", dischargerCurrentBiggerl2=" + dischargerCurrentBiggerl2 +
-                ", dischargerCurrentBiggerl3=" + dischargerCurrentBiggerl3 +
-                ", dischargerCurrentBiggestl3=" + dischargerCurrentBiggestl3 +
-                ", chargerCurrentBiggestl3=" + chargerCurrentBiggestl3 +
-                ", chargerCurrentBiggestl4=" + chargerCurrentBiggestl4 +
-                ", feedbackCurrentBiggestl3=" + feedbackCurrentBiggestl3 +
-                ", feedbackCurrentBiggestl4=" + feedbackCurrentBiggestl4 +
-                ", tempratureHigherl1=" + tempratureHigherl1 +
-                ", tempratureHigherl2=" + tempratureHigherl2 +
-                ", tempratureHigherl3=" + tempratureHigherl3 +
-                ", tempratureHighestl3=" + tempratureHighestl3 +
-                ", tempratureHighestl4=" + tempratureHighestl4 +
-                ", heatMoTempratureHighest=" + heatMoTempratureHighest +
-                ", tempLowerl1=" + tempLowerl1 +
-                ", tempLowerl2=" + tempLowerl2 +
-                ", tempLowerl3=" + tempLowerl3 +
-                ", tempLowestl3=" + tempLowestl3 +
-                ", tempPlusHigherl1=" + tempPlusHigherl1 +
-                ", tempPlusHigherl2=" + tempPlusHigherl2 +
-                ", tempPlusHigherl3=" + tempPlusHigherl3 +
-                ", tempRiseSpeedBiggerl2=" + tempRiseSpeedBiggerl2 +
-                ", tempRiseSpeedBiggestl4=" + tempRiseSpeedBiggestl4 +
-                ", insuLowl1=" + insuLowl1 +
-                ", insuLowl2=" + insuLowl2 +
-                ", insuLowl4=" + insuLowl4 +
-                ", chargeTimeLong=" + chargeTimeLong +
-                ", heatTimeLong=" + heatTimeLong +
-                ", bmsSysErr=" + bmsSysErr +
-                ", chargerNetErr=" + chargerNetErr +
-                ", volDisconnectl4=" + volDisconnectl4 +
-                ", volDisconnectl2=" + volDisconnectl2 +
-                ", tempDisconnectl4=" + tempDisconnectl4 +
-                ", tempDisconnectl2=" + tempDisconnectl2 +
-                ", heatErr=" + heatErr +
-                ", negErrClose=" + negErrClose +
-                ", negErrPaste=" + negErrPaste +
-                ", dcdcStatus=" + dcdcStatus +
-                ", runStatus=" + runStatus +
-                ", socHigherAlarm=" + socHigherAlarm +
-                ", socJumpAlarm=" + socJumpAlarm +
-                ", batterySysDismatch=" + batterySysDismatch +
-                ", dcdcTempAlarm=" + dcdcTempAlarm +
-                ", dcdcStatusAlarm=" + dcdcStatusAlarm +
-                ", batterySupplierCode='" + batterySupplierCode + '\'' +
-                ", batteryTypeCode=" + batteryTypeCode +
-                ", nominalEnergy=" + nominalEnergy +
-                ", nominalVoltage=" + nominalVoltage +
-                ", batteryProDate='" + batteryProDate + '\'' +
-                ", batteryProSn=" + batteryProSn +
-                ", batteryCodeLength=" + batteryCodeLength +
-                ", voltageHighest=" + voltageHighest +
-                ", voltageHighestNo=" + voltageHighestNo +
-                ", voltageLowest=" + voltageLowest +
-                ", voltageLowestNo=" + voltageLowestNo +
-                ", tempHighest=" + tempHighest +
-                ", tempHighestNo=" + tempHighestNo +
-                ", voltage=" + Arrays.toString(voltage) +
-                ", temprature=" + Arrays.toString(temprature) +
-                ", id='" + id + '\'' +
-                ", deviceName='" + deviceName + '\'' +
-                ", packId=" + packId +
-                ", protocolName='" + protocolName + '\'' +
-                ", protocolVersion='" + protocolVersion + '\'' +
-                ", deviceId='" + deviceId + '\'' +
-                ", tripId=" + tripId +
-                ", vid='" + vid + '\'' +
-                ", vin='" + vin + '\'' +
-                ", license='" + license + '\'' +
-                ", subPackTotal=" + subPackTotal +
-                ", subPackIndex=" + subPackIndex +
-                ", encryptName='" + encryptName + '\'' +
-                ", detectionTime=" + detectionTime +
-                ", _group='" + _group + '\'' +
-                ", _name='" + _name + '\'' +
-                ", _version='" + _version + '\'' +
-                ", receiveTime=" + receiveTime +
-                '}';
-    }
-
-    public Float[] getVoltage() {
-        return voltage;
-    }
-
-    public void setVoltage(Float[] voltage) {
-        this.voltage = voltage;
-    }
-
-    public Integer[] getTemprature() {
-        return temprature;
-    }
-
-    public void setTemprature(Integer[] temprature) {
-        this.temprature = temprature;
-    }
-
-
-
-    public float getVoltageHighest() {
-        return voltageHighest;
-    }
-
-    public void setVoltageHighest(float voltageHighest) {
-        this.voltageHighest = voltageHighest;
-    }
-
-    public int getVoltageHighestNo() {
-        return voltageHighestNo;
-    }
-
-    public void setVoltageHighestNo(int voltageHighestNo) {
-        this.voltageHighestNo = voltageHighestNo;
-    }
-
-    public float getVoltageLowest() {
-        return voltageLowest;
-    }
-
-    public void setVoltageLowest(float voltageLowest) {
-        this.voltageLowest = voltageLowest;
-    }
-
-    public int getVoltageLowestNo() {
-        return voltageLowestNo;
-    }
-
-    public void setVoltageLowestNo(int voltageLowestNo) {
-        this.voltageLowestNo = voltageLowestNo;
-    }
-
-    public int getTempHighest() {
-        return tempHighest;
-    }
-
-    public void setTempHighest(int tempHighest) {
-        this.tempHighest = tempHighest;
-    }
-
-    public int getTempHighestNo() {
-        return tempHighestNo;
-    }
-
-    public void setTempHighestNo(int tempHighestNo) {
-        this.tempHighestNo = tempHighestNo;
     }
 
     public Float getTotalCurrent() {
@@ -337,6 +472,14 @@ public class DataPackCanBms extends DataPackObject {
 
     public void setTotalCurrent(Float totalCurrent) {
         this.totalCurrent = totalCurrent;
+    }
+
+    public Float getTotalVoltage() {
+        return totalVoltage;
+    }
+
+    public void setTotalVoltage(Float totalVoltage) {
+        this.totalVoltage = totalVoltage;
     }
 
     public Integer getIsChargerConnected() {
@@ -1043,14 +1186,6 @@ public class DataPackCanBms extends DataPackObject {
         this.negErrPaste = negErrPaste;
     }
 
-    public Float getTotalVoltage() {
-        return totalVoltage;
-    }
-
-    public void setTotalVoltage(Float totalVoltage) {
-        this.totalVoltage = totalVoltage;
-    }
-
     public Integer getDcdcStatus() {
         return dcdcStatus;
     }
@@ -1161,5 +1296,187 @@ public class DataPackCanBms extends DataPackObject {
 
     public void setBatteryCodeLength(Integer batteryCodeLength) {
         this.batteryCodeLength = batteryCodeLength;
+    }
+
+    public Float getVoltageHighest() {
+        return voltageHighest;
+    }
+
+    public void setVoltageHighest(Float voltageHighest) {
+        this.voltageHighest = voltageHighest;
+    }
+
+    public Integer getVoltageHighestNo() {
+        return voltageHighestNo;
+    }
+
+    public void setVoltageHighestNo(Integer voltageHighestNo) {
+        this.voltageHighestNo = voltageHighestNo;
+    }
+
+    public Float getVoltageLowest() {
+        return voltageLowest;
+    }
+
+    public void setVoltageLowest(Float voltageLowest) {
+        this.voltageLowest = voltageLowest;
+    }
+
+    public Integer getVoltageLowestNo() {
+        return voltageLowestNo;
+    }
+
+    public void setVoltageLowestNo(Integer voltageLowestNo) {
+        this.voltageLowestNo = voltageLowestNo;
+    }
+
+    public Integer getTempHighest() {
+        return tempHighest;
+    }
+
+    public void setTempHighest(Integer tempHighest) {
+        this.tempHighest = tempHighest;
+    }
+
+    public Integer getTempHighestNo() {
+        return tempHighestNo;
+    }
+
+    public void setTempHighestNo(Integer tempHighestNo) {
+        this.tempHighestNo = tempHighestNo;
+    }
+
+    public Float[] getVoltage() {
+        return voltage;
+    }
+
+    public void setVoltage(Float[] voltage) {
+        this.voltage = voltage;
+    }
+
+    public Integer[] getTemprature() {
+        return temprature;
+    }
+
+    public void setTemprature(Integer[] temprature) {
+        this.temprature = temprature;
+    }
+
+    @Override
+    public String toString() {
+        return "DataPackCanBms{" +
+                "totalCurrent=" + totalCurrent +
+                ", totalVoltage=" + totalVoltage +
+                ", isChargerConnected=" + isChargerConnected +
+                ", cpSignal=" + cpSignal +
+                ", ksStatus=" + ksStatus +
+                ", s2Status=" + s2Status +
+                ", isConnectCharger=" + isConnectCharger +
+                ", isBatteryGroupBalance=" + isBatteryGroupBalance +
+                ", coldFanStatus=" + coldFanStatus +
+                ", soc=" + soc +
+                ", batteryGroupStatus=" + batteryGroupStatus +
+                ", errorLevel=" + errorLevel +
+                ", batteryAlarmIndication=" + batteryAlarmIndication +
+                ", descPowerLevel=" + descPowerLevel +
+                ", isInsuLowest=" + isInsuLowest +
+                ", bmsError=" + bmsError +
+                ", alowableVoltage=" + alowableVoltage +
+                ", alowableCurrent=" + alowableCurrent +
+                ", loadType=" + loadType +
+                ", heaterStatus=" + heaterStatus +
+                ", chargerCount=" + chargerCount +
+                ", discharge10SPower=" + discharge10SPower +
+                ", discharge30SPower=" + discharge30SPower +
+                ", dischargeMaximumPower=" + dischargeMaximumPower +
+                ", dischargeMaximumCurrent=" + dischargeMaximumCurrent +
+                ", charge10SPower=" + charge10SPower +
+                ", charge30SPower=" + charge30SPower +
+                ", chargeMaximumPower=" + chargeMaximumPower +
+                ", chargeMaximumCurrent=" + chargeMaximumCurrent +
+                ", sellVolHighestChargerl4=" + sellVolHighestChargerl4 +
+                ", sellVolHighestFbl3=" + sellVolHighestFbl3 +
+                ", sellVolHighestL3=" + sellVolHighestL3 +
+                ", totalVolHighestChargerl4=" + totalVolHighestChargerl4 +
+                ", totalVolHighestFbl3=" + totalVolHighestFbl3 +
+                ", totalVolHighestl3=" + totalVolHighestl3 +
+                ", sellVolLowerl1=" + sellVolLowerl1 +
+                ", sellVolLowerl2=" + sellVolLowerl2 +
+                ", sellVolLowerl3=" + sellVolLowerl3 +
+                ", totalVolLowerl1=" + totalVolLowerl1 +
+                ", totalVolLowerl2=" + totalVolLowerl2 +
+                ", totalVolLowerl3=" + totalVolLowerl3 +
+                ", sellVolLowestl3=" + sellVolLowestl3 +
+                ", sellVolLowestl4=" + sellVolLowestl4 +
+                ", sellVolLowestCharger=" + sellVolLowestCharger +
+                ", totalVolLowestl3=" + totalVolLowestl3 +
+                ", totalVolLowestl4=" + totalVolLowestl4 +
+                ", totalVolLowestCharger=" + totalVolLowestCharger +
+                ", volPlusBiggerl1=" + volPlusBiggerl1 +
+                ", volPlusBiggerl2=" + volPlusBiggerl2 +
+                ", volPlusBiggerl3=" + volPlusBiggerl3 +
+                ", socLowerl1=" + socLowerl1 +
+                ", socLowerl2=" + socLowerl2 +
+                ", socLowerl3=" + socLowerl3 +
+                ", dischargerCurrentBiggerl1=" + dischargerCurrentBiggerl1 +
+                ", dischargerCurrentBiggerl2=" + dischargerCurrentBiggerl2 +
+                ", dischargerCurrentBiggerl3=" + dischargerCurrentBiggerl3 +
+                ", dischargerCurrentBiggestl3=" + dischargerCurrentBiggestl3 +
+                ", chargerCurrentBiggestl3=" + chargerCurrentBiggestl3 +
+                ", chargerCurrentBiggestl4=" + chargerCurrentBiggestl4 +
+                ", feedbackCurrentBiggestl3=" + feedbackCurrentBiggestl3 +
+                ", feedbackCurrentBiggestl4=" + feedbackCurrentBiggestl4 +
+                ", tempratureHigherl1=" + tempratureHigherl1 +
+                ", tempratureHigherl2=" + tempratureHigherl2 +
+                ", tempratureHigherl3=" + tempratureHigherl3 +
+                ", tempratureHighestl3=" + tempratureHighestl3 +
+                ", tempratureHighestl4=" + tempratureHighestl4 +
+                ", heatMoTempratureHighest=" + heatMoTempratureHighest +
+                ", tempLowerl1=" + tempLowerl1 +
+                ", tempLowerl2=" + tempLowerl2 +
+                ", tempLowerl3=" + tempLowerl3 +
+                ", tempLowestl3=" + tempLowestl3 +
+                ", tempPlusHigherl1=" + tempPlusHigherl1 +
+                ", tempPlusHigherl2=" + tempPlusHigherl2 +
+                ", tempPlusHigherl3=" + tempPlusHigherl3 +
+                ", tempRiseSpeedBiggerl2=" + tempRiseSpeedBiggerl2 +
+                ", tempRiseSpeedBiggestl4=" + tempRiseSpeedBiggestl4 +
+                ", insuLowl1=" + insuLowl1 +
+                ", insuLowl2=" + insuLowl2 +
+                ", insuLowl4=" + insuLowl4 +
+                ", chargeTimeLong=" + chargeTimeLong +
+                ", heatTimeLong=" + heatTimeLong +
+                ", bmsSysErr=" + bmsSysErr +
+                ", chargerNetErr=" + chargerNetErr +
+                ", volDisconnectl4=" + volDisconnectl4 +
+                ", volDisconnectl2=" + volDisconnectl2 +
+                ", tempDisconnectl4=" + tempDisconnectl4 +
+                ", tempDisconnectl2=" + tempDisconnectl2 +
+                ", heatErr=" + heatErr +
+                ", negErrClose=" + negErrClose +
+                ", negErrPaste=" + negErrPaste +
+                ", dcdcStatus=" + dcdcStatus +
+                ", runStatus=" + runStatus +
+                ", socHigherAlarm=" + socHigherAlarm +
+                ", socJumpAlarm=" + socJumpAlarm +
+                ", batterySysDismatch=" + batterySysDismatch +
+                ", dcdcTempAlarm=" + dcdcTempAlarm +
+                ", dcdcStatusAlarm=" + dcdcStatusAlarm +
+                ", batterySupplierCode='" + batterySupplierCode + '\'' +
+                ", batteryTypeCode=" + batteryTypeCode +
+                ", nominalEnergy=" + nominalEnergy +
+                ", nominalVoltage=" + nominalVoltage +
+                ", batteryProDate='" + batteryProDate + '\'' +
+                ", batteryProSn=" + batteryProSn +
+                ", batteryCodeLength=" + batteryCodeLength +
+                ", voltageHighest=" + voltageHighest +
+                ", voltageHighestNo=" + voltageHighestNo +
+                ", voltageLowest=" + voltageLowest +
+                ", voltageLowestNo=" + voltageLowestNo +
+                ", tempHighest=" + tempHighest +
+                ", tempHighestNo=" + tempHighestNo +
+                ", voltage=" + Arrays.toString(voltage) +
+                ", temprature=" + Arrays.toString(temprature) +
+                '}';
     }
 }

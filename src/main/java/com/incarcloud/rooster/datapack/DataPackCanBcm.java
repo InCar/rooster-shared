@@ -8,119 +8,181 @@ package com.incarcloud.rooster.datapack;
  */
 public class DataPackCanBcm extends DataPackObject {
 
-    private Integer runStatus; // BCM运行状态
-    private Integer errLevel; // BCM故障等级
-    private Integer brakeStatus; // 脚刹状态
-    private Integer handbrakeStatus; // 手刹是否拉起
-    private Integer iscrash; // 碰撞是否发生
-    private Integer dc12Level; // 12V电压档位
+    /**
+     * BCM运行状态
+     */
+    private Integer runStatus;
+    /**
+     * BCM故障等级
+     */
+    private Integer errLevel;
+    /**
+     * 脚刹状态
+     */
+    private Integer brakeStatus;
+    /**
+     * 手刹是否拉起
+     */
+    private Integer handbrakeStatus;
+    /**
+     * 碰撞是否发生
+     */
+    private Integer iscrash;
+    /**
+     * 12V电压档位
+     */
+    private Integer dc12Level;
+    /**
+     * 中央门锁是否开
+     */
     private Integer centerLockStatus;
-    private Float dc12Voltage; // 12V蓄电池电压
-    private Integer errTurnLight; // 转向灯故障状态
-    private Integer leftWinOutStatus; // 左前玻璃升降输出状态
-    private Integer rightWinOutStatus; // 右前玻璃升降输出状态
-    private Integer backWinIsHeat; // 后挡风玻璃加热是否开
-    private Integer leftWinStatus; // 左玻璃状态
-    private Integer rightWinStatus; // 左玻璃状态
-    private Integer isRemoteLightOn; // 远光灯是否开
-    private Integer isNeerLightOn; // 近光灯是否开
-    private Integer isFrontFogOn; // 前雾灯是否开
-    private Integer isBackFogOn; // 后雾灯是否开
-    private Integer isDrvLightOn; // 昼间行车灯是否开
-    private Integer turnLightOn; // 转向灯转向方向
-    private Integer isSmallLightOn; // 背光灯（小灯）是否开
-    private Integer isReadLightOn; // 市内阅读灯是否开
-    private Integer isBrakeLightOn; // 制动灯是否开
-    private Integer isPosLightOn; // 位置灯是否开
-    private Integer isReverseLightOn; // 倒车灯是否开
-    private Integer alarmStatus; // 防盗报警状态指示
-    private Integer backDoorLockStatus; // 后背门锁状态
-    private Integer leftDoorLockStatus; // 左前门锁是否锁止
-    private Integer rightDoorLockStatus; // 右前门门锁是否锁止
-    private Integer bcmArmStatus; // BCM_ARMSTATUS
-    private Integer bcmEsclPowerSupply; // BCM_ESCLPOWERSUPPLY
+    /**
+     * 12V蓄电池电压
+     */
+    private Float dc12Voltage;
+    /**
+     * 转向灯故障状态
+     */
+    private Integer errTurnLight;
+    /**
+     * 左前玻璃升降输出状态
+     */
+    private Integer leftWinOutStatus;
+    /**
+     * 右前玻璃升降输出状态
+     */
+    private Integer rightWinOutStatus;
+    /**
+     * 后挡风玻璃加热是否开
+     */
+    private Integer backWinIsHeat;
+    /**
+     * 左玻璃状态
+     */
+    private Integer leftWinStatus;
+    /**
+     * 左玻璃状态
+     */
+    private Integer rightWinStatus;
+    /**
+     * 远光灯是否开
+     */
+    private Integer isRemoteLightOn;
+    /**
+     * 近光灯是否开
+     */
+    private Integer isNeerLightOn;
+    /**
+     * 前雾灯是否开
+     */
+    private Integer isFrontFogOn;
+    /**
+     * 后雾灯是否开
+     */
+    private Integer isBackFogOn;
+    /**
+     * 昼间行车灯是否开
+     */
+    private Integer isDrvLightOn;
+    /**
+     * 转向灯转向方向
+     */
+    private Integer turnLightOn;
+    /**
+     * 背光灯（小灯）是否开
+     */
+    private Integer isSmallLightOn;
+    /**
+     * 市内阅读灯是否开
+     */
+    private Integer isReadLightOn;
+    /**
+     * 制动灯是否开
+     */
+    private Integer isBrakeLightOn;
+    /**
+     * 位置灯是否开
+     */
+    private Integer isPosLightOn;
+    /**
+     * 倒车灯是否开
+     */
+    private Integer isReverseLightOn;
+    /**
+     * 防盗报警状态指示
+     */
+    private Integer alarmStatus;
+    /**
+     * 后背门锁状态
+     */
+    private Integer backDoorLockStatus;
+    /**
+     * 左前门锁是否锁止
+     */
+    private Integer leftDoorLockStatus;
+    /**
+     * 右前门门锁是否锁止
+     */
+    private Integer rightDoorLockStatus;
+    /**
+     * BCM_ARMSTATUS
+     */
+    private Integer bcmArmStatus;
+    /**
+     * BCM_ESCLPOWERSUPPLY
+     */
+    private Integer bcmEsclPowerSupply;
+    /**
+     * 左前门钥匙是否插入
+     */
     private Integer isLeftDoorKeyIn;
-    private Integer safetyBeltStatus; // 安全带是否扣上
-    private Integer isLeftDoorClose; // 左前门是否关上
-    private Integer isRightDoorClose; // 右前门是否关上
-    private Integer isEmergecyLightOn; // 紧急灯是否开
-    private Integer wiperStatus; // 雨刮状态
-    private Integer isWiperStatus; // 前雨刮是否开
-    private Integer isFrontHoodOn; // 前舱盖是否开
-    private Integer isBackDoorOn; // 后背门是否开
-    private Integer isHornOn; // 喇叭是否开
-    private Integer isKeyVoltageLow; // 遥控钥匙电池电量是否低（PEPS指令）
-    private Integer isBrakeStatus; // 非法入侵状态
+    /**
+     * 安全带是否扣上
+     */
+    private Integer safetyBeltStatus;
+    /**
+     * 左前门是否关上
+     */
+    private Integer isLeftDoorClose;
+    /**
+     * 右前门是否关上
+     */
+    private Integer isRightDoorClose;
+    /**
+     * 紧急灯是否开
+     */
+    private Integer isEmergecyLightOn;
+    /**
+     * 雨刮状态
+     */
+    private Integer wiperStatus;
+    /**
+     * 前雨刮是否开
+     */
+    private Integer isWiperStatus;
+    /**
+     * 前舱盖是否开
+     */
+    private Integer isFrontHoodOn;
+    /**
+     * 后背门是否开
+     */
+    private Integer isBackDoorOn;
+    /**
+     * 喇叭是否开
+     */
+    private Integer isHornOn;
+    /**
+     * 遥控钥匙电池电量是否低（PEPS指令）
+     */
+    private Integer isKeyVoltageLow;
+    /**
+     * 非法入侵状态
+     */
+    private Integer isBrakeStatus;
 
     public DataPackCanBcm(DataPackObject dataPack) {
         super(dataPack);
-    }
-
-    @Override
-    public String toString() {
-        return "DataPackCanBcm{" +
-                "runStatus=" + runStatus +
-                ", errLevel=" + errLevel +
-                ", brakeStatus=" + brakeStatus +
-                ", handbrakeStatus=" + handbrakeStatus +
-                ", iscrash=" + iscrash +
-                ", dc12Level=" + dc12Level +
-                ", centerLockStatus=" + centerLockStatus +
-                ", dc12Voltage=" + dc12Voltage +
-                ", errTurnLight=" + errTurnLight +
-                ", leftWinOutStatus=" + leftWinOutStatus +
-                ", rightWinOutStatus=" + rightWinOutStatus +
-                ", backWinIsHeat=" + backWinIsHeat +
-                ", leftWinStatus=" + leftWinStatus +
-                ", rightWinStatus=" + rightWinStatus +
-                ", isRemoteLightOn=" + isRemoteLightOn +
-                ", isNeerLightOn=" + isNeerLightOn +
-                ", isFrontFogOn=" + isFrontFogOn +
-                ", isBackFogOn=" + isBackFogOn +
-                ", isDrvLightOn=" + isDrvLightOn +
-                ", turnLightOn=" + turnLightOn +
-                ", isSmallLightOn=" + isSmallLightOn +
-                ", isReadLightOn=" + isReadLightOn +
-                ", isBrakeLightOn=" + isBrakeLightOn +
-                ", isPosLightOn=" + isPosLightOn +
-                ", isReverseLightOn=" + isReverseLightOn +
-                ", alarmStatus=" + alarmStatus +
-                ", backDoorLockStatus=" + backDoorLockStatus +
-                ", leftDoorLockStatus=" + leftDoorLockStatus +
-                ", rightDoorLockStatus=" + rightDoorLockStatus +
-                ", bcmArmStatus=" + bcmArmStatus +
-                ", bcmEsclPowerSupply=" + bcmEsclPowerSupply +
-                ", isLeftDoorKeyIn=" + isLeftDoorKeyIn +
-                ", safetyBeltStatus=" + safetyBeltStatus +
-                ", isLeftDoorClose=" + isLeftDoorClose +
-                ", isRightDoorClose=" + isRightDoorClose +
-                ", isEmergecyLightOn=" + isEmergecyLightOn +
-                ", wiperStatus=" + wiperStatus +
-                ", isWiperStatus=" + isWiperStatus +
-                ", isFrontHoodOn=" + isFrontHoodOn +
-                ", isBackDoorOn=" + isBackDoorOn +
-                ", isHornOn=" + isHornOn +
-                ", isKeyVoltageLow=" + isKeyVoltageLow +
-                ", isBrakeStatus=" + isBrakeStatus +
-                ", id='" + id + '\'' +
-                ", deviceName='" + deviceName + '\'' +
-                ", packId=" + packId +
-                ", protocolName='" + protocolName + '\'' +
-                ", protocolVersion='" + protocolVersion + '\'' +
-                ", deviceId='" + deviceId + '\'' +
-                ", tripId=" + tripId +
-                ", vid='" + vid + '\'' +
-                ", vin='" + vin + '\'' +
-                ", license='" + license + '\'' +
-                ", subPackTotal=" + subPackTotal +
-                ", subPackIndex=" + subPackIndex +
-                ", encryptName='" + encryptName + '\'' +
-                ", detectionTime=" + detectionTime +
-                ", _group='" + _group + '\'' +
-                ", _name='" + _name + '\'' +
-                ", _version='" + _version + '\'' +
-                ", receiveTime=" + receiveTime +
-                '}';
     }
 
     public Integer getRunStatus() {
@@ -465,5 +527,54 @@ public class DataPackCanBcm extends DataPackObject {
 
     public void setIsBrakeStatus(Integer isBrakeStatus) {
         this.isBrakeStatus = isBrakeStatus;
+    }
+
+    @Override
+    public String toString() {
+        return "DataPackCanBcm{" +
+                "runStatus=" + runStatus +
+                ", errLevel=" + errLevel +
+                ", brakeStatus=" + brakeStatus +
+                ", handbrakeStatus=" + handbrakeStatus +
+                ", iscrash=" + iscrash +
+                ", dc12Level=" + dc12Level +
+                ", centerLockStatus=" + centerLockStatus +
+                ", dc12Voltage=" + dc12Voltage +
+                ", errTurnLight=" + errTurnLight +
+                ", leftWinOutStatus=" + leftWinOutStatus +
+                ", rightWinOutStatus=" + rightWinOutStatus +
+                ", backWinIsHeat=" + backWinIsHeat +
+                ", leftWinStatus=" + leftWinStatus +
+                ", rightWinStatus=" + rightWinStatus +
+                ", isRemoteLightOn=" + isRemoteLightOn +
+                ", isNeerLightOn=" + isNeerLightOn +
+                ", isFrontFogOn=" + isFrontFogOn +
+                ", isBackFogOn=" + isBackFogOn +
+                ", isDrvLightOn=" + isDrvLightOn +
+                ", turnLightOn=" + turnLightOn +
+                ", isSmallLightOn=" + isSmallLightOn +
+                ", isReadLightOn=" + isReadLightOn +
+                ", isBrakeLightOn=" + isBrakeLightOn +
+                ", isPosLightOn=" + isPosLightOn +
+                ", isReverseLightOn=" + isReverseLightOn +
+                ", alarmStatus=" + alarmStatus +
+                ", backDoorLockStatus=" + backDoorLockStatus +
+                ", leftDoorLockStatus=" + leftDoorLockStatus +
+                ", rightDoorLockStatus=" + rightDoorLockStatus +
+                ", bcmArmStatus=" + bcmArmStatus +
+                ", bcmEsclPowerSupply=" + bcmEsclPowerSupply +
+                ", isLeftDoorKeyIn=" + isLeftDoorKeyIn +
+                ", safetyBeltStatus=" + safetyBeltStatus +
+                ", isLeftDoorClose=" + isLeftDoorClose +
+                ", isRightDoorClose=" + isRightDoorClose +
+                ", isEmergecyLightOn=" + isEmergecyLightOn +
+                ", wiperStatus=" + wiperStatus +
+                ", isWiperStatus=" + isWiperStatus +
+                ", isFrontHoodOn=" + isFrontHoodOn +
+                ", isBackDoorOn=" + isBackDoorOn +
+                ", isHornOn=" + isHornOn +
+                ", isKeyVoltageLow=" + isKeyVoltageLow +
+                ", isBrakeStatus=" + isBrakeStatus +
+                '}';
     }
 }

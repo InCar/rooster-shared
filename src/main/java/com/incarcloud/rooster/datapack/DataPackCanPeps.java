@@ -7,86 +7,114 @@ package com.incarcloud.rooster.datapack;
  * @date 2017-09-14 14:06
  */
 public class DataPackCanPeps extends DataPackObject {
-    private Integer rkelockCmd; // 遥控器状态
-    private Integer pkelockCmd; // 无钥匙进入状态
-    private Integer pepsbcmAlarm; // BCM报警提示
-    private Integer pepsicuAlarm; // 仪表报警提示
-    private Integer pepsEsclpowerEnable; // ESCL电源状态（电子转向柱锁）
-    private Integer syspowMode; // 整车电源档位
-    private Integer fobIndex; // 钥匙位
-    private Integer crankRequest; // 启动请求(高压上电请求)
-    private Integer esclStatus; // ESCL状态
-    private Integer fobPosition; // 钥匙位置
-    private Integer authenticationStatus; // 认证状态
-    private Integer spareKeyStatus; // 备用钥匙状态
-    private Integer ssbSw1; // 启动按键状态1
-    private Integer ssbSw2; // 启动按键状态2
-    private Integer driverdDoorStatus; // 驾驶门状态
-    private Integer passDoorSwStatus; // 副驾门状态
-    private Integer trunksw; // 尾门状态
-    private Integer brakeSw; // 制动踏板状态
-    private Integer accFb; // ACC电源状态
-    private Integer onFb; // ON电源状态
-    private Integer accCtrl; // ACC控制信号
-    private Integer onCtrl; // ON控制信号
-    private Integer esclUnlockFb; // ESCL_UNLOCK_FB
-    private Integer esclLockEn; // ESCL_LOCK_EN
-    private float vSpeed; // 车速
-    private Integer eSpeed; // 电机转速
 
+    /**
+     * 遥控器状态
+     */
+    private Integer rkelockCmd;
+    /**
+     * 无钥匙进入状态
+     */
+    private Integer pkelockCmd;
+    /**
+     * BCM报警提示
+     */
+    private Integer pepsbcmAlarm;
+    /**
+     * 仪表报警提示
+     */
+    private Integer pepsicuAlarm;
+    /**
+     * ESCL电源状态（电子转向柱锁）
+     */
+    private Integer pepsEsclpowerEnable;
+    /**
+     * 整车电源档位
+     */
+    private Integer syspowMode;
+    /**
+     * 钥匙位
+     */
+    private Integer fobIndex;
+    /**
+     * 启动请求(高压上电请求)
+     */
+    private Integer crankRequest;
+    /**
+     * ESCL状态
+     */
+    private Integer esclStatus;
+    /**
+     * 钥匙位置
+     */
+    private Integer fobPosition;
+    /**
+     * 认证状态
+     */
+    private Integer authenticationStatus;
+    /**
+     * 备用钥匙状态
+     */
+    private Integer spareKeyStatus;
+    /**
+     * 启动按键状态1
+     */
+    private Integer ssbSw1;
+    /**
+     * 启动按键状态2
+     */
+    private Integer ssbSw2;
+    /**
+     * 驾驶门状态
+     */
+    private Integer driverdDoorStatus;
+    /**
+     * 副驾门状态
+     */
+    private Integer passDoorSwStatus;
+    /**
+     * 尾门状态
+     */
+    private Integer trunksw;
+    /**
+     * 制动踏板状态
+     */
+    private Integer brakeSw;
+    /**
+     * ACC电源状态
+     */
+    private Integer accFb;
+    /**
+     * ON电源状态
+     */
+    private Integer onFb;
+    /**
+     * ACC控制信号
+     */
+    private Integer accCtrl;
+    /**
+     * ON控制信号
+     */
+    private Integer onCtrl;
+    /**
+     * ESCL_UNLOCK_FB
+     */
+    private Integer esclUnlockFb;
+    /**
+     * ESCL_LOCK_EN
+     */
+    private Integer esclLockEn;
+    /**
+     * 车速
+     */
+    private float vSpeed;
+    /**
+     * 电机转速
+     */
+    private Integer eSpeed;
 
     public DataPackCanPeps(DataPackObject dataPack) {
         super(dataPack);
-    }
-
-    @Override
-    public String toString() {
-        return "DataPackCanPeps{" +
-                "rkelockCmd=" + rkelockCmd +
-                ", pkelockCmd=" + pkelockCmd +
-                ", pepsbcmAlarm=" + pepsbcmAlarm +
-                ", pepsicuAlarm=" + pepsicuAlarm +
-                ", pepsEsclpowerEnable=" + pepsEsclpowerEnable +
-                ", syspowMode=" + syspowMode +
-                ", fobIndex=" + fobIndex +
-                ", vrankRequest=" + crankRequest +
-                ", esclStatus=" + esclStatus +
-                ", fobPosition=" + fobPosition +
-                ", authenticationStatus=" + authenticationStatus +
-                ", spareKeyStatus=" + spareKeyStatus +
-                ", ssbSw1=" + ssbSw1 +
-                ", ssbSw2=" + ssbSw2 +
-                ", driverdDoorStatus=" + driverdDoorStatus +
-                ", passDoorSwStatus=" + passDoorSwStatus +
-                ", trunksw=" + trunksw +
-                ", brakeSw=" + brakeSw +
-                ", accFb=" + accFb +
-                ", onFb=" + onFb +
-                ", accCtrl=" + accCtrl +
-                ", onCtrl=" + onCtrl +
-                ", esclUnlockFb=" + esclUnlockFb +
-                ", esclLockEn=" + esclLockEn +
-                ", vSpeed=" + vSpeed +
-                ", eSpeed=" + eSpeed +
-                ", id='" + id + '\'' +
-                ", deviceName='" + deviceName + '\'' +
-                ", packId=" + packId +
-                ", protocolName='" + protocolName + '\'' +
-                ", protocolVersion='" + protocolVersion + '\'' +
-                ", deviceId='" + deviceId + '\'' +
-                ", tripId=" + tripId +
-                ", vid='" + vid + '\'' +
-                ", vin='" + vin + '\'' +
-                ", license='" + license + '\'' +
-                ", subPackTotal=" + subPackTotal +
-                ", subPackIndex=" + subPackIndex +
-                ", encryptName='" + encryptName + '\'' +
-                ", detectionTime=" + detectionTime +
-                ", _group='" + _group + '\'' +
-                ", _name='" + _name + '\'' +
-                ", _version='" + _version + '\'' +
-                ", receiveTime=" + receiveTime +
-                '}';
     }
 
     public Integer getRkelockCmd() {
@@ -295,5 +323,37 @@ public class DataPackCanPeps extends DataPackObject {
 
     public void seteSpeed(Integer eSpeed) {
         this.eSpeed = eSpeed;
+    }
+
+    @Override
+    public String toString() {
+        return "DataPackCanPeps{" +
+                "rkelockCmd=" + rkelockCmd +
+                ", pkelockCmd=" + pkelockCmd +
+                ", pepsbcmAlarm=" + pepsbcmAlarm +
+                ", pepsicuAlarm=" + pepsicuAlarm +
+                ", pepsEsclpowerEnable=" + pepsEsclpowerEnable +
+                ", syspowMode=" + syspowMode +
+                ", fobIndex=" + fobIndex +
+                ", crankRequest=" + crankRequest +
+                ", esclStatus=" + esclStatus +
+                ", fobPosition=" + fobPosition +
+                ", authenticationStatus=" + authenticationStatus +
+                ", spareKeyStatus=" + spareKeyStatus +
+                ", ssbSw1=" + ssbSw1 +
+                ", ssbSw2=" + ssbSw2 +
+                ", driverdDoorStatus=" + driverdDoorStatus +
+                ", passDoorSwStatus=" + passDoorSwStatus +
+                ", trunksw=" + trunksw +
+                ", brakeSw=" + brakeSw +
+                ", accFb=" + accFb +
+                ", onFb=" + onFb +
+                ", accCtrl=" + accCtrl +
+                ", onCtrl=" + onCtrl +
+                ", esclUnlockFb=" + esclUnlockFb +
+                ", esclLockEn=" + esclLockEn +
+                ", vSpeed=" + vSpeed +
+                ", eSpeed=" + eSpeed +
+                '}';
     }
 }

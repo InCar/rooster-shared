@@ -7,50 +7,43 @@ package com.incarcloud.rooster.datapack;
  * @date 2017-09-14 14:38
  */
 public class DataPackCanAdas extends DataPackObject {
-    private Integer leftLaneDetected; // 左车道检测
-    private Integer laneDepartureLeft; // 左车道偏离
-    private Integer rightLaneDetected; // 右车道检测
-    private Integer laneDpartureRight; // 右车道偏移
-    private Integer vehicleDecectResult; // 车辆的测定结果
-    private Integer crashTime; // 碰撞时间
-    private Integer errorInfo; // 错误信息
-    private Integer invalidInfo; // 无效信息
+
+    /**
+     * 左车道检测
+     */
+    private Integer leftLaneDetected;
+    /**
+     * 左车道偏离
+     */
+    private Integer laneDepartureLeft;
+    /**
+     * 右车道检测
+     */
+    private Integer rightLaneDetected;
+    /**
+     * 右车道偏移
+     */
+    private Integer laneDpartureRight;
+    /**
+     * 车辆的测定结果
+     */
+    private Integer vehicleDecectResult;
+    /**
+     * 碰撞时间
+     */
+    private Integer crashTime;
+    /**
+     * 错误信息
+     */
+    private Integer errorInfo;
+    /**
+     * 无效信息
+     */
+    private Integer invalidInfo;
 
 
     public DataPackCanAdas(DataPackObject dataPack) {
         super(dataPack);
-    }
-
-    @Override
-    public String toString() {
-        return "DataPackCanAdas{" +
-                "leftLaneDetected=" + leftLaneDetected +
-                ", laneDepartureLeft=" + laneDepartureLeft +
-                ", rightLaneDetected=" + rightLaneDetected +
-                ", laneDpartureRight=" + laneDpartureRight +
-                ", vehicleDecectResult=" + vehicleDecectResult +
-                ", crashTime=" + crashTime +
-                ", errorInfo=" + errorInfo +
-                ", invalidInfo=" + invalidInfo +
-                ", id='" + id + '\'' +
-                ", deviceName='" + deviceName + '\'' +
-                ", packId=" + packId +
-                ", protocolName='" + protocolName + '\'' +
-                ", protocolVersion='" + protocolVersion + '\'' +
-                ", deviceId='" + deviceId + '\'' +
-                ", tripId=" + tripId +
-                ", vid='" + vid + '\'' +
-                ", vin='" + vin + '\'' +
-                ", license='" + license + '\'' +
-                ", subPackTotal=" + subPackTotal +
-                ", subPackIndex=" + subPackIndex +
-                ", encryptName='" + encryptName + '\'' +
-                ", detectionTime=" + detectionTime +
-                ", _group='" + _group + '\'' +
-                ", _name='" + _name + '\'' +
-                ", _version='" + _version + '\'' +
-                ", receiveTime=" + receiveTime +
-                '}';
     }
 
     public Integer getLeftLaneDetected() {
@@ -115,5 +108,19 @@ public class DataPackCanAdas extends DataPackObject {
 
     public void setInvalidInfo(Integer invalidInfo) {
         this.invalidInfo = invalidInfo;
+    }
+
+    @Override
+    public String toString() {
+        return "DataPackCanAdas{" +
+                "leftLaneDetected=" + leftLaneDetected +
+                ", laneDepartureLeft=" + laneDepartureLeft +
+                ", rightLaneDetected=" + rightLaneDetected +
+                ", laneDpartureRight=" + laneDpartureRight +
+                ", vehicleDecectResult=" + vehicleDecectResult +
+                ", crashTime=" + crashTime +
+                ", errorInfo=" + errorInfo +
+                ", invalidInfo=" + invalidInfo +
+                '}';
     }
 }

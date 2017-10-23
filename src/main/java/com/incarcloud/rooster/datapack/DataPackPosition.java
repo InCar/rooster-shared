@@ -32,16 +32,6 @@ public class DataPackPosition extends DataPackObject {
     public static final int POSITION_MODE_GPS = 2;
 
     /**
-     * 定义状态 D2S协议添加
-     * 0:有效定位； 1:无效定位（当数据通信正常，而不能获取定位信息时，发送最后一次有效定位信息，并将定位状态置为无效。
-     */
-    private Integer isValidate;
-    /**
-     * 有效星数
-     */
-    private Integer validStar;
-
-    /**
      * 定位方式：3-北斗卫星定位
      */
     public static final int POSITION_MODE_BEIDOU = 3;
@@ -55,6 +45,11 @@ public class DataPackPosition extends DataPackObject {
      * 定位方式：5-Galileo卫星定位
      */
     public static final int POSITION_MODE_GALILEO = 5;
+
+    /**
+     * 定位方式：6-未知
+     */
+    public static final int POSITION_MODE_UNKNOWN = 6;
 
     /**
      * 车速（km/h）
@@ -94,6 +89,10 @@ public class DataPackPosition extends DataPackObject {
      */
     private Date positionTime;
     /**
+     * 有效星数(LANDU-TBOX)
+     */
+    private Integer validStar;
+    /**
      * 主电源状态
      */
     private String mainPowerStatus;
@@ -104,30 +103,6 @@ public class DataPackPosition extends DataPackObject {
 
     public DataPackPosition(DataPackObject object) {
         super(object);
-    }
-
-    public String getMainPowerStatus() {
-        return mainPowerStatus;
-    }
-
-    public void setMainPowerStatus(String mainPowerStatus) {
-        this.mainPowerStatus = mainPowerStatus;
-    }
-
-    public String getEnergizedStatus() {
-        return energizedStatus;
-    }
-
-    public void setEnergizedStatus(String energizedStatus) {
-        this.energizedStatus = energizedStatus;
-    }
-
-    public Integer getIsValidate() {
-        return isValidate;
-    }
-
-    public void setIsValidate(Integer isValidate) {
-        this.isValidate = isValidate;
     }
 
     public Float getSpeed() {
@@ -202,7 +177,6 @@ public class DataPackPosition extends DataPackObject {
         this.positionTime = positionTime;
     }
 
-
     public Integer getValidStar() {
         return validStar;
     }
@@ -211,12 +185,26 @@ public class DataPackPosition extends DataPackObject {
         this.validStar = validStar;
     }
 
+    public String getMainPowerStatus() {
+        return mainPowerStatus;
+    }
+
+    public void setMainPowerStatus(String mainPowerStatus) {
+        this.mainPowerStatus = mainPowerStatus;
+    }
+
+    public String getEnergizedStatus() {
+        return energizedStatus;
+    }
+
+    public void setEnergizedStatus(String energizedStatus) {
+        this.energizedStatus = energizedStatus;
+    }
+
     @Override
     public String toString() {
         return "DataPackPosition{" +
-                "isValidate=" + isValidate +
-                ", validStar=" + validStar +
-                ", speed=" + speed +
+                "speed=" + speed +
                 ", travelDistance=" + travelDistance +
                 ", longitude=" + longitude +
                 ", latitude=" + latitude +
@@ -225,24 +213,9 @@ public class DataPackPosition extends DataPackObject {
                 ", positioMode=" + positioMode +
                 ", positioModeDesc='" + positioModeDesc + '\'' +
                 ", positionTime=" + positionTime +
-                ", id='" + id + '\'' +
-                ", deviceName='" + deviceName + '\'' +
-                ", packId=" + packId +
-                ", protocolName='" + protocolName + '\'' +
-                ", protocolVersion='" + protocolVersion + '\'' +
-                ", deviceId='" + deviceId + '\'' +
-                ", tripId=" + tripId +
-                ", vid='" + vid + '\'' +
-                ", vin='" + vin + '\'' +
-                ", license='" + license + '\'' +
-                ", subPackTotal=" + subPackTotal +
-                ", subPackIndex=" + subPackIndex +
-                ", encryptName='" + encryptName + '\'' +
-                ", detectionTime=" + detectionTime +
-                ", _group='" + _group + '\'' +
-                ", _name='" + _name + '\'' +
-                ", _version='" + _version + '\'' +
-                ", receiveTime=" + receiveTime +
+                ", validStar=" + validStar +
+                ", mainPowerStatus='" + mainPowerStatus + '\'' +
+                ", energizedStatus='" + energizedStatus + '\'' +
                 '}';
     }
 }

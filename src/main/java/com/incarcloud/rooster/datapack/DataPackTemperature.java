@@ -35,34 +35,6 @@ public class DataPackTemperature extends DataPackObject {
         super(dataPack);
     }
 
-    @Override
-    public String toString() {
-        return "DataPackTemperature{" +
-                "batterySysNumber=" + batterySysNumber +
-                ", sysIndex=" + sysIndex +
-                ", number=" + number +
-                ", temperatureList=" + temperatureList +
-                ", id='" + id + '\'' +
-                ", deviceName='" + deviceName + '\'' +
-                ", packId=" + packId +
-                ", protocolName='" + protocolName + '\'' +
-                ", protocolVersion='" + protocolVersion + '\'' +
-                ", deviceId='" + deviceId + '\'' +
-                ", tripId=" + tripId +
-                ", vid='" + vid + '\'' +
-                ", vin='" + vin + '\'' +
-                ", license='" + license + '\'' +
-                ", subPackTotal=" + subPackTotal +
-                ", subPackIndex=" + subPackIndex +
-                ", encryptName='" + encryptName + '\'' +
-                ", detectionTime=" + detectionTime +
-                ", _group='" + _group + '\'' +
-                ", _name='" + _name + '\'' +
-                ", _version='" + _version + '\'' +
-                ", receiveTime=" + receiveTime +
-                '}';
-    }
-
     public Integer getBatterySysNumber() {
         return batterySysNumber;
     }
@@ -93,5 +65,15 @@ public class DataPackTemperature extends DataPackObject {
 
     public void setTemperatureList(List<Integer> temperatureList) {
         this.temperatureList = temperatureList;
+    }
+
+    @Override
+    public String toString() {
+        return "DataPackTemperature{" +
+                "batterySysNumber=" + batterySysNumber +
+                ", sysIndex=" + sysIndex +
+                ", number=" + number +
+                ", temperatureList=" + temperatureList +
+                '}';
     }
 }
