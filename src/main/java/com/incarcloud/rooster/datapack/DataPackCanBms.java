@@ -117,14 +117,38 @@ public class DataPackCanBms extends DataPackObject {
     private Integer batteryProSn;// 流水号
     private Integer batteryCodeLength;// 可充电储能系统编码长度
 
-    private float voltageHighest;//最高单体电压
-    private int voltageHighestNo;//最高单体电池号
-    private float voltageLowest;//最低单体电压
-    private int voltageLowestNo;//最低单体电池号
-    private int tempHighest;// 最高温度点温度
-    private int tempHighestNo;//最高温度点电池号
-    private Float[] voltage; // 单体电池电压数组
-    private Integer[] temprature; // 探头温度数组
+    /**
+     * 最高单体电压
+     */
+    private Float voltageHighest;
+    /**
+     * 最高单体电池号
+     */
+    private Integer voltageHighestNo;
+    /**
+     * 最低单体电压
+     */
+    private Float voltageLowest;
+    /**
+     * 最低单体电池号
+     */
+    private Integer voltageLowestNo;
+    /**
+     * 最高温度点温度
+     */
+    private Integer tempHighest;
+    /**
+     * 最高温度点电池号
+     */
+    private Integer tempHighestNo;
+    /**
+     * 单体电池电压数组
+     */
+    private Float[] voltage;
+    /**
+     * 探头温度数组
+     */
+    private Integer[] temprature;
 
     public DataPackCanBms(DataPackObject dataPack) {
         super(dataPack);
