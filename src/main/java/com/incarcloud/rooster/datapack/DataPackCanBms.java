@@ -10,7 +10,6 @@ import java.util.Arrays;
  * @date 2017-09-14 14:44
  */
 public class DataPackCanBms extends DataPackObject {
-
     /**
      * 总电流
      */
@@ -428,7 +427,6 @@ public class DataPackCanBms extends DataPackObject {
      * 可充电储能系统编码长度
      */
     private Integer batteryCodeLength;
-
     /**
      * 最高单体电压
      */

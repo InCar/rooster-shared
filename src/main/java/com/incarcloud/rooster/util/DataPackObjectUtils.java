@@ -151,6 +151,10 @@ public class DataPackObjectUtils {
      */
     public static final String BATTERY = "BATTERY";
     /**
+     * 电池数据
+     */
+    public static final String BATTERYTEMP = "BATTERYTEMP";
+    /**
      * 驱动电机数据
      */
     public static final String MOTOR = "MOTOR";
@@ -303,6 +307,10 @@ public class DataPackObjectUtils {
                 // 电池数据
                 return BATTERY;
             }
+            if (clazz.equals(DataPackTemperature.class)) {
+	            // 电池温度数据
+	            return BATTERYTEMP;
+        	}
             if (clazz.equals(DataPackMotor.class)) {
                 // 驱动电机数据
                 return MOTOR;
@@ -450,6 +458,10 @@ public class DataPackObjectUtils {
         if (BATTERY.equals(dataType)) {
             // 分发电池数据
             return DataPackBattery.class;
+        }
+        if (BATTERYTEMP.equals(dataType)) {
+            // 分发电池温度数据
+            return DataPackTemperature.class;
         }
         if (MOTOR.equals(dataType)) {
             // 分发驱动电机数据
