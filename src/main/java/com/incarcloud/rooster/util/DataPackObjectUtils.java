@@ -307,7 +307,7 @@ public class DataPackObjectUtils {
                 // 电池数据
                 return BATTERY;
             }
-            if (clazz.equals(DataPackTemperature)) {
+            if (clazz.equals(DataPackTemperature.class)) {
 	            // 电池温度数据
 	            return BATTERYTEMP;
         	}
