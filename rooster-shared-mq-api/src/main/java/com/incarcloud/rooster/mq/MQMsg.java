@@ -4,7 +4,6 @@ import com.incarcloud.rooster.util.StringUtil;
 import io.netty.buffer.ByteBuf;
 
 import java.io.UnsupportedEncodingException;
-import java.util.Arrays;
 import java.util.Base64;
 
 /**

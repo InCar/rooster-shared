@@ -2,9 +2,6 @@ group 'com.incarcloud'
 version '2.0'
 
 
-
-
-
 allprojects {//公共配置
     apply plugin: 'java'
     apply plugin: 'maven'
@@ -19,7 +16,7 @@ allprojects {//公共配置
 
     if (isReleaseBuild()) {
         println project.name + '******************RELEASE BUILD******************'
-//        sonatypeRepositoryUrl = MAVEN_REPO_RELEASE_URL
+        mvnrepo = MAVEN_REPO_RELEASE_URL
     } else {
         println project.name + '******************SNAPSHOT BUILD******************'
     }
@@ -106,6 +103,25 @@ dependencies {
     compile project(":rooster-shared-mq-api")
     compile project(":rooster-shared-remotecmd-api")
 }
+
+
+
+
+
+//将所有依赖和子工程打包进来
+//jar {
+//    manifest {
+//        attributes(
+////        "Main-Class": "com.testbird.rio.Main",
+//        "Manifest-Version" : 1.0
+//        )
+//
+//    }
+//    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+//    into('assets') {
+//        from 'assets'
+//    }
+//}
 
 //重置源码目录，将子模块的源码包含进来
 sourceSets {
