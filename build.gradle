@@ -1,51 +1,138 @@
 group 'com.incarcloud'
 version '2.0'
 
-apply plugin: 'java'
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
 
-repositories {
-    if (project.hasProperty("maven")) {
-        if (maven.equals("maven.aliyun.com"))
-            maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
-        else
-            mavenCentral()
+
+
+allprojects {//公共配置
+    apply plugin: 'java'
+    apply plugin: 'maven'
+
+    sourceCompatibility = 1.8
+
+    def mvnrepo = MAVEN_REPO_SNAPSHOT_URL
+    def nexus_username = NEXUS_USERNAME
+    def nexus_password = NEXUS_PASSWORD
+
+
+
+    if (isReleaseBuild()) {
+        println project.name + '******************RELEASE BUILD******************'
+//        sonatypeRepositoryUrl = MAVEN_REPO_RELEASE_URL
     } else {
-        mavenCentral()
+        println project.name + '******************SNAPSHOT BUILD******************'
     }
+
+
+    repositories {
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+        maven { url 'http://s1:8081/nexus/content/groups/public/' }
+    }
+
+
+    buildscript {
+        repositories {
+            maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+            maven { url 'http://s1:8081/nexus/content/groups/public/' }
+        }
+
+        dependencies {
+        }
+    }
+
+
+
+    compileJava {
+        options.encoding = "utf-8"
+        options.compilerArgs << "-Xlint:unchecked"
+    }
+
+    compileTestJava {
+        options.encoding = "utf-8"
+        options.compilerArgs << "-Xlint:unchecked"
+    }
+
+    //打包源代码
+    task sourcesJar(type: Jar, dependsOn: classes) {
+        classifier = 'sources'
+        from sourceSets.main.allSource
+    }
+
+
+    artifacts {
+        archives sourcesJar
+    }
+
+
+    //如果希望gradle install，安装到.m2本地仓库，参考下面的内容
+    install {
+        repositories.mavenInstaller {
+            pom.version = "$project.version"
+            pom.artifactId = "$project.name"
+            pom.groupId = "$project.group"
+        }
+    }
+
+    //上传到nexus
+    uploadArchives {
+        repositories {
+            mavenDeployer {
+                repository(url: mvnrepo) {
+                    authentication(userName: nexus_username, password: nexus_password)
+                }
+                pom.project{
+                    name = '$project.name'
+                }
+
+            }
+        }
+    }
+
+
+    defaultTasks "assemble"
+
+}
+
+
+subprojects {
+    version = '1.0'
 }
 
 dependencies {
-
-    compile("org.springframework:spring-context:4.3.+")
-    compile("io.netty:netty-buffer:4.1.+")
-    compile("org.slf4j:slf4j-api:1.7.+")
-    compile("commons-codec:commons-codec:1.10+")
-    compile("com.google.code.gson:gson:2.2.2")
-
-    
-    testCompile("junit:junit:4.+")
-    testRuntime("org.apache.logging.log4j:log4j-slf4j-impl:2.8.+")
-    testRuntime("org.apache.logging.log4j:log4j-core:2.8.+")
+    compile project(":rooster-shared-common")
+    compile project(":rooster-shared-bigtable-api")
+    compile project(":rooster-shared-dataparser-api")
+    compile project(":rooster-shared-mq-api")
+    compile project(":rooster-shared-remotecmd-api")
 }
 
-compileJava{
-    options.encoding = "utf-8"
-    options.compilerArgs << "-Xlint:unchecked"
-}
-
-compileTestJava{
-    options.encoding = "utf-8"
-    options.compilerArgs << "-Xlint:unchecked"
-}
-
-test{
-    testLogging {
-        events "passed", "skipped", "failed"
-        showStandardStreams = true
+//重置源码目录，将子模块的源码包含进来
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src/main/java','rooster-shared-common/src/main/java',
+                       'rooster-shared-bigtable-api/src/main/java',
+                       'rooster-shared-dataparser-api/src/main/java',
+                       'rooster-shared-mq-api/src/main/java',
+                       'rooster-shared-remotecmd-api/src/main/java']
+        }
+        resources {
+            srcDirs = ['src/main/resources',
+                       'rooster-shared-common/src/main/resources',
+                       'rooster-shared-bigtable-api/src/main/resources',
+                       'rooster-shared-dataparser-api/src/main/resources',
+                       'rooster-shared-mq-api/src/main/resources',
+                       'rooster-shared-remotecmd-api/src/main/resources']
+        }
     }
 }
 
-defaultTasks "assemble"
+
+
+
+def isReleaseBuild() {
+    return project.version.contains("SNAPSHOT") == false
+}
+
+

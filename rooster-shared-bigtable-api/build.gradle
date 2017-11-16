@@ -1,0 +1,23 @@
+group 'com.incarcloud.rooster'
+version '1.0-SNAPSHOT'
+
+repositories {
+    maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+}
+
+
+dependencies {
+    compile("org.slf4j:slf4j-api:1.7.+")
+    compile("commons-codec:commons-codec:1.10+")
+    compile("com.google.code.gson:gson:2.2.2")
+
+    testCompile("junit:junit:4.+")
+    testRuntime("org.apache.logging.log4j:log4j-slf4j-impl:2.8.+")
+    testRuntime("org.apache.logging.log4j:log4j-core:2.8.+")
+
+
+
+}
+
+
+
