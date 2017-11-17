@@ -101,9 +101,6 @@ allprojects {//公共配置
 }
 
 
-subprojects {
-    version = '1.0'
-}
 
 dependencies {
     compile project(":rooster-shared-all")
@@ -113,9 +110,6 @@ dependencies {
     compile project(":rooster-shared-mq-api")
     compile project(":rooster-shared-remotecmd-api")
 }
-
-
-
 
 
 //将所有依赖和子工程打包进来
