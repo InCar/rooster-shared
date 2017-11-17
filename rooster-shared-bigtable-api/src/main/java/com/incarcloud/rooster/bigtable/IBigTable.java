@@ -1,6 +1,8 @@
 package com.incarcloud.rooster.bigtable;
 
 
+import com.incarcloud.rooster.datapack.DataPackObject;
+
 import java.util.Date;
 import java.util.List;
 
@@ -19,7 +21,7 @@ public interface IBigTable {
      * @param recieveTime 二级索引用接收时间时间生成便于同步数据
      * @throws Exception
      */
-    void saveDataPackObject(String rowKey, Object data, Date recieveTime) throws Exception;
+    void saveDataPackObject(String rowKey, DataPackObject data, Date recieveTime) throws Exception;
 
     /**
      * 保存vin码
@@ -47,7 +49,7 @@ public interface IBigTable {
      * @param endTime　查询结束时间
      * @return 数据集合
      */
-    <T> List<T> queryData(String vinOrCode, Class<T> clazz, Date startTime, Date endTime);
+    <T extends DataPackObject> List<T> queryData(String vinOrCode, Class<T> clazz, Date startTime, Date endTime);
 
     /**
      * 关闭，回收资源
