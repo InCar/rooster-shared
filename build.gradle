@@ -25,15 +25,15 @@ allprojects {//公共配置
 
 
     repositories {
-        maven { url 'http://s1:8081/nexus/content/groups/public/' }
         maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+        maven { url MAVEN_REPO_MIRROR_URL }
     }
 
 
     buildscript {
         repositories {
             maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
-            maven { url 'http://127.0.0.1:8081/nexus/content/groups/public/' }
+            maven { url MAVEN_REPO_MIRROR_URL }
         }
 
         dependencies {
