@@ -1,0 +1,41 @@
+group 'com.incarcloud'
+version '2.0'
+
+
+
+
+dependencies {
+    compile project(":rooster-shared-common")
+    compile project(":rooster-shared-bigtable-api")
+    compile project(":rooster-shared-dataparser-api")
+    compile project(":rooster-shared-mq-api")
+    compile project(":rooster-shared-remotecmd-api")
+}
+
+
+
+
+//重置源码目录，将子模块的源码包含进来
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src/main/java',
+                       '../rooster-shared-common/src/main/java',
+                       '../rooster-shared-bigtable-api/src/main/java',
+                       '../rooster-shared-dataparser-api/src/main/java',
+                       '../rooster-shared-mq-api/src/main/java',
+                       '../rooster-shared-remotecmd-api/src/main/java']
+        }
+        resources {
+            srcDirs = ['src/main/resources',
+                       '../rooster-shared-common/src/main/resources',
+                       '../rooster-shared-bigtable-api/src/main/resources',
+                       '../rooster-shared-dataparser-api/src/main/resources',
+                       '../rooster-shared-mq-api/src/main/resources',
+                       '../rooster-shared-remotecmd-api/src/main/resources']
+        }
+    }
+}
+
+
+

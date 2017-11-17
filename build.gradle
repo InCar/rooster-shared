@@ -7,6 +7,8 @@ allprojects {//公共配置
     apply plugin: 'maven'
 
     sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
 
     def mvnrepo = MAVEN_REPO_SNAPSHOT_URL
     def nexus_username = NEXUS_USERNAME
@@ -23,8 +25,8 @@ allprojects {//公共配置
 
 
     repositories {
-        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
         maven { url 'http://s1:8081/nexus/content/groups/public/' }
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
     }
 
 
@@ -48,6 +50,13 @@ allprojects {//公共配置
     compileTestJava {
         options.encoding = "utf-8"
         options.compilerArgs << "-Xlint:unchecked"
+    }
+
+    test{
+        testLogging {
+            events "passed", "skipped", "failed"
+            showStandardStreams = true
+        }
     }
 
     //打包源代码
@@ -97,6 +106,7 @@ subprojects {
 }
 
 dependencies {
+    compile project(":rooster-shared-all")
     compile project(":rooster-shared-common")
     compile project(":rooster-shared-bigtable-api")
     compile project(":rooster-shared-dataparser-api")
@@ -123,26 +133,29 @@ dependencies {
 //    }
 //}
 
-//重置源码目录，将子模块的源码包含进来
-sourceSets {
-    main {
-        java {
-            srcDirs = ['src/main/java','rooster-shared-common/src/main/java',
-                       'rooster-shared-bigtable-api/src/main/java',
-                       'rooster-shared-dataparser-api/src/main/java',
-                       'rooster-shared-mq-api/src/main/java',
-                       'rooster-shared-remotecmd-api/src/main/java']
-        }
-        resources {
-            srcDirs = ['src/main/resources',
-                       'rooster-shared-common/src/main/resources',
-                       'rooster-shared-bigtable-api/src/main/resources',
-                       'rooster-shared-dataparser-api/src/main/resources',
-                       'rooster-shared-mq-api/src/main/resources',
-                       'rooster-shared-remotecmd-api/src/main/resources']
-        }
-    }
-}
+
+
+
+////重置源码目录，将子模块的源码包含进来
+//sourceSets {
+//    main {
+//        java {
+//            srcDirs = ['src/main/java','rooster-shared-common/src/main/java',
+//                       'rooster-shared-bigtable-api/src/main/java',
+//                       'rooster-shared-dataparser-api/src/main/java',
+//                       'rooster-shared-mq-api/src/main/java',
+//                       'rooster-shared-remotecmd-api/src/main/java']
+//        }
+//        resources {
+//            srcDirs = ['src/main/resources',
+//                       'rooster-shared-common/src/main/resources',
+//                       'rooster-shared-bigtable-api/src/main/resources',
+//                       'rooster-shared-dataparser-api/src/main/resources',
+//                       'rooster-shared-mq-api/src/main/resources',
+//                       'rooster-shared-remotecmd-api/src/main/resources']
+//        }
+//    }
+//}
 
 
 

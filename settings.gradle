@@ -3,7 +3,8 @@ include 'rooster-shared-common',
 		'rooster-shared-bigtable-api',
 		'rooster-shared-dataparser-api',
 		'rooster-shared-mq-api',
-		'rooster-shared-remotecmd-api'
+		'rooster-shared-remotecmd-api',
+		'rooster-shared-all'
 
 
 
