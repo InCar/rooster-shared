@@ -10,15 +10,8 @@ allprojects {//公共配置
     targetCompatibility = 1.8
 
 
-    def mvnrepo = MAVEN_REPO_SNAPSHOT_URL
-    def nexus_username = NEXUS_USERNAME
-    def nexus_password = NEXUS_PASSWORD
-
-
-
     if (isReleaseBuild()) {
         println project.name + '******************RELEASE BUILD******************'
-        mvnrepo = MAVEN_REPO_RELEASE_URL
     } else {
         println project.name + '******************SNAPSHOT BUILD******************'
     }
@@ -26,14 +19,26 @@ allprojects {//公共配置
 
     repositories {
         maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
-        maven { url MAVEN_REPO_MIRROR_URL }
+        maven {
+            url MAVEN_REPO_MIRROR_URL
+            credentials {
+                username = NEXUS_USERNAME
+                password = NEXUS_PASSWORD
+            }
+        }
     }
 
 
     buildscript {
         repositories {
             maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
-            maven { url MAVEN_REPO_MIRROR_URL }
+            maven {
+                url MAVEN_REPO_MIRROR_URL
+                credentials {
+                    username = NEXUS_USERNAME
+                    password = NEXUS_PASSWORD
+                }
+            }
         }
 
         dependencies {
@@ -84,8 +89,13 @@ allprojects {//公共配置
     uploadArchives {
         repositories {
             mavenDeployer {
-                repository(url: mvnrepo) {
-                    authentication(userName: nexus_username, password: nexus_password)
+                repository(
+                        url: "${MAVEN_REPO_RELEASE_URL}") {
+                    authentication(userName: NEXUS_USERNAME, password: NEXUS_PASSWORD)
+                }
+                snapshotRepository(
+                        url: "${MAVEN_REPO_SNAPSHOT_URL}") {
+                    authentication(userName: NEXUS_USERNAME, password: NEXUS_PASSWORD)
                 }
                 pom.project{
                     name = '$project.name'
@@ -151,7 +161,6 @@ sourceSets {
         }
     }
 }
-
 
 
 
