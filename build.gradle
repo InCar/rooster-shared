@@ -1,51 +1,171 @@
 group 'com.incarcloud'
 version '2.0'
 
-apply plugin: 'java'
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+allprojects {//公共配置
+    apply plugin: 'java'
+    apply plugin: 'maven'
 
-repositories {
-    if (project.hasProperty("maven")) {
-        if (maven.equals("maven.aliyun.com"))
-            maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
-        else
-            mavenCentral()
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
+
+    if (isReleaseBuild()) {
+        println project.name + '******************RELEASE BUILD******************'
     } else {
-        mavenCentral()
+        println project.name + '******************SNAPSHOT BUILD******************'
     }
+
+
+    repositories {
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+        maven {
+            url MAVEN_REPO_MIRROR_URL
+            credentials {
+                username = NEXUS_USERNAME
+                password = NEXUS_PASSWORD
+            }
+        }
+    }
+
+
+    buildscript {
+        repositories {
+            maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+            maven {
+                url MAVEN_REPO_MIRROR_URL
+                credentials {
+                    username = NEXUS_USERNAME
+                    password = NEXUS_PASSWORD
+                }
+            }
+        }
+
+        dependencies {
+        }
+    }
+
+
+
+    compileJava {
+        options.encoding = "utf-8"
+        options.compilerArgs << "-Xlint:unchecked"
+    }
+
+    compileTestJava {
+        options.encoding = "utf-8"
+        options.compilerArgs << "-Xlint:unchecked"
+    }
+
+    test{
+        testLogging {
+            events "passed", "skipped", "failed"
+            showStandardStreams = true
+        }
+    }
+
+    //打包源代码
+    task sourcesJar(type: Jar, dependsOn: classes) {
+        classifier = 'sources'
+        from sourceSets.main.allSource
+    }
+
+
+    artifacts {
+        archives sourcesJar
+    }
+
+
+    //如果希望gradle install，安装到.m2本地仓库，参考下面的内容
+    install {
+        repositories.mavenInstaller {
+            pom.version = "$project.version"
+            pom.artifactId = "$project.name"
+            pom.groupId = "$project.group"
+        }
+    }
+
+    //上传到nexus
+    uploadArchives {
+        repositories {
+            mavenDeployer {
+                repository(
+                        url: "${MAVEN_REPO_RELEASE_URL}") {
+                    authentication(userName: NEXUS_USERNAME, password: NEXUS_PASSWORD)
+                }
+                snapshotRepository(
+                        url: "${MAVEN_REPO_SNAPSHOT_URL}") {
+                    authentication(userName: NEXUS_USERNAME, password: NEXUS_PASSWORD)
+                }
+                pom.project{
+                    name = '$project.name'
+                }
+
+            }
+        }
+    }
+
+
+    defaultTasks "assemble"
+
 }
+
+
 
 dependencies {
-
-    compile("org.springframework:spring-context:4.3.+")
-    compile("io.netty:netty-buffer:4.1.+")
-    compile("org.slf4j:slf4j-api:1.7.+")
-    compile("commons-codec:commons-codec:1.10+")
+    //将子模块的依赖拷贝过来，不然编译出错
+    compile("commons-codec:commons-codec:1.6")
     compile("com.google.code.gson:gson:2.2.2")
+    compile("io.netty:netty-buffer:4.1.6.Final")
+    compile("org.slf4j:slf4j-api:1.7.7")
 
-    
-    testCompile("junit:junit:4.+")
-    testRuntime("org.apache.logging.log4j:log4j-slf4j-impl:2.8.+")
-    testRuntime("org.apache.logging.log4j:log4j-core:2.8.+")
+    testCompile group: 'junit', name: 'junit', version: '4.12'
 }
 
-compileJava{
-    options.encoding = "utf-8"
-    options.compilerArgs << "-Xlint:unchecked"
-}
 
-compileTestJava{
-    options.encoding = "utf-8"
-    options.compilerArgs << "-Xlint:unchecked"
-}
+//将所有依赖和子工程打包进来
+//jar {
+//    manifest {
+//        attributes(
+////        "Main-Class": "com.testbird.rio.Main",
+//        "Manifest-Version" : 1.0
+//        )
+//
+//    }
+//    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+//    into('assets') {
+//        from 'assets'
+//    }
+//}
 
-test{
-    testLogging {
-        events "passed", "skipped", "failed"
-        showStandardStreams = true
+
+
+
+////重置源码目录，将子模块的源码包含进来
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src/main/java','rooster-shared-common/src/main/java',
+                       'rooster-shared-bigtable-api/src/main/java',
+                       'rooster-shared-dataparser-api/src/main/java',
+                       'rooster-shared-mq-api/src/main/java',
+                       'rooster-shared-remotecmd-api/src/main/java']
+        }
+        resources {
+            srcDirs = ['src/main/resources',
+                       'rooster-shared-common/src/main/resources',
+                       'rooster-shared-bigtable-api/src/main/resources',
+                       'rooster-shared-dataparser-api/src/main/resources',
+                       'rooster-shared-mq-api/src/main/resources',
+                       'rooster-shared-remotecmd-api/src/main/resources']
+        }
     }
 }
 
-defaultTasks "assemble"
+
+
+def isReleaseBuild() {
+    return project.version.contains("SNAPSHOT") == false
+}
+
+
