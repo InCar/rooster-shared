@@ -1,0 +1,15 @@
+group 'com.incarcloud'
+version '2.0'
+
+
+dependencies {
+    compile project(":rooster-shared-common")
+
+    compile("io.netty:netty-buffer:4.1.6.Final")
+
+
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+
+
