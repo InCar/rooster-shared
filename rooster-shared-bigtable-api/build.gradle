@@ -1,0 +1,17 @@
+group 'com.incarcloud'
+version '2.0'
+
+
+repositories {
+    maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+}
+
+dependencies {
+    compile project(":rooster-shared-common")
+    compile project(":rooster-shared-dataparser-api")
+
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+
+
