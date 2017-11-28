@@ -1,5 +1,5 @@
 group 'com.incarcloud'
-version '2.0'
+version '2.1-SNAPSHOT'
 
 
 allprojects {//公共配置
