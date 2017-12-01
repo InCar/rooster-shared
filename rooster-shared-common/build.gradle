@@ -1,9 +1,3 @@
-group 'com.incarcloud'
-version '2.0'
-
-
-
-
 dependencies {
     compile("commons-codec:commons-codec:1.6")
 
