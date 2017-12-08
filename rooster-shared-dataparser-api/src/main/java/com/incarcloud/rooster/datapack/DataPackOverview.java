@@ -57,10 +57,10 @@ public class DataPackOverview extends DataPackObject {
 	 */
 	private Integer clutchStatus;
 	/**
-	 * 制动状态 bit4 1：制动有效 0：制动无效 
+	 * 制动状态 bit4 1：制动有效 0：制动无效
 	 */
 	private Integer brakeStatus;
-	
+
 	/**
 	 * 驱动状态 bit5 1：驱动有效 0：驱动无效
 	 */
@@ -286,13 +286,20 @@ public class DataPackOverview extends DataPackObject {
 	 */
 	private Integer rechargeMileage;
 
+	/**
+	 * 车灯状态<br>
+	 * 0x01：开<br>
+	 * 0x02：关<br>
+	 * “0xFE”表示异常<br>
+	 * “0xFF”表示无效<br>
+	 */
+	private Integer lightStatus;
+
 	/************************** 广三协议新增end ***************************************/
 
 	public DataPackOverview(DataPackObject object) {
 		super(object);
 	}
-
-	
 
 	@Override
 	public String toString() {
@@ -313,10 +320,16 @@ public class DataPackOverview extends DataPackObject {
 				+ leftFrontWindowStatus + ", rightFrontWindowStatus=" + rightFrontWindowStatus
 				+ ", leftBackWindowStatus=" + leftBackWindowStatus + ", rightBackWindowStatus=" + rightBackWindowStatus
 				+ ", outsideTemperature=" + outsideTemperature + ", insideTemperature=" + insideTemperature
-				+ ", rechargeMileage=" + rechargeMileage + "]";
+				+ ", rechargeMileage=" + rechargeMileage + ", lightStatus=" + lightStatus + "]";
 	}
 
+	public Integer getLightStatus() {
+		return lightStatus;
+	}
 
+	public void setLightStatus(Integer lightStatus) {
+		this.lightStatus = lightStatus;
+	}
 
 	public Float getCurrent() {
 		return current;
@@ -533,8 +546,6 @@ public class DataPackOverview extends DataPackObject {
 	public void setClutchStatus(Integer clutchStatus) {
 		this.clutchStatus = clutchStatus;
 	}
-
-	
 
 	public Integer getBrakeStatus() {
 		return brakeStatus;
