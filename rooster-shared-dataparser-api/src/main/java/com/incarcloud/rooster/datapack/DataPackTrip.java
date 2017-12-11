@@ -1,5 +1,7 @@
 package com.incarcloud.rooster.datapack;
 
+import java.util.Date;
+
 /**
  * @Title: DataPackTrip.java
  * @Project: rooster-shared-dataparser-api
@@ -13,28 +15,30 @@ public class DataPackTrip extends DataPackObject {
 	/**
 	 * 行程开始时间
 	 */
-	private long startTime;
+	private Date startTime;
 	/**
 	 * 行程结束时间
 	 */
-	private long endTime;
+	private Date endTime;
 	/**
 	 * 平均油耗<br>
 	 * 有效值范围： 0～1000，（数值偏移量n/10，表示
 	 * 0～100升/百公里），最小计量单元：0.1升/百公里，“0xFF,0xFE”表示异常，“0xFF,0xFF”表示无效。
 	 */
-	private float oilWearAvg;
+	private Float oilWearAvg;
 
 	/**
 	 * 平均车速<br>
-	 * 有效值范围： 0～1000单位：公里/小时，“0xFF,0xFE”表示异常，“0xFF,0xFF”表示无效
+	 * 有效值范围：0～2200（表示0 km/h～220
+	 * km/h），最小计量单元：0.1km/h，“0xFF,0xFE”表示异常，“0xFF,0xFF”表示无效。
 	 */
-	private Integer speedAvg;
+	private Float speedAvg;
 	/**
 	 * 最高车速<br>
-	 * 有效值范围： 0～1000单位：公里/小时，“0xFF,0xFE”表示异常，“0xFF,0xFF”表示无效
+	 * 有效值范围：0～2200（表示0 km/h～220
+	 * km/h），最小计量单元：0.1km/h，“0xFF,0xFE”表示异常，“0xFF,0xFF”表示无效。
 	 */
-	private Integer speedMax;
+	private Float speedMax;
 	/**
 	 * 行程时长<br>
 	 * 有效值范围： 0～500000单位：分钟，“0xFE”表示异常，“0xFF”表示无效。
@@ -42,7 +46,7 @@ public class DataPackTrip extends DataPackObject {
 	private Integer tripDuration;
 	/**
 	 * 行程行驶里程<br>
-	 * 有效值范围： 0～100000单位：公里，“0xFF,0xFE”表示异常，“0xFF,0xFF”表示无效
+	 * 单位：米/h
 	 */
 	private Integer mileage;
 	/**
@@ -65,43 +69,43 @@ public class DataPackTrip extends DataPackObject {
 		super(object);
 	}
 
-	public long getStartTime() {
+	public Date getStartTime() {
 		return startTime;
 	}
 
-	public void setStartTime(long startTime) {
+	public void setStartTime(Date startTime) {
 		this.startTime = startTime;
 	}
 
-	public long getEndTime() {
+	public Date getEndTime() {
 		return endTime;
 	}
 
-	public void setEndTime(long endTime) {
+	public void setEndTime(Date endTime) {
 		this.endTime = endTime;
 	}
 
-	public float getOilWearAvg() {
-		return oilWearAvg;
-	}
-
-	public void setOilWearAvg(float oilWearAvg) {
+	public void setOilWearAvg(Float oilWearAvg) {
 		this.oilWearAvg = oilWearAvg;
 	}
 
-	public Integer getSpeedAvg() {
+	public Float getOilWearAvg() {
+		return oilWearAvg;
+	}
+
+	public Float getSpeedAvg() {
 		return speedAvg;
 	}
 
-	public void setSpeedAvg(Integer speedAvg) {
+	public void setSpeedAvg(Float speedAvg) {
 		this.speedAvg = speedAvg;
 	}
 
-	public Integer getSpeedMax() {
+	public Float getSpeedMax() {
 		return speedMax;
 	}
 
-	public void setSpeedMax(Integer speedMax) {
+	public void setSpeedMax(Float speedMax) {
 		this.speedMax = speedMax;
 	}
 
