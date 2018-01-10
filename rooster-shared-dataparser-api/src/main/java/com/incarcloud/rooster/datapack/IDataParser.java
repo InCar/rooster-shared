@@ -13,6 +13,7 @@ import java.util.Map;
  * 
  */
 public interface IDataParser {
+
 	/**
 	 * 抽取出完整有效的数据包,并从buffer丢弃掉已经解析或无用的字节
 	 * 
@@ -60,4 +61,18 @@ public interface IDataParser {
 	 * }
 	 */
 	Map<String, Object> getMetaData(ByteBuf buffer);
+
+	/**
+	 * 设置PublicKey字符串
+	 *
+	 * @param publicKey PublicKey字符串(BASE64加密，使用转byte[])
+	 */
+	void setPublicKey(String publicKey);
+
+	/**
+	 * 获得PublicKey字符串(BASE64加密，使用转byte[])
+	 *
+	 * @return
+	 */
+	String getPublicKey();
 }

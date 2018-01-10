@@ -51,4 +51,14 @@ public class Any4DataParser implements IDataParser {
     public Map<String, Object> getMetaData(ByteBuf buffer) {
         return null;
     }
+
+    @Override
+    public void setPublicKey(String publicKey) {
+
+    }
+
+    @Override
+    public String getPublicKey() {
+        return null;
+    }
 }
