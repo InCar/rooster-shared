@@ -46,6 +46,6 @@ public interface Constant {
         /**
          * 报警编码与报警规则NS
          */
-        String CACHE_NS_ALARM_SETTING = "com.incarcloud.rooster:vehicle-alarm:";
+        String CACHE_NS_ALARM_SETTING = "com.incarcloud.rooster:alarm:";
     }
 }
