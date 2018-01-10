@@ -4,7 +4,7 @@ package com.incarcloud.rooster.mq;
  * 远程控制命令MQ反馈实体
  *
  * @author Aaric, created on 2018-01-10T16:00.
- * @since 2.1.3-SNAPSHOT
+ * @since 2.1.12-SNAPSHOT
  */
 public class RemoteCmdFeedbackMsg {
 
