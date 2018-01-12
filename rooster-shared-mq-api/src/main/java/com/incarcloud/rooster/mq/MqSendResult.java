@@ -38,7 +38,7 @@ public class MqSendResult {
 
 	/**
 	 * 设置 异常信息
-	 * 
+	 *
 	 * @param exception
 	 *            异常信息
 	 */

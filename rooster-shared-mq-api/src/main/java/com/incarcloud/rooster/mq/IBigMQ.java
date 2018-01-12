@@ -9,8 +9,8 @@ import java.util.List;
 * @author Xiong Guanghua
 * @date 2017年6月2日 下午3:55:17 
 */
+@Deprecated
 public interface IBigMQ {
-
 
 	/**
 	 * 发送单个消息
@@ -27,7 +27,6 @@ public interface IBigMQ {
 	 */
 	List<MqSendResult> post(List<MQMsg> listMsgs);
 
-
 	/**
 	 * 批量接收消息
 	 *
@@ -37,15 +36,13 @@ public interface IBigMQ {
 	 */
 	List<MQMsg> batchReceive(int size);
 
-
 	/**
 	 * 释放当前连接（线程安全的客户端无需实现此方法，有些客户端不是线程安全，比如kafka的消费者）
 	 */
-	public void releaseCurrentConn();
-
+	void releaseCurrentConn();
 
 	/**
 	 * 关闭
 	 */
-	public void close();
+	void close();
 }

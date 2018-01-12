@@ -1,7 +1,5 @@
 package com.incarcloud.rooster.datapack;
 
-import java.util.Arrays;
-
 /**
  * @author ChenZhao
  * @ClassName: DataPackLogInOut
@@ -43,7 +41,7 @@ public class DataPackLogInOut extends DataPackObject {
 	/**
 	 * 加密密钥
 	 */
-	private Integer[] securityKey;
+	private String securityKey;
 
 	public DataPackLogInOut(DataPackObject dataPack) {
 		super(dataPack);
@@ -54,11 +52,11 @@ public class DataPackLogInOut extends DataPackObject {
 	 */
 	private String softwareVersion;
 
-	public Integer[] getSecurityKey() {
+	public String getSecurityKey() {
 		return securityKey;
 	}
 
-	public void setSecurityKey(Integer[] securityKey) {
+	public void setSecurityKey(String securityKey) {
 		this.securityKey = securityKey;
 	}
 
@@ -113,7 +111,7 @@ public class DataPackLogInOut extends DataPackObject {
 	@Override
 	public String toString() {
 		return "DataPackLogInOut [loginType=" + loginType + ", sysNumber=" + sysNumber + ", codeLength=" + codeLength
-				+ ", sysCode=" + sysCode + ", serialNo=" + serialNo + ", securityKey=" + Arrays.toString(securityKey)
+				+ ", sysCode=" + sysCode + ", serialNo=" + serialNo + ", securityKey=" + securityKey
 				+ ", softwareVersion=" + softwareVersion + "]";
 	}
 
