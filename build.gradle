@@ -1,6 +1,6 @@
 allprojects {//公共配置
     group 'com.incarcloud'
-    version '2.1.16-SNAPSHOT'
+    version '2.1.17-SNAPSHOT'
 
     apply plugin: 'java'
     apply plugin: 'maven'
