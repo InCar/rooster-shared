@@ -9,37 +9,40 @@ import java.util.List;
 * @author Xiong Guanghua
 * @date 2017年6月2日 下午3:55:17 
 */
-@Deprecated
 public interface IBigMQ {
 
 	/**
 	 * 发送单个消息
 	 *
-	 * @param msg 消息
-	 * @return 发送结果
+	 * @param topic 主题
+	 * @param data 消息体
+	 * @return
 	 */
-	MqSendResult post(MQMsg msg);
+	MqSendResult post(String topic, byte[] data);
 
 	/**
 	 * 批量发送消息
-	 * @param listMsgs 消息列表
-	 * @return 发送结果
+	 *
+	 * @param topic 主题
+	 * @param datas 消息体
+	 * @return
 	 */
-	List<MqSendResult> post(List<MQMsg> listMsgs);
+	List<MqSendResult> post(String topic, List<byte[]> datas);
 
 	/**
 	 * 批量接收消息
 	 *
+	 * @param topic 主题
 	 * @param size 消息数量
-	 *
 	 * @return
 	 */
-	List<MQMsg> batchReceive(int size);
+	List<byte[]> batchReceive(String topic, int size);
 
 	/**
 	 * 释放当前连接（线程安全的客户端无需实现此方法，有些客户端不是线程安全，比如kafka的消费者）
+	 * @param topic 主题
 	 */
-	void releaseCurrentConn();
+	void releaseCurrentConn(String topic);
 
 	/**
 	 * 关闭
