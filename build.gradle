@@ -1,57 +1,43 @@
-allprojects {//公共配置
-    group 'com.incarcloud'
-    version '2.1.17-SNAPSHOT'
+group 'com.incarcloud'
+version '2.1.18-SNAPSHOT'
 
+allprojects {
     apply plugin: 'java'
     apply plugin: 'maven'
 
     sourceCompatibility = 1.8
     targetCompatibility = 1.8
 
-
-    if (isReleaseBuild()) {
-        println project.name + '******************RELEASE BUILD******************'
-    } else {
-        println project.name + '******************SNAPSHOT BUILD******************'
+    ext {
+        MAVEN_REPOS_URL_PUTLIC = 'http://121.40.157.200:8044/content/groups/public/'
+        MAVEN_REPOS_URL_RELEASE = 'http://121.40.157.200:8044/content/repositories/releases/'
+        MAVEN_REPOS_URL_SNAPSHOTS = 'http://121.40.157.200:8044/content/repositories/snapshots/'
+        MAVEN_REPOS_AUTH_USERNAME = 'deployment'
+        MAVEN_REPOS_AUTH_PASSWORD = 'deploy123456'
     }
 
-
     repositories {
-        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
         maven {
-            url MAVEN_REPO_MIRROR_URL
+            url "${MAVEN_REPOS_URL_PUTLIC}"
             credentials {
-                username = NEXUS_USERNAME
-                password = NEXUS_PASSWORD
+                username = "${MAVEN_REPOS_AUTH_USERNAME}"
+                password = "${MAVEN_REPOS_AUTH_PASSWORD}"
             }
         }
     }
-
 
     buildscript {
         repositories {
-            maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
-            maven {
-                url MAVEN_REPO_MIRROR_URL
-                credentials {
-                    username = NEXUS_USERNAME
-                    password = NEXUS_PASSWORD
-                }
-            }
-        }
-
-        dependencies {
+            maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
         }
     }
 
-
-
-    compileJava {
+    compileJava{
         options.encoding = "utf-8"
         options.compilerArgs << "-Xlint:unchecked"
     }
 
-    compileTestJava {
+    compileTestJava{
         options.encoding = "utf-8"
         options.compilerArgs << "-Xlint:unchecked"
     }
@@ -62,109 +48,31 @@ allprojects {//公共配置
             showStandardStreams = true
         }
     }
+}
 
-    //打包源代码
-    task sourcesJar(type: Jar, dependsOn: classes) {
-        classifier = 'sources'
-        from sourceSets.main.allSource
-    }
+dependencies {
+    compile("commons-codec:commons-codec:1.11")
+    compile("com.google.code.gson:gson:2.8.+")
+    compile("org.slf4j:slf4j-api:1.7.+")
+    compile("io.netty:netty-buffer:4.1.+")
 
+    testCompile("junit:junit:4.12")
+}
 
-    artifacts {
-        archives sourcesJar
-    }
-
-
-    //如果希望gradle install，安装到.m2本地仓库，参考下面的内容
-    install {
-        repositories.mavenInstaller {
-            pom.version = "$project.version"
-            pom.artifactId = "$project.name"
-            pom.groupId = "$project.group"
-        }
-    }
-
-    //上传到nexus
-    uploadArchives {
-        repositories {
-            mavenDeployer {
-                repository(
-                        url: "${MAVEN_REPO_RELEASE_URL}") {
-                    authentication(userName: NEXUS_USERNAME, password: NEXUS_PASSWORD)
-                }
-                snapshotRepository(
-                        url: "${MAVEN_REPO_SNAPSHOT_URL}") {
-                    authentication(userName: NEXUS_USERNAME, password: NEXUS_PASSWORD)
-                }
-                pom.project{
-                    name = '$project.name'
-                }
-
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: "${MAVEN_REPOS_URL_RELEASE}") {
+                authentication(userName: "${MAVEN_REPOS_AUTH_USERNAME}", password: "${MAVEN_REPOS_AUTH_PASSWORD}")
+            }
+            snapshotRepository(url: "${MAVEN_REPOS_URL_SNAPSHOTS}") {
+                authentication(userName: "${MAVEN_REPOS_AUTH_USERNAME}", password: "${MAVEN_REPOS_AUTH_PASSWORD}")
+            }
+            pom.project{
+                name = '$project.name'
             }
         }
     }
-
-
-    defaultTasks "assemble"
-
 }
 
-
-
-dependencies {
-    //将子模块的依赖拷贝过来，不然编译出错
-    compile("commons-codec:commons-codec:1.6")
-    compile("com.google.code.gson:gson:2.2.2")
-    compile("io.netty:netty-buffer:4.1.6.Final")
-    compile("org.slf4j:slf4j-api:1.7.7")
-
-    testCompile group: 'junit', name: 'junit', version: '4.12'
-}
-
-
-//将所有依赖和子工程打包进来
-//jar {
-//    manifest {
-//        attributes(
-////        "Main-Class": "com.testbird.rio.Main",
-//        "Manifest-Version" : 1.0
-//        )
-//
-//    }
-//    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
-//    into('assets') {
-//        from 'assets'
-//    }
-//}
-
-
-
-
-////重置源码目录，将子模块的源码包含进来
-sourceSets {
-    main {
-        java {
-            srcDirs = ['src/main/java','rooster-shared-common/src/main/java',
-                       'rooster-shared-bigtable-api/src/main/java',
-                       'rooster-shared-dataparser-api/src/main/java',
-                       'rooster-shared-mq-api/src/main/java',
-                       'rooster-shared-remotecmd-api/src/main/java']
-        }
-        resources {
-            srcDirs = ['src/main/resources',
-                       'rooster-shared-common/src/main/resources',
-                       'rooster-shared-bigtable-api/src/main/resources',
-                       'rooster-shared-dataparser-api/src/main/resources',
-                       'rooster-shared-mq-api/src/main/resources',
-                       'rooster-shared-remotecmd-api/src/main/resources']
-        }
-    }
-}
-
-
-
-def isReleaseBuild() {
-    return project.version.contains("SNAPSHOT") == false
-}
-
-
+defaultTasks "assemble"
