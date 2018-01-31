@@ -1,8 +1,11 @@
-/.gradle/
-/.idea/
+.idea/
+.gradle/
+build/
+bin/
+out/
 *.iml
-/build/
-/bin/
 *.settings
 *.project
 *.classpath
+*.log
+.DS_Store

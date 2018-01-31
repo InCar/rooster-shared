@@ -6,7 +6,7 @@ package com.incarcloud.rooster.share;
  * @author Aaric, created on 2018-01-10T16:39.
  * @since 2.1.12-SNAPSHOT
  */
-public interface Constant {
+public interface Constants {
 
     /**
      * 缓存命令空间常量
