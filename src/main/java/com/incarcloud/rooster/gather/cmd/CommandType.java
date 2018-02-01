@@ -238,5 +238,9 @@ public enum CommandType {
     /**
      * RSA 公钥
      */
-    RSA
+    RSA,
+    /**
+     * OTA升级
+     */
+    OTA
 }
