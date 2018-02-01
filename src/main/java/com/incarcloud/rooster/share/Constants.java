@@ -9,6 +9,11 @@ package com.incarcloud.rooster.share;
 public interface Constants {
 
     /**
+     * 默认字符集
+     */
+    String DEFAULT_CHARSET = "UTF-8";
+
+    /**
      * 缓存命令空间常量
      */
     interface CacheNamespace {
