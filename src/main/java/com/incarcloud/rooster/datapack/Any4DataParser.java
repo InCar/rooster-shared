@@ -53,12 +53,17 @@ public class Any4DataParser implements IDataParser {
     }
 
     @Override
-    public void setPublicKey(String publicKey) {
-
+    public void setPrivateKey(String privateKey) {
+        // nothing to do
     }
 
     @Override
-    public String getPublicKey() {
-        return null;
+    public void setPublicKey(String publicKey) {
+        // nothing to do
+    }
+
+    @Override
+    public void setSecurityKey(String securityKey) {
+        // nothing to do
     }
 }

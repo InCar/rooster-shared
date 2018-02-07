@@ -34,19 +34,36 @@ public interface IBigTable {
      * 根据开始时间RowKey循环读取数据到INF_MAX
      *
      * @param startTimeRowKey 开始时间RowKey，格式：DETECTIONTIME_yyyyMMddHHmmss_#######################################
-     *                        @see com.incarcloud.rooster.util.RowKeyUtil#makeMinDetectionTimeIndexRowKey(String)
      * @param dataReadable    读取数据接口
      * @return 读取完毕后的最后一个RowKey字符串
+     * @see com.incarcloud.rooster.util.RowKeyUtil#makeMinDetectionTimeIndexRowKey(String)
      */
     String queryData(String startTimeRowKey, IDataReadable dataReadable);
+
+    /**
+     * 查询指定时间点至当前时间点是否有数据
+     *
+     * @param queryTime 指定时间点
+     * @return =0: 无数据，等待数据; >0: 可以继续同步
+     */
+    int queryData(Date queryTime);
+
+    /**
+     * 查询并读取处理指定时间点数据（某一秒的数据）
+     *
+     * @param queryTime    指定时间点
+     * @param dataReadable 读取数据接口
+     * @return
+     */
+    boolean queryData(Date queryTime, IDataReadable dataReadable);
 
     /**
      * 根据vin码或设备号，以及时间段查询原始数据列表
      *
      * @param vinOrCode vin码或设备号
-     * @param clazz 指定数据类型
+     * @param clazz     指定数据类型
      * @param startTime 查询开始时间
-     * @param endTime　查询结束时间
+     * @param endTime   　查询结束时间
      * @return 数据集合
      */
     <T extends DataPackObject> List<T> queryData(String vinOrCode, Class<T> clazz, Date startTime, Date endTime);
