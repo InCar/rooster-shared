@@ -1,5 +1,5 @@
 group 'com.incarcloud'
-version '2.1.18-SNAPSHOT'
+version '2.1.19-SNAPSHOT'
 
 allprojects {
     apply plugin: 'java'
@@ -51,9 +51,11 @@ allprojects {
 }
 
 dependencies {
-    compile("commons-codec:commons-codec:1.11")
-    compile("com.google.code.gson:gson:2.8.+")
     compile("org.slf4j:slf4j-api:1.7.+")
+
+    compile("org.apache.commons:commons-lang3:3.+")
+    compile("commons-codec:commons-codec:1.+")
+    compile("com.google.code.gson:gson:2.8.+")
     compile("io.netty:netty-buffer:4.1.+")
 
     testCompile("junit:junit:4.12")

@@ -2,6 +2,8 @@ package com.incarcloud.rooster.util;/**
  * Created by fanbeibei on 2017/7/4.
  */
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.Random;
 
 /**
@@ -31,7 +33,7 @@ public class RowKeyUtil {
      * @return
      */
     public static String makeRowKey(String vin, String dataType, String receiveTime) {
-        if (StringUtil.isBlank(vin)) {
+        if (StringUtils.isBlank(vin)) {
             throw new IllegalArgumentException("param error");
         }
 
@@ -49,7 +51,7 @@ public class RowKeyUtil {
      * @return
      */
     public static String makeMaxRowKey(String vin, String dataType, String receiveTime) {
-        if (StringUtil.isBlank(vin)) {
+        if (StringUtils.isBlank(vin)) {
             throw new IllegalArgumentException("param error");
         }
 
@@ -66,7 +68,7 @@ public class RowKeyUtil {
      * @return
      */
     public static String makeMaxRowKey(String vin, String dataType) {
-        if (StringUtil.isBlank(vin)) {
+        if (StringUtils.isBlank(vin)) {
             throw new IllegalArgumentException("param error");
         }
 
@@ -82,7 +84,7 @@ public class RowKeyUtil {
      * @return
      */
     public static String makeMaxRowKey(String vin) {
-        if (StringUtil.isBlank(vin)) {
+        if (StringUtils.isBlank(vin)) {
             throw new IllegalArgumentException("param error");
         }
 

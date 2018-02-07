@@ -1,7 +1,7 @@
 package com.incarcloud.rooster.mq;
 
-import com.incarcloud.rooster.util.StringUtil;
 import io.netty.buffer.ByteBuf;
+import org.apache.commons.lang3.StringUtils;
 
 import java.io.UnsupportedEncodingException;
 import java.util.Base64;
@@ -32,7 +32,7 @@ public class MQMsg {
      * @param data 消息的数据区
      */
     public MQMsg(String mark, byte[] data) {
-        if (StringUtil.isBlank(mark) || null == data) {
+        if (StringUtils.isBlank(mark) || null == data) {
             throw new IllegalArgumentException();
         }
 
@@ -46,7 +46,7 @@ public class MQMsg {
      * @param data 消息的数据区
      */
     public MQMsg(String mark, ByteBuf data) {
-        if (StringUtil.isBlank(mark) || null == data) {
+        if (StringUtils.isBlank(mark) || null == data) {
             throw new IllegalArgumentException();
         }
 

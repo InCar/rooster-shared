@@ -9,6 +9,11 @@ package com.incarcloud.rooster.mq;
 public class RemoteCmdFeedbackMsg {
 
     /**
+     * 业务ID
+     */
+    private Long refId;
+
+    /**
      * 设备ID
      */
     private String deviceId;
@@ -40,6 +45,21 @@ public class RemoteCmdFeedbackMsg {
         this.deviceId = deviceId;
         this.packId = packId;
         this.status = status;
+    }
+
+    public RemoteCmdFeedbackMsg(Long refId, String deviceId, Integer packId, Integer status) {
+        this.refId = refId;
+        this.deviceId = deviceId;
+        this.packId = packId;
+        this.status = status;
+    }
+
+    public Long getRefId() {
+        return refId;
+    }
+
+    public void setRefId(Long refId) {
+        this.refId = refId;
     }
 
     public String getDeviceId() {
