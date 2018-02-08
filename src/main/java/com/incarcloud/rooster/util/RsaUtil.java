@@ -17,7 +17,7 @@ import java.util.Base64;
  * @author Aaric, created on 2018-02-08T09:54.
  * @since 2.1.20-SNAPSHOT
  */
-public class RsaEncryptUtil {
+public class RsaUtil {
 
     /**
      * RSA实体
