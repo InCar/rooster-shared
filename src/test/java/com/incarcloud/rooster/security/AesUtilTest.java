@@ -15,7 +15,7 @@ import java.util.Base64;
  * AesUtilTest
  *
  * @author Aaric, created on 2018-02-09T10:01.
- * @since 1.0-SNAPSHOT
+ * @since 2.1.20-SNAPSHOT
  */
 public class AesUtilTest {
 
