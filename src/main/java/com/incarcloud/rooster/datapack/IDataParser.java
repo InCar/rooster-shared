@@ -17,7 +17,7 @@ public interface IDataParser {
      * 抽取出完整有效的数据包,并从buffer丢弃掉已经解析或无用的字节
      *
      * @param buffer 二进制数据包（InHandler对象中的累积缓冲的buffer）
-     * @return
+     * @return 如果数据包被加密，返回解密后的数据包
      */
     List<DataPack> extract(ByteBuf buffer);
 
@@ -50,9 +50,9 @@ public interface IDataParser {
      *
      * @param buffer 数据包（完整的数据包）
      * @return {
-     *     protocol： 协议
-     *     deviceId： 设备ID
-     *     vin:  车辆vin码
+     * protocol： 协议
+     * algorithm: 加密算法，例如RSA, AES...(null-表示数据包未使用任何加密算法)
+     * deviceId： 设备ID(必须)
      * }
      */
     Map<String, Object> getMetaData(ByteBuf buffer);
@@ -60,21 +60,23 @@ public interface IDataParser {
     /**
      * 设置私钥字符串（平台传递给解析器）
      *
-     * @param privateKey 私钥字符串(BASE64加密，使用转byte[])
+     * @param n RSA私钥{e,n}中的 n
+     * @param e RSA私公钥{e,n}中的 e
      */
-    void setPrivateKey(String privateKey);
+    void setPrivateKey(byte[] n, byte[] e);
 
     /**
      * 设置公钥字符串（平台传递给解析器）
      *
-     * @param publicKey 公钥字符串(BASE64加密，使用转byte[])
+     * @param n RSA公钥{e,n}中的 n
+     * @param e RSA公钥{e,n}中的 e
      */
-    void setPublicKey(String publicKey);
+    void setPublicKey(byte[] n, long e);
 
     /**
-     * 设置安全密钥字符串（平台传递给解析器，保留）
+     * 获得安全码,使用AES加密算法(存储到Redis,用于命令下发)
      *
-     * @param securityKey 安全密钥字符串(BASE64加密，使用转byte[])
+     * @return
      */
-    void setSecurityKey(String securityKey);
+    byte[] getSecurityKey();
 }

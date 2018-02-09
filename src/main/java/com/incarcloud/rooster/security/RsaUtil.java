@@ -1,4 +1,4 @@
-package com.incarcloud.rooster.util;
+package com.incarcloud.rooster.security;
 
 import javax.crypto.Cipher;
 import java.math.BigInteger;
@@ -126,16 +126,6 @@ public class RsaUtil {
     }
 
     /**
-     * 加密字符串为字节数组
-     *
-     * @param content 字符串(Base64编码)
-     * @return
-     */
-    private static byte[] decodeToBase64String(String content) {
-        return Base64.getDecoder().decode(content);
-    }
-
-    /**
      * RSA私钥加密内容
      *
      * @param data            待加密内容
@@ -160,7 +150,7 @@ public class RsaUtil {
      * @throws Exception
      */
     public static byte[] encryptByRsaPrivate(byte[] data, String privateKeyString) throws Exception {
-        return encryptByRsaPrivate(data, decodeToBase64String(privateKeyString));
+        return encryptByRsaPrivate(data, decodeBase64String(privateKeyString));
     }
 
     /**
@@ -192,7 +182,7 @@ public class RsaUtil {
      * @throws Exception
      */
     public static byte[] encryptByRsaPrivate(byte[] data, String privateKeyModulusString, String privateKeyExponentString) throws Exception {
-        return encryptByRsaPrivate(data, decodeToBase64String(privateKeyModulusString), decodeToBase64String(privateKeyExponentString));
+        return encryptByRsaPrivate(data, decodeBase64String(privateKeyModulusString), decodeBase64String(privateKeyExponentString));
     }
 
     /**
@@ -220,7 +210,7 @@ public class RsaUtil {
      * @throws Exception
      */
     public static byte[] encryptByRsaPublic(byte[] data, String publicKeyString) throws Exception {
-        return encryptByRsaPublic(data, decodeToBase64String(publicKeyString));
+        return encryptByRsaPublic(data, decodeBase64String(publicKeyString));
     }
 
     /**
@@ -252,7 +242,7 @@ public class RsaUtil {
      * @throws Exception
      */
     public static byte[] encryptByRsaPublic(byte[] data, String publicKeyModulusString, long publicKeyExponent) throws Exception {
-        return encryptByRsaPublic(data, decodeToBase64String(publicKeyModulusString), publicKeyExponent);
+        return encryptByRsaPublic(data, decodeBase64String(publicKeyModulusString), publicKeyExponent);
     }
 
     /**
@@ -280,7 +270,7 @@ public class RsaUtil {
      * @throws Exception
      */
     public static byte[] decryptByRsaPrivate(byte[] secret, String privateKeyString) throws Exception {
-        return decryptByRsaPrivate(secret, decodeToBase64String(privateKeyString));
+        return decryptByRsaPrivate(secret, decodeBase64String(privateKeyString));
     }
 
     /**
@@ -312,7 +302,7 @@ public class RsaUtil {
      * @throws Exception
      */
     public static byte[] decryptByRsaPrivate(byte[] secret, String privateKeyModulusString, String privateKeyExponentString) throws Exception {
-        return decryptByRsaPrivate(secret, decodeToBase64String(privateKeyModulusString), decodeToBase64String(privateKeyExponentString));
+        return decryptByRsaPrivate(secret, decodeBase64String(privateKeyModulusString), decodeBase64String(privateKeyExponentString));
     }
 
     /**
@@ -340,7 +330,7 @@ public class RsaUtil {
      * @throws Exception
      */
     public static byte[] decryptByRsaPublic(byte[] secret, String publicKeyString) throws Exception {
-        return decryptByRsaPublic(secret, decodeToBase64String(publicKeyString));
+        return decryptByRsaPublic(secret, decodeBase64String(publicKeyString));
     }
 
     /**
@@ -372,6 +362,16 @@ public class RsaUtil {
      * @throws Exception
      */
     public static byte[] decryptByRsaPublic(byte[] secret, String publicKeyModulusString, long publicKeyExponent) throws Exception {
-        return decryptByRsaPublic(secret, decodeToBase64String(publicKeyModulusString), publicKeyExponent);
+        return decryptByRsaPublic(secret, decodeBase64String(publicKeyModulusString), publicKeyExponent);
+    }
+
+    /**
+     * 加密字符串为字节数组
+     *
+     * @param content 字符串(Base64编码)
+     * @return
+     */
+    private static byte[] decodeBase64String(String content) {
+        return Base64.getDecoder().decode(content);
     }
 }

@@ -17,10 +17,10 @@ public class Any4DataParser implements IDataParser {
     }
 
     @Override
-    public List<DataPack> extract(ByteBuf buffer){
+    public List<DataPack> extract(ByteBuf buffer) {
         List<DataPack> listPacks = new ArrayList<>();
 
-        while(buffer != null && buffer.readableBytes() >= 4){
+        while (buffer != null && buffer.readableBytes() >= 4) {
             DataPack pack = new DataPack("incar", "any4", "1.0.0");
             ByteBuf buf = buffer.slice(0, 4);
             pack.setBuf(buf);
@@ -53,17 +53,17 @@ public class Any4DataParser implements IDataParser {
     }
 
     @Override
-    public void setPrivateKey(String privateKey) {
-        // nothing to do
+    public void setPrivateKey(byte[] n, byte[] e) {
+
     }
 
     @Override
-    public void setPublicKey(String publicKey) {
-        // nothing to do
+    public void setPublicKey(byte[] n, long e) {
+
     }
 
     @Override
-    public void setSecurityKey(String securityKey) {
-        // nothing to do
+    public byte[] getSecurityKey() {
+        return new byte[0];
     }
 }
