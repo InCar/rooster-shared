@@ -103,4 +103,19 @@ public interface Constants {
          */
         String TIME = "time";
     }
+
+    /**
+     * RSA密钥MAP键名
+     */
+    interface RSADataMapKey {
+        /**
+         * RSA公钥{e,n}中的 n
+         */
+        String N = "n";
+
+        /**
+         * RSA公钥{e,n}中的 e
+         */
+        String E = "e";
+    }
 }
