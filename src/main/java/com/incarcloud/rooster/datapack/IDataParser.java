@@ -53,6 +53,7 @@ public interface IDataParser {
      * protocol： 协议
      * algorithm: 加密算法，例如RSA, AES...(null-表示数据包未使用任何加密算法)
      * deviceId： 设备ID(必须)
+     * vin: 车辆标识(非必须，但激活和登陆必须传值)
      * }
      */
     Map<String, Object> getMetaData(ByteBuf buffer);
