@@ -53,17 +53,17 @@ public class Any4DataParser implements IDataParser {
     }
 
     @Override
-    public void setPrivateKey(byte[] n, byte[] e) {
+    public void setPrivateKey(String deviceId, byte[] n, byte[] e) {
 
     }
 
     @Override
-    public void setPublicKey(byte[] n, long e) {
+    public void setPublicKey(String deviceId, byte[] n, long e) {
 
     }
 
     @Override
-    public byte[] getSecurityKey() {
+    public byte[] getSecurityKey(String deviceId) {
         return new byte[0];
     }
 }
