@@ -105,6 +105,21 @@ public interface Constants {
     }
 
     /**
+     * 平台支持加密名称
+     */
+    interface AlgorithmName {
+        /**
+         * RSA
+         */
+        String RSA = "RSA";
+
+        /**
+         * AES
+         */
+        String AES = "AES";
+    }
+
+    /**
      * RSA密钥MAP键名
      */
     interface RSADataMapKey {
