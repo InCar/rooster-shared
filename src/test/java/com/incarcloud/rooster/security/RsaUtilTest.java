@@ -91,8 +91,17 @@ public class RsaUtilTest {
         System.out.println("{e,n}中的 n: " + ByteBufUtil.hexDump(n));
         System.out.println("{e,n}中的 n - length: " + n.length);
         System.out.println("{e,n}中的 e: " + rsaEntity.getPublicKeyExponent());
-        System.out.println("incar私钥加密后： " + ByteBufUtil.hexDump(RsaUtil.encryptByRsaPrivate("incar".getBytes(), rsaEntity.getPrivateKeyBytes())));
-        byte[] bytes = Hex.decodeHex("a1ca9500a45a694a51229bb942426f07d75506040c7dbca415977a336559b587cc4d830ce0c8ef73d265f76e37d1e6f52b361203da57bf500ea37bb2745aa5de2a0c79255658509a37c961cfa6693767959620cdb77086cad0c374d6b7346d3b2c62256b733dc703fa6717eda839f79d282b67fbf832bfeda07df918c2bf814f");
+        String content = "";
+        for (int i = 0; i < 4; i++) {
+            content += "0123456789CCCCCDDDDDFFFGG";
+        }
+        System.out.println("待加密内容:  " + content);
+        System.out.println("待加密内容length： " + content.length());
+        /*byte[] secretBytes = RsaUtil.encryptByRsaPrivate(content.getBytes(), rsaEntity.getPrivateKeyModulusBytes(), rsaEntity.getPrivateKeyExponentBytes());
+        System.out.println("公钥加密后:  " + ByteBufUtil.hexDump(secretBytes));
+        System.out.println("公钥加密后length： " + secretBytes.length);
+        System.out.println("公钥解密后:  " + RsaUtil.decryptByRsaPrivate(secretBytes, rsaEntity.getPrivateKeyModulusBytes(), rsaEntity.getPrivateKeyExponentBytes()));
+        System.out.println("公钥解密内容:");*/
     }
 
     @Test
@@ -113,11 +122,11 @@ public class RsaUtilTest {
 
         // 3.测试私钥加密，公钥解密({e,n})
         secret = RsaUtil.encryptByRsaPrivate(data, rsaEntity.getPrivateKeyModulusBytes(), rsaEntity.getPrivateKeyExponentBytes());
-        System.out.println("3-" + new String(RsaUtil.decryptByRsaPublic(secret, rsaEntity.getPrivateKeyModulusBytes(), rsaEntity.getPublicKeyExponent())));
+        System.out.println("3-" + new String(RsaUtil.decryptByRsaPublic(secret, rsaEntity.getPublicKeyModulusBytes(), rsaEntity.getPublicKeyExponent())));
 
         // 4.测试公钥加密，私钥解密({e,n})
-        secret = RsaUtil.encryptByRsaPublic(data, rsaEntity.getPrivateKeyModulusBytes(), rsaEntity.getPublicKeyExponent());
-        System.out.println("4-" + new String(RsaUtil.decryptByRsaPrivate(secret, rsaEntity.getPrivateKeyModulusBytes(), rsaEntity.getPrivateKeyExponentBytes())));
+        /*secret = RsaUtil.encryptByRsaPublic(data, rsaEntity.getPublicKeyModulusBytes(), rsaEntity.getPublicKeyExponent());
+        System.out.println("4-" + new String(RsaUtil.decryptByRsaPrivate(secret, rsaEntity.getPrivateKeyModulusBytes(), rsaEntity.getPrivateKeyExponentBytes())));*/
     }
 
     private String encodeToBase64String(byte[] bytes) {

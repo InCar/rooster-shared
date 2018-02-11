@@ -61,23 +61,26 @@ public interface IDataParser {
     /**
      * 设置私钥字符串（平台传递给解析器）
      *
-     * @param n RSA私钥{e,n}中的 n
-     * @param e RSA私公钥{e,n}中的 e
+     * @param deviceId 设备号
+     * @param n        RSA私钥{e,n}中的 n
+     * @param e        RSA私钥{e,n}中的 e
      */
-    void setPrivateKey(byte[] n, byte[] e);
+    void setPrivateKey(String deviceId, byte[] n, byte[] e);
 
     /**
      * 设置公钥字符串（平台传递给解析器）
      *
-     * @param n RSA公钥{e,n}中的 n
-     * @param e RSA公钥{e,n}中的 e
+     * @param deviceId 设备号
+     * @param n        RSA公钥{e,n}中的 n
+     * @param e        RSA公钥{e,n}中的 e
      */
-    void setPublicKey(byte[] n, long e);
+    void setPublicKey(String deviceId, byte[] n, long e);
 
     /**
      * 获得安全码,使用AES加密算法(存储到Redis,用于命令下发)
      *
+     * @param deviceId 设备号
      * @return
      */
-    byte[] getSecurityKey();
+    byte[] getSecurityKey(String deviceId);
 }
