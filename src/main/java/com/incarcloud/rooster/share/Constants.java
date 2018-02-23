@@ -70,7 +70,7 @@ public interface Constants {
     int DEFAULT_HEARTBEAT_TIMEOUT = 30;
 
     /**
-     * 心跳类型：1-登录, 2-登出, 3-心跳
+     * 心跳类型：1-登录, 2-登出, 3-心跳(或普通数据包)
      */
     interface HeartbeatType {
         /**
@@ -102,6 +102,16 @@ public interface Constants {
          * 时间
          */
         String TIME = "time";
+    }
+
+    /**
+     * 数据包类型：0-激活, 1-登录, 2-登出, 3-心跳(或普通数据包)
+     */
+    interface PackType extends HeartbeatType {
+        /**
+         * 0-激活
+         */
+        int ACTIVATE = 0;
     }
 
     /**

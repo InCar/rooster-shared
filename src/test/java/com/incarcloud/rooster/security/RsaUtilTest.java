@@ -1,7 +1,6 @@
 package com.incarcloud.rooster.security;
 
 import io.netty.buffer.ByteBufUtil;
-import org.apache.commons.codec.binary.Hex;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -125,8 +124,8 @@ public class RsaUtilTest {
         System.out.println("3-" + new String(RsaUtil.decryptByRsaPublic(secret, rsaEntity.getPublicKeyModulusBytes(), rsaEntity.getPublicKeyExponent())));
 
         // 4.测试公钥加密，私钥解密({e,n})
-        /*secret = RsaUtil.encryptByRsaPublic(data, rsaEntity.getPublicKeyModulusBytes(), rsaEntity.getPublicKeyExponent());
-        System.out.println("4-" + new String(RsaUtil.decryptByRsaPrivate(secret, rsaEntity.getPrivateKeyModulusBytes(), rsaEntity.getPrivateKeyExponentBytes())));*/
+        secret = RsaUtil.encryptByRsaPublic(data, rsaEntity.getPublicKeyModulusBytes(), rsaEntity.getPublicKeyExponent());
+        System.out.println("4-" + new String(RsaUtil.decryptByRsaPrivate(secret, rsaEntity.getPrivateKeyModulusBytes(), rsaEntity.getPrivateKeyExponentBytes())));
     }
 
     private String encodeToBase64String(byte[] bytes) {
@@ -154,7 +153,7 @@ public class RsaUtilTest {
         System.out.println("3-" + new String(RsaUtil.decryptByRsaPublic(secret, encodeToBase64String(rsaEntity.getPrivateKeyModulusBytes()), rsaEntity.getPublicKeyExponent())));
 
         // 4.测试公钥加密，私钥解密({e,n})
-        secret = RsaUtil.encryptByRsaPublic(data, encodeToBase64String(rsaEntity.getPrivateKeyModulusBytes()), rsaEntity.getPublicKeyExponent());
+        secret = RsaUtil.encryptByRsaPublic(data, encodeToBase64String(rsaEntity.getPublicKeyModulusBytes()), rsaEntity.getPublicKeyExponent());
         System.out.println("4-" + new String(RsaUtil.decryptByRsaPrivate(secret, encodeToBase64String(rsaEntity.getPrivateKeyModulusBytes()), encodeToBase64String(rsaEntity.getPrivateKeyExponentBytes()))));
     }
 }

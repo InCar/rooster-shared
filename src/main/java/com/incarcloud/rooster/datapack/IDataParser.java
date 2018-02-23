@@ -46,15 +46,18 @@ public interface IDataParser {
     List<DataPackTarget> extractBody(DataPack dataPack);
 
     /**
-     * 解析数据包获取vin/设备号/协议
+     * 解析数据包获取vin/设备号/协议<br>
      *
      * @param buffer 数据包（完整的数据包）
      * @return {
-     * protocol： 协议
+     * protocol: 协议
      * algorithm: 加密算法，例如RSA, AES...(null-表示数据包未使用任何加密算法)
-     * deviceId： 设备ID(必须)
+     * deviceId: 设备ID(必须)
+     * packType: 数据包类型：0-激活, 1-登录, 2-登出, 3-心跳(或普通数据包)
      * vin: 车辆标识(非必须，但激活和登陆必须传值)
      * }
+     * @see com.incarcloud.rooster.share.Constants.AlgorithmName 加密算法常量说明
+     * @see com.incarcloud.rooster.share.Constants.PackType 数据包类型常量说明
      */
     Map<String, Object> getMetaData(ByteBuf buffer);
 

@@ -223,7 +223,7 @@ public class RsaUtil {
      * @throws Exception
      */
     public static byte[] encryptByRsaPublic(byte[] data, byte[] publicKeyModulusBytes, long publicKeyExponent) throws Exception {
-        BigInteger publicModulus = new BigInteger(publicKeyModulusBytes);
+        BigInteger publicModulus = new BigInteger(1, publicKeyModulusBytes);
         BigInteger publicExponent = new BigInteger(String.valueOf(publicKeyExponent));
         RSAPublicKeySpec keySpec = new RSAPublicKeySpec(publicModulus, publicExponent);
         PublicKey publicKey = KeyFactory.getInstance(RsaEntity.ALGORITHM_NAME).generatePublic(keySpec);
