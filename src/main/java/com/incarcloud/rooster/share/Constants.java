@@ -70,7 +70,7 @@ public interface Constants {
     int DEFAULT_HEARTBEAT_TIMEOUT = 30;
 
     /**
-     * 心跳类型：1-登录, 2-登出, 3-心跳
+     * 心跳类型：1-登录, 2-登出, 3-心跳(或普通数据包)
      */
     interface HeartbeatType {
         /**
@@ -102,6 +102,46 @@ public interface Constants {
          * 时间
          */
         String TIME = "time";
+    }
+
+    /**
+     * IDataParser#getMetaData返回对象MAP键名
+     */
+    interface MetaDataMapKey {
+        /**
+         * 协议
+         */
+        String PROTOCOL = "protocol";
+
+        /**
+         * 加密算法
+         */
+        String ALGORITHM = "algorithm";
+
+        /**
+         * 设备ID
+         */
+        String DEVICE_ID = "deviceId";
+
+        /**
+         * 数据包类型
+         */
+        String PACK_TYPE = "packType";
+
+        /**
+         * 车辆标识
+         */
+        String VIN = "vin";
+    }
+
+    /**
+     * 数据包类型：0-激活, 1-登录, 2-登出, 3-心跳(或普通数据包)
+     */
+    interface PackType extends HeartbeatType {
+        /**
+         * 0-激活
+         */
+        int ACTIVATE = 0;
     }
 
     /**
