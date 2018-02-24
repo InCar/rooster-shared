@@ -1,5 +1,7 @@
 package com.incarcloud.rooster.datapack;
 
+import java.util.Arrays;
+
 /**
  * @Title: DataPackActivation.java
  * @Project: rooster-shared-dataparser-api
@@ -24,32 +26,37 @@ public class DataPackActivation extends DataPackObject {
 	 */
 	private Integer activationType;
 	/**
-	 * 公钥长度
+	 * RSA公钥{e,n}中的 n, 128位bytes
+	 *
+	 * @return
 	 */
-	private Integer length;
+	private byte[] publicKeyModulusBytes;
+
 	/**
-	 * 公钥
+	 * RSA公钥{e,n}中的 e
+	 *
+	 * @return
 	 */
-	private String publicKey;
+	private long publicKeyExponent;
 
 	public DataPackActivation(DataPackObject object) {
 		super(object);
 	}
 
-	public Integer getLength() {
-		return length;
+	public byte[] getPublicKeyModulusBytes() {
+		return publicKeyModulusBytes;
 	}
 
-	public void setLength(Integer length) {
-		this.length = length;
+	public void setPublicKeyModulusBytes(byte[] publicKeyModulusBytes) {
+		this.publicKeyModulusBytes = publicKeyModulusBytes;
 	}
 
-	public String getPublicKey() {
-		return publicKey;
+	public long getPublicKeyExponent() {
+		return publicKeyExponent;
 	}
 
-	public void setPublicKey(String publicKey) {
-		this.publicKey = publicKey;
+	public void setPublicKeyExponent(long publicKeyExponent) {
+		this.publicKeyExponent = publicKeyExponent;
 	}
 
 	public Integer getActivationType() {
@@ -62,8 +69,10 @@ public class DataPackActivation extends DataPackObject {
 
 	@Override
 	public String toString() {
-		return "DataPackActivation [activationType=" + activationType + ", length=" + length + ", publicKey="
-				+ publicKey + "]";
+		return "DataPackActivation{" +
+				"activationType=" + activationType +
+				", publicKeyModulusBytes=" + Arrays.toString(publicKeyModulusBytes) +
+				", publicKeyExponent=" + publicKeyExponent +
+				'}';
 	}
-
 }
