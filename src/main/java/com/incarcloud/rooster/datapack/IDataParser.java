@@ -63,6 +63,14 @@ public interface IDataParser {
     Map<String, Object> getMetaData(ByteBuf buffer);
 
     /**
+     * 获得设备号
+     *
+     * @param buffer 二进制数据包（InHandler对象中的累积缓冲的buffer）
+     * @return
+     */
+    String getDeviceId(ByteBuf buffer);
+
+    /**
      * 设置私钥字符串（平台传递给解析器）
      *
      * @param deviceId 设备号
