@@ -15,5 +15,9 @@ public enum ERespReason {
     /**
      * 服务器处理错误
      */
-    ERROR
+    ERROR,
+    /**
+     * 激活时VIN不匹配
+     */
+    MISMATCH
 }
