@@ -53,6 +53,11 @@ public class Any4DataParser implements IDataParser {
     }
 
     @Override
+    public String getDeviceId(ByteBuf buffer) {
+        return null;
+    }
+
+    @Override
     public void setPrivateKey(String deviceId, byte[] n, byte[] e) {
 
     }
