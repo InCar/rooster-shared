@@ -62,6 +62,11 @@ public interface Constants {
          * 报警编码与报警规则NS
          */
         String CACHE_NS_ALARM_SETTING = "com.incarcloud.rooster:alarm:";
+
+        /**
+         * 报文流水号NS
+         */
+        String CACHE_NS_PACK_SN = "com.incarcloud.rooster:pack-sn:" ;
     }
 
     /**

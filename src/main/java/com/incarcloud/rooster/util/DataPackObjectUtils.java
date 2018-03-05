@@ -292,6 +292,11 @@ public class DataPackObjectUtils {
 	public static final String LOGINOUT = "LOGINOUT";
 
 	/**
+	 * OTA升级完成
+	 */
+	public static final String OTACOMPLETED = "OTACOMPLETED" ;
+
+	/**
 	 * 获取数据类型
 	 *
 	 * @param clazz
@@ -431,6 +436,10 @@ public class DataPackObjectUtils {
 			if (clazz.equals(DataPackTrip.class)) {
 				// 车辆登录数据
 				return TRIP;
+			}
+			if (clazz.equals(DataPackOtaCompleted.class)){
+				// OTA升级完成
+				return OTACOMPLETED ;
 			}
 		}
 		return null;
@@ -594,6 +603,10 @@ public class DataPackObjectUtils {
 		if (TRIP.equals(dataType)) {
 			// 车辆行程数据
 			return DataPackTrip.class;
+		}
+		if (OTACOMPLETED.equals(dataType)){
+			// OTA升级完成
+			return DataPackOtaCompleted.class ;
 		}
 
 		return null;
