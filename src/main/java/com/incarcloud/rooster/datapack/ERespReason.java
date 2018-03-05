@@ -19,5 +19,9 @@ public enum ERespReason {
     /**
      * 激活时VIN不匹配
      */
-    MISMATCH
+    MISMATCH,
+    /**
+     * 设备已激活
+     */
+    ACTIVATED
 }
