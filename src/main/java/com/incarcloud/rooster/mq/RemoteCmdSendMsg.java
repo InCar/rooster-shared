@@ -9,6 +9,11 @@ package com.incarcloud.rooster.mq;
 public class RemoteCmdSendMsg {
 
     /**
+     * 业务ID
+     */
+    private String refId;
+
+    /**
      * 设备ID
      */
     private String deviceId;
@@ -19,7 +24,9 @@ public class RemoteCmdSendMsg {
     private Integer packId;
 
     /**
-     * 命令类型
+     * 命令类型<br>
+     *
+     * @see com.incarcloud.rooster.gather.cmd.CommandType
      */
     private String cmdType;
 
@@ -40,6 +47,29 @@ public class RemoteCmdSendMsg {
         this.deviceId = deviceId;
         this.packId = packId;
         this.cmdString = cmdString;
+    }
+
+    public RemoteCmdSendMsg(String deviceId, Integer packId, String cmdType, String cmdString) {
+        this.deviceId = deviceId;
+        this.packId = packId;
+        this.cmdType = cmdType;
+        this.cmdString = cmdString;
+    }
+
+    public RemoteCmdSendMsg(String refId, String deviceId, Integer packId, String cmdType, String cmdString) {
+        this.refId = refId;
+        this.deviceId = deviceId;
+        this.packId = packId;
+        this.cmdType = cmdType;
+        this.cmdString = cmdString;
+    }
+
+    public String getRefId() {
+        return refId;
+    }
+
+    public void setRefId(String refId) {
+        this.refId = refId;
     }
 
     public String getDeviceId() {
