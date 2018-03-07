@@ -11,7 +11,7 @@ public class RemoteCmdFeedbackMsg {
     /**
      * 业务ID
      */
-    private Long refId;
+    private String refId;
 
     /**
      * 设备ID
@@ -24,7 +24,9 @@ public class RemoteCmdFeedbackMsg {
     private Integer packId;
 
     /**
-     * 命令类型
+     * 命令类型<br>
+     *
+     * @see com.incarcloud.rooster.gather.cmd.CommandType
      */
     private String cmdType;
 
@@ -41,24 +43,19 @@ public class RemoteCmdFeedbackMsg {
     public RemoteCmdFeedbackMsg() {
     }
 
-    public RemoteCmdFeedbackMsg(String deviceId, Integer packId, Integer status) {
-        this.deviceId = deviceId;
-        this.packId = packId;
+    public RemoteCmdFeedbackMsg(RemoteCmdSendMsg msg, Integer status) {
+        this.refId = msg.getRefId();
+        this.deviceId = msg.getDeviceId();
+        this.packId = msg.getPackId();
+        this.cmdType = msg.getCmdType();
         this.status = status;
     }
 
-    public RemoteCmdFeedbackMsg(Long refId, String deviceId, Integer packId, Integer status) {
-        this.refId = refId;
-        this.deviceId = deviceId;
-        this.packId = packId;
-        this.status = status;
-    }
-
-    public Long getRefId() {
+    public String getRefId() {
         return refId;
     }
 
-    public void setRefId(Long refId) {
+    public void setRefId(String refId) {
         this.refId = refId;
     }
 
