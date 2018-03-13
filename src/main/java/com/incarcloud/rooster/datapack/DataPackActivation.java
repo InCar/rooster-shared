@@ -25,38 +25,9 @@ public class DataPackActivation extends DataPackObject {
 	 * 激活类型
 	 */
 	private Integer activationType;
-	/**
-	 * RSA公钥{e,n}中的 n, 128位bytes
-	 *
-	 * @return
-	 */
-	private byte[] publicKeyModulusBytes;
-
-	/**
-	 * RSA公钥{e,n}中的 e
-	 *
-	 * @return
-	 */
-	private long publicKeyExponent;
 
 	public DataPackActivation(DataPackObject object) {
 		super(object);
-	}
-
-	public byte[] getPublicKeyModulusBytes() {
-		return publicKeyModulusBytes;
-	}
-
-	public void setPublicKeyModulusBytes(byte[] publicKeyModulusBytes) {
-		this.publicKeyModulusBytes = publicKeyModulusBytes;
-	}
-
-	public long getPublicKeyExponent() {
-		return publicKeyExponent;
-	}
-
-	public void setPublicKeyExponent(long publicKeyExponent) {
-		this.publicKeyExponent = publicKeyExponent;
 	}
 
 	public Integer getActivationType() {
@@ -71,8 +42,6 @@ public class DataPackActivation extends DataPackObject {
 	public String toString() {
 		return "DataPackActivation{" +
 				"activationType=" + activationType +
-				", publicKeyModulusBytes=" + Arrays.toString(publicKeyModulusBytes) +
-				", publicKeyExponent=" + publicKeyExponent +
 				'}';
 	}
 }
