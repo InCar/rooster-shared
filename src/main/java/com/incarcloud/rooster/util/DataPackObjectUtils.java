@@ -286,6 +286,11 @@ public class DataPackObjectUtils {
 	 * can模块状态数据
 	 */
 	public static final String STATUS = "STATUS";
+
+	/**
+	 * 激活数据
+	 */
+	public static final String ACTIVATION = "ACTIVATION" ;
 	/**
 	 * 车辆登录数据
 	 */
@@ -428,6 +433,10 @@ public class DataPackObjectUtils {
 			if (clazz.equals(DataPackStatus.class)) {
 				// CAN STATUS数据
 				return STATUS;
+			}
+			if(clazz.equals(DataPackActivation.class)) {
+				//激活数据
+				return ACTIVATION ;
 			}
 			if (clazz.equals(DataPackLogInOut.class)) {
 				// 车辆登录数据
@@ -595,6 +604,10 @@ public class DataPackObjectUtils {
 		if (STATUS.equals(dataType)) {
 			// STATUS数据
 			return DataPackStatus.class;
+		}
+		if (ACTIVATION.equals(dataType)) {
+			// 激活数据
+			return DataPackActivation.class;
 		}
 		if (LOGINOUT.equals(dataType)) {
 			// LOGINOUT数据
