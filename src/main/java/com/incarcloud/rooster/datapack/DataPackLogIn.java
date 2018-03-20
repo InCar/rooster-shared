@@ -6,7 +6,7 @@ package com.incarcloud.rooster.datapack;
  * @Description: 车辆登入
  * @date 2017-09-06 14:11
  */
-public class DataPackLogInOut extends DataPackObject {
+public class DataPackLogIn extends DataPackObject {
 
 	/**
 	 * 登录类型：0-登录
@@ -43,7 +43,7 @@ public class DataPackLogInOut extends DataPackObject {
 	 */
 	private String securityKey;
 
-	public DataPackLogInOut(DataPackObject dataPack) {
+	public DataPackLogIn(DataPackObject dataPack) {
 		super(dataPack);
 	}
 
@@ -110,9 +110,14 @@ public class DataPackLogInOut extends DataPackObject {
 
 	@Override
 	public String toString() {
-		return "DataPackLogInOut [loginType=" + loginType + ", sysNumber=" + sysNumber + ", codeLength=" + codeLength
-				+ ", sysCode=" + sysCode + ", serialNo=" + serialNo + ", securityKey=" + securityKey
-				+ ", softwareVersion=" + softwareVersion + "]";
+		return "DataPackLogIn{" +
+				"loginType=" + loginType +
+				", sysNumber=" + sysNumber +
+				", codeLength=" + codeLength +
+				", sysCode='" + sysCode + '\'' +
+				", serialNo=" + serialNo +
+				", securityKey='" + securityKey + '\'' +
+				", softwareVersion='" + softwareVersion + '\'' +
+				'}';
 	}
-
 }
