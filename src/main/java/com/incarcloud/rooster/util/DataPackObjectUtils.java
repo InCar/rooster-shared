@@ -291,10 +291,16 @@ public class DataPackObjectUtils {
 	 * 激活数据
 	 */
 	public static final String ACTIVATION = "ACTIVATION" ;
+
 	/**
 	 * 车辆登录数据
 	 */
-	public static final String LOGINOUT = "LOGINOUT";
+	public static final String LOGIN = "LOGIN";
+
+	/**
+	 * 车辆登出数据
+	 */
+	public static final String LOGOUT = "LOGOUT" ;
 
 	/**
 	 * OTA升级完成
@@ -438,9 +444,13 @@ public class DataPackObjectUtils {
 				//激活数据
 				return ACTIVATION ;
 			}
-			if (clazz.equals(DataPackLogInOut.class)) {
+			if (clazz.equals(DataPackLogIn.class)) {
 				// 车辆登录数据
-				return LOGINOUT;
+				return LOGIN;
+			}
+			if (clazz.equals(DataPackLogOut.class)) {
+				// 车辆登出数据
+				return LOGOUT;
 			}
 			if (clazz.equals(DataPackTrip.class)) {
 				// 车辆登录数据
@@ -609,9 +619,13 @@ public class DataPackObjectUtils {
 			// 激活数据
 			return DataPackActivation.class;
 		}
-		if (LOGINOUT.equals(dataType)) {
-			// LOGINOUT数据
-			return DataPackLogInOut.class;
+		if (LOGIN.equals(dataType)) {
+			// LOGIN数据
+			return DataPackLogIn.class;
+		}
+		if (LOGOUT.equals(dataType)) {
+			// LOGOUT数据
+			return DataPackLogOut.class;
 		}
 		if (TRIP.equals(dataType)) {
 			// 车辆行程数据
