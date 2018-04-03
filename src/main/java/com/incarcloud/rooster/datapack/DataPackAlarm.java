@@ -100,6 +100,12 @@ public class DataPackAlarm extends DataPackObject {
             this.alarmDesc = alarmDesc;
         }
 
+        public Alarm(Integer alarmValue, String alarmCode, String alarmName){
+            this.alarmValue = String.valueOf(alarmValue) ;
+            this.alarmCode = alarmCode ;
+            this.alarmName = alarmName ;
+        }
+
         public String getAlarmName() {
             return alarmName;
         }

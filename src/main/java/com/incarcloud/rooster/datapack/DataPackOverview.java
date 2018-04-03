@@ -1,5 +1,6 @@
 package com.incarcloud.rooster.datapack;
 
+import java.nio.ByteOrder;
 import java.util.List;
 
 /**
@@ -295,33 +296,30 @@ public class DataPackOverview extends DataPackObject {
 	 */
 	private Integer lightStatus;
 
+	/**
+	 * 冷却液温度
+	 * 有效值范围：0～250 （数值偏移量40℃）
+	 */
+	private int coolingFluidTemperature ;
+
+	/**
+	 * 机油温度
+	 * 有效值范围：0～250 （数值偏移量40℃）
+	 */
+	private int oilTemperature ;
+
+	/**
+	 * 发动机转速
+	 * 有效值范围：0～65531
+	 */
+	private int engineRpm ;
+
 	/************************** 广三协议新增end ***************************************/
 
 	public DataPackOverview(DataPackObject object) {
 		super(object);
 	}
 
-	@Override
-	public String toString() {
-		return "DataPackOverview [carStatus=" + carStatus + ", chargeStatus=" + chargeStatus + ", runStatus="
-				+ runStatus + ", vehicleSpeed=" + vehicleSpeed + ", totalCurrent=" + totalCurrent + ", soc=" + soc
-				+ ", dcdcStatus=" + dcdcStatus + ", clutchStatus=" + clutchStatus + ", brakeStatus=" + brakeStatus
-				+ ", driveStatus=" + driveStatus + ", issueValue=" + issueValue + ", voltage=" + voltage + ", position="
-				+ position + ", runTime=" + runTime + ", currentMileage=" + currentMileage + ", currentAvgOilUsed="
-				+ currentAvgOilUsed + ", mileage=" + mileage + ", avgOilUsed=" + avgOilUsed + ", speedGroup="
-				+ speedGroup + ", speedUpTimes=" + speedUpTimes + ", speedDownTimes=" + speedDownTimes
-				+ ", sharpTurnTimes=" + sharpTurnTimes + ", speedingTime=" + speedingTime + ", maxSpeed=" + maxSpeed
-				+ ", current=" + current + ", fuelQuantity=" + fuelQuantity + ", leftFrontTirePressure="
-				+ leftFrontTirePressure + ", rightFrontTirePressure=" + rightFrontTirePressure
-				+ ", leftRearTirePressure=" + leftRearTirePressure + ", rightRearTirePressure=" + rightRearTirePressure
-				+ ", leftFrontDoorStatus=" + leftFrontDoorStatus + ", leftBackDoorStatus=" + leftBackDoorStatus
-				+ ", rightFrontDoorStatus=" + rightFrontDoorStatus + ", rightBackDoorStatus=" + rightBackDoorStatus
-				+ ", frontCover=" + frontCover + ", trunkStatus=" + trunkStatus + ", leftFrontWindowStatus="
-				+ leftFrontWindowStatus + ", rightFrontWindowStatus=" + rightFrontWindowStatus
-				+ ", leftBackWindowStatus=" + leftBackWindowStatus + ", rightBackWindowStatus=" + rightBackWindowStatus
-				+ ", outsideTemperature=" + outsideTemperature + ", insideTemperature=" + insideTemperature
-				+ ", rechargeMileage=" + rechargeMileage + ", lightStatus=" + lightStatus + "]";
-	}
 
 	public Integer getLightStatus() {
 		return lightStatus;
@@ -675,6 +673,30 @@ public class DataPackOverview extends DataPackObject {
 		this.maxSpeed = maxSpeed;
 	}
 
+	public int getCoolingFluidTemperature() {
+		return coolingFluidTemperature;
+	}
+
+	public void setCoolingFluidTemperature(int coolingFluidTemperature) {
+		this.coolingFluidTemperature = coolingFluidTemperature;
+	}
+
+	public int getOilTemperature() {
+		return oilTemperature;
+	}
+
+	public void setOilTemperature(int oilTemperature) {
+		this.oilTemperature = oilTemperature;
+	}
+
+	public int getEngineRpm() {
+		return engineRpm;
+	}
+
+	public void setEngineRpm(int engineRpm) {
+		this.engineRpm = engineRpm;
+	}
+
 	/**
 	 * 单个速度信息
 	 */
@@ -725,5 +747,58 @@ public class DataPackOverview extends DataPackObject {
 		public void setTravelDistance(Integer travelDistance) {
 			this.travelDistance = travelDistance;
 		}
+	}
+
+	@Override
+	public String toString() {
+		return "DataPackOverview{" +
+				"carStatus=" + carStatus +
+				", chargeStatus=" + chargeStatus +
+				", runStatus=" + runStatus +
+				", vehicleSpeed=" + vehicleSpeed +
+				", totalCurrent=" + totalCurrent +
+				", soc=" + soc +
+				", dcdcStatus=" + dcdcStatus +
+				", clutchStatus=" + clutchStatus +
+				", brakeStatus=" + brakeStatus +
+				", driveStatus=" + driveStatus +
+				", issueValue=" + issueValue +
+				", voltage=" + voltage +
+				", position=" + position +
+				", runTime=" + runTime +
+				", currentMileage=" + currentMileage +
+				", currentAvgOilUsed=" + currentAvgOilUsed +
+				", mileage=" + mileage +
+				", avgOilUsed=" + avgOilUsed +
+				", speedGroup=" + speedGroup +
+				", speedUpTimes=" + speedUpTimes +
+				", speedDownTimes=" + speedDownTimes +
+				", sharpTurnTimes=" + sharpTurnTimes +
+				", speedingTime=" + speedingTime +
+				", maxSpeed=" + maxSpeed +
+				", current=" + current +
+				", fuelQuantity=" + fuelQuantity +
+				", leftFrontTirePressure=" + leftFrontTirePressure +
+				", rightFrontTirePressure=" + rightFrontTirePressure +
+				", leftRearTirePressure=" + leftRearTirePressure +
+				", rightRearTirePressure=" + rightRearTirePressure +
+				", leftFrontDoorStatus=" + leftFrontDoorStatus +
+				", leftBackDoorStatus=" + leftBackDoorStatus +
+				", rightFrontDoorStatus=" + rightFrontDoorStatus +
+				", rightBackDoorStatus=" + rightBackDoorStatus +
+				", frontCover=" + frontCover +
+				", trunkStatus=" + trunkStatus +
+				", leftFrontWindowStatus=" + leftFrontWindowStatus +
+				", rightFrontWindowStatus=" + rightFrontWindowStatus +
+				", leftBackWindowStatus=" + leftBackWindowStatus +
+				", rightBackWindowStatus=" + rightBackWindowStatus +
+				", outsideTemperature=" + outsideTemperature +
+				", insideTemperature=" + insideTemperature +
+				", rechargeMileage=" + rechargeMileage +
+				", lightStatus=" + lightStatus +
+				", coolingFluidTemperature=" + coolingFluidTemperature +
+				", oilTemperature=" + oilTemperature +
+				", engineRpm=" + engineRpm +
+				'}';
 	}
 }

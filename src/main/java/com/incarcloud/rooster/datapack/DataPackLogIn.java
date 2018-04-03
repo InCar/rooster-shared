@@ -39,6 +39,11 @@ public class DataPackLogIn extends DataPackObject {
 	private Integer serialNo;
 
 	/**
+	 * T-BOX设备号
+	 */
+	private String sn ;
+
+	/**
 	 * 加密密钥
 	 */
 	private String securityKey;
@@ -51,6 +56,14 @@ public class DataPackLogIn extends DataPackObject {
 	 * 软件版本号
 	 */
 	private String softwareVersion;
+
+	public String getSn() {
+		return sn;
+	}
+
+	public void setSn(String sn) {
+		this.sn = sn;
+	}
 
 	public String getSecurityKey() {
 		return securityKey;
@@ -116,6 +129,7 @@ public class DataPackLogIn extends DataPackObject {
 				", codeLength=" + codeLength +
 				", sysCode='" + sysCode + '\'' +
 				", serialNo=" + serialNo +
+				", sn='" + sn + '\'' +
 				", securityKey='" + securityKey + '\'' +
 				", softwareVersion='" + softwareVersion + '\'' +
 				'}';
