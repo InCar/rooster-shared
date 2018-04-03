@@ -26,6 +26,11 @@ public class DataPackActivation extends DataPackObject {
 	 */
 	private Integer activationType;
 
+	/**
+	 * T-BOX设备号
+	 */
+	private String sn ;
+
 	public DataPackActivation(DataPackObject object) {
 		super(object);
 	}
@@ -38,10 +43,19 @@ public class DataPackActivation extends DataPackObject {
 		this.activationType = activationType;
 	}
 
+	public String getSn() {
+		return sn;
+	}
+
+	public void setSn(String sn) {
+		this.sn = sn;
+	}
+
 	@Override
 	public String toString() {
 		return "DataPackActivation{" +
 				"activationType=" + activationType +
+				", sn='" + sn + '\'' +
 				'}';
 	}
 }
