@@ -18,10 +18,10 @@ public interface IBigTable {
      *
      * @param rowKey      行健
      * @param data        数据
-     * @param recieveTime 二级索引用接收时间时间生成便于同步数据
+     * @param receiveTime 二级索引用接收时间时间生成便于同步数据
      * @throws Exception
      */
-    void saveDataPackObject(String rowKey, DataPackObject data, Date recieveTime) throws Exception;
+    void saveDataPackObject(String rowKey, DataPackObject data, Date receiveTime) throws Exception;
 
     /**
      * 保存vin码
@@ -41,12 +41,11 @@ public interface IBigTable {
     String queryData(String startTimeRowKey, IDataReadable dataReadable);
 
     /**
-     * 查询指定时间点至当前时间点是否有数据
+     * 查询索引表获得最新同步时间点
      *
-     * @param queryTime 指定时间点
-     * @return =0: 无数据，等待数据; >0: 可以继续同步
+     * @return 时间戳
      */
-    int queryData(Date queryTime);
+    long queryLatestTimeMillis();
 
     /**
      * 查询并读取处理指定时间点数据（某一秒的数据）

@@ -1,5 +1,5 @@
 group 'com.incarcloud'
-version '2.1.30-SNAPSHOT'
+version '2.1.31.2-SNAPSHOT'
 
 allprojects {
     apply plugin: 'java'
@@ -32,17 +32,17 @@ allprojects {
         }
     }
 
-    compileJava{
+    compileJava {
         options.encoding = "utf-8"
         options.compilerArgs << "-Xlint:unchecked"
     }
 
-    compileTestJava{
+    compileTestJava {
         options.encoding = "utf-8"
         options.compilerArgs << "-Xlint:unchecked"
     }
 
-    test{
+    test {
         testLogging {
             events "passed", "skipped", "failed"
             showStandardStreams = true
@@ -70,7 +70,7 @@ uploadArchives {
             snapshotRepository(url: "${MAVEN_URL_SNAPSHOTS}") {
                 authentication(userName: "${MAVEN_AUTH_USERNAME}", password: "${MAVEN_AUTH_PASSWORD}")
             }
-            pom.project{
+            pom.project {
                 name = '$project.name'
             }
         }
