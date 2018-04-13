@@ -16,57 +16,61 @@ public interface Constants {
     /**
      * 缓存命令空间常量
      */
-    interface CacheNamespace {
+    interface CacheNamespaceKey {
+        /**
+         * 车辆VIN与设备号缓存Key - Hash结构
+         */
+        String CACHE_VEHICLE_VIN_HASH = "rooster:vehicle-vin";
 
         /**
-         * 车辆VIN与设备号缓存NS
+         * 设备号与车辆VIN缓存Key - Hash结构
          */
-        String CACHE_NS_VEHICLE_VIN = "com.incarcloud.rooster:vehicle-vin:";
+        String CACHE_DEVICE_ID_HASH = "rooster:device-id";
 
         /**
-         * 设备号与VIN缓存NS
+         * 设备号与私钥字符串(Base64加密)缓存Key - Hash结构
          */
-        String CACHE_NS_DEVICE_CODE = "com.incarcloud.rooster:device-code:";
+        String CACHE_DEVICE_PRIVATE_KEY_HASH = "rooster:device-private-key";
 
         /**
-         * 设备号与私钥字符串(Base64加密)
+         * 设备号与公钥字符串(Base64加密)缓存Key - Hash结构
          */
-        String CACHE_NS_DEVICE_PRIVATE_KEY = "com.incarcloud.rooster:device-private-key:";
+        String CACHE_DEVICE_PUBLIC_KEY_HASH = "rooster:device-public-key";
 
         /**
-         * 设备号与公钥字符串(Base64加密)
+         * 设备号与安全密钥字符串(Base64加密)缓存Key - Hash结构
          */
-        String CACHE_NS_DEVICE_PUBLIC_KEY = "com.incarcloud.rooster:device-public-key:";
+        String CACHE_DEVICE_SECURITY_KEY_HASH = "rooster:device-security-key";
 
         /**
-         * 设备号与安全密钥字符串(Base64加密)
+         * 车辆VIN与心跳数据缓存缓存Key - Hash结构
          */
-        String CACHE_NS_DEVICE_SECURITY_KEY = "com.incarcloud.rooster:device-security-key:";
-
-        /**
-         * 车辆VIN与心跳数据缓存NS
-         */
-        String CACHE_NS_DEVICE_HEARTBEAT = "com.incarcloud.rooster:device-heartbeat:";
+        String CACHE_VEHICLE_HEARTBEAT_HASH = "rooster:vehicle-heartbeat";
 
         /**
          * 车辆VIN与在线时间NS
          */
-        String CACHE_NS_DEVICE_ONLINE = "com.incarcloud.rooster:device-online:";
+        String CACHE_NS_VEHICLE_ONLINE = "rooster:vehicle-online:";
 
         /**
-         * 车辆VIN与离线时间NS
+         * 车辆VIN与离线时间缓存Key - Hash结构
          */
-        String CACHE_NS_DEVICE_OFFLINE = "com.incarcloud.rooster:device-offline:";
+        String CACHE_VEHICLE_OFFLINE_HASH = "rooster:vehicle-offline";
 
         /**
-         * 报警编码与报警规则NS
+         * 报警编码与报警规则缓存Key - Hash结构
          */
-        String CACHE_NS_ALARM_SETTING = "com.incarcloud.rooster:alarm:";
+        String CACHE_ALARM_SETTING_HASH = "rooster:alarm-rule";
 
         /**
-         * 报文流水号NS
+         * 报文流水号缓存Key - Hash结构
          */
-        String CACHE_NS_PACK_SN = "com.incarcloud.rooster:pack-sn:" ;
+        String CACHE_PACK_SN_HASH = "rooster:pack-sn";
+
+        /**
+         * 车辆VIN与地理位置缓存Key
+         */
+        String CACHE_VEHICLE_GEO = "rooster:vehicle-geo";
     }
 
     /**
@@ -89,7 +93,7 @@ public interface Constants {
         int LOGOUT = 2;
 
         /**
-         * 3-心跳
+         * 3-心跳(正常数据上报也算心跳)
          */
         int NORMAL = 3;
     }
