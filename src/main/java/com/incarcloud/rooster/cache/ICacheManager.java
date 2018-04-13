@@ -1,5 +1,7 @@
 package com.incarcloud.rooster.cache;
 
+import java.util.Set;
+
 /**
  * 缓存管理器
  *
@@ -26,14 +28,6 @@ public interface ICacheManager {
     void set(String key, String value, int timeout);
 
     /**
-     * 设置超时时间
-     *
-     * @param key     键名
-     * @param timeout 超时时间，单位：秒
-     */
-    void expire(String key, int timeout);
-
-    /**
      * 根据key获取数据
      *
      * @param key 键名
@@ -47,4 +41,78 @@ public interface ICacheManager {
      * @param key 键名
      */
     void delete(String key);
+
+    /**
+     * 设置超时时间
+     *
+     * @param key     键名
+     * @param timeout 超时时间，单位：秒
+     */
+    void expire(String key, int timeout);
+
+    /**
+     * 模糊查询键集合
+     *
+     * @param pattern 查询条件
+     * @return
+     */
+    Set<String> keys(String pattern);
+
+    /**
+     * 设置缓存数据-hash结构
+     *
+     * @param key     键名
+     * @param hashKey hash键名
+     * @param value   键值
+     */
+    void hset(String key, String hashKey, String value);
+
+    /**
+     * 根据key获取数据-hash结构
+     *
+     * @param key     键名
+     * @param hashKey hash键名
+     */
+    String hget(String key, String hashKey);
+
+    /**
+     * 根据key移除数据-hash结构
+     *
+     * @param key     键名
+     * @param hashKey hash键名
+     */
+    void hdelete(String key, String hashKey);
+
+    /**
+     * 根据key查询容量-hash结构
+     *
+     * @param key 键名
+     */
+    Long hsize(String key);
+
+    /**
+     * 设置缓存数据-geo结构
+     *
+     * @param key       键名
+     * @param flagKey   flag键名
+     * @param longitude 经度
+     * @param latitude  纬度
+     */
+    void gset(String key, String flagKey, double longitude, double latitude);
+
+    /**
+     * 根据key获取数据-geo结构
+     *
+     * @param key     键名
+     * @param flagKey flag键名
+     */
+    double[] gget(String key, String flagKey);
+
+    /**
+     * 根据key移除数据-geo结构
+     *
+     * @param key     键名
+     * @param flagKey flag键名
+     */
+    void gdelete(String key, String flagKey);
 }
