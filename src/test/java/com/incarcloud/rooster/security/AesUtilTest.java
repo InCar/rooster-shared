@@ -40,6 +40,7 @@ public class AesUtilTest {
         cipher = Cipher.getInstance(algorithmName);
         cipher.init(Cipher.DECRYPT_MODE, keySpec);
         System.out.println(new String(cipher.doFinal(secret)));
+        Assert.assertEquals(content, new String(cipher.doFinal(secret)));
     }
 
     @Test
