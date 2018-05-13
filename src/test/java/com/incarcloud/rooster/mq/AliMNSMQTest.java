@@ -6,7 +6,7 @@ import org.junit.Test;
 public class AliMNSMQTest {
 
     @Test
-    public void testPrint() {
+    public void testEquals() {
         Assert.assertEquals("hello", "hello world".substring(0, 5));
     }
 }
