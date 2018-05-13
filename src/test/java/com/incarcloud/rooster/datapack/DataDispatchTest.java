@@ -1,6 +1,5 @@
 package com.incarcloud.rooster.datapack;
 
-import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.List;
@@ -13,34 +12,33 @@ import java.util.List;
  */
 public class DataDispatchTest {
 
-    @Test
-    @Ignore
+    @Test(expected = NullPointerException.class)
     public void testExtract() throws Exception {
         IDataParser dataParser = (IDataParser) DataParserManager.getDataParserClass("incar-any4-1.0.0").newInstance();
         DataDispatch dataDispatch = new DataDispatch(null, dataParser);
         List<DataPackTarget> dataPackTargetList = dataDispatch.extractBody();
-        if(null != dataPackTargetList && 0 < dataPackTargetList.size()) {
+        if (null != dataPackTargetList && 0 < dataPackTargetList.size()) {
             DataPackObject dataPackObject;
-            for (DataPackTarget dataPackTarget: dataPackTargetList) {
-                if(null != dataPackTarget && null != dataPackTarget.getDataPackObject()) {
+            for (DataPackTarget dataPackTarget : dataPackTargetList) {
+                if (null != dataPackTarget && null != dataPackTarget.getDataPackObject()) {
                     dataPackObject = dataPackTarget.getDataPackObject();
-                    if(dataPackObject instanceof DataPackOverview) {
+                    if (dataPackObject instanceof DataPackOverview) {
                         // 分发整车数据
-                    } else if(dataPackObject instanceof DataPackBattery) {
+                    } else if (dataPackObject instanceof DataPackBattery) {
                         // 分发电池数据
-                    } else if(dataPackObject instanceof DataPackMotor) {
+                    } else if (dataPackObject instanceof DataPackMotor) {
                         // 分发驱动电机数据
-                    } else if(dataPackObject instanceof DataPackEngine) {
+                    } else if (dataPackObject instanceof DataPackEngine) {
                         // 分发发动机数据
-                    } else if(dataPackObject instanceof DataPackPosition) {
+                    } else if (dataPackObject instanceof DataPackPosition) {
                         // 分发位置数据
                         DataPackPosition position = (DataPackPosition) dataPackTarget.getDataPackObject();
                         System.out.println(position.getLongitude() + ":" + position.getLatitude());
-                    } else if(dataPackObject instanceof DataPackPeak) {
+                    } else if (dataPackObject instanceof DataPackPeak) {
                         // 分发极值数据
-                    } else if(dataPackObject instanceof DataPackAlarm) {
+                    } else if (dataPackObject instanceof DataPackAlarm) {
                         // 分发报警数据
-                    } else if(dataPackObject instanceof DataPackDevice) {
+                    } else if (dataPackObject instanceof DataPackDevice) {
                         // 分发上报设备信息
                     }
                 }

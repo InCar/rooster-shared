@@ -47,6 +47,7 @@ public class AesUtilTest {
     public void testGenerateAesSecret() throws Exception {
         byte[] secretKeyBytes = AesUtil.generateAesSecret();
         System.out.println(ByteBufUtil.hexDump(secretKeyBytes));
+        Assert.assertNotNull(secretKeyBytes);
     }
 
     @Test
