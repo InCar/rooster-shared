@@ -13,15 +13,15 @@ public class DataPackTest {
     private static Logger s_logger = LoggerFactory.getLogger(DataPackTest.class);
 
     @Test
-    public void markFormat(){
+    public void testMarkFormat() {
         DataPack pack = new DataPack("x", "y", "1.2.3");
         Assert.assertEquals("Mark format", "x-y-1.2.3", pack.getMark());
     }
 
     @Test
-    public void base64Data(){
+    public void testBase64Data() {
         DataPack pack = new DataPack("x", "y", "1.2.3");
-        ByteBuf buf = Unpooled.wrappedBuffer(new byte[]{ 0x23, 0x23 });
+        ByteBuf buf = Unpooled.wrappedBuffer(new byte[]{0x23, 0x23});
         pack.setBuf(buf);
         Assert.assertEquals("Data in base64 string", "IyM=", pack.getDataB64());
         pack.freeBuf();
@@ -31,7 +31,7 @@ public class DataPackTest {
     }
 
     @Test
-    public void Any4DataParserTest(){
+    public void testAny4DataParser() {
         ByteBuf buf = Unpooled.wrappedBuffer(new byte[]{
                 0x23, 0x23, 0x23, 0x23,
                 0x24, 0x24, 0x24, 0x24,
@@ -44,7 +44,7 @@ public class DataPackTest {
         Assert.assertEquals(2, listPacks.size());
         Assert.assertEquals(3, buf.readableBytes());
 
-        for(DataPack pack:listPacks){
+        for (DataPack pack : listPacks) {
             pack.freeBuf();
         }
 
