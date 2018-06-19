@@ -54,9 +54,10 @@ public class AesUtilTest {
     public void testEncryptAndDecrypt() throws Exception {
         String content = "hello world";
         byte[] secretKeyBytes = AesUtil.generateAesSecret();
+        String ivParameter = "abcdefghijkwqyig" ;
 
-        byte[] secret = AesUtil.encrypt(content.getBytes(), secretKeyBytes);
-        Assert.assertEquals(content, new String(AesUtil.decrypt(secret, secretKeyBytes)));
+        byte[] secret = AesUtil.encrypt(content.getBytes(), secretKeyBytes,ivParameter.getBytes());
+        Assert.assertEquals(content, new String(AesUtil.decrypt(secret, secretKeyBytes,ivParameter.getBytes())));
     }
 
     private String encodeToBase64String(byte[] bytes) {
@@ -67,8 +68,9 @@ public class AesUtilTest {
     public void testEncryptAndDecrypt2() throws Exception {
         String content = "hello world";
         String secretKeyString = encodeToBase64String(AesUtil.generateAesSecret());
+        String ivParameter = "abcdefghijkwqyig" ;
 
-        byte[] secret = AesUtil.encrypt(content.getBytes(), secretKeyString);
-        Assert.assertEquals(content, new String(AesUtil.decrypt(secret, secretKeyString)));
+        byte[] secret = AesUtil.encrypt(content.getBytes(), secretKeyString,ivParameter);
+        Assert.assertEquals(content, new String(AesUtil.decrypt(secret, secretKeyString,ivParameter)));
     }
 }

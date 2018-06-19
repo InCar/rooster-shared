@@ -21,22 +21,17 @@ public class DataPackLogIn extends DataPackObject {
 	 * 登录类型 0 车辆登入 1 车辆登出
 	 */
 	private Integer loginType;
-	/**
-	 * 可充电储能子系统数
-	 */
-	private Integer sysNumber;
-	/**
-	 * 可充电储能系统编码长度
-	 */
-	private Integer codeLength;
-	/**
-	 * 可充电储能系统编码
-	 */
-	private String sysCode;
+
 	/**
 	 * 登入登出流水号
 	 */
 	private Integer serialNo;
+
+	/**
+	 * 登录类型
+	 * 有效值范围：0x01：正常登录；0x02：短信唤醒；0xFE表示异常；0xFF表示无效。
+	 */
+	private int loginOpType ;
 
 	/**
 	 * T-BOX设备号
@@ -44,9 +39,14 @@ public class DataPackLogIn extends DataPackObject {
 	private String sn ;
 
 	/**
-	 * 加密密钥
+	 * AES加密密钥
 	 */
-	private String securityKey;
+	private String secretKey;
+
+	/**
+	 * AES偏移量
+	 */
+	private String secretOffset ;
 
 	public DataPackLogIn(DataPackObject dataPack) {
 		super(dataPack);
@@ -57,60 +57,12 @@ public class DataPackLogIn extends DataPackObject {
 	 */
 	private String softwareVersion;
 
-	public String getSn() {
-		return sn;
-	}
-
-	public void setSn(String sn) {
-		this.sn = sn;
-	}
-
-	public String getSecurityKey() {
-		return securityKey;
-	}
-
-	public void setSecurityKey(String securityKey) {
-		this.securityKey = securityKey;
-	}
-
-	public String getSoftwareVersion() {
-		return softwareVersion;
-	}
-
-	public void setSoftwareVersion(String softwareVersion) {
-		this.softwareVersion = softwareVersion;
-	}
-
 	public Integer getLoginType() {
 		return loginType;
 	}
 
 	public void setLoginType(Integer loginType) {
 		this.loginType = loginType;
-	}
-
-	public Integer getSysNumber() {
-		return sysNumber;
-	}
-
-	public void setSysNumber(Integer sysNumber) {
-		this.sysNumber = sysNumber;
-	}
-
-	public Integer getCodeLength() {
-		return codeLength;
-	}
-
-	public void setCodeLength(Integer codeLength) {
-		this.codeLength = codeLength;
-	}
-
-	public String getSysCode() {
-		return sysCode;
-	}
-
-	public void setSysCode(String sysCode) {
-		this.sysCode = sysCode;
 	}
 
 	public Integer getSerialNo() {
@@ -121,16 +73,55 @@ public class DataPackLogIn extends DataPackObject {
 		this.serialNo = serialNo;
 	}
 
+	public int getLoginOpType() {
+		return loginOpType;
+	}
+
+	public void setLoginOpType(int loginOpType) {
+		this.loginOpType = loginOpType;
+	}
+
+	public String getSn() {
+		return sn;
+	}
+
+	public void setSn(String sn) {
+		this.sn = sn;
+	}
+
+	public String getSecretKey() {
+		return secretKey;
+	}
+
+	public void setSecretKey(String secretKey) {
+		this.secretKey = secretKey;
+	}
+
+	public String getSecretOffset() {
+		return secretOffset;
+	}
+
+	public void setSecretOffset(String secretOffset) {
+		this.secretOffset = secretOffset;
+	}
+
+	public String getSoftwareVersion() {
+		return softwareVersion;
+	}
+
+	public void setSoftwareVersion(String softwareVersion) {
+		this.softwareVersion = softwareVersion;
+	}
+
 	@Override
 	public String toString() {
 		return "DataPackLogIn{" +
 				"loginType=" + loginType +
-				", sysNumber=" + sysNumber +
-				", codeLength=" + codeLength +
-				", sysCode='" + sysCode + '\'' +
 				", serialNo=" + serialNo +
+				", loginOpType=" + loginOpType +
 				", sn='" + sn + '\'' +
-				", securityKey='" + securityKey + '\'' +
+				", secretKey='" + secretKey + '\'' +
+				", secretOffset='" + secretOffset + '\'' +
 				", softwareVersion='" + softwareVersion + '\'' +
 				'}';
 	}
