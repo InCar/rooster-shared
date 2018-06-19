@@ -118,7 +118,7 @@ public enum CommandType {
     /**
      * 查询终端参数
      */
-    QUERY_ALL_PARAMS,
+    QUERY_PARAMS,
     /**
      * 查询指定终端参数
      */
@@ -242,5 +242,21 @@ public enum CommandType {
     /**
      * OTA升级
      */
-    OTA
+    OTA,
+
+    /**
+     * 远程诊断
+     */
+    DIAGNOSIS,
+
+    /**
+     * 请求车辆运行数据
+     */
+    REQUEST_VEHICLE_DATA,
+
+    /**
+     * 异常唤醒
+     */
+    ABNORMAL_WAKE_UP
+
 }

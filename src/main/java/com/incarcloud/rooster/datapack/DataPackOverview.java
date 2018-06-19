@@ -21,15 +21,6 @@ public class DataPackOverview extends DataPackObject {
 	 */
 	private Integer carStatus;
 
-	/*
-	 * ===========================电动车部分start====================================
-	 * =====
-	 */
-	/**
-	 * 充电状态 0x01： 停车充电； 0x02： 行驶充电； 0x03： 未充电状态， 0x04：
-	 * 充电完成；“0xFE”表示异常，“0xFF”表示无效。
-	 */
-	private Integer chargeStatus;
 	/**
 	 * 运行模式 0x01: 纯电； 0x02：混动； 0x03：燃油； 0xFE 表示异常； 0xFF 表示无效
 	 */
@@ -39,19 +30,6 @@ public class DataPackOverview extends DataPackObject {
 	 * km/h），最小计量单元：0.1km/h，“0xFF,0xFE”表示异常，“0xFF,0xFF”表示无效。
 	 */
 	private float vehicleSpeed;
-	/**
-	 * 总电流 有效值范围： 0～20000（偏移量 1000A，表示-1000A～+1000A），最小计量单元：
-	 * 0.1A，“0xFF,0xFE”表示异常，“0xFF,0xFF”表示无效。
-	 */
-	private Float totalCurrent;
-	/**
-	 * SOC 有效值范围： 0～100（表示 0%～100%），最小计量单元： 1%，“0xFE”表示异常，“0xFF”表示无效
-	 */
-	private Integer soc;
-	/**
-	 * DC-DC 状态 0x01： 工作； 0x02： 断开，“0xFE”表示异常，“0xFF”表示无效。
-	 */
-	private Integer dcdcStatus;
 	/**
 	 * 档位 bit0-bit3 =0000 空档 =0001 1 档 =0010 2 档 =0011 3 档 =0100 4 档 =0101 5 档
 	 * =0110 6 档 =1101 倒档 =1110 自动 D 档 =1111 停车 P 档
@@ -130,6 +108,14 @@ public class DataPackOverview extends DataPackObject {
 
 	/************************** 广三协议新增start ***************************************/
 	/**
+	 * 平均车速<br>
+	 * 有效值范围： 0～2200（表示 0 km/h～220 km/h）<br>
+	 * 最小计量单元：0.1km/h<br>
+	 * 0xFF,0xFE表示异常<br>
+	 * 0xFF,0xFF表示无效<br>
+	 */
+	private Float avgSpeed;
+	/**
 	 * 电流（V）
 	 */
 	private Float current;
@@ -205,6 +191,15 @@ public class DataPackOverview extends DataPackObject {
 	private Integer rightBackDoorStatus;
 
 	/**
+	 * 中控锁状态
+	 * 0x01：开；
+	 * 0x02：关，
+	 * “0xFE”表示异常，
+	 * “0xFF”表示无效。
+	 */
+	private Integer centralLockStatus ;
+
+	/**
 	 * 前盖状态
 	 * <ul>
 	 * <li>0x01：开</li>
@@ -264,6 +259,15 @@ public class DataPackOverview extends DataPackObject {
 	private Integer rightBackWindowStatus;
 
 	/**
+	 * 天窗状态
+	 * 0x01：开；
+	 * 0x02：关；
+	 * 0x03： 半开，
+	 * “0xFE”表示异常，“0xFF”表示无效。
+	 */
+	private Integer skylightStatus ;
+
+	/**
 	 * 车外温度<br>
 	 * 有效值范围：0～250 （数值偏移量40℃，表示-40℃～+210℃）<br>
 	 * 最小计量单元：1℃<br>
@@ -288,31 +292,172 @@ public class DataPackOverview extends DataPackObject {
 	private Integer rechargeMileage;
 
 	/**
-	 * 车灯状态<br>
+	 * 近光灯状态
+	 * 0x01：开；
+	 * 0x02：关，
+	 * “0xFE”表示异常，“0xFF”表示无效。
+	 */
+	private Integer dippedHeadlightStatus ;
+
+	/**
+	 * 远光灯状态
+	 * 0x01：开；
+	 * 0x02：关，
+	 * “0xFE”表示异常，“0xFF”表示无效。
+	 */
+	private Integer beanLightStatus ;
+
+	/**
+	 * 左转向灯状态
+	 * 0x01：开；
+	 * 0x02：关，
+	 * “0xFE”表示异常，“0xFF”表示无效
+	 */
+	private Integer leftTurnSignalStatus ;
+
+	/**
+	 * 右转向灯状态
+	 * 0x01：开；
+	 * 0x02：关，
+	 * “0xFE”表示异常，“0xFF”表示无效
+	 */
+	private Integer rightTurnSignalStatus ;
+
+	/**
+	 * 危险警示灯状态
+	 * 0x01：开；
+	 * 0x02：关，
+	 * “0xFE”表示异常，“0xFF”表示无效
+	 */
+	private Integer dangerLightStatus ;
+
+	/**
+	 * 前雾灯状态
+	 * 0x01：开；
+	 * 0x02：关，
+	 * “0xFE”表示异常，“0xFF”表示无效
+	 */
+	private Integer frontFoglightStatus ;
+
+	/**
+	 * 后雾灯状态
+	 * 0x01：开；
+	 * 0x02：关，
+	 * “0xFE”表示异常，“0xFF”表示无效
+	 */
+	private Integer backFoglightStatus ;
+
+	/**
+	 * 刹车灯状态
+	 * 0x01：开；
+	 * 0x02：关，
+	 * “0xFE”表示异常，“0xFF”表示无效
+	 */
+	private Integer stopLampStatus ;
+
+	/**
+	 * 示宽灯状态
+	 * 0x01：开；
+	 * 0x02：关，
+	 * “0xFE”表示异常，“0xFF”表示无效
+	 */
+	private Integer widthLampStatus ;
+
+	/**
+	 * 阅读灯状态<br>
 	 * 0x01：开<br>
 	 * 0x02：关<br>
 	 * “0xFE”表示异常<br>
 	 * “0xFF”表示无效<br>
 	 */
-	private Integer lightStatus;
+	private Integer readingLampStatus;
 
 	/**
 	 * 冷却液温度
 	 * 有效值范围：0～250 （数值偏移量40℃）
 	 */
-	private int coolingFluidTemperature ;
+	private Integer coolingFluidTemperature ;
 
 	/**
 	 * 机油温度
 	 * 有效值范围：0～250 （数值偏移量40℃）
 	 */
-	private int oilTemperature ;
+	private Integer oilTemperature ;
 
 	/**
 	 * 发动机转速
 	 * 有效值范围：0～65531
 	 */
-	private int engineRpm ;
+	private Integer engineRpm ;
+
+	/**
+	 * 脚刹状态
+	 * 0x01：踩下；
+	 * 0x02：松开，
+	 * “0xFE”表示异常，“0xFF”表示无效。
+	 */
+	private Integer footBrakeStatus ;
+
+	/**
+	 * 手刹状态
+	 * 0x01：拉起；
+	 * 0x02：未拉起，
+	 * “0xFE”表示异常，“0xFF”表示无效。
+	 */
+	private Integer handBrakeStatus ;
+
+	/**
+	 * ACC状态
+	 * 0x01：有电；
+	 * 0x02：无电，
+	 * “0xFE”表示异常，“0xFF”表示无效。
+	 */
+	private Integer accStatus ;
+
+	/**
+	 * 空调状态
+	 * 0x01：开；
+	 * 0x02：关，
+	 * “0xFE”表示异常，“0xFF”表示无效。
+	 */
+	private Integer airConditionerStatus ;
+
+	/**
+	 * 空调控制状态
+	 * 0x01：自动；
+	 * 0x02：手动，
+	 * “0xFE”表示异常，“0xFF”表示无效。
+	 */
+	private Integer airConditionerControlStatus ;
+
+	/**
+	 * 空调压缩机状态
+	 * 0x01：开；
+	 * 0x02：关，
+	 * “0xFE”表示异常，“0xFF”表示无效。
+	 */
+	private Integer airConditionerCompressorStatus ;
+
+	/**
+	 * 空调循环状态
+	 * 0x01：内循环；
+	 * 0x02：外循环，
+	 * “0xFE”表示异常，“0xFF”表示无效。
+	 */
+	private Integer airConditionerCycleStatus ;
+
+	/**
+	 * 空调温度
+	 * 有效值范围：0～250 （数值偏移量40℃）
+	 */
+	private Integer airConditionerTemperature ;
+
+	/**
+	 * 空调风量
+	 * 有效值范围：0～8，最小计量单元：1档。
+	 * “0xFE”表示异常，“0xFF”表示无效。
+	 */
+	private Integer airConditionerVolume ;
 
 	/************************** 广三协议新增end ***************************************/
 
@@ -321,180 +466,12 @@ public class DataPackOverview extends DataPackObject {
 	}
 
 
-	public Integer getLightStatus() {
-		return lightStatus;
-	}
-
-	public void setLightStatus(Integer lightStatus) {
-		this.lightStatus = lightStatus;
-	}
-
-	public Float getCurrent() {
-		return current;
-	}
-
-	public void setCurrent(Float current) {
-		this.current = current;
-	}
-
-	public Integer getFuelQuantity() {
-		return fuelQuantity;
-	}
-
-	public void setFuelQuantity(Integer fuelQuantity) {
-		this.fuelQuantity = fuelQuantity;
-	}
-
-	public Integer getLeftFrontTirePressure() {
-		return leftFrontTirePressure;
-	}
-
-	public void setLeftFrontTirePressure(Integer leftFrontTirePressure) {
-		this.leftFrontTirePressure = leftFrontTirePressure;
-	}
-
-	public Integer getRightFrontTirePressure() {
-		return rightFrontTirePressure;
-	}
-
-	public void setRightFrontTirePressure(Integer rightFrontTirePressure) {
-		this.rightFrontTirePressure = rightFrontTirePressure;
-	}
-
-	public Integer getLeftRearTirePressure() {
-		return leftRearTirePressure;
-	}
-
-	public void setLeftRearTirePressure(Integer leftRearTirePressure) {
-		this.leftRearTirePressure = leftRearTirePressure;
-	}
-
-	public Integer getRightRearTirePressure() {
-		return rightRearTirePressure;
-	}
-
-	public void setRightRearTirePressure(Integer rightRearTirePressure) {
-		this.rightRearTirePressure = rightRearTirePressure;
-	}
-
-	public Integer getLeftFrontDoorStatus() {
-		return leftFrontDoorStatus;
-	}
-
-	public void setLeftFrontDoorStatus(Integer leftFrontDoorStatus) {
-		this.leftFrontDoorStatus = leftFrontDoorStatus;
-	}
-
-	public Integer getLeftBackDoorStatus() {
-		return leftBackDoorStatus;
-	}
-
-	public void setLeftBackDoorStatus(Integer leftBackDoorStatus) {
-		this.leftBackDoorStatus = leftBackDoorStatus;
-	}
-
-	public Integer getRightFrontDoorStatus() {
-		return rightFrontDoorStatus;
-	}
-
-	public void setRightFrontDoorStatus(Integer rightFrontDoorStatus) {
-		this.rightFrontDoorStatus = rightFrontDoorStatus;
-	}
-
-	public Integer getRightBackDoorStatus() {
-		return rightBackDoorStatus;
-	}
-
-	public void setRightBackDoorStatus(Integer rightBackDoorStatus) {
-		this.rightBackDoorStatus = rightBackDoorStatus;
-	}
-
-	public Integer getFrontCover() {
-		return frontCover;
-	}
-
-	public void setFrontCover(Integer frontCover) {
-		this.frontCover = frontCover;
-	}
-
-	public Integer getTrunkStatus() {
-		return trunkStatus;
-	}
-
-	public void setTrunkStatus(Integer trunkStatus) {
-		this.trunkStatus = trunkStatus;
-	}
-
-	public Integer getLeftFrontWindowStatus() {
-		return leftFrontWindowStatus;
-	}
-
-	public void setLeftFrontWindowStatus(Integer leftFrontWindowStatus) {
-		this.leftFrontWindowStatus = leftFrontWindowStatus;
-	}
-
-	public Integer getRightFrontWindowStatus() {
-		return rightFrontWindowStatus;
-	}
-
-	public void setRightFrontWindowStatus(Integer rightFrontWindowStatus) {
-		this.rightFrontWindowStatus = rightFrontWindowStatus;
-	}
-
-	public Integer getLeftBackWindowStatus() {
-		return leftBackWindowStatus;
-	}
-
-	public void setLeftBackWindowStatus(Integer leftBackWindowStatus) {
-		this.leftBackWindowStatus = leftBackWindowStatus;
-	}
-
-	public Integer getRightBackWindowStatus() {
-		return rightBackWindowStatus;
-	}
-
-	public void setRightBackWindowStatus(Integer rightBackWindowStatus) {
-		this.rightBackWindowStatus = rightBackWindowStatus;
-	}
-
-	public Integer getOutsideTemperature() {
-		return outsideTemperature;
-	}
-
-	public void setOutsideTemperature(Integer outsideTemperature) {
-		this.outsideTemperature = outsideTemperature;
-	}
-
-	public Integer getInsideTemperature() {
-		return insideTemperature;
-	}
-
-	public void setInsideTemperature(Integer insideTemperature) {
-		this.insideTemperature = insideTemperature;
-	}
-
-	public Integer getRechargeMileage() {
-		return rechargeMileage;
-	}
-
-	public void setRechargeMileage(Integer rechargeMileage) {
-		this.rechargeMileage = rechargeMileage;
-	}
-
 	public Integer getCarStatus() {
 		return carStatus;
 	}
 
 	public void setCarStatus(Integer carStatus) {
 		this.carStatus = carStatus;
-	}
-
-	public Integer getChargeStatus() {
-		return chargeStatus;
-	}
-
-	public void setChargeStatus(Integer chargeStatus) {
-		this.chargeStatus = chargeStatus;
 	}
 
 	public Integer getRunStatus() {
@@ -511,30 +488,6 @@ public class DataPackOverview extends DataPackObject {
 
 	public void setVehicleSpeed(float vehicleSpeed) {
 		this.vehicleSpeed = vehicleSpeed;
-	}
-
-	public Float getTotalCurrent() {
-		return totalCurrent;
-	}
-
-	public void setTotalCurrent(Float totalCurrent) {
-		this.totalCurrent = totalCurrent;
-	}
-
-	public Integer getSoc() {
-		return soc;
-	}
-
-	public void setSoc(Integer soc) {
-		this.soc = soc;
-	}
-
-	public Integer getDcdcStatus() {
-		return dcdcStatus;
-	}
-
-	public void setDcdcStatus(Integer dcdcStatus) {
-		this.dcdcStatus = dcdcStatus;
 	}
 
 	public Integer getClutchStatus() {
@@ -673,28 +626,356 @@ public class DataPackOverview extends DataPackObject {
 		this.maxSpeed = maxSpeed;
 	}
 
-	public int getCoolingFluidTemperature() {
+	public Float getAvgSpeed() {
+		return avgSpeed;
+	}
+
+	public void setAvgSpeed(Float avgSpeed) {
+		this.avgSpeed = avgSpeed;
+	}
+
+	public Float getCurrent() {
+		return current;
+	}
+
+	public void setCurrent(Float current) {
+		this.current = current;
+	}
+
+	public Integer getFuelQuantity() {
+		return fuelQuantity;
+	}
+
+	public void setFuelQuantity(Integer fuelQuantity) {
+		this.fuelQuantity = fuelQuantity;
+	}
+
+	public Integer getLeftFrontTirePressure() {
+		return leftFrontTirePressure;
+	}
+
+	public void setLeftFrontTirePressure(Integer leftFrontTirePressure) {
+		this.leftFrontTirePressure = leftFrontTirePressure;
+	}
+
+	public Integer getRightFrontTirePressure() {
+		return rightFrontTirePressure;
+	}
+
+	public void setRightFrontTirePressure(Integer rightFrontTirePressure) {
+		this.rightFrontTirePressure = rightFrontTirePressure;
+	}
+
+	public Integer getLeftRearTirePressure() {
+		return leftRearTirePressure;
+	}
+
+	public void setLeftRearTirePressure(Integer leftRearTirePressure) {
+		this.leftRearTirePressure = leftRearTirePressure;
+	}
+
+	public Integer getRightRearTirePressure() {
+		return rightRearTirePressure;
+	}
+
+	public void setRightRearTirePressure(Integer rightRearTirePressure) {
+		this.rightRearTirePressure = rightRearTirePressure;
+	}
+
+	public Integer getLeftFrontDoorStatus() {
+		return leftFrontDoorStatus;
+	}
+
+	public void setLeftFrontDoorStatus(Integer leftFrontDoorStatus) {
+		this.leftFrontDoorStatus = leftFrontDoorStatus;
+	}
+
+	public Integer getLeftBackDoorStatus() {
+		return leftBackDoorStatus;
+	}
+
+	public void setLeftBackDoorStatus(Integer leftBackDoorStatus) {
+		this.leftBackDoorStatus = leftBackDoorStatus;
+	}
+
+	public Integer getRightFrontDoorStatus() {
+		return rightFrontDoorStatus;
+	}
+
+	public void setRightFrontDoorStatus(Integer rightFrontDoorStatus) {
+		this.rightFrontDoorStatus = rightFrontDoorStatus;
+	}
+
+	public Integer getRightBackDoorStatus() {
+		return rightBackDoorStatus;
+	}
+
+	public void setRightBackDoorStatus(Integer rightBackDoorStatus) {
+		this.rightBackDoorStatus = rightBackDoorStatus;
+	}
+
+	public Integer getCentralLockStatus() {
+		return centralLockStatus;
+	}
+
+	public void setCentralLockStatus(Integer centralLockStatus) {
+		this.centralLockStatus = centralLockStatus;
+	}
+
+	public Integer getFrontCover() {
+		return frontCover;
+	}
+
+	public void setFrontCover(Integer frontCover) {
+		this.frontCover = frontCover;
+	}
+
+	public Integer getTrunkStatus() {
+		return trunkStatus;
+	}
+
+	public void setTrunkStatus(Integer trunkStatus) {
+		this.trunkStatus = trunkStatus;
+	}
+
+	public Integer getLeftFrontWindowStatus() {
+		return leftFrontWindowStatus;
+	}
+
+	public void setLeftFrontWindowStatus(Integer leftFrontWindowStatus) {
+		this.leftFrontWindowStatus = leftFrontWindowStatus;
+	}
+
+	public Integer getRightFrontWindowStatus() {
+		return rightFrontWindowStatus;
+	}
+
+	public void setRightFrontWindowStatus(Integer rightFrontWindowStatus) {
+		this.rightFrontWindowStatus = rightFrontWindowStatus;
+	}
+
+	public Integer getLeftBackWindowStatus() {
+		return leftBackWindowStatus;
+	}
+
+	public void setLeftBackWindowStatus(Integer leftBackWindowStatus) {
+		this.leftBackWindowStatus = leftBackWindowStatus;
+	}
+
+	public Integer getRightBackWindowStatus() {
+		return rightBackWindowStatus;
+	}
+
+	public void setRightBackWindowStatus(Integer rightBackWindowStatus) {
+		this.rightBackWindowStatus = rightBackWindowStatus;
+	}
+
+	public Integer getSkylightStatus() {
+		return skylightStatus;
+	}
+
+	public void setSkylightStatus(Integer skylightStatus) {
+		this.skylightStatus = skylightStatus;
+	}
+
+	public Integer getOutsideTemperature() {
+		return outsideTemperature;
+	}
+
+	public void setOutsideTemperature(Integer outsideTemperature) {
+		this.outsideTemperature = outsideTemperature;
+	}
+
+	public Integer getInsideTemperature() {
+		return insideTemperature;
+	}
+
+	public void setInsideTemperature(Integer insideTemperature) {
+		this.insideTemperature = insideTemperature;
+	}
+
+	public Integer getRechargeMileage() {
+		return rechargeMileage;
+	}
+
+	public void setRechargeMileage(Integer rechargeMileage) {
+		this.rechargeMileage = rechargeMileage;
+	}
+
+	public Integer getDippedHeadlightStatus() {
+		return dippedHeadlightStatus;
+	}
+
+	public void setDippedHeadlightStatus(Integer dippedHeadlightStatus) {
+		this.dippedHeadlightStatus = dippedHeadlightStatus;
+	}
+
+	public Integer getBeanLightStatus() {
+		return beanLightStatus;
+	}
+
+	public void setBeanLightStatus(Integer beanLightStatus) {
+		this.beanLightStatus = beanLightStatus;
+	}
+
+	public Integer getLeftTurnSignalStatus() {
+		return leftTurnSignalStatus;
+	}
+
+	public void setLeftTurnSignalStatus(Integer leftTurnSignalStatus) {
+		this.leftTurnSignalStatus = leftTurnSignalStatus;
+	}
+
+	public Integer getRightTurnSignalStatus() {
+		return rightTurnSignalStatus;
+	}
+
+	public void setRightTurnSignalStatus(Integer rightTurnSignalStatus) {
+		this.rightTurnSignalStatus = rightTurnSignalStatus;
+	}
+
+	public Integer getDangerLightStatus() {
+		return dangerLightStatus;
+	}
+
+	public void setDangerLightStatus(Integer dangerLightStatus) {
+		this.dangerLightStatus = dangerLightStatus;
+	}
+
+	public Integer getFrontFoglightStatus() {
+		return frontFoglightStatus;
+	}
+
+	public void setFrontFoglightStatus(Integer frontFoglightStatus) {
+		this.frontFoglightStatus = frontFoglightStatus;
+	}
+
+	public Integer getBackFoglightStatus() {
+		return backFoglightStatus;
+	}
+
+	public void setBackFoglightStatus(Integer backFoglightStatus) {
+		this.backFoglightStatus = backFoglightStatus;
+	}
+
+	public Integer getStopLampStatus() {
+		return stopLampStatus;
+	}
+
+	public void setStopLampStatus(Integer stopLampStatus) {
+		this.stopLampStatus = stopLampStatus;
+	}
+
+	public Integer getWidthLampStatus() {
+		return widthLampStatus;
+	}
+
+	public void setWidthLampStatus(Integer widthLampStatus) {
+		this.widthLampStatus = widthLampStatus;
+	}
+
+	public Integer getReadingLampStatus() {
+		return readingLampStatus;
+	}
+
+	public void setReadingLampStatus(Integer readingLampStatus) {
+		this.readingLampStatus = readingLampStatus;
+	}
+
+	public Integer getCoolingFluidTemperature() {
 		return coolingFluidTemperature;
 	}
 
-	public void setCoolingFluidTemperature(int coolingFluidTemperature) {
+	public void setCoolingFluidTemperature(Integer coolingFluidTemperature) {
 		this.coolingFluidTemperature = coolingFluidTemperature;
 	}
 
-	public int getOilTemperature() {
+	public Integer getOilTemperature() {
 		return oilTemperature;
 	}
 
-	public void setOilTemperature(int oilTemperature) {
+	public void setOilTemperature(Integer oilTemperature) {
 		this.oilTemperature = oilTemperature;
 	}
 
-	public int getEngineRpm() {
+	public Integer getEngineRpm() {
 		return engineRpm;
 	}
 
-	public void setEngineRpm(int engineRpm) {
+	public void setEngineRpm(Integer engineRpm) {
 		this.engineRpm = engineRpm;
+	}
+
+	public Integer getFootBrakeStatus() {
+		return footBrakeStatus;
+	}
+
+	public void setFootBrakeStatus(Integer footBrakeStatus) {
+		this.footBrakeStatus = footBrakeStatus;
+	}
+
+	public Integer getHandBrakeStatus() {
+		return handBrakeStatus;
+	}
+
+	public void setHandBrakeStatus(Integer handBrakeStatus) {
+		this.handBrakeStatus = handBrakeStatus;
+	}
+
+	public Integer getAccStatus() {
+		return accStatus;
+	}
+
+	public void setAccStatus(Integer accStatus) {
+		this.accStatus = accStatus;
+	}
+
+	public Integer getAirConditionerStatus() {
+		return airConditionerStatus;
+	}
+
+	public void setAirConditionerStatus(Integer airConditionerStatus) {
+		this.airConditionerStatus = airConditionerStatus;
+	}
+
+	public Integer getAirConditionerControlStatus() {
+		return airConditionerControlStatus;
+	}
+
+	public void setAirConditionerControlStatus(Integer airConditionerControlStatus) {
+		this.airConditionerControlStatus = airConditionerControlStatus;
+	}
+
+	public Integer getAirConditionerCompressorStatus() {
+		return airConditionerCompressorStatus;
+	}
+
+	public void setAirConditionerCompressorStatus(Integer airConditionerCompressorStatus) {
+		this.airConditionerCompressorStatus = airConditionerCompressorStatus;
+	}
+
+	public Integer getAirConditionerCycleStatus() {
+		return airConditionerCycleStatus;
+	}
+
+	public void setAirConditionerCycleStatus(Integer airConditionerCycleStatus) {
+		this.airConditionerCycleStatus = airConditionerCycleStatus;
+	}
+
+	public Integer getAirConditionerTemperature() {
+		return airConditionerTemperature;
+	}
+
+	public void setAirConditionerTemperature(Integer airConditionerTemperature) {
+		this.airConditionerTemperature = airConditionerTemperature;
+	}
+
+	public Integer getAirConditionerVolume() {
+		return airConditionerVolume;
+	}
+
+	public void setAirConditionerVolume(Integer airConditionerVolume) {
+		this.airConditionerVolume = airConditionerVolume;
 	}
 
 	/**
@@ -753,12 +1034,8 @@ public class DataPackOverview extends DataPackObject {
 	public String toString() {
 		return "DataPackOverview{" +
 				"carStatus=" + carStatus +
-				", chargeStatus=" + chargeStatus +
 				", runStatus=" + runStatus +
 				", vehicleSpeed=" + vehicleSpeed +
-				", totalCurrent=" + totalCurrent +
-				", soc=" + soc +
-				", dcdcStatus=" + dcdcStatus +
 				", clutchStatus=" + clutchStatus +
 				", brakeStatus=" + brakeStatus +
 				", driveStatus=" + driveStatus +
@@ -776,6 +1053,7 @@ public class DataPackOverview extends DataPackObject {
 				", sharpTurnTimes=" + sharpTurnTimes +
 				", speedingTime=" + speedingTime +
 				", maxSpeed=" + maxSpeed +
+				", avgSpeed=" + avgSpeed +
 				", current=" + current +
 				", fuelQuantity=" + fuelQuantity +
 				", leftFrontTirePressure=" + leftFrontTirePressure +
@@ -786,19 +1064,39 @@ public class DataPackOverview extends DataPackObject {
 				", leftBackDoorStatus=" + leftBackDoorStatus +
 				", rightFrontDoorStatus=" + rightFrontDoorStatus +
 				", rightBackDoorStatus=" + rightBackDoorStatus +
+				", centralLockStatus=" + centralLockStatus +
 				", frontCover=" + frontCover +
 				", trunkStatus=" + trunkStatus +
 				", leftFrontWindowStatus=" + leftFrontWindowStatus +
 				", rightFrontWindowStatus=" + rightFrontWindowStatus +
 				", leftBackWindowStatus=" + leftBackWindowStatus +
 				", rightBackWindowStatus=" + rightBackWindowStatus +
+				", skylightStatus=" + skylightStatus +
 				", outsideTemperature=" + outsideTemperature +
 				", insideTemperature=" + insideTemperature +
 				", rechargeMileage=" + rechargeMileage +
-				", lightStatus=" + lightStatus +
+				", dippedHeadlightStatus=" + dippedHeadlightStatus +
+				", beanLightStatus=" + beanLightStatus +
+				", leftTurnSignalStatus=" + leftTurnSignalStatus +
+				", rightTurnSignalStatus=" + rightTurnSignalStatus +
+				", dangerLightStatus=" + dangerLightStatus +
+				", frontFoglightStatus=" + frontFoglightStatus +
+				", backFoglightStatus=" + backFoglightStatus +
+				", stopLampStatus=" + stopLampStatus +
+				", widthLampStatus=" + widthLampStatus +
+				", readingLampStatus=" + readingLampStatus +
 				", coolingFluidTemperature=" + coolingFluidTemperature +
 				", oilTemperature=" + oilTemperature +
 				", engineRpm=" + engineRpm +
+				", footBrakeStatus=" + footBrakeStatus +
+				", handBrakeStatus=" + handBrakeStatus +
+				", accStatus=" + accStatus +
+				", airConditionerStatus=" + airConditionerStatus +
+				", airConditionerControlStatus=" + airConditionerControlStatus +
+				", airConditionerCompressorStatus=" + airConditionerCompressorStatus +
+				", airConditionerCycleStatus=" + airConditionerCycleStatus +
+				", airConditionerTemperature=" + airConditionerTemperature +
+				", airConditionerVolume=" + airConditionerVolume +
 				'}';
 	}
 }
