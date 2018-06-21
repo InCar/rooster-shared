@@ -1,6 +1,7 @@
 package com.incarcloud.rooster.security;
 
 import io.netty.buffer.ByteBufUtil;
+import org.apache.commons.codec.binary.Hex;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -73,4 +74,5 @@ public class AesUtilTest {
         byte[] secret = AesUtil.encrypt(content.getBytes(), secretKeyString,ivParameter);
         Assert.assertEquals(content, new String(AesUtil.decrypt(secret, secretKeyString,ivParameter)));
     }
+
 }
