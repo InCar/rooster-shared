@@ -182,4 +182,19 @@ public interface Constants {
          */
         String E = "e";
     }
+
+    /**
+     * AES密钥MAP键名
+     */
+    interface AESDataMapKey {
+        /**
+         * AES密钥中128bit密钥
+         */
+        String S = "s";
+
+        /**
+         * AES密钥CBC模式偏移量
+         */
+        String P = "p";
+    }
 }
