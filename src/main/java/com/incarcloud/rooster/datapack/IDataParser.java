@@ -95,4 +95,11 @@ public interface IDataParser {
      * @return
      */
     byte[] getSecurityKey(String deviceId);
+
+    /**
+     * 获取AES偏移量
+     * @param deviceId
+     * @return
+     */
+    byte[] getSecurityKeyOffset(String deviceId) ;
 }

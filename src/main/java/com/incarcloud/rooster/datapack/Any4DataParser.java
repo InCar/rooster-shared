@@ -71,4 +71,9 @@ public class Any4DataParser implements IDataParser {
     public byte[] getSecurityKey(String deviceId) {
         return new byte[0];
     }
+
+    @Override
+    public byte[] getSecurityKeyOffset(String deviceId) {
+        return new byte[0];
+    }
 }
