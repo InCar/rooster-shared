@@ -53,7 +53,7 @@ public interface IDataParser {
      * protocol: 协议
      * algorithm: 加密算法，例如RSA, AES...(null-表示数据包未使用任何加密算法)
      * deviceId: 设备ID(必须)
-     * packType: 数据包类型：0-激活, 1-登录, 2-登出, 3-心跳(或普通数据包)
+     * packType: 数据包类型：0-激活, 1-登录, 2-登出, 3-心跳或普通数据包
      * vin: 车辆标识(非必须，但激活和登陆必须传值)
      * }
      * @see com.incarcloud.rooster.share.Constants.MetaDataMapKey 返回对象MAP键名常量说明
@@ -69,6 +69,18 @@ public interface IDataParser {
      * @return
      */
     String getDeviceId(ByteBuf buffer);
+
+    /**
+     * 获得数据包类型<br>
+     * 如果有多个数据包，返回第一个数据包类型（减少从缓存中取RSA加密次数）
+     *
+     * @param buffer 二进制数据包（InHandler对象中的累积缓冲的buffer）
+     * @return 数据包类型：0-激活, 1-登录, 2-登出, 3-心跳或普通数据包
+     * @author Aaric
+     * @see com.incarcloud.rooster.share.Constants.PackType 数据包类型常量说明
+     * @since 2.2.2-SNAPSHOT
+     */
+    int getPackType(ByteBuf buffer);
 
     /**
      * 设置私钥字符串（平台传递给解析器）
@@ -98,8 +110,9 @@ public interface IDataParser {
 
     /**
      * 获取AES偏移量
+     *
      * @param deviceId
      * @return
      */
-    byte[] getSecurityKeyOffset(String deviceId) ;
+    byte[] getSecurityKeyOffset(String deviceId);
 }
