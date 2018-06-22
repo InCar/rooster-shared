@@ -109,9 +109,9 @@ public interface IDataParser {
     byte[] getSecurityKey(String deviceId);
 
     /**
-     * 获取AES偏移量
+     * 获得安全码,使用AES加密算法CBC模式偏移量(存储到Redis,用于命令下发)
      *
-     * @param deviceId
+     * @param deviceId 设备号
      * @return
      */
     byte[] getSecurityKeyOffset(String deviceId);
