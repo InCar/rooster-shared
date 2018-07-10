@@ -1,5 +1,6 @@
 package com.incarcloud.rooster.datapack;
 
+import java.nio.ByteOrder;
 import java.util.Date;
 
 /**
@@ -12,6 +13,17 @@ import java.util.Date;
  * @version: V1.0
  */
 public class DataPackTrip extends DataPackObject {
+
+	/**
+	 * 行程开始位置
+	 */
+	private DataPackPosition startPosition ;
+
+	/**
+	 * 行程结束位置
+	 */
+	private DataPackPosition endPosition ;
+
 	/**
 	 * 行程开始时间
 	 */
@@ -67,6 +79,22 @@ public class DataPackTrip extends DataPackObject {
 
 	public DataPackTrip(DataPackObject object) {
 		super(object);
+	}
+
+	public DataPackPosition getStartPosition() {
+		return startPosition;
+	}
+
+	public void setStartPosition(DataPackPosition startPosition) {
+		this.startPosition = startPosition;
+	}
+
+	public DataPackPosition getEndPosition() {
+		return endPosition;
+	}
+
+	public void setEndPosition(DataPackPosition endPosition) {
+		this.endPosition = endPosition;
 	}
 
 	public Date getStartTime() {
