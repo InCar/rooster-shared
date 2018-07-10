@@ -57,15 +57,26 @@ public interface IBigTable {
     boolean queryData(Date queryTime, IDataReadable dataReadable);
 
     /**
-     * 根据vin码或设备号，以及时间段查询原始数据列表
+     * 根据车架号和时间段查询原始数据列表
      *
-     * @param vinOrCode vin码或设备号
+     * @param vin       车架号
      * @param clazz     指定数据类型
      * @param startTime 查询开始时间
      * @param endTime   　查询结束时间
      * @return 数据集合
      */
-    <T extends DataPackObject> List<T> queryData(String vinOrCode, Class<T> clazz, Date startTime, Date endTime);
+    <T extends DataPackObject> List<T> queryData(String vin, Class<T> clazz, Date startTime, Date endTime);
+
+    /**
+     * 根据车架号和key分页查询原始数据列表
+     *
+     * @param vin      车架号
+     * @param clazz    指定数据类型
+     * @param pageSize 分页大小
+     * @param startKey 起始RowKey
+     * @return
+     */
+    <T extends DataPackObject> List<T> queryData(String vin, Class<T> clazz, Integer pageSize, String startKey);
 
     /**
      * 关闭，回收资源
