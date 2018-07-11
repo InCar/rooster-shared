@@ -178,10 +178,19 @@ public class DataPackTrip extends DataPackObject {
 
     @Override
     public String toString() {
-        return "DataPackTrip [startTime=" + startTime + ", endTime=" + endTime + ", oilWearAvg=" + oilWearAvg
-                + ", speedAvg=" + speedAvg + ", speedMax=" + speedMax + ", tripDuration=" + tripDuration + ", mileage="
-                + mileage + ", rapidAccelerationTimes=" + rapidAccelerationTimes + ", rapidDecelerationTimes="
-                + rapidDecelerationTimes + ", sharpTurnTimes=" + sharpTurnTimes + "]";
+        return "DataPackTrip{" +
+                "startPosition=" + startPosition +
+                ", endPosition=" + endPosition +
+                ", startTime=" + startTime +
+                ", endTime=" + endTime +
+                ", oilWearAvg=" + oilWearAvg +
+                ", speedAvg=" + speedAvg +
+                ", speedMax=" + speedMax +
+                ", tripDuration=" + tripDuration +
+                ", mileage=" + mileage +
+                ", rapidAccelerationTimes=" + rapidAccelerationTimes +
+                ", rapidDecelerationTimes=" + rapidDecelerationTimes +
+                ", sharpTurnTimes=" + sharpTurnTimes +
+                '}';
     }
-
 }
