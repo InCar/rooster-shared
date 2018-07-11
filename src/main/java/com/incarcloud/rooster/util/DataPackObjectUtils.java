@@ -308,6 +308,27 @@ public class DataPackObjectUtils {
 	public static final String OTACOMPLETED = "OTACOMPLETED" ;
 
 	/**
+	 * 故障诊断
+	 */
+	public static final String FAULT = "FAULT" ;
+
+	/**
+	 * 请求公钥更新
+	 */
+	public static final String PUBLICKEYREQUEST = "PUBLICKEYREQUEST" ;
+
+	/**
+	 * 参数设置完成
+	 */
+	public static final String SETTINGCOMPLETED = "SETTINGCOMPLETED" ;
+
+	/**
+	 * 唤醒回馈
+	 */
+	public static final String WAKEUPFEEDBACK = "WAKEUPFEEDBACK" ;
+
+
+	/**
 	 * 获取数据类型
 	 *
 	 * @param clazz
@@ -460,6 +481,23 @@ public class DataPackObjectUtils {
 				// OTA升级完成
 				return OTACOMPLETED ;
 			}
+			if (clazz.equals(DataPackFault.class)){
+				// 故障诊断
+				return FAULT ;
+			}
+			if (clazz.equals(DataPackPublicKeyRequet.class)){
+				// 请求公钥更新
+				return PUBLICKEYREQUEST ;
+			}
+			if (clazz.equals(DataPackSettingCompleted.class)){
+				// 参数设置完成
+				return SETTINGCOMPLETED ;
+			}
+			if (clazz.equals(DataPackWakeUpFeedBack.class)){
+				// 唤醒回馈
+				return WAKEUPFEEDBACK ;
+			}
+
 		}
 		return null;
 	}
@@ -634,6 +672,22 @@ public class DataPackObjectUtils {
 		if (OTACOMPLETED.equals(dataType)){
 			// OTA升级完成
 			return DataPackOtaCompleted.class ;
+		}
+		if (FAULT.equals(dataType)){
+			// 故障诊断
+			return DataPackFault.class ;
+		}
+		if (PUBLICKEYREQUEST.equals(dataType)){
+			// 请求公钥更新
+			return DataPackPublicKeyRequet.class ;
+		}
+		if (SETTINGCOMPLETED.equals(dataType)){
+			// 参数设置完成
+			return DataPackSettingCompleted.class ;
+		}
+		if (WAKEUPFEEDBACK.equals(dataType)){
+			// 唤醒回馈
+			return DataPackWakeUpFeedBack.class ;
 		}
 
 		return null;
