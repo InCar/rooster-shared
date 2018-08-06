@@ -20,7 +20,7 @@ public class RowKeyUtil {
 
     private static final Random RANDOM = new Random();
 
-    public static  final  int ROWKEY_LENGTH = 61;//4+20+15+18+4
+    public static final int ROWKEY_LENGTH = 61;//4+20+15+18+4
 
     /**
      * 生成数据区的主键列值 规则：MD5(ID)前4位+车辆VIN码(20位)+数据类型(15位)
@@ -39,7 +39,7 @@ public class RowKeyUtil {
 
         return String.format("%s%s%s%s%s", MD5Util.calcMd5(vin).substring(0, 4),
                 prependForceLen(vin, 20), appendForceLen(dataType, 15),
-                appendForceLen(receiveTime, 18), get4NumRandomInt());
+                appendForceLen(receiveTime, 18), get4NumRandomString());
     }
 
     /**
@@ -63,8 +63,8 @@ public class RowKeyUtil {
     /**
      * 生成最大的rowkey（方便查询）
      *
-     * @param vin         车辆vin码
-     * @param dataType    数据类型
+     * @param vin      车辆vin码
+     * @param dataType 数据类型
      * @return
      */
     public static String makeMaxRowKey(String vin, String dataType) {
@@ -80,7 +80,7 @@ public class RowKeyUtil {
     /**
      * 生成最大的rowkey（方便查询）
      *
-     * @param vin         车辆vin码
+     * @param vin 车辆vin码
      * @return
      */
     public static String makeMaxRowKey(String vin) {
@@ -110,8 +110,8 @@ public class RowKeyUtil {
     /**
      * 产生最小的rowkey（方便查询）
      *
-     * @param vin         车辆vin码
-     * @param dataType    数据类型
+     * @param vin      车辆vin码
+     * @param dataType 数据类型
      * @return
      */
     public static String makeMinRowKey(String vin, String dataType) {
@@ -123,7 +123,7 @@ public class RowKeyUtil {
     /**
      * 产生最小的rowkey（方便查询）
      *
-     * @param vin         车辆vin码
+     * @param vin 车辆vin码
      * @return
      */
     public static String makeMinRowKey(String vin) {
@@ -146,25 +146,27 @@ public class RowKeyUtil {
      * @return
      */
     public static String makeDetectionTimeIndexRowKey(String detectionTime, String vin, String dataType) {
-        return INDEX_DETECTIONTIME + "_" + detectionTime + "_" + prependForceLen(vin, 20)+appendForceLen(dataType, 15)+ get4NumRandomInt();
+        return INDEX_DETECTIONTIME + "_" + detectionTime + "_" + prependForceLen(vin, 20) + appendForceLen(dataType, 15) + get4NumRandomString();
     }
 
     /**
      * 最小的采集时间索引rowkey（方便查询）
+     *
      * @param detectionTime 查询时间，格式：yyyyMMddHHmmss
      * @return
      */
     public static String makeMinDetectionTimeIndexRowKey(String detectionTime) {
-        return INDEX_DETECTIONTIME + "_" + detectionTime + "_" + appendForceLen(null,20)+ appendForceLen(null,15) + "####";
+        return INDEX_DETECTIONTIME + "_" + detectionTime + "_" + appendForceLen(null, 20) + appendForceLen(null, 15) + "####";
     }
 
     /**
      * 最大的采集时间索引rowkey（方便查询）
+     *
      * @param detectionTime 查询时间，格式：yyyyMMddHHmmss
      * @return
      */
     public static String makeMaxDetectionTimeIndexRowKey(String detectionTime) {
-        return INDEX_DETECTIONTIME + "_" + detectionTime + "_" + appendForceLenWithLowZ(null,20)+ appendForceLenWithLowZ(null,15) + "zzzz";
+        return INDEX_DETECTIONTIME + "_" + detectionTime + "_" + appendForceLenWithLowZ(null, 20) + appendForceLenWithLowZ(null, 15) + "zzzz";
     }
 
     /**
@@ -185,10 +187,21 @@ public class RowKeyUtil {
      *
      * @return
      */
+    @Deprecated
     public static int get4NumRandomInt() {
         return RANDOM.nextInt(9999 - 1000 + 1) + 1000;
     }
 
+    /**
+     * 获取4位的随机整数字符串
+     *
+     * @return
+     */
+    public static String get4NumRandomString() {
+        // 暂无1秒钟多个报文数据的情况，固定返回"0001"，表示报文序号1
+        //return MessageFormat.format("{0,number,0000}", RANDOM.nextInt(9999));
+        return "0001";
+    }
 
     /**
      * 追加#方式强制字符串长度
