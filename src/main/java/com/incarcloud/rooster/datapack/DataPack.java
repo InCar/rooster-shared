@@ -102,7 +102,7 @@ public class DataPack {
             throw new IllegalArgumentException("reciveTime is null");
         }
 
-        return (getMark() + "#" + dateFormat.format(getReceiveTime()) + "#" + getDataB64()).getBytes("UTF-8");
+        return (getMark() + "#" + dateFormat.format(getReceiveTime()) + "#" + getDataB64() + "#" + dateFormat.format(getGatherTime())).getBytes("UTF-8");
     }
 
     /**
@@ -119,13 +119,16 @@ public class DataPack {
             return null;
         }
 
-        String mark = s.split("#")[0];
-        String reciveTime = s.split("#")[1];
-        String dataB64 = s.split("#")[2];
+        String[] dataArray = s.split("#");
+        String mark = dataArray[0];
+        String receiveTime = dataArray[1];
+        String dataB64 = dataArray[2];
+        String gatherTime = dataArray[3];
 
         DataPack dataPack = new DataPack(mark.split("\\-")[0], mark.split("\\-")[1], mark.split("\\-")[2]);
 
-        dataPack.setReceiveTime(dateFormat.parse(reciveTime));
+        dataPack.setReceiveTime(dateFormat.parse(receiveTime));
+        dataPack.setGatherTime(dateFormat.parse(gatherTime));
 
         byte[] data = Base64.getDecoder().decode(dataB64);
         ByteBuf buf = Unpooled.buffer(data.length);
