@@ -25,7 +25,7 @@ public class DataPackObjectUtils {
      * JSON工具类
      */
     private static Gson gson = GsonFactory
-            .newInstance(DATE_PATTERN, "_group", "_name", "_version", "_buf", "gatherTime")
+            .newInstance(DATE_PATTERN, "_group", "_name", "_version", "_buf")
             .createGson();
 
     /**
