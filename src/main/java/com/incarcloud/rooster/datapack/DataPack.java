@@ -2,11 +2,10 @@ package com.incarcloud.rooster.datapack;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
+import org.joda.time.DateTime;
 
 import java.io.UnsupportedEncodingException;
-import java.text.DateFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Base64;
 import java.util.Date;
 
@@ -21,7 +20,7 @@ public class DataPack {
     /**
      * 时间格式化
      */
-    private static final DateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmssSSS");
+//    private static final DateTimeFormatter dateFormat = DateTimeFormat.forPattern("yyyyMMddHHmmssSSS");
 
     final protected String _group;
     final protected String _name;
@@ -102,7 +101,7 @@ public class DataPack {
             throw new IllegalArgumentException("reciveTime is null");
         }
 
-        return (getMark() + "#" + dateFormat.format(getReceiveTime()) + "#" + getDataB64() + "#" + dateFormat.format(getGatherTime())).getBytes("UTF-8");
+        return (getMark() + "#" + getReceiveTime().getTime() + "#" + getDataB64() + "#" + getGatherTime().getTime()).getBytes("UTF-8");
     }
 
     /**
@@ -127,8 +126,8 @@ public class DataPack {
 
         DataPack dataPack = new DataPack(mark.split("\\-")[0], mark.split("\\-")[1], mark.split("\\-")[2]);
 
-        dataPack.setReceiveTime(dateFormat.parse(receiveTime));
-        dataPack.setGatherTime(dateFormat.parse(gatherTime));
+        dataPack.setReceiveTime(new DateTime(Long.valueOf(receiveTime)).toDate());
+        dataPack.setGatherTime(new DateTime(Long.valueOf(gatherTime)).toDate());
 
         byte[] data = Base64.getDecoder().decode(dataB64);
         ByteBuf buf = Unpooled.buffer(data.length);
@@ -137,6 +136,7 @@ public class DataPack {
         dataPack.setBuf(buf);
         return dataPack;
     }
+
 
     public void setBuf(ByteBuf buf) {
         // free previous buf
