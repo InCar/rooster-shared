@@ -341,6 +341,10 @@ public class DataPackObjectUtils {
      */
     public static final String WAKEUPFEEDBACK = "WAKEUPFEEDBACK";
 
+    /**
+     * 参数查询结果
+     */
+    public static final String PARAMETERQUERY = "PARAMETERQUERY" ;
 
     /**
      * 获取数据类型
@@ -513,6 +517,10 @@ public class DataPackObjectUtils {
             if (clazz.equals(DataPackWakeUpFeedBack.class)) {
                 // 唤醒回馈
                 return WAKEUPFEEDBACK;
+            }
+            if (clazz.equals(DataPackParameter.class)){
+                // 参数查询
+                return PARAMETERQUERY ;
             }
         }
         return null;
@@ -699,6 +707,10 @@ public class DataPackObjectUtils {
         if (WAKEUPFEEDBACK.equals(dataType)) {
             // 唤醒回馈
             return DataPackWakeUpFeedBack.class;
+        }
+        if (PARAMETERQUERY.equals(dataType)) {
+            // 参数查询
+            return DataPackParameter.class ;
         }
         return null;
     }
