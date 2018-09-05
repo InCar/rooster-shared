@@ -329,12 +329,12 @@ public class DataPackObjectUtils {
     /**
      * 公钥更新完成
      */
-    public static final String RSAKEYCOMPLETED = "PUBLICKEYREQUEST";
+    public static final String RSAKEYCOMPLETED = "RSAKEYCOMPLETED";
 
     /**
      * 参数设置完成
      */
-    public static final String SETTINGCOMPLETED = "SETTINGCOMPLETE";
+    public static final String SETTINGCOMPLETED = "SETTINGCOMPLETED";
 
     /**
      * 唤醒回馈
