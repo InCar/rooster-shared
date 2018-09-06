@@ -2,6 +2,7 @@ package com.incarcloud.rooster.util;/**
  * Created by fanbeibei on 2017/7/4.
  */
 
+import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.Random;
@@ -13,13 +14,21 @@ import java.util.Random;
  */
 public class RowKeyUtil {
 
-    // 固定32个字符,用来补充长度不足的字串
+    /**
+     * 固定32个字符,用来补充长度不足的字串
+     */
     private static final String C_SHARP32 = "################################";
     private static final String C_ZERO32 = "00000000000000000000000000000000";
     private static final String C_LOW_Z32 = "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz";
 
+    /**
+     * 随机对象
+     */
     private static final Random RANDOM = new Random();
 
+    /**
+     * RowKey长度
+     */
     public static final int ROWKEY_LENGTH = 61;//4+20+15+18+4
 
     /**
@@ -37,7 +46,7 @@ public class RowKeyUtil {
             throw new IllegalArgumentException("param error");
         }
 
-        return String.format("%s%s%s%s%s", MD5Util.calcMd5(vin).substring(0, 4),
+        return String.format("%s%s%s%s%s", DigestUtils.md5Hex(vin).substring(0, 4),
                 prependForceLen(vin, 20), appendForceLen(dataType, 15),
                 appendForceLen(receiveTime, 18), get4NumRandomString());
     }
@@ -55,7 +64,7 @@ public class RowKeyUtil {
             throw new IllegalArgumentException("param error");
         }
 
-        return String.format("%s%s%s%s%s", MD5Util.calcMd5(vin).substring(0, 4),
+        return String.format("%s%s%s%s%s", DigestUtils.md5Hex(vin).substring(0, 4),
                 prependForceLen(vin, 20), appendForceLenWithLowZ(dataType, 15),
                 appendForceLenWithLowZ(receiveTime, 18), "zzzz");
     }
@@ -72,7 +81,7 @@ public class RowKeyUtil {
             throw new IllegalArgumentException("param error");
         }
 
-        return String.format("%s%s%s%s%s", MD5Util.calcMd5(vin).substring(0, 4),
+        return String.format("%s%s%s%s%s", DigestUtils.md5Hex(vin).substring(0, 4),
                 prependForceLen(vin, 20), appendForceLenWithLowZ(dataType, 15),
                 appendForceLenWithLowZ(null, 18), "zzzz");
     }
@@ -88,7 +97,7 @@ public class RowKeyUtil {
             throw new IllegalArgumentException("param error");
         }
 
-        return String.format("%s%s%s%s%s", MD5Util.calcMd5(vin).substring(0, 4),
+        return String.format("%s%s%s%s%s", DigestUtils.md5Hex(vin).substring(0, 4),
                 prependForceLen(vin, 20), appendForceLenWithLowZ(null, 15),
                 appendForceLenWithLowZ(null, 18), "zzzz");
     }
@@ -102,7 +111,7 @@ public class RowKeyUtil {
      * @return
      */
     public static String makeMinRowKey(String vin, String dataType, String receiveTime) {
-        return String.format("%s%s%s%s%s", MD5Util.calcMd5(vin).substring(0, 4),
+        return String.format("%s%s%s%s%s", DigestUtils.md5Hex(vin).substring(0, 4),
                 prependForceLen(vin, 20), appendForceLen(dataType, 15),
                 appendForceLen(receiveTime, 18), "####");
     }
@@ -115,7 +124,7 @@ public class RowKeyUtil {
      * @return
      */
     public static String makeMinRowKey(String vin, String dataType) {
-        return String.format("%s%s%s%s%s", MD5Util.calcMd5(vin).substring(0, 4),
+        return String.format("%s%s%s%s%s", DigestUtils.md5Hex(vin).substring(0, 4),
                 prependForceLen(vin, 20), appendForceLen(dataType, 15),
                 appendForceLen(null, 18), "####");
     }
@@ -127,7 +136,7 @@ public class RowKeyUtil {
      * @return
      */
     public static String makeMinRowKey(String vin) {
-        return String.format("%s%s%s%s%s", MD5Util.calcMd5(vin).substring(0, 4),
+        return String.format("%s%s%s%s%s", DigestUtils.md5Hex(vin).substring(0, 4),
                 prependForceLen(vin, 20), appendForceLen(null, 15),
                 appendForceLen(null, 18), "####");
     }
@@ -135,6 +144,7 @@ public class RowKeyUtil {
     /**
      * 采集时间索引
      */
+    @Deprecated
     public static final String INDEX_DETECTIONTIME = "DETECTIONTIME";
 
     /**
@@ -145,6 +155,7 @@ public class RowKeyUtil {
      * @param dataType      数据类型
      * @return
      */
+    @Deprecated
     public static String makeDetectionTimeIndexRowKey(String detectionTime, String vin, String dataType) {
         return INDEX_DETECTIONTIME + "_" + detectionTime + "_" + prependForceLen(vin, 20) + appendForceLen(dataType, 15) + get4NumRandomString();
     }
@@ -155,6 +166,7 @@ public class RowKeyUtil {
      * @param detectionTime 查询时间，格式：yyyyMMddHHmmss
      * @return
      */
+    @Deprecated
     public static String makeMinDetectionTimeIndexRowKey(String detectionTime) {
         return INDEX_DETECTIONTIME + "_" + detectionTime + "_" + appendForceLen(null, 20) + appendForceLen(null, 15) + "####";
     }
@@ -165,6 +177,7 @@ public class RowKeyUtil {
      * @param detectionTime 查询时间，格式：yyyyMMddHHmmss
      * @return
      */
+    @Deprecated
     public static String makeMaxDetectionTimeIndexRowKey(String detectionTime) {
         return INDEX_DETECTIONTIME + "_" + detectionTime + "_" + appendForceLenWithLowZ(null, 20) + appendForceLenWithLowZ(null, 15) + "zzzz";
     }
@@ -206,8 +219,8 @@ public class RowKeyUtil {
     /**
      * 追加#方式强制字符串长度
      *
-     * @param value
-     * @param len
+     * @param value 字符串
+     * @param len   长度
      * @return
      */
     public static String appendForceLen(String value, int len) {
@@ -238,8 +251,8 @@ public class RowKeyUtil {
     /**
      * 前面添0方式强制字符串长度,用于将整形ID补充为等长字符串且不影响按大小排序
      *
-     * @param value
-     * @param len
+     * @param value 字符串
+     * @param len   长度
      * @return
      */
     public static String prependForceLen(String value, int len) {
@@ -272,8 +285,8 @@ public class RowKeyUtil {
     /**
      * 追加小写z方式强制字符串长度
      *
-     * @param value
-     * @param len
+     * @param value 字符串
+     * @param len   长度
      * @return
      */
     public static String appendForceLenWithLowZ(String value, int len) {

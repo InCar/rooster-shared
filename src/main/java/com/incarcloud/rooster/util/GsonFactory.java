@@ -28,11 +28,11 @@ import java.util.Set;
  * @since 2015年1月22日
  */
 public class GsonFactory {
+
     private static GsonFactory factory;
     private GsonBuilder gsonBuilder = new GsonBuilder();
 
     private GsonFactory() {
-
     }
 
     private GsonBuilder getGsonBuilder() {
@@ -50,7 +50,6 @@ public class GsonFactory {
         return gsonBuilder.create();
 
     }
-
 
     /**
      * 默认的gson日期格式为yyyy-MM-dd
@@ -74,7 +73,6 @@ public class GsonFactory {
         }
 
         return factory;
-
     }
 
     /**
@@ -96,9 +94,7 @@ public class GsonFactory {
                 .registerTypeAdapter(Boolean.class, new BooleanAdapter());
 
         return factory;
-
     }
-
 
     /**
      * @param datePattern   日期格式
@@ -137,9 +133,7 @@ public class GsonFactory {
                         });
 
         return factory;
-
     }
-
 
     /**
      * 描述: Integer类型转化器，空字符串转化为Integer时不会抛异常
@@ -173,7 +167,6 @@ public class GsonFactory {
 
             return null;
         }
-
     }
 
     private static class ShortAdapter extends TypeAdapter<Short> {
@@ -202,7 +195,6 @@ public class GsonFactory {
 
             return null;
         }
-
     }
 
     private static class DoubleAdapter extends TypeAdapter<Double> {
@@ -231,7 +223,6 @@ public class GsonFactory {
 
             return null;
         }
-
     }
 
     private static class BooleanAdapter extends TypeAdapter<Boolean> {
@@ -244,7 +235,6 @@ public class GsonFactory {
             }
 
             out.value(value);
-
         }
 
         @Override
@@ -273,7 +263,6 @@ public class GsonFactory {
             }
 
             out.value(value);
-
         }
 
         @Override
@@ -302,7 +291,6 @@ public class GsonFactory {
             }
 
             out.value(value);
-
         }
 
         @Override
@@ -318,7 +306,6 @@ public class GsonFactory {
 
             return null;
         }
-
     }
 
     private static class DateAdapter extends TypeAdapter<Date> {
@@ -338,7 +325,6 @@ public class GsonFactory {
 
             DateFormat df = new SimpleDateFormat(pattern);
             out.value(df.format(value));
-
         }
 
         @Override
@@ -359,7 +345,5 @@ public class GsonFactory {
 
             return null;
         }
-
     }
-
 }

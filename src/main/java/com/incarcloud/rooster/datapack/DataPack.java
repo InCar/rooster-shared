@@ -1,11 +1,10 @@
 package com.incarcloud.rooster.datapack;
 
+import com.incarcloud.rooster.share.Constants;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
-import org.joda.time.DateTime;
 
 import java.io.UnsupportedEncodingException;
-import java.text.ParseException;
 import java.util.Base64;
 import java.util.Date;
 
@@ -17,11 +16,7 @@ import java.util.Date;
  */
 public class DataPack {
 
-    /**
-     * 时间格式化
-     */
-//    private static final DateTimeFormatter dateFormat = DateTimeFormat.forPattern("yyyyMMddHHmmssSSS");
-
+    // 协议组织、名称和版本
     final protected String _group;
     final protected String _name;
     final protected String _version; // like 1.2.3
@@ -35,10 +30,12 @@ public class DataPack {
     protected Date receiveTime;
 
     /**
-     * 接入网关接收到数据包时间
+     * 默认构造函数
+     *
+     * @param group   协议所属组织
+     * @param name    协议名称
+     * @param version 协议版本
      */
-    protected Date gatherTime;
-
     public DataPack(String group, String name, String version) {
         if (group == null || name == null || version == null)
             throw new IllegalArgumentException();
@@ -92,52 +89,59 @@ public class DataPack {
     }
 
     /**
-     * 序列化为字节数组
+     * 序列化为字节流
      *
      * @return
      */
     public byte[] serializeToBytes() throws UnsupportedEncodingException {
+        // 校验参数合法性
         if (null == receiveTime) {
-            throw new IllegalArgumentException("reciveTime is null");
+            throw new IllegalArgumentException("receiveTime is null");
         }
 
-        return (getMark() + "#" + getReceiveTime().getTime() + "#" + getDataB64() + "#" + getGatherTime().getTime()).getBytes("UTF-8");
+        // 规则：协议标签#接收时间戳#报文数据
+        return (getMark() + "#" + getReceiveTime().getTime() + "#" + getDataB64()).getBytes(Constants.DEFAULT_CHARSET);
     }
 
     /**
      * 反序列化为DataPack对象
      *
-     * @param bytes
+     * @param bytes DataPack对象序列化字节流
      * @return
      * @throws UnsupportedEncodingException
      */
-    public static DataPack deserializeFromBytes(byte[] bytes) throws UnsupportedEncodingException, ParseException {
-
-        String s = new String(bytes, "UTF-8");
-        if (!s.contains("#")) {
+    public static DataPack deserializeFromBytes(byte[] bytes) throws UnsupportedEncodingException {
+        // 校验参数合法性
+        String content = new String(bytes, Constants.DEFAULT_CHARSET);
+        if (!content.contains("#")) {
             return null;
         }
 
-        String[] dataArray = s.split("#");
-        String mark = dataArray[0];
-        String receiveTime = dataArray[1];
-        String dataB64 = dataArray[2];
-        String gatherTime = dataArray[3];
+        // 字符串转对象
+        String[] dataStrings = content.split("#");
+        String mark = dataStrings[0];
+        String receiveTimeMillis = dataStrings[1];
+        String dataB64 = dataStrings[2];
 
-        DataPack dataPack = new DataPack(mark.split("\\-")[0], mark.split("\\-")[1], mark.split("\\-")[2]);
-
-        dataPack.setReceiveTime(new DateTime(Long.valueOf(receiveTime)).toDate());
-        dataPack.setGatherTime(new DateTime(Long.valueOf(gatherTime)).toDate());
-
+        // 设置报文数据
         byte[] data = Base64.getDecoder().decode(dataB64);
         ByteBuf buf = Unpooled.buffer(data.length);
         buf.writeBytes(data);
 
+        // 组装DataPack对象数据
+        String[] markStrings = mark.split("\\-"); //协议标签："协议组织-协议名称-协议版本"
+        DataPack dataPack = new DataPack(markStrings[0], markStrings[1], markStrings[2]);
+        dataPack.setReceiveTime(new Date(Long.parseLong(receiveTimeMillis)));
         dataPack.setBuf(buf);
+
         return dataPack;
     }
 
-
+    /**
+     * 设置数据流信息
+     *
+     * @param buf 字节流
+     */
     public void setBuf(ByteBuf buf) {
         // free previous buf
         freeBuf();
@@ -156,20 +160,22 @@ public class DataPack {
         }
     }
 
+    /**
+     * 获得网关接收时间
+     *
+     * @return
+     */
     public Date getReceiveTime() {
         return receiveTime;
     }
 
-    public void setReceiveTime(Date reciveTime) {
-        this.receiveTime = reciveTime;
-    }
-
-    public Date getGatherTime() {
-        return gatherTime;
-    }
-
-    public void setGatherTime(Date gatherTime) {
-        this.gatherTime = gatherTime;
+    /**
+     * 设置网关接收时间
+     *
+     * @param receiveTime 接收时间
+     */
+    public void setReceiveTime(Date receiveTime) {
+        this.receiveTime = receiveTime;
     }
 
     @Override
@@ -180,7 +186,6 @@ public class DataPack {
                 ", _version='" + _version + '\'' +
                 ", _buf=" + _buf +
                 ", receiveTime=" + receiveTime +
-                ", gatherTime=" + gatherTime +
                 '}';
     }
 }
