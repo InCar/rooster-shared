@@ -25,7 +25,7 @@ public class AesUtil {
     /**
      * 算法名称
      */
-    private static final String ALGORITHM = "AES" ;
+    private static final String ALGORITHM = "AES";
 
     /**
      * 生成AES密钥
@@ -39,14 +39,12 @@ public class AesUtil {
         return secretKey.getEncoded();
     }
 
-
-
     /**
      * AES加密内容
      *
      * @param data           待加密内容
      * @param secretKeyBytes 128位AES密钥
-     * @param ivParameter CBC模式-16位密钥
+     * @param ivParameter    CBC模式-16位密钥
      * @return
      * @throws Exception
      */
@@ -55,7 +53,7 @@ public class AesUtil {
         //使用CBC模式，需要一个向量iv，可增加加密算法的强度
         IvParameterSpec ivSpec = new IvParameterSpec(ivParameter);
         Cipher cipher = Cipher.getInstance(ALGORITHM_NAME);
-        cipher.init(Cipher.ENCRYPT_MODE, keySpec,ivSpec);
+        cipher.init(Cipher.ENCRYPT_MODE, keySpec, ivSpec);
         return cipher.doFinal(data);
     }
 
@@ -64,7 +62,7 @@ public class AesUtil {
      *
      * @param data            待加密内容
      * @param secretKeyString 128位AES密钥字符串(Base64编码)
-     * @param ivParameter CBC模式-16位密钥
+     * @param ivParameter     CBC模式-16位密钥
      * @return
      * @throws Exception
      */
@@ -77,7 +75,7 @@ public class AesUtil {
      *
      * @param secret         加密内容
      * @param secretKeyBytes 128位AES密钥
-     * @param ivParameter CBC模式-16位密钥
+     * @param ivParameter    CBC模式-16位密钥
      * @return
      * @throws Exception
      */
@@ -85,7 +83,7 @@ public class AesUtil {
         SecretKeySpec keySpec = new SecretKeySpec(secretKeyBytes, ALGORITHM);
         IvParameterSpec ivSpec = new IvParameterSpec(ivParameter);
         Cipher cipher = Cipher.getInstance(ALGORITHM_NAME);
-        cipher.init(Cipher.DECRYPT_MODE, keySpec,ivSpec);
+        cipher.init(Cipher.DECRYPT_MODE, keySpec, ivSpec);
         return cipher.doFinal(secret);
     }
 
@@ -94,12 +92,12 @@ public class AesUtil {
      *
      * @param secret          加密内容
      * @param secretKeyString 128位AES密钥字符串(Base64编码)
-     * @param ivParameter CBC模式-16位密钥
+     * @param ivParameter     CBC模式-16位密钥
      * @return
      * @throws Exception
      */
     public static byte[] decrypt(byte[] secret, String secretKeyString, String ivParameter) throws Exception {
-        return decrypt(secret, decodeBase64String(secretKeyString),ivParameter.getBytes());
+        return decrypt(secret, decodeBase64String(secretKeyString), ivParameter.getBytes());
     }
 
     /**

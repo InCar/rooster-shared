@@ -88,7 +88,7 @@ public interface ICacheManager {
      *
      * @param key 键名
      */
-    Long hsize(String key);
+    long hsize(String key);
 
     /**
      * 设置缓存数据-geo结构
@@ -115,4 +115,31 @@ public interface ICacheManager {
      * @param flagKey flag键名
      */
     void gdelete(String key, String flagKey);
+
+    /**
+     * 从左边插入数据-list结构
+     *
+     * @param key   键名
+     * @param value 键值
+     * @version 2.3.0-SNAPSHOT
+     */
+    void lpush(String key, String value);
+
+    /**
+     * 从右边获取数据-list结构
+     *
+     * @param key 键名
+     * @return
+     * @version 2.3.0-SNAPSHOT
+     */
+    String rpop(String key);
+
+    /**
+     * 获取集合大小-list结构
+     *
+     * @param key 键名
+     * @return
+     * @version 2.3.0-SNAPSHOT
+     */
+    long llen(String key);
 }

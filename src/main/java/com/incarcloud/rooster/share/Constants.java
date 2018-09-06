@@ -1,7 +1,7 @@
 package com.incarcloud.rooster.share;
 
 /**
- * 常量类
+ * Rooster常量类
  *
  * @author Aaric, created on 2018-01-10T16:39.
  * @since 2.1.12-SNAPSHOT
@@ -71,6 +71,11 @@ public interface Constants {
          * 车辆VIN与地理位置缓存Key
          */
         String CACHE_VEHICLE_GEO = "rooster:vehicle-geo";
+
+        /**
+         * 车辆Dispatch分发数据 - List结构
+         */
+        String CACHE_MESSAGE_QUEUE = "rooster:message-queue";
     }
 
     /**

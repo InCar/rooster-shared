@@ -1,6 +1,6 @@
 package com.incarcloud.rooster.datapack;
 
-import com.incarcloud.rooster.util.DataPackObjectUtils;
+import com.incarcloud.rooster.util.DataPackObjectUtil;
 import com.incarcloud.rooster.util.RowKeyUtil;
 import org.junit.Test;
 
@@ -65,8 +65,8 @@ public class DataPackTripTest {
             position.setDirection(45F);
             dataPackTrip.setEndPosition(position);
 
-            String rowKey = RowKeyUtil.makeRowKey(dataPackTrip.getVin(), DataPackObjectUtils.getDataType(dataPackTrip), dateFormat2.format(dataPackTrip.getDetectionTime()));
-            String data = DataPackObjectUtils.toJson(dataPackTrip);
+            String rowKey = RowKeyUtil.makeRowKey(dataPackTrip.getVin(), DataPackObjectUtil.getDataType(dataPackTrip), dateFormat2.format(dataPackTrip.getDetectionTime()));
+            String data = DataPackObjectUtil.toJson(dataPackTrip);
 
             // 输出HBase执行语句
             System.out.println(String.format("put 'telemetry', '%s', 'base:data', '%s'", rowKey, data));

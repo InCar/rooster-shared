@@ -9,16 +9,17 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * @author Fan Beibei
- * @Description: 描述
- * @date 2017/7/5 14:50
+ * DataPackObject工具类
+ *
+ * @author Aaric, updated on 2018-09-06T15:27.
+ * @version 2.3.0-SNAPSHOT
  */
-public class DataPackObjectUtils {
+public class DataPackObjectUtil {
 
     /**
      * 时间格式化
      */
-    private static final String DATE_PATTERN = "yyyyMMddHHmmss";
+    public static final String DATE_PATTERN = "yyyyMMddHHmmss";
     private static final DateFormat DATE_FORMAT = new SimpleDateFormat(DATE_PATTERN);
 
     /**
@@ -29,13 +30,14 @@ public class DataPackObjectUtils {
             .createGson();
 
     /**
-     * 最小采集时间
+     * 最小检测时间
      */
-    private static Date minDetectionDate;
+    private static Date minDetectionTime;
 
     static {
         try {
-            minDetectionDate = DATE_FORMAT.parse("19770101000000");
+            // 初始化最小时间为"2018-01-01 00:00:00"，大于项目上线前即可
+            minDetectionTime = DATE_FORMAT.parse("20180101000000");
         } catch (ParseException e) {
         }
     }
@@ -43,76 +45,77 @@ public class DataPackObjectUtils {
     /**
      * 私有构造函数，不准许创建对象
      */
-    private DataPackObjectUtils() {
+    private DataPackObjectUtil() {
     }
 
     /**
-     * 判断采集时间是否合法
+     * 判断检测时间是否合法
      *
-     * @param detectionDate 采集时间
+     * @param detectionTime 检测时间
      * @return
      */
-    public static boolean isLegalDetectionDate(Date detectionDate) {
-        if (null == detectionDate || minDetectionDate.compareTo(detectionDate) > 0) {
+    public static boolean isLegalDetectionDate(Date detectionTime) {
+        if (null == detectionTime || minDetectionTime.compareTo(detectionTime) > 0) {
             return false;
         }
-
         return true;
     }
 
     /**
-     * 检查并校正数据采集时间
+     * 检查并校正数据检测时间
      *
-     * @param packObject 数据对象
-     * @param reciveTime 数据接收时间（gather服务器接收时间，非设备采集时间）
-     * @return 如果用reciveTime重置了数据采集时间（数据不带有采集时间）则返回true，否则返回fasle
+     * @param dataPackObject 车辆数据对象
+     * @param receiveTime    网关接收时间（gather服务器接收时间，非设备检测时间）
+     * @return 如果用receiveTime重置了数据检测时间（数据不带有检测时间）则返回true，否则返回false
      */
-    public static boolean checkAndResetIlllegalDetectionDate(DataPackObject packObject, Date reciveTime) {
-        if (null == packObject || !isLegalDetectionDate(reciveTime)) {
-            throw new IllegalArgumentException();
+    public static boolean checkAndResetIlllegalDetectionTime(DataPackObject dataPackObject, Date receiveTime) {
+        // 校验参数合法性
+        if (null == dataPackObject || !isLegalDetectionDate(receiveTime)) {
+            throw new IllegalArgumentException("required params is null");
         }
 
-        if (packObject instanceof DataPackPosition) {
-            DataPackPosition position = (DataPackPosition) packObject;
-            // 对于位置数据，位置时间和采集时间哪个合法用哪个,否则采用接收时间
-            if (DataPackObjectUtils.isLegalDetectionDate(position.getPositionTime())) {
+        // 补发位置数据特殊处理
+        if (dataPackObject instanceof DataPackPosition) {
+            DataPackPosition position = (DataPackPosition) dataPackObject;
+            // 对于位置数据，位置时间和采集时间哪个合法用哪个，否则采用接收时间
+            if (DataPackObjectUtil.isLegalDetectionDate(position.getPositionTime())) {
                 position.setDetectionTime(position.getPositionTime());
-            } else if (DataPackObjectUtils.isLegalDetectionDate(position.getDetectionTime())) {
+            } else if (DataPackObjectUtil.isLegalDetectionDate(position.getDetectionTime())) {
                 position.setPositionTime(position.getDetectionTime());
             } else {
-                position.setDetectionTime(reciveTime);
-                position.setPositionTime(reciveTime);
+                position.setDetectionTime(receiveTime);
+                position.setPositionTime(receiveTime);
                 return true;
             }
-        } else if (!DataPackObjectUtils.isLegalDetectionDate(packObject.getDetectionTime())) {// 非位置数据采集时间非法
-            packObject.setDetectionTime(reciveTime);
+        } else if (!DataPackObjectUtil.isLegalDetectionDate(dataPackObject.getDetectionTime())) {
+            // 非位置数据采集时间非法
+            dataPackObject.setDetectionTime(receiveTime);
             return true;
         }
 
         return false;
-
     }
 
     /*-------以下两个方法主要是为了统一采集时间和字符串之间的转换，减少由于日期格式不一致的错误的发生--------------*/
 
     /**
-     * 将采集时间转换为字符串
+     * 将检测时间转换为字符串
      *
-     * @param detectionDate 数据采集时间
+     * @param detectionTime 数据检测时间
      * @return
      */
-    public static String convertDetectionDateToString(Date detectionDate) {
-        return DATE_FORMAT.format(detectionDate);
+    public static String convertDetectionTimeToString(Date detectionTime) {
+        return DATE_FORMAT.format(detectionTime);
     }
 
     /**
-     * 字符串转换为采集时间
+     * 字符串转换为检测时间
      *
-     * @param dateStr 时间字符串
+     * @param detectionTimeString 时间字符串
      * @return
      */
-    public static Date convertStringToDetectionDate(String dateStr) throws ParseException {
-        return DATE_FORMAT.parse(dateStr);
+    public static Date convertStringToDetectionTime(String detectionTimeString) throws ParseException {
+        return DATE_FORMAT.parse(detectionTimeString);
     }
     /*--------------------------------------------------------------------------------------------------------*/
 
@@ -137,16 +140,6 @@ public class DataPackObjectUtils {
     }
     /*--------------------------------------------------------------------------------------------------------*/
 
-    /**
-     * 获取表名
-     *
-     * @return
-     */
-    public static String getTableName(String dataType) {
-        return "telemetry";
-    }
-
-    /*--------------------------------------------------------------------------------------------------------*/
     /**
      * 整车数据
      */
@@ -344,7 +337,7 @@ public class DataPackObjectUtils {
     /**
      * 参数查询结果
      */
-    public static final String PARAMETERQUERY = "PARAMETERQUERY" ;
+    public static final String PARAMETERQUERY = "PARAMETERQUERY";
 
     /**
      * 获取数据类型
@@ -518,9 +511,9 @@ public class DataPackObjectUtils {
                 // 唤醒回馈
                 return WAKEUPFEEDBACK;
             }
-            if (clazz.equals(DataPackParameter.class)){
+            if (clazz.equals(DataPackParameter.class)) {
                 // 参数查询
-                return PARAMETERQUERY ;
+                return PARAMETERQUERY;
             }
         }
         return null;
@@ -710,7 +703,7 @@ public class DataPackObjectUtils {
         }
         if (PARAMETERQUERY.equals(dataType)) {
             // 参数查询
-            return DataPackParameter.class ;
+            return DataPackParameter.class;
         }
         return null;
     }
