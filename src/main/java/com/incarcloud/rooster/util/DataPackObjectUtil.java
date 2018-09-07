@@ -68,7 +68,8 @@ public class DataPackObjectUtil {
      * @param receiveTime    网关接收时间（gather服务器接收时间，非设备检测时间）
      * @return 如果用receiveTime重置了数据检测时间（数据不带有检测时间）则返回true，否则返回false
      */
-    public static boolean checkAndResetIlllegalDetectionTime(DataPackObject dataPackObject, Date receiveTime) {
+    @Deprecated
+    public static boolean checkAndResetIllegalDetectionTime(DataPackObject dataPackObject, Date receiveTime) {
         // 校验参数合法性
         if (null == dataPackObject || !isLegalDetectionDate(receiveTime)) {
             throw new IllegalArgumentException("required params is null");
@@ -78,15 +79,15 @@ public class DataPackObjectUtil {
         if (dataPackObject instanceof DataPackPosition) {
             DataPackPosition position = (DataPackPosition) dataPackObject;
             // 对于位置数据，位置时间和采集时间哪个合法用哪个，否则采用接收时间
-            if (DataPackObjectUtil.isLegalDetectionDate(position.getPositionTime())) {
-                position.setDetectionTime(position.getPositionTime());
-            } else if (DataPackObjectUtil.isLegalDetectionDate(position.getDetectionTime())) {
-                position.setPositionTime(position.getDetectionTime());
+            if (DataPackObjectUtil.isLegalDetectionDate(position.getDetectionTime())) {
+                position.setDetectionTime(receiveTime);
+            } else if (DataPackObjectUtil.isLegalDetectionDate(position.getPositionTime())) {
+                position.setPositionTime(receiveTime);
             } else {
                 position.setDetectionTime(receiveTime);
                 position.setPositionTime(receiveTime);
-                return true;
             }
+            return true;
         } else if (!DataPackObjectUtil.isLegalDetectionDate(dataPackObject.getDetectionTime())) {
             // 非位置数据采集时间非法
             dataPackObject.setDetectionTime(receiveTime);
@@ -97,7 +98,6 @@ public class DataPackObjectUtil {
     }
 
     /*-------以下两个方法主要是为了统一采集时间和字符串之间的转换，减少由于日期格式不一致的错误的发生--------------*/
-
     /**
      * 将检测时间转换为字符串
      *

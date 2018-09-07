@@ -92,6 +92,9 @@ public class DataPackParameter extends DataPackObject {
     //PublicKey更新周期
     private Integer publickeyUpdateSeconds ;
 
+    // 短信白名单
+    private String smsWhiteList ;
+
     public DataPackParameter(DataPackObject object) {
         super(object);
     }
@@ -310,5 +313,13 @@ public class DataPackParameter extends DataPackObject {
 
     public void setPublickeyUpdateSeconds(Integer publickeyUpdateSeconds) {
         this.publickeyUpdateSeconds = publickeyUpdateSeconds;
+    }
+
+    public String getSmsWhiteList() {
+        return smsWhiteList;
+    }
+
+    public void setSmsWhiteList(String smsWhiteList) {
+        this.smsWhiteList = smsWhiteList;
     }
 }
