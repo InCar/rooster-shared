@@ -142,47 +142,6 @@ public class RowKeyUtil {
     }
 
     /**
-     * 采集时间索引
-     */
-    @Deprecated
-    public static final String INDEX_DETECTIONTIME = "DETECTIONTIME";
-
-    /**
-     * 创建采集时间的二级索引的主键
-     *
-     * @param detectionTime 采集时间
-     * @param vin           vin码
-     * @param dataType      数据类型
-     * @return
-     */
-    @Deprecated
-    public static String makeDetectionTimeIndexRowKey(String detectionTime, String vin, String dataType) {
-        return INDEX_DETECTIONTIME + "_" + detectionTime + "_" + prependForceLen(vin, 20) + appendForceLen(dataType, 15) + get4NumRandomString();
-    }
-
-    /**
-     * 最小的采集时间索引rowkey（方便查询）
-     *
-     * @param detectionTime 查询时间，格式：yyyyMMddHHmmss
-     * @return
-     */
-    @Deprecated
-    public static String makeMinDetectionTimeIndexRowKey(String detectionTime) {
-        return INDEX_DETECTIONTIME + "_" + detectionTime + "_" + appendForceLen(null, 20) + appendForceLen(null, 15) + "####";
-    }
-
-    /**
-     * 最大的采集时间索引rowkey（方便查询）
-     *
-     * @param detectionTime 查询时间，格式：yyyyMMddHHmmss
-     * @return
-     */
-    @Deprecated
-    public static String makeMaxDetectionTimeIndexRowKey(String detectionTime) {
-        return INDEX_DETECTIONTIME + "_" + detectionTime + "_" + appendForceLenWithLowZ(null, 20) + appendForceLenWithLowZ(null, 15) + "zzzz";
-    }
-
-    /**
      * 根据rowkey获得json字符串类型标识
      *
      * @param rowkey rowkey
@@ -312,5 +271,18 @@ public class RowKeyUtil {
                 return sbX.toString();
             }
         }
+    }
+
+    /**
+     * 根据rowkey获得datapack类型字符串
+     *
+     * @param rowKey 行键
+     * @return
+     */
+    public static String getDataPackType(String rowKey) {
+        if(StringUtils.isNotBlank(rowKey) && 39 < rowKey.length()) {
+            return rowKey.substring(24, 39).replaceAll("#", "");
+        }
+        return null;
     }
 }
