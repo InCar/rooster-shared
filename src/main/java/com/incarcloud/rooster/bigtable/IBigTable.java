@@ -31,6 +31,15 @@ public interface IBigTable {
     void saveVin(String vin) throws Exception;
 
     /**
+     * 根据行键获得车辆数据
+     *
+     * @param rowKey 行键
+     * @param clazz  指定数据类型
+     * @return
+     */
+    <T extends DataPackObject> T getData(String rowKey, Class<T> clazz);
+
+    /**
      * 根据车架号和时间段查询原始数据列表
      *
      * @param vin       车架号

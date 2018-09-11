@@ -1,6 +1,5 @@
 package com.incarcloud.rooster.util;
 
-import com.sun.rowset.internal.Row;
 import org.junit.Assert;
 import org.junit.Test;
 
