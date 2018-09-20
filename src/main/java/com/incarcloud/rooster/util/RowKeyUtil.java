@@ -3,6 +3,8 @@ package com.incarcloud.rooster.util;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.StringUtils;
 
+import java.util.Date;
+
 /**
  * 行键工具类
  *
@@ -102,6 +104,16 @@ public class RowKeyUtil {
     }
 
     /**
+     * 生成15位DataPack类型
+     *
+     * @param time 检测时间
+     * @return
+     */
+    private static String appendTimeString(Date time) {
+        return StringUtils.rightPad(DataPackObjectUtil.convertDetectionTimeToString(time), ROWKEY_TIME_FIXED_SIZE, ROWKEY_CHAR_FILL_MIN);
+    }
+
+    /**
      * 生产4位随机数，固定"0001"
      *
      * @return
@@ -141,6 +153,42 @@ public class RowKeyUtil {
     }
 
     /**
+     * 生成存储行键字符串
+     *
+     * @param vin  车架号
+     * @param type 数据类型
+     * @param time 检测时间
+     * @return
+     */
+    public static String makeRowKey(String vin, String type, Date time) {
+        return makeRowKey(vin, type, appendTimeString(time));
+    }
+
+    /**
+     * 生成存储行键字符串
+     *
+     * @param vin   车架号
+     * @param clazz 数据类型
+     * @param time  检测时间
+     * @return
+     */
+    public static String makeRowKey(String vin, Class clazz, String time) {
+        return makeRowKey(vin, DataPackObjectUtil.getDataType(clazz), time);
+    }
+
+    /**
+     * 生成存储行键字符串
+     *
+     * @param vin   车架号
+     * @param clazz 数据类型
+     * @param time  检测时间
+     * @return
+     */
+    public static String makeRowKey(String vin, Class clazz, Date time) {
+        return makeRowKey(vin, clazz, appendTimeString(time));
+    }
+
+    /**
      * 生成最小行键字符串
      *
      * @param vin 车架号
@@ -164,6 +212,17 @@ public class RowKeyUtil {
     /**
      * 生成最小行键字符串
      *
+     * @param vin   车架号
+     * @param clazz 数据类型
+     * @return
+     */
+    public static String makeMinRowKey(String vin, Class clazz) {
+        return makeMinRowKey(vin, DataPackObjectUtil.getDataType(clazz));
+    }
+
+    /**
+     * 生成最小行键字符串
+     *
      * @param vin  车架号
      * @param type 数据类型
      * @param time 检测时间
@@ -171,6 +230,42 @@ public class RowKeyUtil {
      */
     public static String makeMinRowKey(String vin, String type, String time) {
         return appendVinString(vin) + appendTypeString(type) + appendTimeString(time) + appendFillMinString();
+    }
+
+    /**
+     * 生成最小行键字符串
+     *
+     * @param vin  车架号
+     * @param type 数据类型
+     * @param time 检测时间
+     * @return
+     */
+    public static String makeMinRowKey(String vin, String type, Date time) {
+        return makeMinRowKey(vin, type, appendTimeString(time));
+    }
+
+    /**
+     * 生成最小行键字符串
+     *
+     * @param vin   车架号
+     * @param clazz 数据类型
+     * @param time  检测时间
+     * @return
+     */
+    public static String makeMinRowKey(String vin, Class clazz, String time) {
+        return makeMinRowKey(vin, DataPackObjectUtil.getDataType(clazz), time);
+    }
+
+    /**
+     * 生成最小行键字符串
+     *
+     * @param vin   车架号
+     * @param clazz 数据类型
+     * @param time  检测时间
+     * @return
+     */
+    public static String makeMinRowKey(String vin, Class clazz, Date time) {
+        return makeMinRowKey(vin, clazz, appendTimeString(time));
     }
 
     /**
@@ -197,6 +292,17 @@ public class RowKeyUtil {
     /**
      * 生成最大行键字符串
      *
+     * @param vin   车架号
+     * @param clazz 数据类型
+     * @return
+     */
+    public static String makeMaxRowKey(String vin, Class clazz) {
+        return makeMaxRowKey(vin, DataPackObjectUtil.getDataType(clazz));
+    }
+
+    /**
+     * 生成最大行键字符串
+     *
      * @param vin  车架号
      * @param type 数据类型
      * @param time 检测时间
@@ -204,6 +310,42 @@ public class RowKeyUtil {
      */
     public static String makeMaxRowKey(String vin, String type, String time) {
         return appendVinString(vin) + appendTypeString(type) + appendTimeString(time) + appendFillMaxString();
+    }
+
+    /**
+     * 生成最大行键字符串
+     *
+     * @param vin  车架号
+     * @param type 数据类型
+     * @param time 检测时间
+     * @return
+     */
+    public static String makeMaxRowKey(String vin, String type, Date time) {
+        return makeMaxRowKey(vin, type, appendTimeString(time));
+    }
+
+    /**
+     * 生成最大行键字符串
+     *
+     * @param vin   车架号
+     * @param clazz 数据类型
+     * @param time  检测时间
+     * @return
+     */
+    public static String makeMaxRowKey(String vin, Class clazz, String time) {
+        return makeMaxRowKey(vin, DataPackObjectUtil.getDataType(clazz), time);
+    }
+
+    /**
+     * 生成最大行键字符串
+     *
+     * @param vin   车架号
+     * @param clazz 数据类型
+     * @param time  检测时间
+     * @return
+     */
+    public static String makeMaxRowKey(String vin, Class clazz, Date time) {
+        return makeMaxRowKey(vin, clazz, appendTimeString(time));
     }
 
     /**

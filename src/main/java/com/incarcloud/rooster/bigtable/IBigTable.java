@@ -40,14 +40,14 @@ public interface IBigTable {
     <T extends DataPackObject> T getData(String rowKey, Class<T> clazz);
 
     /**
-     * 根据行键获得车辆数据
+     * 获得某个类型最新车辆数据，支持指定按照最早或最新排序
      *
-     * @param rowKey 行键
-     * @param clazz  指定数据类型
-     * @param sort   默认按照时间倒序，排序规则：按照时间升序或者倒序
+     * @param vin   车架号
+     * @param clazz 指定数据类型
+     * @param sort  默认按照时间倒序，排序规则：按照时间升序或者倒序
      * @return
      */
-    <T extends DataPackObject> T getData(String rowKey, Class<T> clazz, Sort sort);
+    <T extends DataPackObject> T getData(String vin, Class<T> clazz, Sort sort);
 
     /**
      * 根据车架号和时间段查询原始数据列表
