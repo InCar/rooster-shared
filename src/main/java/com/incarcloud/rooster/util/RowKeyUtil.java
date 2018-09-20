@@ -1,276 +1,351 @@
-package com.incarcloud.rooster.util;/**
- * Created by fanbeibei on 2017/7/4.
- */
+package com.incarcloud.rooster.util;
 
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.StringUtils;
 
-import java.util.Random;
+import java.util.Date;
 
 /**
- * @author Fan Beibei
- * @Description: 行键工具类
- * @date 2017/7/4 17:00
+ * 行键工具类
+ *
+ * @author Aaric
+ * @version 2.3.2-SNAPSHOT
  */
 public class RowKeyUtil {
 
     /**
-     * 固定32个字符,用来补充长度不足的字串
-     */
-    private static final String C_SHARP32 = "################################";
-    private static final String C_ZERO32 = "00000000000000000000000000000000";
-    private static final String C_LOW_Z32 = "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz";
-
-    /**
-     * 随机对象
-     */
-    private static final Random RANDOM = new Random();
-
-    /**
-     * RowKey长度
-     */
-    public static final int ROWKEY_LENGTH = 61;//4+20+15+18+4
-
-    /**
-     * 生成数据区的主键列值 规则：MD5(ID)前4位+车辆VIN码(20位)+数据类型(15位)
-     * +采集时间(18位，前14位为年月日时分秒，第15位为N表示设备没有上传采集时间，由系统自动加上当前时间作为采集时间)
-     * + 随机数（4位，解决同一时间上传一个数据包，里头包含两个告警数据导致数据覆盖的问题）
+     * BigTable存储数据RowKey规则，行键总共61位，例如：bc3c000LSBAAAAAAZZ000001TRIP###########20180910120000####0001
+     *     bc3c     000LSBAAAAAAZZ000001    TRIP###########     20180910120000####       0001
+     *     ----     --------------------    ---------------     ------------------       ----
+     *   4位Hash值     20位VIN号或者设备号      15位DataPack类型         18位检测时间         4位随机数
      *
-     * @param vin         车辆vin码
-     * @param dataType    数据类型
-     * @param receiveTime 数据采集时间
+     * 4位Hash值：MD5(VIN)，取前4位字符串
+     * 18位检测时间：前14位为年月日时分秒，第15位为N表示设备没有上传采集时间，由系统自动加上当前时间作为采集时间
+     * 4位随机数：解决同一时间上传一个数据包，里头包含两个告警数据导致数据覆盖的问题
+     */
+    /**
+     * 长度：4位Hash值
+     */
+    private static final int ROWKEY_HASE_FIXED_SIZE = 4;
+
+    /**
+     * 长度：20位VIN号或者设备号
+     */
+    private static final int ROWKEY_ID_FIXED_SIZE = 20;
+
+    /**
+     * 长度：15位DataPack类型
+     */
+    private static final int ROWKEY_TYPE_FIXED_SIZE = 15;
+
+    /**
+     * 长度：18位检测时间
+     */
+    private static final int ROWKEY_TIME_FIXED_SIZE = 18;
+
+    /**
+     * 长度：4位随机数
+     */
+    private static final int ROWKEY_RANDOM_FIXED_SIZE = 4;
+
+    /**
+     * 行键总共61位
+     */
+    public static final int ROWKEY_LENGTH = ROWKEY_HASE_FIXED_SIZE
+            + ROWKEY_ID_FIXED_SIZE
+            + ROWKEY_TYPE_FIXED_SIZE
+            + ROWKEY_TIME_FIXED_SIZE
+            + ROWKEY_RANDOM_FIXED_SIZE;
+
+    /**
+     * 生成最小行键填充字符
+     */
+    public static final char ROWKEY_CHAR_FILL_MIN = '#';
+
+    /**
+     * 生成最大行键填充字符
+     */
+    public static final char ROWKEY_CHAR_FILL_MAX = 'z';
+
+    /**
+     * 生成零填充字符
+     */
+    public static final char ROWKEY_CHAR_FILL_ZERO = '0';
+
+    /**
+     * 生成4位Hash值+20位VIN号或者设备号
+     *
+     * @param vin 车架号
      * @return
      */
-    public static String makeRowKey(String vin, String dataType, String receiveTime) {
-        if (StringUtils.isBlank(vin)) {
-            throw new IllegalArgumentException("param error");
-        }
-
-        return String.format("%s%s%s%s%s", DigestUtils.md5Hex(vin).substring(0, 4),
-                prependForceLen(vin, 20), appendForceLen(dataType, 15),
-                appendForceLen(receiveTime, 18), get4NumRandomString());
+    private static String appendVinString(String vin) {
+        return StringUtils.left(DigestUtils.md5Hex(vin), ROWKEY_HASE_FIXED_SIZE)
+                + StringUtils.leftPad(vin, ROWKEY_ID_FIXED_SIZE, ROWKEY_CHAR_FILL_ZERO);
     }
 
     /**
-     * 生成最大的rowkey（方便查询）
+     * 生成15位DataPack类型
      *
-     * @param vin         车辆vin码
-     * @param dataType    数据类型
-     * @param receiveTime 数据采集时间
+     * @param type 数据类型
      * @return
      */
-    public static String makeMaxRowKey(String vin, String dataType, String receiveTime) {
-        if (StringUtils.isBlank(vin)) {
-            throw new IllegalArgumentException("param error");
-        }
-
-        return String.format("%s%s%s%s%s", DigestUtils.md5Hex(vin).substring(0, 4),
-                prependForceLen(vin, 20), appendForceLenWithLowZ(dataType, 15),
-                appendForceLenWithLowZ(receiveTime, 18), "zzzz");
+    private static String appendTypeString(String type) {
+        return StringUtils.rightPad(type, ROWKEY_TYPE_FIXED_SIZE, ROWKEY_CHAR_FILL_MIN);
     }
 
     /**
-     * 生成最大的rowkey（方便查询）
+     * 生成15位DataPack类型
      *
-     * @param vin      车辆vin码
-     * @param dataType 数据类型
+     * @param time 检测时间
      * @return
      */
-    public static String makeMaxRowKey(String vin, String dataType) {
-        if (StringUtils.isBlank(vin)) {
-            throw new IllegalArgumentException("param error");
-        }
-
-        return String.format("%s%s%s%s%s", DigestUtils.md5Hex(vin).substring(0, 4),
-                prependForceLen(vin, 20), appendForceLenWithLowZ(dataType, 15),
-                appendForceLenWithLowZ(null, 18), "zzzz");
+    private static String appendTimeString(String time) {
+        return StringUtils.rightPad(time, ROWKEY_TIME_FIXED_SIZE, ROWKEY_CHAR_FILL_MIN);
     }
 
     /**
-     * 生成最大的rowkey（方便查询）
+     * 生成15位DataPack类型
      *
-     * @param vin 车辆vin码
+     * @param time 检测时间
      * @return
      */
-    public static String makeMaxRowKey(String vin) {
-        if (StringUtils.isBlank(vin)) {
-            throw new IllegalArgumentException("param error");
-        }
-
-        return String.format("%s%s%s%s%s", DigestUtils.md5Hex(vin).substring(0, 4),
-                prependForceLen(vin, 20), appendForceLenWithLowZ(null, 15),
-                appendForceLenWithLowZ(null, 18), "zzzz");
+    private static String appendTimeString(Date time) {
+        return StringUtils.rightPad(DataPackObjectUtil.convertDetectionTimeToString(time), ROWKEY_TIME_FIXED_SIZE, ROWKEY_CHAR_FILL_MIN);
     }
 
     /**
-     * 产生最小的rowkey（方便查询）
-     *
-     * @param vin         车辆vin码
-     * @param dataType    数据类型
-     * @param receiveTime 数据采集时间
-     * @return
-     */
-    public static String makeMinRowKey(String vin, String dataType, String receiveTime) {
-        return String.format("%s%s%s%s%s", DigestUtils.md5Hex(vin).substring(0, 4),
-                prependForceLen(vin, 20), appendForceLen(dataType, 15),
-                appendForceLen(receiveTime, 18), "####");
-    }
-
-    /**
-     * 产生最小的rowkey（方便查询）
-     *
-     * @param vin      车辆vin码
-     * @param dataType 数据类型
-     * @return
-     */
-    public static String makeMinRowKey(String vin, String dataType) {
-        return String.format("%s%s%s%s%s", DigestUtils.md5Hex(vin).substring(0, 4),
-                prependForceLen(vin, 20), appendForceLen(dataType, 15),
-                appendForceLen(null, 18), "####");
-    }
-
-    /**
-     * 产生最小的rowkey（方便查询）
-     *
-     * @param vin 车辆vin码
-     * @return
-     */
-    public static String makeMinRowKey(String vin) {
-        return String.format("%s%s%s%s%s", DigestUtils.md5Hex(vin).substring(0, 4),
-                prependForceLen(vin, 20), appendForceLen(null, 15),
-                appendForceLen(null, 18), "####");
-    }
-
-    /**
-     * 根据rowkey获得json字符串类型标识
-     *
-     * @param rowkey rowkey
-     * @return
-     */
-    public static String getDataTypeFromRowKey(String rowkey) {
-        if (null == rowkey || 40 > rowkey.length()) {
-            throw new IllegalArgumentException("rowkey is error");
-        }
-        return rowkey.substring(24, 39).replaceAll("#", "");
-    }
-
-    /**
-     * 获取4位的随机整数
+     * 生产4位随机数，固定"0001"
      *
      * @return
      */
-    @Deprecated
-    public static int get4NumRandomInt() {
-        return RANDOM.nextInt(9999 - 1000 + 1) + 1000;
-    }
-
-    /**
-     * 获取4位的随机整数字符串
-     *
-     * @return
-     */
-    public static String get4NumRandomString() {
-        // 暂无1秒钟多个报文数据的情况，固定返回"0001"，表示报文序号1
-        //return MessageFormat.format("{0,number,0000}", RANDOM.nextInt(9999));
+    private static String appendRandomString() {
         return "0001";
     }
 
     /**
-     * 追加#方式强制字符串长度
+     * 生成追加最小字符串
      *
-     * @param value 字符串
-     * @param len   长度
      * @return
      */
-    public static String appendForceLen(String value, int len) {
-
-        if (value == null)
-            value = "";
-
-        if (value.length() == len)
-            return value;
-        else if (value.length() > len)
-            return value.substring(0, len);
-        else {
-            // 为了提高性能,不太长的字符串不使用StringBuilder来补足
-            int lenPad = len - value.length();
-            if (lenPad <= C_SHARP32.length()) {
-                return value + C_SHARP32.substring(0, lenPad);
-            } else {
-                StringBuilder sbX = new StringBuilder(len);
-                sbX.append(value);
-                sbX.setLength(len);
-                for (int i = value.length(); i < len; i++)
-                    sbX.setCharAt(i, '#');
-                return sbX.toString();
-            }
-        }
+    private static String appendFillMinString() {
+        return StringUtils.leftPad("", 2, ROWKEY_CHAR_FILL_MIN);
     }
 
     /**
-     * 前面添0方式强制字符串长度,用于将整形ID补充为等长字符串且不影响按大小排序
+     * 生成追加最大字符串
      *
-     * @param value 字符串
-     * @param len   长度
      * @return
      */
-    public static String prependForceLen(String value, int len) {
-
-        if (value == null)
-            value = "";
-
-        if (value.length() == len)
-            return value;
-        else if (value.length() > len)
-            return value.substring(0, len);
-        else {
-            // 为了提高性能,不太长的字符串不使用StringBuilder来补足
-            int lenPad = len - value.length();
-            if (lenPad <= C_ZERO32.length()) {
-                return C_ZERO32.substring(0, lenPad) + value;
-            } else {
-                int sbXlen = len - value.length();
-                StringBuilder sbX = new StringBuilder(sbXlen);
-                sbX.setLength(sbXlen);
-
-                for (int i = 0; i < sbXlen; i++)
-                    sbX.setCharAt(i, '0');
-                sbX.append(value);
-                return sbX.toString();
-            }
-        }
+    private static String appendFillMaxString() {
+        return StringUtils.leftPad("", 2, ROWKEY_CHAR_FILL_MAX);
     }
 
     /**
-     * 追加小写z方式强制字符串长度
+     * 生成存储行键字符串
      *
-     * @param value 字符串
-     * @param len   长度
+     * @param vin  车架号
+     * @param type 数据类型
+     * @param time 检测时间
      * @return
      */
-    public static String appendForceLenWithLowZ(String value, int len) {
+    public static String makeRowKey(String vin, String type, String time) {
+        return appendVinString(vin) + appendTypeString(type) + appendTimeString(time) + appendRandomString();
+    }
 
-        if (value == null)
-            value = "";
+    /**
+     * 生成存储行键字符串
+     *
+     * @param vin  车架号
+     * @param type 数据类型
+     * @param time 检测时间
+     * @return
+     */
+    public static String makeRowKey(String vin, String type, Date time) {
+        return makeRowKey(vin, type, appendTimeString(time));
+    }
 
-        if (value.length() == len)
-            return value;
-        else if (value.length() > len)
-            return value.substring(0, len);
-        else {
-            // 为了提高性能,不太长的字符串不使用StringBuilder来补足
-            int lenPad = len - value.length();
-            if (lenPad <= C_LOW_Z32.length()) {
-                return value + C_LOW_Z32.substring(0, lenPad);
-            } else {
-                StringBuilder sbX = new StringBuilder(len);
-                sbX.append(value);
-                sbX.setLength(len);
-                for (int i = value.length(); i < len; i++)
-                    sbX.setCharAt(i, '#');
-                return sbX.toString();
-            }
-        }
+    /**
+     * 生成存储行键字符串
+     *
+     * @param vin   车架号
+     * @param clazz 数据类型
+     * @param time  检测时间
+     * @return
+     */
+    public static String makeRowKey(String vin, Class clazz, String time) {
+        return makeRowKey(vin, DataPackObjectUtil.getDataType(clazz), time);
+    }
+
+    /**
+     * 生成存储行键字符串
+     *
+     * @param vin   车架号
+     * @param clazz 数据类型
+     * @param time  检测时间
+     * @return
+     */
+    public static String makeRowKey(String vin, Class clazz, Date time) {
+        return makeRowKey(vin, clazz, appendTimeString(time));
+    }
+
+    /**
+     * 生成最小行键字符串
+     *
+     * @param vin 车架号
+     * @return
+     */
+    public static String makeMinRowKey(String vin) {
+        return appendVinString(vin) + appendFillMinString();
+    }
+
+    /**
+     * 生成最小行键字符串
+     *
+     * @param vin  车架号
+     * @param type 数据类型
+     * @return
+     */
+    public static String makeMinRowKey(String vin, String type) {
+        return appendVinString(vin) + appendTypeString(type) + appendFillMinString();
+    }
+
+    /**
+     * 生成最小行键字符串
+     *
+     * @param vin   车架号
+     * @param clazz 数据类型
+     * @return
+     */
+    public static String makeMinRowKey(String vin, Class clazz) {
+        return makeMinRowKey(vin, DataPackObjectUtil.getDataType(clazz));
+    }
+
+    /**
+     * 生成最小行键字符串
+     *
+     * @param vin  车架号
+     * @param type 数据类型
+     * @param time 检测时间
+     * @return
+     */
+    public static String makeMinRowKey(String vin, String type, String time) {
+        return appendVinString(vin) + appendTypeString(type) + appendTimeString(time) + appendFillMinString();
+    }
+
+    /**
+     * 生成最小行键字符串
+     *
+     * @param vin  车架号
+     * @param type 数据类型
+     * @param time 检测时间
+     * @return
+     */
+    public static String makeMinRowKey(String vin, String type, Date time) {
+        return makeMinRowKey(vin, type, appendTimeString(time));
+    }
+
+    /**
+     * 生成最小行键字符串
+     *
+     * @param vin   车架号
+     * @param clazz 数据类型
+     * @param time  检测时间
+     * @return
+     */
+    public static String makeMinRowKey(String vin, Class clazz, String time) {
+        return makeMinRowKey(vin, DataPackObjectUtil.getDataType(clazz), time);
+    }
+
+    /**
+     * 生成最小行键字符串
+     *
+     * @param vin   车架号
+     * @param clazz 数据类型
+     * @param time  检测时间
+     * @return
+     */
+    public static String makeMinRowKey(String vin, Class clazz, Date time) {
+        return makeMinRowKey(vin, clazz, appendTimeString(time));
+    }
+
+    /**
+     * 生成最大行键字符串
+     *
+     * @param vin 车架号
+     * @return
+     */
+    public static String makeMaxRowKey(String vin) {
+        return appendVinString(vin) + appendFillMaxString();
+    }
+
+    /**
+     * 生成最大行键字符串
+     *
+     * @param vin  车架号
+     * @param type 数据类型
+     * @return
+     */
+    public static String makeMaxRowKey(String vin, String type) {
+        return appendVinString(vin) + appendTypeString(type) + appendFillMaxString();
+    }
+
+    /**
+     * 生成最大行键字符串
+     *
+     * @param vin   车架号
+     * @param clazz 数据类型
+     * @return
+     */
+    public static String makeMaxRowKey(String vin, Class clazz) {
+        return makeMaxRowKey(vin, DataPackObjectUtil.getDataType(clazz));
+    }
+
+    /**
+     * 生成最大行键字符串
+     *
+     * @param vin  车架号
+     * @param type 数据类型
+     * @param time 检测时间
+     * @return
+     */
+    public static String makeMaxRowKey(String vin, String type, String time) {
+        return appendVinString(vin) + appendTypeString(type) + appendTimeString(time) + appendFillMaxString();
+    }
+
+    /**
+     * 生成最大行键字符串
+     *
+     * @param vin  车架号
+     * @param type 数据类型
+     * @param time 检测时间
+     * @return
+     */
+    public static String makeMaxRowKey(String vin, String type, Date time) {
+        return makeMaxRowKey(vin, type, appendTimeString(time));
+    }
+
+    /**
+     * 生成最大行键字符串
+     *
+     * @param vin   车架号
+     * @param clazz 数据类型
+     * @param time  检测时间
+     * @return
+     */
+    public static String makeMaxRowKey(String vin, Class clazz, String time) {
+        return makeMaxRowKey(vin, DataPackObjectUtil.getDataType(clazz), time);
+    }
+
+    /**
+     * 生成最大行键字符串
+     *
+     * @param vin   车架号
+     * @param clazz 数据类型
+     * @param time  检测时间
+     * @return
+     */
+    public static String makeMaxRowKey(String vin, Class clazz, Date time) {
+        return makeMaxRowKey(vin, clazz, appendTimeString(time));
     }
 
     /**
@@ -280,8 +355,10 @@ public class RowKeyUtil {
      * @return
      */
     public static String getDataPackType(String rowKey) {
-        if(StringUtils.isNotBlank(rowKey) && 39 < rowKey.length()) {
-            return rowKey.substring(24, 39).replaceAll("#", "");
+        int minSize = ROWKEY_HASE_FIXED_SIZE + ROWKEY_ID_FIXED_SIZE + ROWKEY_TYPE_FIXED_SIZE;
+        if (StringUtils.isNotBlank(rowKey) && minSize < rowKey.length()) {
+            int startIndex = ROWKEY_HASE_FIXED_SIZE + ROWKEY_ID_FIXED_SIZE;
+            return rowKey.substring(startIndex, minSize).replaceAll("#", "");
         }
         return null;
     }

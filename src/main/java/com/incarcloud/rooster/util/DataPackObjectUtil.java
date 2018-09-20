@@ -98,6 +98,7 @@ public class DataPackObjectUtil {
     }
 
     /*-------以下两个方法主要是为了统一采集时间和字符串之间的转换，减少由于日期格式不一致的错误的发生--------------*/
+
     /**
      * 将检测时间转换为字符串
      *
@@ -522,7 +523,7 @@ public class DataPackObjectUtil {
     /**
      * 获取数据类型
      *
-     * @param dataPackObject
+     * @param dataPackObject 数据对象
      * @return
      */
     public static String getDataType(DataPackObject dataPackObject) {
