@@ -1,6 +1,8 @@
 package com.incarcloud.rooster.datapack;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 报警数据<br>
@@ -43,6 +45,24 @@ public class DataPackAlarm extends DataPackObject {
     public void setPosition(DataPackPosition position) {
         this.position = position;
     }
+
+    /**
+     * 报警参数信息
+     */
+    public static final Map<Integer,Alarm> alarmMap = new HashMap<Integer,Alarm>(){
+        {
+            //安全气囊告警
+            put(0xE001,new DataPackAlarm.Alarm(0,"COM_ariBagAlarm","安全气囊告警")) ;
+            //碰撞告警
+            put(0xE002,new DataPackAlarm.Alarm(0,"COM_crashAlarm","碰撞告警")) ;
+            //防盗告警
+            put(0xE003,new DataPackAlarm.Alarm(0,"COM_antiTheftAlarm","防盗告警")) ;
+            //灯光未关闭告警
+            put(0xE004,new DataPackAlarm.Alarm(0,"COM_lightNotClosedAlarm","灯光未关闭告警")) ;
+            //蓄电池电压异常告警
+            put(0xE005,new DataPackAlarm.Alarm(0,"COM_batteryVoltageAlarm","蓄电池电压异常告警")) ;
+        }
+    };
 
     @Override
     public String toString() {

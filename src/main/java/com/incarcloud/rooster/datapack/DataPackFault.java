@@ -1,7 +1,9 @@
 package com.incarcloud.rooster.datapack;
 
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 故障数据<br>
@@ -44,6 +46,36 @@ public class DataPackFault extends DataPackObject {
     public void setPosition(DataPackPosition position) {
         this.position = position;
     }
+
+    /**
+     * 故障参数信息
+     */
+    public static final Map<Integer,Fault> alarmMap = new HashMap<Integer,Fault>(){
+        {
+            //电子制动力分配系统故障
+            put(0xF001,new DataPackFault.Fault(0,"COM_EBD","EBD故障")) ;
+            //防抱死制动系统故障
+            put(0xF002,new DataPackFault.Fault(0,"COM_ABS","ABS故障")) ;
+            //电子稳定系统故障
+            put(0xF003,new DataPackFault.Fault(0,"COM_ESP","ESP故障")) ;
+            //轮速传感器故障
+            put(0xF004,new DataPackFault.Fault(0,"COM_ACC","ACC故障")) ;
+            //电子节气门控制故障
+            put(0xF005,new DataPackFault.Fault(0,"COM_FCM","FCM故障")) ;
+            //制动力辅助装置故障
+            put(0xF006,new DataPackFault.Fault(0,"COM_AHB","AHB故障")) ;
+            //胎压监测系统故障
+            put(0xF007,new DataPackFault.Fault(0,"COM_EPS","EPS故障")) ;
+            //驾驶员座椅滑轨传感器故障
+            put(0xF008,new DataPackFault.Fault(0,"COM_SRS","SRS故障")) ;
+            //乘客安全带故障
+            put(0xF009,new DataPackFault.Fault(0,"COM_GASOLINE","GASOLINE故障")) ;
+            //驾驶员安全带故障
+            put(0xF00A,new DataPackFault.Fault(0,"COM_CVT","CVT故障")) ;
+            //电池温度传感器故障
+            put(0xF00B,new DataPackFault.Fault(0,"COM_TPMS","TPMS故障")) ;
+        }
+    };
 
     @Override
     public String toString() {
