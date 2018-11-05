@@ -61,6 +61,8 @@ public class DataPackAlarm extends DataPackObject {
             put(0xE004,new DataPackAlarm.Alarm(0,"COM_lightNotClosedAlarm","灯光未关闭告警")) ;
             //蓄电池电压异常告警
             put(0xE005,new DataPackAlarm.Alarm(0,"COM_batteryVoltageAlarm","蓄电池电压异常告警")) ;
+            //胎压异常告警
+            put(0xE006,new DataPackAlarm.Alarm(0,"COM_tirePressureAlarm","胎压异常告警")) ;
         }
     };
 

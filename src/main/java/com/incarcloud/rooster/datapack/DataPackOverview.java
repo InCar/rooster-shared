@@ -466,10 +466,16 @@ public class DataPackOverview extends DataPackObject {
 	private Integer gpsAntennaStatus ;
 
 	/**
-	 * LTE天线状态
-	 * 有效值范围：0x00 异常，0x01 外置在线，0x02 内置在线，“0xFE”表示异常，“0xFF”表示无效。
+	 * LTE天线主集状态
+	 * 有效值范围：01:LTE外置天线主集短路  10:LTE外置天线主集正常  11:LTE外置天线主集开路
 	 */
-	private Integer lteAntennaStatus ;
+	private int lteMainStatus ;
+
+	/**
+	 * LTE天线分集状态
+	 * 有效值范围：01:LTE外置天线分集短路  10:LTE外置天线分集正常  11:LTE外置天线分集开路
+	 */
+	private int lteDiversityStatus ;
 
 	/************************** 广三协议新增end ***************************************/
 
@@ -998,12 +1004,20 @@ public class DataPackOverview extends DataPackObject {
 		this.gpsAntennaStatus = gpsAntennaStatus;
 	}
 
-	public Integer getLteAntennaStatus() {
-		return lteAntennaStatus;
+	public int getLteMainStatus() {
+		return lteMainStatus;
 	}
 
-	public void setLteAntennaStatus(Integer lteAntennaStatus) {
-		this.lteAntennaStatus = lteAntennaStatus;
+	public void setLteMainStatus(int lteMainStatus) {
+		this.lteMainStatus = lteMainStatus;
+	}
+
+	public int getLteDiversityStatus() {
+		return lteDiversityStatus;
+	}
+
+	public void setLteDiversityStatus(int lteDiversityStatus) {
+		this.lteDiversityStatus = lteDiversityStatus;
 	}
 
 	/**
@@ -1126,7 +1140,8 @@ public class DataPackOverview extends DataPackObject {
 				", airConditionerTemperature=" + airConditionerTemperature +
 				", airConditionerVolume=" + airConditionerVolume +
 				", gpsAntennaStatus=" + gpsAntennaStatus +
-				", lteAntennaStatus=" + lteAntennaStatus +
+				", lteMainStatus=" + lteMainStatus +
+				", lteDiversityStatus=" + lteDiversityStatus +
 				'}';
 	}
 }
