@@ -76,6 +76,11 @@ public interface Constants {
          * 车辆Dispatch分发数据 - List结构
          */
         String CACHE_MESSAGE_QUEUE = "rooster:message-queue";
+
+        /**
+         * 设备号与OTA升级包缓存Key - Hash结构
+         */
+        String CACHE_DEVICE_OTA_UPGRADE_HASH = "rooster:device-ota-upgrade";
     }
 
     /**
