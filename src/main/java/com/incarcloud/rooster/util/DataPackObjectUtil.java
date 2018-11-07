@@ -6,6 +6,7 @@ import com.incarcloud.rooster.datapack.*;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -30,35 +31,39 @@ public class DataPackObjectUtil {
             .createGson();
 
     /**
-     * 最小检测时间
-     */
-    private static Date minDetectionTime;
-
-    static {
-        try {
-            // 初始化最小时间为"2018-01-01 00:00:00"，大于项目上线前即可
-            minDetectionTime = DATE_FORMAT.parse("20180101000000");
-        } catch (ParseException e) {
-        }
-    }
-
-    /**
      * 私有构造函数，不准许创建对象
      */
     private DataPackObjectUtil() {
     }
 
     /**
-     * 判断检测时间是否合法
+     * 判断检测时间是否合法，比当前时间晚1个月或者早30分钟视为无效
      *
      * @param detectionTime 检测时间
      * @return
      */
     public static boolean isLegalDetectionDate(Date detectionTime) {
-        if (null == detectionTime || minDetectionTime.compareTo(detectionTime) > 0) {
-            return false;
+        // 无检测时间
+        if (null == detectionTime) {
+            return true;
         }
-        return true;
+
+        // 比当前时间晚1个月视为无效
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.MONTH, -1);
+        if (cal.getTime().compareTo(detectionTime) > 0) {
+            return true;
+        }
+
+        // 比当前时间早30分钟视为无效
+        cal = Calendar.getInstance();
+        cal.add(Calendar.MINUTE, 30);
+        if (cal.getTime().compareTo(detectionTime) < 0) {
+            return true;
+        }
+
+        // 其他情况合法
+        return false;
     }
 
     /**
