@@ -53,27 +53,27 @@ public class DataPackFault extends DataPackObject {
     public static final Map<Integer,Fault> alarmMap = new HashMap<Integer,Fault>(){
         {
             //电子制动力分配系统故障-EBD故障
-            put(0xF001,new DataPackFault.Fault(0,"COM_EBD","电子制动力分配系统故障")) ;
+            put(0xF001,new DataPackFault.Fault(0,"COM_EBD","电子制动力分配系统")) ;
             //防抱死制动系统故障-ABS故障
-            put(0xF002,new DataPackFault.Fault(0,"COM_ABS","防抱死制动系统故障")) ;
+            put(0xF002,new DataPackFault.Fault(0,"COM_ABS","防抱死制动系统")) ;
             //电子稳定系统故障-ESP故障
-            put(0xF003,new DataPackFault.Fault(0,"COM_ESP","电子稳定系统故障")) ;
+            put(0xF003,new DataPackFault.Fault(0,"COM_ESP","电子稳定系统")) ;
             //自适应巡航系统故障-ACC故障
-            put(0xF004,new DataPackFault.Fault(0,"COM_ACC","自适应巡航系统故障")) ;
+            put(0xF004,new DataPackFault.Fault(0,"COM_ACC","自适应巡航系统")) ;
             //前方防撞预警系统故障-FCM故障
-            put(0xF005,new DataPackFault.Fault(0,"COM_FCM","前方防撞预警系统故障")) ;
+            put(0xF005,new DataPackFault.Fault(0,"COM_FCM","前方防撞预警系统")) ;
             //自动远光系统故障-AHB故障
-            put(0xF006,new DataPackFault.Fault(0,"COM_AHB","自动远光系统故障")) ;
+            put(0xF006,new DataPackFault.Fault(0,"COM_AHB","自动远光系统")) ;
             //电动助力转向系统故障-EPS故障
-            put(0xF007,new DataPackFault.Fault(0,"COM_EPS","电动助力转向系统故障")) ;
+            put(0xF007,new DataPackFault.Fault(0,"COM_EPS","电动助力转向系统")) ;
             //安全气囊故障-SRS故障
-            put(0xF008,new DataPackFault.Fault(0,"COM_SRS","安全气囊故障")) ;
+            put(0xF008,new DataPackFault.Fault(0,"COM_SRS","安全气囊系统")) ;
             //发动机故障-GASOLINE故障
-            put(0xF009,new DataPackFault.Fault(0,"COM_GASOLINE","发动机故障")) ;
+            put(0xF009,new DataPackFault.Fault(0,"COM_GASOLINE","缸内直喷汽油系统")) ;
             //变速箱故障-CVT故障
-            put(0xF00A,new DataPackFault.Fault(0,"COM_CVT","变速箱故障")) ;
+            put(0xF00A,new DataPackFault.Fault(0,"COM_CVT","无级变速系统")) ;
             //胎压监测系统故障-TPMS故障
-            put(0xF00B,new DataPackFault.Fault(0,"COM_TPMS","胎压监测系统故障")) ;
+            put(0xF00B,new DataPackFault.Fault(0,"COM_TPMS","胎压监测系统")) ;
         }
     };
 
