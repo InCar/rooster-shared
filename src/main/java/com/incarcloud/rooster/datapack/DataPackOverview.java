@@ -17,7 +17,15 @@ import java.util.List;
 public class DataPackOverview extends DataPackObject {
 
 	/**
-	 * 车辆状态：0x01-发动机点火时，0x02-发动机运行中，0x03-发动机熄火时，0x04-发动机熄火后，0x05-车辆不能检测
+	 * <i>车辆状态</i><br>
+	 * <ul>
+	 * <li>0x01-启动(keyon)</li>
+	 * <li>0x02-运行(run)</li>
+	 * <li>0x03-熄火(keyoff)</li>
+	 * <li>0x04-其他状态</li>
+	 * <li>0xFE：表示异常</li>
+	 * <li>0xFF：表示无效</li>
+	 * </ul>
 	 */
 	private Integer carStatus;
 
@@ -269,27 +277,27 @@ public class DataPackOverview extends DataPackObject {
 
 	/**
 	 * 车外温度<br>
-	 * 有效值范围：0～250 （数值偏移量40℃，表示-40℃～+210℃）<br>
+	 * 有效值范围：0～1400 （数值偏移量n/10-40℃，表示-40℃～+100℃）<br>
 	 * 最小计量单元：1℃<br>
 	 * “0xFE”表示异常，“0xFF”表示无效<br>
 	 */
-	private Integer outsideTemperature;
+	private Float outsideTemperature;
 
 	/**
 	 * 车内温度<br>
-	 * 有效值范围：0～250 （数值偏移量40℃，表示-40℃～+210℃）<br>
+	 * 有效值范围：0～1400 （数值偏移量n/10-40℃，表示-40℃～+100℃）<br>
 	 * 最小计量单元：1℃<br>
 	 * “0xFE”表示异常，“0xFF”表示无效<br>
 	 */
-	private Integer insideTemperature;
+	private Float insideTemperature;
 
 	/**
-	 * 续航里程 有效值范围： 0～20000<br>
+	 * 续航里程 有效值范围：0～9999999（表示0km～999999.9km），最小计量单元：0.1km。<br>
 	 * 单位：公里<br>
 	 * 0xFF,0xFE 表示异常<br>
 	 * 0xFF,0xFF 表示无效<br>
 	 */
-	private Integer rechargeMileage;
+	private Double rechargeMileage;
 
 	/**
 	 * 近光灯状态
@@ -380,9 +388,9 @@ public class DataPackOverview extends DataPackObject {
 
 	/**
 	 * 机油温度
-	 * 有效值范围：0～250 （数值偏移量40℃）
+	 * 有效值范围：0～1400 （数值偏移量n/10-40℃，表示-40℃～+100℃），最小计量单元：0.1℃
 	 */
-	private Integer oilTemperature ;
+	private Float oilTemperature ;
 
 	/**
 	 * 发动机转速
@@ -448,9 +456,9 @@ public class DataPackOverview extends DataPackObject {
 
 	/**
 	 * 空调温度
-	 * 有效值范围：0～250 （数值偏移量40℃）
+	 * 有效值范围：0～1400 （数值偏移量n/10-40℃，表示-40℃～+100℃），最小计量单元：0.1℃
 	 */
-	private Integer airConditionerTemperature ;
+	private Float airConditionerTemperature ;
 
 	/**
 	 * 空调风量
@@ -796,27 +804,27 @@ public class DataPackOverview extends DataPackObject {
 		this.skylightStatus = skylightStatus;
 	}
 
-	public Integer getOutsideTemperature() {
+	public Float getOutsideTemperature() {
 		return outsideTemperature;
 	}
 
-	public void setOutsideTemperature(Integer outsideTemperature) {
+	public void setOutsideTemperature(Float outsideTemperature) {
 		this.outsideTemperature = outsideTemperature;
 	}
 
-	public Integer getInsideTemperature() {
+	public Float getInsideTemperature() {
 		return insideTemperature;
 	}
 
-	public void setInsideTemperature(Integer insideTemperature) {
+	public void setInsideTemperature(Float insideTemperature) {
 		this.insideTemperature = insideTemperature;
 	}
 
-	public Integer getRechargeMileage() {
+	public Double getRechargeMileage() {
 		return rechargeMileage;
 	}
 
-	public void setRechargeMileage(Integer rechargeMileage) {
+	public void setRechargeMileage(Double rechargeMileage) {
 		this.rechargeMileage = rechargeMileage;
 	}
 
@@ -908,11 +916,11 @@ public class DataPackOverview extends DataPackObject {
 		this.coolingFluidTemperature = coolingFluidTemperature;
 	}
 
-	public Integer getOilTemperature() {
+	public Float getOilTemperature() {
 		return oilTemperature;
 	}
 
-	public void setOilTemperature(Integer oilTemperature) {
+	public void setOilTemperature(Float oilTemperature) {
 		this.oilTemperature = oilTemperature;
 	}
 
@@ -980,11 +988,11 @@ public class DataPackOverview extends DataPackObject {
 		this.airConditionerCycleStatus = airConditionerCycleStatus;
 	}
 
-	public Integer getAirConditionerTemperature() {
+	public Float getAirConditionerTemperature() {
 		return airConditionerTemperature;
 	}
 
-	public void setAirConditionerTemperature(Integer airConditionerTemperature) {
+	public void setAirConditionerTemperature(Float airConditionerTemperature) {
 		this.airConditionerTemperature = airConditionerTemperature;
 	}
 
