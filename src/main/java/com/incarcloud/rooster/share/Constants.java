@@ -63,6 +63,11 @@ public interface Constants {
         String CACHE_ALARM_SETTING_HASH = "rooster:alarm-rule";
 
         /**
+         * 故障编码与故障规则缓存Key - Hash结构
+         */
+        String CACHE_FAULT_SETTING_HASH = "rooster:fault-rule" ;
+
+        /**
          * 报文流水号缓存Key - Hash结构
          */
         String CACHE_PACK_SN_HASH = "rooster:pack-sn";

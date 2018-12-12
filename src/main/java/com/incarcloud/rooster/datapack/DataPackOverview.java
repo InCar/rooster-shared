@@ -485,6 +485,12 @@ public class DataPackOverview extends DataPackObject {
 	 */
 	private int lteDiversityStatus ;
 
+	/**
+	 * 方向盘转角
+	 * 有效值范围： 有效值范围：0~8190，（数值偏移量 n/2-2048 deg，表示 -2048 ~ +2047），最小计量单位是：0.5deg
+	 */
+	private int steeringAngle ;
+
 	/************************** 广三协议新增end ***************************************/
 
 	public DataPackOverview(DataPackObject object) {
@@ -1028,6 +1034,14 @@ public class DataPackOverview extends DataPackObject {
 		this.lteDiversityStatus = lteDiversityStatus;
 	}
 
+	public int getSteeringAngle() {
+		return steeringAngle;
+	}
+
+	public void setSteeringAngle(int steeringAngle) {
+		this.steeringAngle = steeringAngle;
+	}
+
 	/**
 	 * 单个速度信息
 	 */
@@ -1150,6 +1164,7 @@ public class DataPackOverview extends DataPackObject {
 				", gpsAntennaStatus=" + gpsAntennaStatus +
 				", lteMainStatus=" + lteMainStatus +
 				", lteDiversityStatus=" + lteDiversityStatus +
+				", steeringAngle=" + steeringAngle +
 				'}';
 	}
 }

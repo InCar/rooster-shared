@@ -82,12 +82,17 @@ public class DataPackParameter extends DataPackObject {
     /**
      * 报警模式整车数据上报持续时长,单位: 秒
      */
-    private Integer alramTimeSeconds;
+    private Integer alarmTimeSeconds;
 
     /**
      * 短信白名单
      */
     private String smsWhiteList ;
+
+    /**
+     * 公网APN
+     */
+    private String publicApn ;
 
     public DataPackParameter(DataPackObject object) {
         super(object);
@@ -205,12 +210,12 @@ public class DataPackParameter extends DataPackObject {
         this.alarmCanReportSeconds = alarmCanReportSeconds;
     }
 
-    public Integer getAlramTimeSeconds() {
-        return alramTimeSeconds;
+    public Integer getAlarmTimeSeconds() {
+        return alarmTimeSeconds;
     }
 
-    public void setAlramTimeSeconds(Integer alramTimeSeconds) {
-        this.alramTimeSeconds = alramTimeSeconds;
+    public void setAlarmTimeSeconds(Integer alarmTimeSeconds) {
+        this.alarmTimeSeconds = alarmTimeSeconds;
     }
 
     public String getSmsWhiteList() {
@@ -219,5 +224,13 @@ public class DataPackParameter extends DataPackObject {
 
     public void setSmsWhiteList(String smsWhiteList) {
         this.smsWhiteList = smsWhiteList;
+    }
+
+    public String getPublicApn() {
+        return publicApn;
+    }
+
+    public void setPublicApn(String publicApn) {
+        this.publicApn = publicApn;
     }
 }
