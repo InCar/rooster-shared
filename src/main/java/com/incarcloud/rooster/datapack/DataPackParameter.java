@@ -8,7 +8,10 @@ package com.incarcloud.rooster.datapack;
  */
 public class DataPackParameter extends DataPackObject {
 
-
+    /**
+     * 参数版本
+     */
+    private String paramVersion ;
     /**
      * 本地数据存储周期, 单位：天
      */
@@ -96,6 +99,14 @@ public class DataPackParameter extends DataPackObject {
 
     public DataPackParameter(DataPackObject object) {
         super(object);
+    }
+
+    public String getParamVersion() {
+        return paramVersion;
+    }
+
+    public void setParamVersion(String paramVersion) {
+        this.paramVersion = paramVersion;
     }
 
     public Integer getLocalDataStorageSeconds() {
@@ -232,5 +243,29 @@ public class DataPackParameter extends DataPackObject {
 
     public void setPublicApn(String publicApn) {
         this.publicApn = publicApn;
+    }
+
+    @Override
+    public String toString() {
+        return "DataPackParameter{" +
+                "paramVersion='" + paramVersion + '\'' +
+                ", localDataStorageSeconds=" + localDataStorageSeconds +
+                ", remoteSeverHost='" + remoteSeverHost + '\'' +
+                ", remoteServerPort=" + remoteServerPort +
+                ", platformOverTime=" + platformOverTime +
+                ", terminalResponseTime=" + terminalResponseTime +
+                ", logintRetrySeconds=" + logintRetrySeconds +
+                ", apn='" + apn + '\'' +
+                ", publickeyUpdateSeconds=" + publickeyUpdateSeconds +
+                ", canReportSeconds=" + canReportSeconds +
+                ", headbeatSeconds=" + headbeatSeconds +
+                ", dalayCanReportSeconds=" + dalayCanReportSeconds +
+                ", dalayHeadbeatSeconds=" + dalayHeadbeatSeconds +
+                ", dalayTimeSeconds=" + dalayTimeSeconds +
+                ", alarmCanReportSeconds=" + alarmCanReportSeconds +
+                ", alarmTimeSeconds=" + alarmTimeSeconds +
+                ", smsWhiteList='" + smsWhiteList + '\'' +
+                ", publicApn='" + publicApn + '\'' +
+                '}';
     }
 }

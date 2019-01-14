@@ -8,8 +8,22 @@ package com.incarcloud.rooster.datapack;
  */
 public class DataPackAlarmSettingCompleted extends DataPackObject{
 
+    /**
+     * 设置状态
+     * 1 - 成功
+     * 其他- 失败
+     */
+    private Integer settingStatus ;
+
     public DataPackAlarmSettingCompleted(DataPackObject object){
         super(object);
     }
 
+    public Integer getSettingStatus() {
+        return settingStatus;
+    }
+
+    public void setSettingStatus(Integer settingStatus) {
+        this.settingStatus = settingStatus;
+    }
 }
