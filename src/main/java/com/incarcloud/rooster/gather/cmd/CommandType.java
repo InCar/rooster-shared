@@ -257,6 +257,15 @@ public enum CommandType {
     /**
      * 异常唤醒
      */
-    ABNORMAL_WAKE_UP
+    ABNORMAL_WAKE_UP,
 
+    /**
+     * 自诊断DTC
+     */
+    DIAGNOSIS_DTC,
+
+    /**
+     * 自诊断DID
+     */
+    DIAGNOSIS_DID
 }

@@ -346,6 +346,16 @@ public class DataPackObjectUtil {
     public static final String PARAMETERQUERY = "PARAMETERQUERY";
 
     /**
+     * T-BOX DTC信息
+     */
+    public static final String DTCINFOMATION = "DTCINFOMATION" ;
+
+    /**
+     * T-BOX DID信息
+     */
+    public static final String DIDINFOMATION = "DIDINFOMATION" ;
+
+    /**
      * 获取数据类型
      *
      * @param clazz
@@ -520,6 +530,14 @@ public class DataPackObjectUtil {
             if (clazz.equals(DataPackParameter.class)) {
                 // 参数查询
                 return PARAMETERQUERY;
+            }
+            if (clazz.equals(DataPackDtcInfo.class)) {
+                // T-BOX DTC 信息
+                return DTCINFOMATION ;
+            }
+            if (clazz.equals(DataPackDidInfo.class)) {
+                // T-BOX DID 信息
+                return DIDINFOMATION ;
             }
         }
         return null;
@@ -710,6 +728,14 @@ public class DataPackObjectUtil {
         if (PARAMETERQUERY.equals(dataType)) {
             // 参数查询
             return DataPackParameter.class;
+        }
+        if (DTCINFOMATION.equals(dataType)) {
+            // T-BOX DTC 信息
+            return DataPackDtcInfo.class ;
+        }
+        if (DIDINFOMATION.equals(dataType)) {
+            // T-BOX DID 信息
+            return DataPackDidInfo.class ;
         }
         return null;
     }

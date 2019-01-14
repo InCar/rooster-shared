@@ -9,6 +9,11 @@ package com.incarcloud.rooster.datapack;
 public class DataPackAlarmParameter extends DataPackObject {
 
     /**
+     * 报警参数版本
+     */
+    private String alarmVersion ;
+
+    /**
      * 超速报警阈值
      */
     private Integer overspeed ;
@@ -50,6 +55,14 @@ public class DataPackAlarmParameter extends DataPackObject {
 
     public DataPackAlarmParameter(DataPackObject object){
         super(object);
+    }
+
+    public String getAlarmVersion() {
+        return alarmVersion;
+    }
+
+    public void setAlarmVersion(String alarmVersion) {
+        this.alarmVersion = alarmVersion;
     }
 
     public Integer getOverspeed() {
@@ -114,5 +127,20 @@ public class DataPackAlarmParameter extends DataPackObject {
 
     public void setBatteryMaxVoltageRelation(Integer batteryMaxVoltageRelation) {
         this.batteryMaxVoltageRelation = batteryMaxVoltageRelation;
+    }
+
+    @Override
+    public String toString() {
+        return "DataPackAlarmParameter{" +
+                "alarmVersion='" + alarmVersion + '\'' +
+                ", overspeed=" + overspeed +
+                ", overspeedRelation=" + overspeedRelation +
+                ", coolingFluid=" + coolingFluid +
+                ", coolingFluidRelation=" + coolingFluidRelation +
+                ", batteryMinVoltage=" + batteryMinVoltage +
+                ", batteryMinVoltageRelation=" + batteryMinVoltageRelation +
+                ", batteryMaxVoltage=" + batteryMaxVoltage +
+                ", batteryMaxVoltageRelation=" + batteryMaxVoltageRelation +
+                '}';
     }
 }

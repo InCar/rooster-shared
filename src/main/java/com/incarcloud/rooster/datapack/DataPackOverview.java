@@ -208,6 +208,42 @@ public class DataPackOverview extends DataPackObject {
 	private Integer centralLockStatus ;
 
 	/**
+	 * 门锁状态
+	 * 0x01：开；
+	 * 0x02：关，
+	 * “0xFE”表示异常，
+	 * “0xFF”表示无效。
+	 */
+	private Integer doorLockStatus ;
+
+	/**
+	 * 主驾门锁状态
+	 * 0x01：开；
+	 * 0x02：关，
+	 * “0xFE”表示异常，
+	 * “0xFF”表示无效。
+	 */
+	private Integer driveDoorLockStatus ;
+
+	/**
+	 * 副驾门锁状态
+	 * 0x01：开；
+	 * 0x02：关，
+	 * “0xFE”表示异常，
+	 * “0xFF”表示无效。
+	 */
+	private Integer passengerDoorLockStatus ;
+
+	/**
+	 * 后门锁状态
+	 * 0x01：开；
+	 * 0x02：关，
+	 * “0xFE”表示异常，
+	 * “0xFF”表示无效。
+	 */
+	private Integer backDoorLockStatus ;
+
+	/**
 	 * 前盖状态
 	 * <ul>
 	 * <li>0x01：开</li>
@@ -356,13 +392,20 @@ public class DataPackOverview extends DataPackObject {
 	private Integer backFoglightStatus ;
 
 	/**
-	 * 刹车灯状态
+	 * 手刹灯状态
 	 * 0x01：开；
 	 * 0x02：关，
 	 * “0xFE”表示异常，“0xFF”表示无效
 	 */
-	private Integer stopLampStatus ;
+	private Integer handBrakeLampStatus ;
 
+	/**
+	 * 脚刹灯状态
+	 * 0x01：开；
+	 * 0x02：关，
+	 * “0xFE”表示异常，“0xFF”表示无效
+	 */
+	private Integer footBrakeLampStatus ;
 	/**
 	 * 示宽灯状态
 	 * 0x01：开；
@@ -379,6 +422,15 @@ public class DataPackOverview extends DataPackObject {
 	 * “0xFF”表示无效<br>
 	 */
 	private Integer readingLampStatus;
+
+	/**
+	 * 机油油量指示灯<br>
+	 * 0x01：开<br>
+	 * 0x02：关<br>
+	 * “0xFE”表示异常<br>
+	 * “0xFF”表示无效<br>
+	 */
+	private int oilIndicatorLight ;
 
 	/**
 	 * 冷却液温度
@@ -423,6 +475,12 @@ public class DataPackOverview extends DataPackObject {
 	private Integer accStatus ;
 
 	/**
+	 * 方向盘转角
+	 * 有效值范围： 有效值范围：0~8190，（数值偏移量 n/2-2048 deg，表示 -2048 ~ +2047），最小计量单位是：0.5deg
+	 */
+	private float steeringAngle ;
+
+	/**
 	 * 空调状态
 	 * 0x01：开；
 	 * 0x02：关，
@@ -454,42 +512,59 @@ public class DataPackOverview extends DataPackObject {
 	 */
 	private Integer airConditionerCycleStatus ;
 
-	/**
-	 * 空调温度
-	 * 有效值范围：0～1400 （数值偏移量n/10-40℃，表示-40℃～+100℃），最小计量单元：0.1℃
-	 */
-	private Float airConditionerTemperature ;
+
 
 	/**
-	 * 空调风量
-	 * 有效值范围：0～8，最小计量单元：1档。
-	 * “0xFE”表示异常，“0xFF”表示无效。
+	 * 空调数据
 	 */
-	private Integer airConditionerVolume ;
+	private List<AirConditionerData> airConditionerDatas ;
 
-	/**
-	 * GPS天线状态
-	 * 有效值范围：0x01 短路，0x02 开路，0x03 正常，“0xFE”表示异常，“0xFF”表示无效
-	 */
-	private Integer gpsAntennaStatus ;
 
-	/**
-	 * LTE天线主集状态
-	 * 有效值范围：01:LTE外置天线主集短路  10:LTE外置天线主集正常  11:LTE外置天线主集开路
-	 */
-	private int lteMainStatus ;
+	public static class AirConditionerData {
 
-	/**
-	 * LTE天线分集状态
-	 * 有效值范围：01:LTE外置天线分集短路  10:LTE外置天线分集正常  11:LTE外置天线分集开路
-	 */
-	private int lteDiversityStatus ;
+		/**
+		 * 空调位置
+		 * 有效值范围：0~10 （0x00 主空调；0x01左空调；0x02右空调，0x03~0xFD自定义）“0xFE”表示异常，“0xFF”表示无效。
+		 */
+		private Integer airConditionerPlace ;
 
-	/**
-	 * 方向盘转角
-	 * 有效值范围： 有效值范围：0~8190，（数值偏移量 n/2-2048 deg，表示 -2048 ~ +2047），最小计量单位是：0.5deg
-	 */
-	private int steeringAngle ;
+		/**
+		 * 空调温度
+		 * 有效值范围：0～1400 （数值偏移量n/10-40℃，表示-40℃～+100℃），最小计量单元：0.1℃
+		 */
+		private Float airConditionerTemperature ;
+
+		/**
+		 * 空调风量
+		 * 有效值范围：0～8，最小计量单元：1档。
+		 * “0xFE”表示异常，“0xFF”表示无效。
+		 */
+		private Integer airConditionerVolume ;
+
+		public Integer getAirConditionerPlace() {
+			return airConditionerPlace;
+		}
+
+		public void setAirConditionerPlace(Integer airConditionerPlace) {
+			this.airConditionerPlace = airConditionerPlace;
+		}
+
+		public Float getAirConditionerTemperature() {
+			return airConditionerTemperature;
+		}
+
+		public void setAirConditionerTemperature(Float airConditionerTemperature) {
+			this.airConditionerTemperature = airConditionerTemperature;
+		}
+
+		public Integer getAirConditionerVolume() {
+			return airConditionerVolume;
+		}
+
+		public void setAirConditionerVolume(Integer airConditionerVolume) {
+			this.airConditionerVolume = airConditionerVolume;
+		}
+	}
 
 	/************************** 广三协议新增end ***************************************/
 
@@ -754,6 +829,38 @@ public class DataPackOverview extends DataPackObject {
 		this.centralLockStatus = centralLockStatus;
 	}
 
+	public Integer getDoorLockStatus() {
+		return doorLockStatus;
+	}
+
+	public void setDoorLockStatus(Integer doorLockStatus) {
+		this.doorLockStatus = doorLockStatus;
+	}
+
+	public Integer getDriveDoorLockStatus() {
+		return driveDoorLockStatus;
+	}
+
+	public void setDriveDoorLockStatus(Integer driveDoorLockStatus) {
+		this.driveDoorLockStatus = driveDoorLockStatus;
+	}
+
+	public Integer getPassengerDoorLockStatus() {
+		return passengerDoorLockStatus;
+	}
+
+	public void setPassengerDoorLockStatus(Integer passengerDoorLockStatus) {
+		this.passengerDoorLockStatus = passengerDoorLockStatus;
+	}
+
+	public Integer getBackDoorLockStatus() {
+		return backDoorLockStatus;
+	}
+
+	public void setBackDoorLockStatus(Integer backDoorLockStatus) {
+		this.backDoorLockStatus = backDoorLockStatus;
+	}
+
 	public Integer getFrontCover() {
 		return frontCover;
 	}
@@ -890,12 +997,20 @@ public class DataPackOverview extends DataPackObject {
 		this.backFoglightStatus = backFoglightStatus;
 	}
 
-	public Integer getStopLampStatus() {
-		return stopLampStatus;
+	public Integer getFootBrakeLampStatus() {
+		return footBrakeLampStatus;
 	}
 
-	public void setStopLampStatus(Integer stopLampStatus) {
-		this.stopLampStatus = stopLampStatus;
+	public void setFootBrakeLampStatus(Integer footBrakeLampStatus) {
+		this.footBrakeLampStatus = footBrakeLampStatus;
+	}
+
+	public Integer getHandBrakeLampStatus() {
+		return handBrakeLampStatus;
+	}
+
+	public void setHandBrakeLampStatus(Integer handBrakeLampStatus) {
+		this.handBrakeLampStatus = handBrakeLampStatus;
 	}
 
 	public Integer getWidthLampStatus() {
@@ -912,6 +1027,14 @@ public class DataPackOverview extends DataPackObject {
 
 	public void setReadingLampStatus(Integer readingLampStatus) {
 		this.readingLampStatus = readingLampStatus;
+	}
+
+	public int getOilIndicatorLight() {
+		return oilIndicatorLight;
+	}
+
+	public void setOilIndicatorLight(int oilIndicatorLight) {
+		this.oilIndicatorLight = oilIndicatorLight;
 	}
 
 	public Integer getCoolingFluidTemperature() {
@@ -962,6 +1085,14 @@ public class DataPackOverview extends DataPackObject {
 		this.accStatus = accStatus;
 	}
 
+	public float getSteeringAngle() {
+		return steeringAngle;
+	}
+
+	public void setSteeringAngle(float steeringAngle) {
+		this.steeringAngle = steeringAngle;
+	}
+
 	public Integer getAirConditionerStatus() {
 		return airConditionerStatus;
 	}
@@ -994,52 +1125,12 @@ public class DataPackOverview extends DataPackObject {
 		this.airConditionerCycleStatus = airConditionerCycleStatus;
 	}
 
-	public Float getAirConditionerTemperature() {
-		return airConditionerTemperature;
+	public List<AirConditionerData> getAirConditionerDatas() {
+		return airConditionerDatas;
 	}
 
-	public void setAirConditionerTemperature(Float airConditionerTemperature) {
-		this.airConditionerTemperature = airConditionerTemperature;
-	}
-
-	public Integer getAirConditionerVolume() {
-		return airConditionerVolume;
-	}
-
-	public void setAirConditionerVolume(Integer airConditionerVolume) {
-		this.airConditionerVolume = airConditionerVolume;
-	}
-
-	public Integer getGpsAntennaStatus() {
-		return gpsAntennaStatus;
-	}
-
-	public void setGpsAntennaStatus(Integer gpsAntennaStatus) {
-		this.gpsAntennaStatus = gpsAntennaStatus;
-	}
-
-	public int getLteMainStatus() {
-		return lteMainStatus;
-	}
-
-	public void setLteMainStatus(int lteMainStatus) {
-		this.lteMainStatus = lteMainStatus;
-	}
-
-	public int getLteDiversityStatus() {
-		return lteDiversityStatus;
-	}
-
-	public void setLteDiversityStatus(int lteDiversityStatus) {
-		this.lteDiversityStatus = lteDiversityStatus;
-	}
-
-	public int getSteeringAngle() {
-		return steeringAngle;
-	}
-
-	public void setSteeringAngle(int steeringAngle) {
-		this.steeringAngle = steeringAngle;
+	public void setAirConditionerDatas(List<AirConditionerData> airConditionerDatas) {
+		this.airConditionerDatas = airConditionerDatas;
 	}
 
 	/**
@@ -1129,6 +1220,10 @@ public class DataPackOverview extends DataPackObject {
 				", rightFrontDoorStatus=" + rightFrontDoorStatus +
 				", rightBackDoorStatus=" + rightBackDoorStatus +
 				", centralLockStatus=" + centralLockStatus +
+				", doorLockStatus=" + doorLockStatus +
+				", driveDoorLockStatus=" + driveDoorLockStatus +
+				", passengerDoorLockStatus=" + passengerDoorLockStatus +
+				", backDoorLockStatus=" + backDoorLockStatus +
 				", frontCover=" + frontCover +
 				", trunkStatus=" + trunkStatus +
 				", leftFrontWindowStatus=" + leftFrontWindowStatus +
@@ -1146,25 +1241,23 @@ public class DataPackOverview extends DataPackObject {
 				", dangerLightStatus=" + dangerLightStatus +
 				", frontFoglightStatus=" + frontFoglightStatus +
 				", backFoglightStatus=" + backFoglightStatus +
-				", stopLampStatus=" + stopLampStatus +
+				", footBrakeLampStatus=" + footBrakeLampStatus +
+				", handBrakeLampStatus=" + handBrakeLampStatus +
 				", widthLampStatus=" + widthLampStatus +
 				", readingLampStatus=" + readingLampStatus +
+				", oilIndicatorLight=" + oilIndicatorLight +
 				", coolingFluidTemperature=" + coolingFluidTemperature +
 				", oilTemperature=" + oilTemperature +
 				", engineRpm=" + engineRpm +
 				", footBrakeStatus=" + footBrakeStatus +
 				", handBrakeStatus=" + handBrakeStatus +
 				", accStatus=" + accStatus +
+				", steeringAngle=" + steeringAngle +
 				", airConditionerStatus=" + airConditionerStatus +
 				", airConditionerControlStatus=" + airConditionerControlStatus +
 				", airConditionerCompressorStatus=" + airConditionerCompressorStatus +
 				", airConditionerCycleStatus=" + airConditionerCycleStatus +
-				", airConditionerTemperature=" + airConditionerTemperature +
-				", airConditionerVolume=" + airConditionerVolume +
-				", gpsAntennaStatus=" + gpsAntennaStatus +
-				", lteMainStatus=" + lteMainStatus +
-				", lteDiversityStatus=" + lteDiversityStatus +
-				", steeringAngle=" + steeringAngle +
+				", airConditionerDatas=" + airConditionerDatas +
 				'}';
 	}
 }

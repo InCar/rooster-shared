@@ -41,16 +41,22 @@ public class OtaUpgradeInfo {
      */
     private Date createTime;
 
+    /**
+     * md5值
+     */
+    private String md5 ;
+
     public OtaUpgradeInfo() {
     }
 
-    public OtaUpgradeInfo(String refId, String deviceId, String upgradeVersion, String upgradePackageName, String upgradeUrl) {
+    public OtaUpgradeInfo(String refId, String deviceId, String upgradeVersion, String upgradePackageName, String upgradeUrl, String md5) {
         this.refId = refId;
         this.deviceId = deviceId;
         this.upgradeVersion = upgradeVersion;
         this.upgradePackageName = upgradePackageName;
         this.upgradeUrl = upgradeUrl;
         this.createTime = Date.from(Instant.now());
+        this.md5 = md5 ;
     }
 
     public String getRefId() {
@@ -99,5 +105,13 @@ public class OtaUpgradeInfo {
 
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
+    }
+
+    public String getMd5() {
+        return md5;
+    }
+
+    public void setMd5(String md5) {
+        this.md5 = md5;
     }
 }
