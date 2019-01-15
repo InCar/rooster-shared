@@ -86,6 +86,16 @@ public interface Constants {
          * 设备号与OTA升级包缓存Key - Hash结构
          */
         String CACHE_DEVICE_OTA_UPGRADE_HASH = "rooster:device-ota-upgrade";
+
+        /**
+         * 设备号与参数设置信息缓存Key - Hash结构
+         */
+        String CACHE_DEVICE_PARAM_SETTING_HASH = "rooster:device-param-setting" ;
+
+        /**
+         * 设备号与报警参数设置信息缓存Key - Hash结构
+         */
+        String CACHE_DEVICE_ALARM_PARAM_SETTING_HASH = "rooster:device-alarm_param-setting" ;
     }
 
     /**
