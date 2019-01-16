@@ -53,12 +53,15 @@ public interface IDataParser {
      * protocol: 协议
      * algorithm: 加密算法，例如RSA, AES...(null-表示数据包未使用任何加密算法)
      * deviceId: 设备ID(必须)
-     * packType: 数据包类型：0-激活, 1-登录, 2-登出, 3-心跳或普通数据包
+     * packType: 数据包类型：0-激活, 1-登录, 2-登出, 3-心跳或普通数据包(必须)
      * vin: 车辆标识(非必须，但激活和登陆必须传值)
+     * deviceSn: 设备SN号(非必须，但激活和登陆必须传值)
+     * adaptedSeriesType: 设备软件包适配车系(非必须，但激活和登陆必须传值)
      * }
      * @see com.incarcloud.rooster.share.Constants.MetaDataMapKey 返回对象MAP键名常量说明
      * @see com.incarcloud.rooster.share.Constants.AlgorithmName 加密算法常量说明
      * @see com.incarcloud.rooster.share.Constants.PackType 数据包类型常量说明
+     * @see com.incarcloud.rooster.share.Constants.AdaptedSeriesType 设备软件包适配车系说明
      */
     Map<String, Object> getMetaData(ByteBuf buffer);
 

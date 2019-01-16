@@ -65,7 +65,7 @@ public interface Constants {
         /**
          * 故障编码与故障规则缓存Key - Hash结构
          */
-        String CACHE_FAULT_SETTING_HASH = "rooster:fault-rule" ;
+        String CACHE_FAULT_SETTING_HASH = "rooster:fault-rule";
 
         /**
          * 报文流水号缓存Key - Hash结构
@@ -90,12 +90,22 @@ public interface Constants {
         /**
          * 设备号与参数设置信息缓存Key - Hash结构
          */
-        String CACHE_DEVICE_PARAM_SETTING_HASH = "rooster:device-param-setting" ;
+        String CACHE_DEVICE_PARAM_SETTING_HASH = "rooster:device-param-setting";
 
         /**
          * 设备号与报警参数设置信息缓存Key - Hash结构
          */
-        String CACHE_DEVICE_ALARM_PARAM_SETTING_HASH = "rooster:device-alarm_param-setting" ;
+        String CACHE_DEVICE_ALARM_PARAM_SETTING_HASH = "rooster:device-alarm-param-setting";
+
+        /**
+         * 设备号与设备SN缓存Key - Hash结构
+         */
+        String CACHE_DEVICE_SN_HASH = "rooster:device-sn";
+
+        /**
+         * 设备号与软件包适配车系缓存Key - Hash结构
+         */
+        String CACHE_DEVICE_ADAPTED_SERIES_HASH = "rooster:device-adapted-series";
     }
 
     /**
@@ -221,5 +231,25 @@ public interface Constants {
          * AES密钥CBC模式偏移量
          */
         String P = "p";
+    }
+
+    /**
+     * 设备软件包适配车系
+     */
+    interface AdaptedSeriesType {
+        /**
+         * 劲炫-GMMC
+         */
+        String ZC = "ZC";
+
+        /**
+         * 欧蓝德-GMMC
+         */
+        String RE = "RE";
+
+        /**
+         * 奕歌-GMMC
+         */
+        String NS = "NS";
     }
 }
