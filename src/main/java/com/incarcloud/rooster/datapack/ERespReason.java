@@ -25,6 +25,10 @@ public enum ERespReason {
      */
     ACTIVATED,
     /**
+     * 车辆已激活
+     */
+    VIN_ACTIVATED,
+    /**
      * 设备不存在
      */
     NON_EXIST_DEVICE,
