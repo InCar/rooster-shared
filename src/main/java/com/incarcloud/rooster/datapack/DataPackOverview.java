@@ -481,6 +481,24 @@ public class DataPackOverview extends DataPackObject {
 	private float steeringAngle ;
 
 	/**
+	 * GPS天线状态
+	 * 有效值范围：0x01 短路，0x02 开路，0x03 正常，“0xFE”表示异常，“0xFF”表示无效
+	 */
+	private Integer gpsAntennaStatus ;
+
+	/**
+	 * LTE天线主集状态
+	 * 有效值范围：01:LTE外置天线主集短路  10:LTE外置天线主集正常  11:LTE外置天线主集开路
+	 */
+	private int lteMainStatus ;
+
+	/**
+	 * LTE天线分集状态
+	 * 有效值范围：01:LTE外置天线分集短路  10:LTE外置天线分集正常  11:LTE外置天线分集开路
+	 */
+	private int lteDiversityStatus ;
+
+	/**
 	 * 空调状态
 	 * 0x01：开；
 	 * 0x02：关，
@@ -1093,6 +1111,30 @@ public class DataPackOverview extends DataPackObject {
 		this.steeringAngle = steeringAngle;
 	}
 
+	public Integer getGpsAntennaStatus() {
+		return gpsAntennaStatus;
+	}
+
+	public void setGpsAntennaStatus(Integer gpsAntennaStatus) {
+		this.gpsAntennaStatus = gpsAntennaStatus;
+	}
+
+	public int getLteMainStatus() {
+		return lteMainStatus;
+	}
+
+	public void setLteMainStatus(int lteMainStatus) {
+		this.lteMainStatus = lteMainStatus;
+	}
+
+	public int getLteDiversityStatus() {
+		return lteDiversityStatus;
+	}
+
+	public void setLteDiversityStatus(int lteDiversityStatus) {
+		this.lteDiversityStatus = lteDiversityStatus;
+	}
+
 	public Integer getAirConditionerStatus() {
 		return airConditionerStatus;
 	}
@@ -1241,8 +1283,8 @@ public class DataPackOverview extends DataPackObject {
 				", dangerLightStatus=" + dangerLightStatus +
 				", frontFoglightStatus=" + frontFoglightStatus +
 				", backFoglightStatus=" + backFoglightStatus +
-				", footBrakeLampStatus=" + footBrakeLampStatus +
 				", handBrakeLampStatus=" + handBrakeLampStatus +
+				", footBrakeLampStatus=" + footBrakeLampStatus +
 				", widthLampStatus=" + widthLampStatus +
 				", readingLampStatus=" + readingLampStatus +
 				", oilIndicatorLight=" + oilIndicatorLight +
@@ -1253,6 +1295,9 @@ public class DataPackOverview extends DataPackObject {
 				", handBrakeStatus=" + handBrakeStatus +
 				", accStatus=" + accStatus +
 				", steeringAngle=" + steeringAngle +
+				", gpsAntennaStatus=" + gpsAntennaStatus +
+				", lteMainStatus=" + lteMainStatus +
+				", lteDiversityStatus=" + lteDiversityStatus +
 				", airConditionerStatus=" + airConditionerStatus +
 				", airConditionerControlStatus=" + airConditionerControlStatus +
 				", airConditionerCompressorStatus=" + airConditionerCompressorStatus +
