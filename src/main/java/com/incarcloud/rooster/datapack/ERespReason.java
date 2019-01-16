@@ -23,5 +23,17 @@ public enum ERespReason {
     /**
      * 设备已激活
      */
-    ACTIVATED
+    ACTIVATED,
+    /**
+     * 设备不存在
+     */
+    NON_EXIST_DEVICE,
+    /**
+     * 与设备SN绑定关系错误
+     */
+    MISMATCH_DEVICE_SN,
+    /**
+     * 不适配该车系
+     */
+    NON_ADAPTED_SERIES
 }

@@ -176,6 +176,16 @@ public interface Constants {
          * 车辆标识
          */
         String VIN = "vin";
+
+        /**
+         * 设备SN号
+         */
+        String DEVICE_SN = "deviceSn";
+
+        /**
+         * 设备软件包适配车系
+         */
+        String ADAPTED_SERIES_TYPE = "adaptedSeriesType";
     }
 
     /**
