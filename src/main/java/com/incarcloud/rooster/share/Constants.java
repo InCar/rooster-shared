@@ -78,6 +78,13 @@ public interface Constants {
         String CACHE_VEHICLE_GEO = "rooster:vehicle-geo";
 
         /**
+         * 车辆VIN与地理扩展信息缓存Key - Hash结构
+         *
+         * @see com.incarcloud.rooster.datapack.DataPackPosition 位置数据
+         */
+        String CACHE_VEHICLE_GEO_EXTEND_HASH = "rooster:vehicle-geo-extend";
+
+        /**
          * 车辆Dispatch分发数据 - List结构
          */
         String CACHE_MESSAGE_QUEUE = "rooster:message-queue";

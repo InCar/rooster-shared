@@ -1,7 +1,5 @@
 package com.incarcloud.rooster.datapack;
 
-import java.util.Arrays;
-
 /**
  * @Title: DataPackActivation.java
  * @Project: rooster-shared-dataparser-api
