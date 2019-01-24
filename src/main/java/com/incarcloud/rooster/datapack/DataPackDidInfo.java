@@ -156,7 +156,14 @@ public class DataPackDidInfo extends DataPackObject{
 
     /**
      * MPU最近一次重启原因
-     * 0-WatchDog
+     * 0x00:WatchDog_NG
+     * 0x01:WLAN_Dial_NG
+     * 0x02:WLAN_DialLookUp_NG
+     * 0x03:DM_Timeout_By_TRC
+     * 0x04:DM_USB_NG
+     * 0x05:DM_NG
+     * 0x06:DM_WLAN_NG
+     * 0x07:WLAN_IOCTL_NG
      * 其他：预留
      */
     private Integer mpuLastestRestartReason ;
@@ -168,19 +175,12 @@ public class DataPackDidInfo extends DataPackObject{
 
     /**
      * MPU休眠条件状态
-     * 1:SC_BLOCK
-     * 2:DM_BLOCK
-     * 3:RM_BLOCK
-     * 4:NM_BLOCK
-     * 5:WM_BLOCK
-     * 6:CM_BLOCK
-     * 7:MCUA_BLOCK
-     * 8:WLAN_BLOCK
-     * 9:UP_BLOCK
-     * 10:CS_BLOCK
-     * 11:GPS_BLOCK
-     * 12:RS_BLOCK
-     * 13:AT_BLOCK
+     * 0x01:SC_BLOCK
+     * 0x02:DM_BLOCK
+     * 0x06:CM_BLOCK
+     * 0x07:MCUA_BLOCK
+     * 0x09:UP_BLOCK
+     * 0x0A:CS_BLOCK
      */
     private Integer mpuDormancyStatus ;
 
