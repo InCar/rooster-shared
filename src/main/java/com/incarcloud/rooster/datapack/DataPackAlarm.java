@@ -52,21 +52,21 @@ public class DataPackAlarm extends DataPackObject {
     public static final Map<Integer,Alarm> alarmMap = new HashMap<Integer,Alarm>(){
         {
             //安全气囊报警
-            put(0xE001,new DataPackAlarm.Alarm(0,"COM_ARIBAGALARM","安全气囊报警")) ;
+            put(0xE001,new DataPackAlarm.Alarm(0,"COM_ALARM_ARIBAG","安全气囊报警")) ;
             //碰撞报警
-            put(0xE002,new DataPackAlarm.Alarm(0,"COM_CRASHALARM","碰撞报警")) ;
+            put(0xE002,new DataPackAlarm.Alarm(0,"COM_ALARM_CRASH","碰撞报警")) ;
             //防盗报警
-            put(0xE003,new DataPackAlarm.Alarm(0,"COM_ANTITHEFTALARM","防盗报警")) ;
+            put(0xE003,new DataPackAlarm.Alarm(0,"COM_ALARM_ANTITHEFT","防盗报警")) ;
             //灯光未关闭报警
-            put(0xE004,new DataPackAlarm.Alarm(0,"COM_LIGHTNOTCLOSEDALARM","灯光未关闭报警")) ;
+            put(0xE004,new DataPackAlarm.Alarm(0,"COM_ALARM_LIGHTNOTCLOSED","灯光未关闭报警")) ;
             //蓄电池电压异常报警
-            put(0xE005,new DataPackAlarm.Alarm(0,"COM_BATTERYVOLTAGEALARM","蓄电池电压异常报警")) ;
+            put(0xE005,new DataPackAlarm.Alarm(0,"COM_ALARM_BATTERYVOLTAGE","蓄电池电压异常报警")) ;
             //胎压异常报警
-            put(0xE006,new DataPackAlarm.Alarm(0,"COM_TIREPRESSUREALARM","胎压异常报警")) ;
+            put(0xE006,new DataPackAlarm.Alarm(0,"COM_ALARM_TIREPRESSURE","胎压异常报警")) ;
             //机油压力报警
-            put(0xE007,new DataPackAlarm.Alarm(0,"COM_OILPRESSUREALARM","机油压力报警")) ;
+            put(0xE007,new DataPackAlarm.Alarm(0,"COM_ALARM_OILPRESSURE","机油压力报警")) ;
             //油量指示报警
-            put(0xE008,new DataPackAlarm.Alarm(0,"COM_FUELQUANTITYINDICATINGALARM","油量指示报警")) ;
+            put(0xE008,new DataPackAlarm.Alarm(0,"COM_ALARM_FUELQUANTITYINDICATING","油量指示报警")) ;
         }
     };
 
