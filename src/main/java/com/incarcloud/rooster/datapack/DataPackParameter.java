@@ -97,6 +97,13 @@ public class DataPackParameter extends DataPackObject {
      */
     private String publicApn ;
 
+    /**
+     * 用来业务支撑，不能用于解析处理
+     */
+    public DataPackParameter() {
+        super(new DataPackObject(new DataPack("init", "init", "init")));
+    }
+
     public DataPackParameter(DataPackObject object) {
         super(object);
     }
