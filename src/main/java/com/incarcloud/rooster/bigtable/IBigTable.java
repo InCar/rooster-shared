@@ -24,13 +24,6 @@ public interface IBigTable {
     void saveDataPackObject(String rowKey, DataPackObject data) throws Exception;
 
     /**
-     * 保存车架号
-     *
-     * @param vin 车架号
-     */
-    void saveVin(String vin) throws Exception;
-
-    /**
      * 根据行键获得车辆数据
      *
      * @param rowKey 行键
