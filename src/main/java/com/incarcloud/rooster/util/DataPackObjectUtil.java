@@ -333,7 +333,12 @@ public class DataPackObjectUtil {
     /**
      * 参数设置完成
      */
-    public static final String SETTINGCOMPLETED = "SETTINGCOMPLETED";
+    public static final String SETCOMPLETED = "SETCOMPLETED";
+
+    /**
+     * 报警参数设置完成
+     */
+    public static final String ALARMCOMPLETED = "ALARMCOMPLETED" ;
 
     /**
      * 唤醒回馈
@@ -521,7 +526,11 @@ public class DataPackObjectUtil {
             }
             if (clazz.equals(DataPackSettingCompleted.class)) {
                 // 参数设置完成
-                return SETTINGCOMPLETED;
+                return SETCOMPLETED;
+            }
+            if (clazz.equals(DataPackAlarmSettingCompleted.class)) {
+                // 报警参数设置完成
+                return ALARMCOMPLETED ;
             }
             if (clazz.equals(DataPackWakeUpFeedBack.class)) {
                 // 唤醒回馈
@@ -717,9 +726,13 @@ public class DataPackObjectUtil {
             // 公钥更新完成
             return DataPackRsaKeyCompleted.class;
         }
-        if (SETTINGCOMPLETED.equals(dataType)) {
+        if (SETCOMPLETED.equals(dataType)) {
             // 参数设置完成
             return DataPackSettingCompleted.class;
+        }
+        if (ALARMCOMPLETED.equals(dataType)) {
+            // 报警参数设置完成
+            return DataPackAlarmSettingCompleted.class ;
         }
         if (WAKEUPFEEDBACK.equals(dataType)) {
             // 唤醒回馈
