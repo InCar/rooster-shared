@@ -312,6 +312,25 @@ public class DataPackDtcInfo extends DataPackObject{
      */
     private Integer eSimStatusCount ;
 
+    /**
+     * SRS硬线故障
+     * “0x00”表示故障未发生，
+     * “0x20”上次清故障后测试失败，
+     * “0x21/0x29”故障已发生但未确认，
+     * “0x2B”故障确认发生，
+     * “0x2A”故障已恢复但未确认，
+     * “0x28”故障确认恢复，
+     * “0x50”测试未完成，
+     * “0xFE”表示异常，
+     * “0xFF”表示无效。
+     */
+    private Integer srsRigidLine ;
+
+    /**
+     * SRS硬线故障-发生次数
+     */
+    private Integer srsRigidLineCount ;
+
 
     public DataPackDtcInfo(DataPackObject object) {
         super(object);
@@ -574,6 +593,22 @@ public class DataPackDtcInfo extends DataPackObject{
         this.eSimStatusCount = eSimStatusCount;
     }
 
+    public Integer getSrsRigidLine() {
+        return srsRigidLine;
+    }
+
+    public void setSrsRigidLine(Integer srsRigidLine) {
+        this.srsRigidLine = srsRigidLine;
+    }
+
+    public Integer getSrsRigidLineCount() {
+        return srsRigidLineCount;
+    }
+
+    public void setSrsRigidLineCount(Integer srsRigidLineCount) {
+        this.srsRigidLineCount = srsRigidLineCount;
+    }
+
     @Override
     public String toString() {
         return "DataPackDtcInfo{" +
@@ -609,6 +644,8 @@ public class DataPackDtcInfo extends DataPackObject{
                 ", lteMainAntennaShortCount=" + lteMainAntennaShortCount +
                 ", eSimStatus=" + eSimStatus +
                 ", eSimStatusCount=" + eSimStatusCount +
+                ", srsRigidLine=" + srsRigidLine +
+                ", srsRigidLineCount=" + srsRigidLineCount +
                 '}';
     }
 }
