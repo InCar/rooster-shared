@@ -40,7 +40,7 @@ public class DataPackOverview extends DataPackObject {
 	private float vehicleSpeed;
 	/**
 	 * 档位 bit0-bit3 =0000 空档 =0001 1 档 =0010 2 档 =0011 3 档 =0100 4 档 =0101 5 档
-	 * =0110 6 档 =1101 倒档 =1110 自动 D 档 =1111 停车 P 档
+	 * =0110 6 档 =1101 L档 =1011 S档 =1100 倒档 =1110 自动 D 档 =1111 停车 P 档
 	 */
 	private Integer clutchStatus;
 	/**
