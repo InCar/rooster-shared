@@ -147,12 +147,12 @@ public class DataPackDidInfo extends DataPackObject{
     /**
      * 电源电压
      */
-    private Integer powerVoltage ;
+    private Float powerVoltage ;
 
     /**
      * 备用电池电压
      */
-    private Integer standbyPowerVoltage ;
+    private Float standbyPowerVoltage ;
 
     /**
      * MPU最近一次重启原因
@@ -175,14 +175,39 @@ public class DataPackDidInfo extends DataPackObject{
 
     /**
      * MPU休眠条件状态
-     * 0x01:SC_BLOCK
-     * 0x02:DM_BLOCK
-     * 0x06:CM_BLOCK
-     * 0x07:MCUA_BLOCK
-     * 0x09:UP_BLOCK
-     * 0x0A:CS_BLOCK
+     * SC_BLOCK 0-允许休眠，1- 阻塞休眠
      */
-    private Integer mpuDormancyStatus ;
+    private Integer mpuScBlockStatus ;
+
+    /**
+     * MPU休眠条件状态
+     * DM_BLOCK 0-允许休眠，1- 阻塞休眠
+     */
+    private Integer mpuDmBlockStatus ;
+
+    /**
+     * MPU休眠条件状态
+     * CM_BLOCK 0-允许休眠，1- 阻塞休眠
+     */
+    private Integer mpuCmBlockStatus ;
+
+    /**
+     * MPU休眠条件状态
+     * MCUA_BLOCK 0-允许休眠，1- 阻塞休眠
+     */
+    private Integer mpuMcuaBlockStatus ;
+
+    /**
+     * MPU休眠条件状态
+     * UP_BLOCK 0-允许休眠，1- 阻塞休眠
+     */
+    private Integer mpuUpBlockStatus ;
+
+    /**
+     * MPU休眠条件状态
+     * CS_BLOCK 0-允许休眠，1- 阻塞休眠
+     */
+    private Integer mpuCsBlockStatus ;
 
     /**
      * MCU休眠条件状态-ACC
@@ -410,19 +435,19 @@ public class DataPackDidInfo extends DataPackObject{
         this.mcuCurrentTime = mcuCurrentTime;
     }
 
-    public Integer getPowerVoltage() {
+    public Float getPowerVoltage() {
         return powerVoltage;
     }
 
-    public void setPowerVoltage(Integer powerVoltage) {
+    public void setPowerVoltage(Float powerVoltage) {
         this.powerVoltage = powerVoltage;
     }
 
-    public Integer getStandbyPowerVoltage() {
+    public Float getStandbyPowerVoltage() {
         return standbyPowerVoltage;
     }
 
-    public void setStandbyPowerVoltage(Integer standbyPowerVoltage) {
+    public void setStandbyPowerVoltage(Float standbyPowerVoltage) {
         this.standbyPowerVoltage = standbyPowerVoltage;
     }
 
@@ -442,12 +467,52 @@ public class DataPackDidInfo extends DataPackObject{
         this.mcuRestartCount = mcuRestartCount;
     }
 
-    public Integer getMpuDormancyStatus() {
-        return mpuDormancyStatus;
+    public Integer getMpuScBlockStatus() {
+        return mpuScBlockStatus;
     }
 
-    public void setMpuDormancyStatus(Integer mpuDormancyStatus) {
-        this.mpuDormancyStatus = mpuDormancyStatus;
+    public void setMpuScBlockStatus(Integer mpuScBlockStatus) {
+        this.mpuScBlockStatus = mpuScBlockStatus;
+    }
+
+    public Integer getMpuDmBlockStatus() {
+        return mpuDmBlockStatus;
+    }
+
+    public void setMpuDmBlockStatus(Integer mpuDmBlockStatus) {
+        this.mpuDmBlockStatus = mpuDmBlockStatus;
+    }
+
+    public Integer getMpuCmBlockStatus() {
+        return mpuCmBlockStatus;
+    }
+
+    public void setMpuCmBlockStatus(Integer mpuCmBlockStatus) {
+        this.mpuCmBlockStatus = mpuCmBlockStatus;
+    }
+
+    public Integer getMpuMcuaBlockStatus() {
+        return mpuMcuaBlockStatus;
+    }
+
+    public void setMpuMcuaBlockStatus(Integer mpuMcuaBlockStatus) {
+        this.mpuMcuaBlockStatus = mpuMcuaBlockStatus;
+    }
+
+    public Integer getMpuUpBlockStatus() {
+        return mpuUpBlockStatus;
+    }
+
+    public void setMpuUpBlockStatus(Integer mpuUpBlockStatus) {
+        this.mpuUpBlockStatus = mpuUpBlockStatus;
+    }
+
+    public Integer getMpuCsBlockStatus() {
+        return mpuCsBlockStatus;
+    }
+
+    public void setMpuCsBlockStatus(Integer mpuCsBlockStatus) {
+        this.mpuCsBlockStatus = mpuCsBlockStatus;
     }
 
     public Integer getMcuDormancyAccStatus() {
@@ -528,7 +593,12 @@ public class DataPackDidInfo extends DataPackObject{
                 ", standbyPowerVoltage=" + standbyPowerVoltage +
                 ", mpuLastestRestartReason=" + mpuLastestRestartReason +
                 ", mcuRestartCount=" + mcuRestartCount +
-                ", mpuDormancyStatus=" + mpuDormancyStatus +
+                ", mpuScBlockStatus=" + mpuScBlockStatus +
+                ", mpuDmBlockStatus=" + mpuDmBlockStatus +
+                ", mpuCmBlockStatus=" + mpuCmBlockStatus +
+                ", mpuMcuaBlockStatus=" + mpuMcuaBlockStatus +
+                ", mpuUpBlockStatus=" + mpuUpBlockStatus +
+                ", mpuCsBlockStatus=" + mpuCsBlockStatus +
                 ", mcuDormancyAccStatus=" + mcuDormancyAccStatus +
                 ", mcuDormancyCanStatus=" + mcuDormancyCanStatus +
                 ", mcuDormancyMPUStatus=" + mcuDormancyMPUStatus +
