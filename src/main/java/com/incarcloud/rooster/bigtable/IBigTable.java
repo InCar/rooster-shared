@@ -5,6 +5,7 @@ import com.incarcloud.rooster.datapack.DataPackObject;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 大数据操作抽象接口
@@ -22,6 +23,14 @@ public interface IBigTable {
      * @throws Exception
      */
     void saveDataPackObject(String rowKey, DataPackObject data) throws Exception;
+
+    /**
+     * 批量保存车辆数据
+     *
+     * @param data 车辆数据
+     * @throws Exception
+     */
+    void batchSaveDataPackObjects(Map<String, DataPackObject> data) throws Exception;
 
     /**
      * 根据行键获得车辆数据
