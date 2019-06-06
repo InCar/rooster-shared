@@ -8,6 +8,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import org.apache.commons.lang3.time.DateFormatUtils;
 
 /**
  * DataPackObject工具类
@@ -111,7 +112,8 @@ public class DataPackObjectUtil {
      * @return
      */
     public static String convertDetectionTimeToString(Date detectionTime) {
-        return DATE_FORMAT.format(detectionTime);
+        //return DATE_FORMAT.format(detectionTime);
+        return DateFormatUtils.format(detectionTime, DATE_PATTERN);
     }
 
     /**
