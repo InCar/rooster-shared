@@ -39,5 +39,9 @@ public enum ERespReason {
     /**
      * 不适配该车系
      */
-    NON_ADAPTED_SERIES
+    NON_ADAPTED_SERIES,
+    /**
+     * 设备已激活
+     */
+    DEVICE_ACTIVATED
 }
