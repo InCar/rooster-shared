@@ -78,7 +78,7 @@ public interface IDataParser {
      * 如果有多个数据包，返回第一个数据包类型（减少从缓存中取RSA加密次数）
      *
      * @param buffer 二进制数据包（InHandler对象中的累积缓冲的buffer）
-     * @return 数据包类型：0-激活, 1-登录, 2-登出, 3-心跳或普通数据包
+     * @return 数据包类型：0-激活, 1-登录, 2-登出, 3-心跳或普通数据包, 4-故障
      * @author Aaric
      * @see com.incarcloud.rooster.share.Constants.PackType 数据包类型常量说明
      * @since 2.2.2-SNAPSHOT
