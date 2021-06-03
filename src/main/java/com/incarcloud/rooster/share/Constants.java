@@ -196,13 +196,18 @@ public interface Constants {
     }
 
     /**
-     * 数据包类型：0-激活, 1-登录, 2-登出, 3-心跳(或普通数据包)
+     * 数据包类型：0-激活, 1-登录, 2-登出, 3-心跳(或普通数据包) 4-故障
      */
     interface PackType extends HeartbeatType {
         /**
          * 0-激活
          */
         int ACTIVATE = 0;
+
+        /**
+         * 4-故障
+         */
+        int FAULT = 4;
     }
 
     /**
