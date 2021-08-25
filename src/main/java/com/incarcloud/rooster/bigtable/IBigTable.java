@@ -25,6 +25,15 @@ public interface IBigTable {
     void saveDataPackObject(String rowKey, DataPackObject data) throws Exception;
 
     /**
+     * 保存车辆数据
+     * @param rowKey 行健
+     * @param data 车辆数据，格式化json字符串保持
+     * @param month 要保存的表月份后缀
+     * @throws Exception
+     */
+    void saveDataPackObject(String rowKey, DataPackObject data, String month) throws Exception;
+
+    /**
      * 批量保存车辆数据
      *
      * @param data 车辆数据
@@ -40,6 +49,7 @@ public interface IBigTable {
      * @return
      */
     <T extends DataPackObject> T getData(String rowKey, Class<T> clazz);
+    <T extends DataPackObject> T getData(String rowKey, String month, Class<T> clazz);
 
     /**
      * 获得某个类型最新车辆数据，支持指定按照最早或最新排序
@@ -50,6 +60,7 @@ public interface IBigTable {
      * @return
      */
     <T extends DataPackObject> T getData(String vin, Class<T> clazz, Sort sort);
+    <T extends DataPackObject> T getData(String vin, String month, Class<T> clazz, Sort sort);
 
     /**
      * 根据车架号和时间段查询原始数据列表
@@ -61,6 +72,7 @@ public interface IBigTable {
      * @return 数据集合
      */
     <T extends DataPackObject> List<T> queryData(String vin, Class<T> clazz, Date startTime, Date endTime);
+    <T extends DataPackObject> List<T> queryData(String vin, String month, Class<T> clazz, Date startTime, Date endTime);
 
     /**
      * 根据车架号和key分页查询原始数据列表
@@ -72,6 +84,7 @@ public interface IBigTable {
      * @return
      */
     <T extends DataPackObject> List<T> queryData(String vin, Class<T> clazz, Integer pageSize, String startKey);
+    <T extends DataPackObject> List<T> queryData(String vin, String month, Class<T> clazz, Integer pageSize, String startKey);
 
     /**
      * 根据车架号、时间段分页查询数据列表
@@ -86,6 +99,7 @@ public interface IBigTable {
      * @return
      */
     <T extends DataPackObject> List<T> queryData(String vin, Class<T> clazz, Sort sort, Date startTime, Date endTime, Integer pageSize, String startKey);
+    <T extends DataPackObject> List<T> queryData(String vin, String month, Class<T> clazz, Sort sort, Date startTime, Date endTime, Integer pageSize, String startKey);
 
     /**
      * 关闭，回收资源
