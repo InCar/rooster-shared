@@ -10,6 +10,7 @@ public class DataPackEcallEvent extends DataPackObject {
      * iccid
      */
     private String iccid;
+
     /**
      * ECALL开始时间
      */
@@ -82,6 +83,7 @@ public class DataPackEcallEvent extends DataPackObject {
 
     public void setIccid(String iccid) {
         this.iccid = iccid;
+
     }
 
     public long getStartTime() {
