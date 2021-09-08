@@ -267,5 +267,9 @@ public enum CommandType {
     /**
      * 自诊断DID
      */
-    DIAGNOSIS_DID
+    DIAGNOSIS_DID,
+    /**
+     * tbox运行日志上报-ftp方式
+     */
+    UPLOAD_LOG
 }
