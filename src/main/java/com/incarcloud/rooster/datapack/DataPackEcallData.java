@@ -7,10 +7,6 @@ package com.incarcloud.rooster.datapack;
  */
 public class DataPackEcallData extends DataPackObject {
     /**
-     * vin
-     */
-    private String vin;
-    /**
      * 报警类型，有效值范围：
      * “0x00”：自动触发
      * “0x01”：人工触发
@@ -42,16 +38,6 @@ public class DataPackEcallData extends DataPackObject {
                 ", longitude=" + longitude +
                 ", latitude=" + latitude +
                 '}';
-    }
-
-    @Override
-    public String getVin() {
-        return vin;
-    }
-
-    @Override
-    public void setVin(String vin) {
-        this.vin = vin;
     }
 
     public int getAlarmType() {

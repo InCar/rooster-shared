@@ -8,6 +8,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+
 import org.apache.commons.lang3.time.DateFormatUtils;
 
 /**
@@ -340,7 +341,7 @@ public class DataPackObjectUtil {
     /**
      * 报警参数设置完成
      */
-    public static final String ALARMCOMPLETED = "ALARMCOMPLETED" ;
+    public static final String ALARMCOMPLETED = "ALARMCOMPLETED";
 
     /**
      * 唤醒回馈
@@ -355,12 +356,20 @@ public class DataPackObjectUtil {
     /**
      * T-BOX DTC信息
      */
-    public static final String DTCINFOMATION = "DTCINFOMATION" ;
+    public static final String DTCINFOMATION = "DTCINFOMATION";
 
     /**
      * T-BOX DID信息
      */
-    public static final String DIDINFOMATION = "DIDINFOMATION" ;
+    public static final String DIDINFOMATION = "DIDINFOMATION";
+    /**
+     * T-BOX ecall信息
+     */
+    public static final String ECALL = "ECALL";
+    /**
+     * T-BOX ecall event信息
+     */
+    public static final String ECALLEVENT = "ECALLEVENT";
 
     /**
      * 获取数据类型
@@ -532,7 +541,7 @@ public class DataPackObjectUtil {
             }
             if (clazz.equals(DataPackAlarmSettingCompleted.class)) {
                 // 报警参数设置完成
-                return ALARMCOMPLETED ;
+                return ALARMCOMPLETED;
             }
             if (clazz.equals(DataPackWakeUpFeedBack.class)) {
                 // 唤醒回馈
@@ -544,11 +553,19 @@ public class DataPackObjectUtil {
             }
             if (clazz.equals(DataPackDtcInfo.class)) {
                 // T-BOX DTC 信息
-                return DTCINFOMATION ;
+                return DTCINFOMATION;
             }
             if (clazz.equals(DataPackDidInfo.class)) {
                 // T-BOX DID 信息
-                return DIDINFOMATION ;
+                return DIDINFOMATION;
+            }
+            if (clazz.equals(DataPackEcallData.class)) {
+                // T-BOX DID 信息
+                return ECALL;
+            }
+            if (clazz.equals(DataPackEcallEvent.class)) {
+                // T-BOX DID 信息
+                return ECALLEVENT;
             }
         }
         return null;
@@ -734,7 +751,7 @@ public class DataPackObjectUtil {
         }
         if (ALARMCOMPLETED.equals(dataType)) {
             // 报警参数设置完成
-            return DataPackAlarmSettingCompleted.class ;
+            return DataPackAlarmSettingCompleted.class;
         }
         if (WAKEUPFEEDBACK.equals(dataType)) {
             // 唤醒回馈
@@ -746,11 +763,21 @@ public class DataPackObjectUtil {
         }
         if (DTCINFOMATION.equals(dataType)) {
             // T-BOX DTC 信息
-            return DataPackDtcInfo.class ;
+            return DataPackDtcInfo.class;
         }
         if (DIDINFOMATION.equals(dataType)) {
             // T-BOX DID 信息
-            return DataPackDidInfo.class ;
+            return DataPackDidInfo.class;
+        }
+
+        if (ECALL.equals(dataType)) {
+            // T-BOX ecall 信息
+            return DataPackEcallData.class;
+        }
+
+        if (ECALLEVENT.equals(dataType)) {
+            // T-BOX ecall 信息
+            return DataPackEcallEvent.class;
         }
         return null;
     }
