@@ -273,5 +273,10 @@ public interface Constants {
          * 奕歌-GMMC
          */
         String NS = "NS";
+
+        /**
+         * DG-GMMC
+         */
+        String DG = "DG";
     }
 }
