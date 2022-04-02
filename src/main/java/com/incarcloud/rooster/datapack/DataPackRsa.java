@@ -1,13 +1,20 @@
 package com.incarcloud.rooster.datapack;
 
-import java.util.Arrays;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+import lombok.experimental.Accessors;
 
 /**
  * RSA数据
  *
  * @author Aaric, created on 2017-09-01T14:40.
- * @since 2.0
+ * @version 2.0
  */
+@Getter
+@Setter
+@Accessors(chain = true)
+@ToString(callSuper = true)
 public class DataPackRsa extends DataPackObject {
 
     /**
@@ -21,29 +28,5 @@ public class DataPackRsa extends DataPackObject {
 
     public DataPackRsa(DataPackObject object) {
         super(object);
-    }
-
-    public Long getE() {
-        return e;
-    }
-
-    public void setE(Long e) {
-        this.e = e;
-    }
-
-    public byte[] getN() {
-        return n;
-    }
-
-    public void setN(byte[] n) {
-        this.n = n;
-    }
-
-    @Override
-    public String toString() {
-        return "DataPackRsa{" +
-                "e=" + e +
-                ", n=" + Arrays.toString(n) +
-                '}';
     }
 }

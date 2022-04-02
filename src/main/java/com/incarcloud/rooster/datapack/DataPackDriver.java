@@ -1,13 +1,22 @@
 package com.incarcloud.rooster.datapack;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+import lombok.experimental.Accessors;
+
 import java.util.Date;
 
 /**
  * 驾驶员数据
  *
  * @author Aaric, created on 2017-09-01T13:57.
- * @since 2.0
+ * @version 2.0
  */
+@Getter
+@Setter
+@Accessors(chain = true)
+@ToString(callSuper = true)
 public class DataPackDriver extends DataPackObject {
 
     /**
@@ -41,74 +50,5 @@ public class DataPackDriver extends DataPackObject {
 
     public DataPackDriver(DataPackObject object) {
         super(object);
-    }
-
-    public Integer getDriverICStatus() {
-        return driverICStatus;
-    }
-
-    public void setDriverICStatus(Integer driverICStatus) {
-        this.driverICStatus = driverICStatus;
-    }
-
-    public Date getDriverICTime() {
-        return driverICTime;
-    }
-
-    public void setDriverICTime(Date driverICTime) {
-        this.driverICTime = driverICTime;
-    }
-
-    public Integer getDriverICResult() {
-        return driverICResult;
-    }
-
-    public void setDriverICResult(Integer driverICResult) {
-        this.driverICResult = driverICResult;
-    }
-
-    public String getDriverName() {
-        return driverName;
-    }
-
-    public void setDriverName(String driverName) {
-        this.driverName = driverName;
-    }
-
-    public String getDriverCertCode() {
-        return driverCertCode;
-    }
-
-    public void setDriverCertCode(String driverCertCode) {
-        this.driverCertCode = driverCertCode;
-    }
-
-    public String getDriverCertOrganizationName() {
-        return driverCertOrganizationName;
-    }
-
-    public void setDriverCertOrganizationName(String driverCertOrganizationName) {
-        this.driverCertOrganizationName = driverCertOrganizationName;
-    }
-
-    public Date getDriverCertExpireDate() {
-        return driverCertExpireDate;
-    }
-
-    public void setDriverCertExpireDate(Date driverCertExpireDate) {
-        this.driverCertExpireDate = driverCertExpireDate;
-    }
-
-    @Override
-    public String toString() {
-        return "DataPackDriver{" +
-                "driverICStatus=" + driverICStatus +
-                ", driverICTime=" + driverICTime +
-                ", driverICResult=" + driverICResult +
-                ", driverName='" + driverName + '\'' +
-                ", driverCertCode='" + driverCertCode + '\'' +
-                ", driverCertOrganizationName='" + driverCertOrganizationName + '\'' +
-                ", driverCertExpireDate=" + driverCertExpireDate +
-                '}';
     }
 }

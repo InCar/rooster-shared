@@ -2,8 +2,12 @@ package com.incarcloud.rooster.datapack;
 
 /**
  * 应答原因
+ *
+ * @author Aaric
+ * @version 1.0
  */
 public enum ERespReason {
+
     /**
      * 未知错误
      */

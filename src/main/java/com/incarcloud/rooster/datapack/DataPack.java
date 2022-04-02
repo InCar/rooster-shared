@@ -1,25 +1,26 @@
 package com.incarcloud.rooster.datapack;
 
-import com.incarcloud.rooster.share.Constants;
+import com.incarcloud.shared.share.Constants;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.io.UnsupportedEncodingException;
 import java.util.Base64;
 import java.util.Date;
 
 /**
+ * gather解析出来的包
+ *
  * @author Xiong Guanghua
- * @ClassName: DataPackWrap
- * @Description: gather解析出来的包
- * @date 2017-06-07 17:34
+ * @version 1.0
  */
 public class DataPack {
 
     // 协议组织、名称和版本
-    final protected String _group;
-    final protected String _name;
-    final protected String _version; // like 1.2.3
+    protected String _group;
+    protected String _name;
+    protected String _version; // like 1.2.3
 
     // 务必小心处理_buf, 它需要手动释放freeBuffer() http://netty.io/wiki/reference-counted-objects.html#derived-buffers
     private ByteBuf _buf;
@@ -37,12 +38,15 @@ public class DataPack {
      * @param version 协议版本
      */
     public DataPack(String group, String name, String version) {
-        if (group == null || name == null || version == null)
+        if (group == null || name == null || version == null) {
             throw new IllegalArgumentException();
-        if (group.isEmpty() || name.isEmpty() || version.isEmpty())
+        }
+        if (group.isEmpty() || name.isEmpty() || version.isEmpty()) {
             throw new IllegalArgumentException();
-        if (group.contains("-") || name.contains("-") || version.contains("-"))
+        }
+        if (group.contains("-") || name.contains("-") || version.contains("-")) {
             throw new IllegalArgumentException("group, name and version can not contain character \"-\" ");
+        }
 
         _group = group;
         _name = name;
@@ -82,7 +86,9 @@ public class DataPack {
      * @return
      */
     public byte[] getDataBytes() {
-        if (_buf == null) return null;
+        if (_buf == null) {
+            return null;
+        }
         byte[] dst = new byte[_buf.readableBytes()];
         _buf.getBytes(0, dst);
         return dst;
@@ -180,12 +186,6 @@ public class DataPack {
 
     @Override
     public String toString() {
-        return "DataPack{" +
-                "_group='" + _group + '\'' +
-                ", _name='" + _name + '\'' +
-                ", _version='" + _version + '\'' +
-                ", _buf=" + _buf +
-                ", receiveTime=" + receiveTime +
-                '}';
+        return ToStringBuilder.reflectionToString(this);
     }
 }

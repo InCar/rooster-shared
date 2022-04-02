@@ -1,11 +1,20 @@
 package com.incarcloud.rooster.mq;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+import lombok.experimental.Accessors;
+
 /**
  * 远程控制命令MQ发送实体
  *
  * @author Aaric, created on 2018-01-10T15:57.
- * @since 2.1.12-SNAPSHOT
+ * @version 2.1.12-SNAPSHOT
  */
+@Getter
+@Setter
+@Accessors(chain = true)
+@ToString
 public class RemoteCmdSendMsg {
 
     /**
@@ -61,46 +70,6 @@ public class RemoteCmdSendMsg {
         this.deviceId = deviceId;
         this.packId = packId;
         this.cmdType = cmdType;
-        this.cmdString = cmdString;
-    }
-
-    public String getRefId() {
-        return refId;
-    }
-
-    public void setRefId(String refId) {
-        this.refId = refId;
-    }
-
-    public String getDeviceId() {
-        return deviceId;
-    }
-
-    public void setDeviceId(String deviceId) {
-        this.deviceId = deviceId;
-    }
-
-    public Integer getPackId() {
-        return packId;
-    }
-
-    public void setPackId(Integer packId) {
-        this.packId = packId;
-    }
-
-    public String getCmdType() {
-        return cmdType;
-    }
-
-    public void setCmdType(String cmdType) {
-        this.cmdType = cmdType;
-    }
-
-    public String getCmdString() {
-        return cmdString;
-    }
-
-    public void setCmdString(String cmdString) {
         this.cmdString = cmdString;
     }
 }

@@ -2,6 +2,10 @@ package com.incarcloud.rooster.mq;
 
 import com.incarcloud.rooster.datapack.ERespReason;
 import com.incarcloud.rooster.security.RsaUtil;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+import lombok.experimental.Accessors;
 
 import java.util.Base64;
 
@@ -9,8 +13,12 @@ import java.util.Base64;
  * Rsa激活信息MQ发送实体
  *
  * @author Aaric, created on 2019-01-17T11:45.
- * @since 2.4.3-SNAPSHOT
+ * @version 2.4.3-SNAPSHOT
  */
+@Getter
+@Setter
+@Accessors(chain = true)
+@ToString
 public class RsaActivationMsg {
 
     /**
@@ -51,7 +59,7 @@ public class RsaActivationMsg {
     /**
      * 激活类型
      *
-     * @see com.incarcloud.rooster.datapack.ERespReason 应答原因
+     * @see ERespReason 应答原因
      */
     private String resultType = ERespReason.OK.toString();
 
@@ -83,77 +91,5 @@ public class RsaActivationMsg {
         this.rsaPrivateExponent = Base64.getEncoder().encodeToString(rsaEntity.getPrivateKeyExponentBytes());
         this.rsaPublicModulus = Base64.getEncoder().encodeToString(rsaEntity.getPublicKeyModulusBytes());
         this.rsaPublicExponent = Long.valueOf(rsaEntity.getPublicKeyExponent()).intValue();
-    }
-
-    public String getDeviceId() {
-        return deviceId;
-    }
-
-    public void setDeviceId(String deviceId) {
-        this.deviceId = deviceId;
-    }
-
-    public String getDeviceCode() {
-        return deviceCode;
-    }
-
-    public void setDeviceCode(String deviceCode) {
-        this.deviceCode = deviceCode;
-    }
-
-    public String getVin() {
-        return vin;
-    }
-
-    public void setVin(String vin) {
-        this.vin = vin;
-    }
-
-    public String getRsaPrivateModulus() {
-        return rsaPrivateModulus;
-    }
-
-    public void setRsaPrivateModulus(String rsaPrivateModulus) {
-        this.rsaPrivateModulus = rsaPrivateModulus;
-    }
-
-    public String getRsaPrivateExponent() {
-        return rsaPrivateExponent;
-    }
-
-    public void setRsaPrivateExponent(String rsaPrivateExponent) {
-        this.rsaPrivateExponent = rsaPrivateExponent;
-    }
-
-    public String getRsaPublicModulus() {
-        return rsaPublicModulus;
-    }
-
-    public void setRsaPublicModulus(String rsaPublicModulus) {
-        this.rsaPublicModulus = rsaPublicModulus;
-    }
-
-    public int getRsaPublicExponent() {
-        return rsaPublicExponent;
-    }
-
-    public void setRsaPublicExponent(int rsaPublicExponent) {
-        this.rsaPublicExponent = rsaPublicExponent;
-    }
-
-    public String getResultType() {
-        return resultType;
-    }
-
-    public void setResultType(String resultType) {
-        this.resultType = resultType;
-    }
-
-    public String getResultException() {
-        return resultException;
-    }
-
-    public void setResultException(String resultException) {
-        this.resultException = resultException;
     }
 }

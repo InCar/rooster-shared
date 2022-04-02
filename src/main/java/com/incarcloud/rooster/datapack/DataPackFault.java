@@ -1,6 +1,11 @@
 package com.incarcloud.rooster.datapack;
 
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+import lombok.experimental.Accessors;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,8 +19,12 @@ import java.util.Map;
  * </ul>
  *
  * @author Kong, created on 2018-07-02T14:05.
- * @since 2.0
+ * @version 2.0
  */
+@Getter
+@Setter
+@Accessors(chain = true)
+@ToString(callSuper = true)
 public class DataPackFault extends DataPackObject {
 
     /**
@@ -31,73 +40,53 @@ public class DataPackFault extends DataPackObject {
         super(object);
     }
 
-    public List<Fault> getFaultList() {
-        return faultList;
-    }
-
-    public void setFaultList(List<Fault> faultList) {
-        this.faultList = faultList;
-    }
-
-    public DataPackPosition getPosition() {
-        return position;
-    }
-
-    public void setPosition(DataPackPosition position) {
-        this.position = position;
-    }
-
     /**
      * 故障参数信息
      */
-    public static final Map<Integer,Fault> alarmMap = new HashMap<Integer,Fault>(){
+    private static Map<Integer, Fault> alarmMap = new HashMap<Integer, Fault>() {
         {
             //电子制动力分配系统故障-EBD故障
-            put(0xF001,new DataPackFault.Fault(0,"COM_FAULT_EBD","电子制动力分配系统")) ;
+            put(0xF001, new Fault(0, "COM_FAULT_EBD", "电子制动力分配系统"));
             //防抱死制动系统故障-ABS故障
-            put(0xF002,new DataPackFault.Fault(0,"COM_FAULT_ABS","防抱死制动系统")) ;
+            put(0xF002, new Fault(0, "COM_FAULT_ABS", "防抱死制动系统"));
             //电子稳定系统故障-ESP故障
-            put(0xF003,new DataPackFault.Fault(0,"COM_FAULT_ESP","车身电子稳定系统")) ;
+            put(0xF003, new Fault(0, "COM_FAULT_ESP", "车身电子稳定系统"));
             //自适应巡航系统故障-ACC故障
-            put(0xF004,new DataPackFault.Fault(0,"COM_FAULT_ACC","自适应巡航控制系统")) ;
+            put(0xF004, new Fault(0, "COM_FAULT_ACC", "自适应巡航控制系统"));
             //前方防撞预警系统故障-FCM故障
-            put(0xF005,new DataPackFault.Fault(0,"COM_FAULT_FCM","防撞预警系统")) ;
+            put(0xF005, new Fault(0, "COM_FAULT_FCM", "防撞预警系统"));
             //自动远光系统故障-AHB故障
-            put(0xF006,new DataPackFault.Fault(0,"COM_FAULT_AHB","远光自动控制系统")) ;
+            put(0xF006, new Fault(0, "COM_FAULT_AHB", "远光自动控制系统"));
             //电动助力转向系统故障-EPS故障
-            put(0xF007,new DataPackFault.Fault(0,"COM_FAULT_EPS","电子助力转向系统")) ;
+            put(0xF007, new Fault(0, "COM_FAULT_EPS", "电子助力转向系统"));
             //安全气囊故障-SRS故障
-            put(0xF008,new DataPackFault.Fault(0,"COM_FAULT_SRS","汽车安全气囊系统")) ;
+            put(0xF008, new Fault(0, "COM_FAULT_SRS", "汽车安全气囊系统"));
             //发动机故障-GASOLINE故障
-            put(0xF009,new DataPackFault.Fault(0,"COM_FAULT_GASOLINE","发动机系统")) ;
+            put(0xF009, new Fault(0, "COM_FAULT_GASOLINE", "发动机系统"));
             //变速箱故障-CVT故障
-            put(0xF00A,new DataPackFault.Fault(0,"COM_FAULT_CVT","变速系统")) ;
+            put(0xF00A, new Fault(0, "COM_FAULT_CVT", "变速系统"));
             //胎压监测系统故障-TPMS故障
-            put(0xF00B,new DataPackFault.Fault(0,"COM_FAULT_TPMS","轮胎压力监测系统")) ;
+            put(0xF00B, new Fault(0, "COM_FAULT_TPMS", "轮胎压力监测系统"));
             //重量感应系统故障-WSS故障
-            put(0xF00C,new DataPackFault.Fault(0,"COM_FAULT_WSS","重量感应系统")) ;
+            put(0xF00C, new Fault(0, "COM_FAULT_WSS", "重量感应系统"));
             //弯道辅助照明系统故障-AFS故障
-            put(0xF00D,new DataPackFault.Fault(0,"COM_FAULT_AFS","弯道辅助照明系统")) ;
+            put(0xF00D, new Fault(0, "COM_FAULT_AFS", "弯道辅助照明系统"));
             //制动辅助系统故障-BAS故障
-            put(0xF00E,new DataPackFault.Fault(0,"COM_FAULT_BAS","制动辅助系统")) ;
+            put(0xF00E, new Fault(0, "COM_FAULT_BAS", "制动辅助系统"));
             //车辆出入管理系统故障-ETC故障
-            put(0xF00F,new DataPackFault.Fault(0,"COM_FAULT_ETC","车辆出入管理系统")) ;
+            put(0xF00F, new Fault(0, "COM_FAULT_ETC", "车辆出入管理系统"));
             //主动防侧倾系统故障-ARS故障
-            put(0xF010,new DataPackFault.Fault(0,"COM_FAULT_ARS","主动防侧倾系统")) ;
+            put(0xF010, new Fault(0, "COM_FAULT_ARS", "主动防侧倾系统"));
         }
     };
-
-    @Override
-    public String toString() {
-        return "DataPackFault{" +
-                "faultList=" + faultList +
-                ", position=" + position +
-                '}';
-    }
 
     /**
      * 单个故障对象
      */
+    @Getter
+    @Setter
+    @Accessors(chain = true)
+    @ToString
     public static class Fault {
 
         /**
@@ -134,71 +123,10 @@ public class DataPackFault extends DataPackObject {
             this.faultDesc = faultDesc;
         }
 
-        public Fault(Integer faultValue, String faultCode, String faultName){
-            this.faultValue = String.valueOf(faultValue) ;
-            this.faultCode = faultCode ;
-            this.faultName = faultName ;
-        }
-
-        public String getFaultName() {
-            return faultName;
-        }
-
-        public void setFaultName(String faultName) {
+        public Fault(Integer faultValue, String faultCode, String faultName) {
+            this.faultValue = String.valueOf(faultValue);
+            this.faultCode = faultCode;
             this.faultName = faultName;
         }
-
-        public String getFaultCode() {
-            return faultCode;
-        }
-
-        public void setFaultCode(String faultCode) {
-            this.faultCode = faultCode;
-        }
-
-        public String getFaultValue() {
-            return faultValue;
-        }
-
-        public void setFaultValue(String faultValue) {
-            this.faultValue = faultValue;
-        }
-
-        public String getFaultDesc() {
-            return faultDesc;
-        }
-
-        public void setFaultDesc(String faultDesc) {
-            this.faultDesc = faultDesc;
-        }
-
-        @Override
-        public String toString() {
-            return "Fault{" +
-                    "faultName='" + faultName + '\'' +
-                    ", faultCode='" + faultCode + '\'' +
-                    ", faultValue='" + faultValue + '\'' +
-                    ", faultDesc='" + faultDesc + '\'' +
-                    ", customInfo='" + customInfo + '\'' +
-                    '}';
-        }
-
-        /**
-		 * 获取customInfo  
-		 * @return customInfo customInfo  
-		 */
-		public String getCustomInfo() {
-			return customInfo;
-		}
-		
-
-		/**  
-		 * 设置customInfo  
-		 * @param customInfo customInfo  
-		 */
-		public void setCustomInfo(String customInfo) {
-			this.customInfo = customInfo;
-		}
-		
     }
 }

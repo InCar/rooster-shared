@@ -1,5 +1,5 @@
 group 'com.incarcloud'
-version '2.5.2-SNAPSHOT'
+version '2.5.3-SNAPSHOT'
 
 allprojects {
     apply plugin: 'java'
@@ -51,6 +51,8 @@ allprojects {
 }
 
 dependencies {
+    compileOnly group: 'org.projectlombok', name: 'lombok', version: "1.18.22"
+    annotationProcessor group: 'org.projectlombok', name: 'lombok', version: "1.18.22"
     compile("org.slf4j:slf4j-api:1.7.+")
 
     compile("org.apache.commons:commons-lang3:3.+")

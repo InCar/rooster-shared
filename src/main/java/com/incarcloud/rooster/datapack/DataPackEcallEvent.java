@@ -1,11 +1,22 @@
 package com.incarcloud.rooster.datapack;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+import lombok.experimental.Accessors;
+
 /**
+ * DataPackEcallEvent
+ *
  * @author chenzhao
- * @description 6.7.6 ECALL事件日志上报
- * @date 2021/9/3 5:09 下午
+ * @version 2.0
  */
+@Getter
+@Setter
+@Accessors(chain = true)
+@ToString(callSuper = true)
 public class DataPackEcallEvent extends DataPackObject {
+
     /**
      * iccid
      */
@@ -60,85 +71,5 @@ public class DataPackEcallEvent extends DataPackObject {
 
     public DataPackEcallEvent(DataPackObject object) {
         super(object);
-    }
-
-    @Override
-    public String toString() {
-        return "DataPackEcallEvent{" +
-                "vin='" + vin + '\'' +
-                ", iccid='" + iccid + '\'' +
-                ", startTime=" + startTime +
-                ", success=" + success +
-                ", networkType=" + networkType +
-                ", signal=" + signal +
-                ", ecallFailure=" + ecallFailure +
-                ", rolloverDetection=" + rolloverDetection +
-                ", airbagCrashOrder=" + airbagCrashOrder +
-                '}';
-    }
-
-    public String getIccid() {
-        return iccid;
-    }
-
-    public void setIccid(String iccid) {
-        this.iccid = iccid;
-
-    }
-
-    public long getStartTime() {
-        return startTime;
-    }
-
-    public void setStartTime(long startTime) {
-        this.startTime = startTime;
-    }
-
-    public int getSuccess() {
-        return success;
-    }
-
-    public void setSuccess(int success) {
-        this.success = success;
-    }
-
-    public int getNetworkType() {
-        return networkType;
-    }
-
-    public void setNetworkType(int networkType) {
-        this.networkType = networkType;
-    }
-
-    public int getSignal() {
-        return signal;
-    }
-
-    public void setSignal(int signal) {
-        this.signal = signal;
-    }
-
-    public int getEcallFailure() {
-        return ecallFailure;
-    }
-
-    public void setEcallFailure(int ecallFailure) {
-        this.ecallFailure = ecallFailure;
-    }
-
-    public int getRolloverDetection() {
-        return rolloverDetection;
-    }
-
-    public void setRolloverDetection(int rolloverDetection) {
-        this.rolloverDetection = rolloverDetection;
-    }
-
-    public int getAirbagCrashOrder() {
-        return airbagCrashOrder;
-    }
-
-    public void setAirbagCrashOrder(int airbagCrashOrder) {
-        this.airbagCrashOrder = airbagCrashOrder;
     }
 }

@@ -1,11 +1,20 @@
 package com.incarcloud.rooster.datapack;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+import lombok.experimental.Accessors;
+
 /**
+ * DataPackCanAdas
+ *
  * @author ChenZhao
- * @ClassName: DataPackCanAdas
- * @Description: can ADAS 0x10FF01DF
- * @date 2017-09-14 14:38
+ * @version 1.0
  */
+@Getter
+@Setter
+@Accessors(chain = true)
+@ToString(callSuper = true)
 public class DataPackCanAdas extends DataPackObject {
 
     /**
@@ -44,83 +53,5 @@ public class DataPackCanAdas extends DataPackObject {
 
     public DataPackCanAdas(DataPackObject dataPack) {
         super(dataPack);
-    }
-
-    public Integer getLeftLaneDetected() {
-        return leftLaneDetected;
-    }
-
-    public void setLeftLaneDetected(Integer leftLaneDetected) {
-        this.leftLaneDetected = leftLaneDetected;
-    }
-
-    public Integer getLaneDepartureLeft() {
-        return laneDepartureLeft;
-    }
-
-    public void setLaneDepartureLeft(Integer laneDepartureLeft) {
-        this.laneDepartureLeft = laneDepartureLeft;
-    }
-
-    public Integer getRightLaneDetected() {
-        return rightLaneDetected;
-    }
-
-    public void setRightLaneDetected(Integer rightLaneDetected) {
-        this.rightLaneDetected = rightLaneDetected;
-    }
-
-    public Integer getLaneDpartureRight() {
-        return laneDpartureRight;
-    }
-
-    public void setLaneDpartureRight(Integer laneDpartureRight) {
-        this.laneDpartureRight = laneDpartureRight;
-    }
-
-    public Integer getVehicleDecectResult() {
-        return vehicleDecectResult;
-    }
-
-    public void setVehicleDecectResult(Integer vehicleDecectResult) {
-        this.vehicleDecectResult = vehicleDecectResult;
-    }
-
-    public Integer getCrashTime() {
-        return crashTime;
-    }
-
-    public void setCrashTime(Integer crashTime) {
-        this.crashTime = crashTime;
-    }
-
-    public Integer getErrorInfo() {
-        return errorInfo;
-    }
-
-    public void setErrorInfo(Integer errorInfo) {
-        this.errorInfo = errorInfo;
-    }
-
-    public Integer getInvalidInfo() {
-        return invalidInfo;
-    }
-
-    public void setInvalidInfo(Integer invalidInfo) {
-        this.invalidInfo = invalidInfo;
-    }
-
-    @Override
-    public String toString() {
-        return "DataPackCanAdas{" +
-                "leftLaneDetected=" + leftLaneDetected +
-                ", laneDepartureLeft=" + laneDepartureLeft +
-                ", rightLaneDetected=" + rightLaneDetected +
-                ", laneDpartureRight=" + laneDpartureRight +
-                ", vehicleDecectResult=" + vehicleDecectResult +
-                ", crashTime=" + crashTime +
-                ", errorInfo=" + errorInfo +
-                ", invalidInfo=" + invalidInfo +
-                '}';
     }
 }

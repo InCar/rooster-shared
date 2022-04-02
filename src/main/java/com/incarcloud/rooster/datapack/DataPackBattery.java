@@ -1,5 +1,10 @@
 package com.incarcloud.rooster.datapack;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+import lombok.experimental.Accessors;
+
 import java.util.List;
 
 /**
@@ -11,8 +16,12 @@ import java.util.List;
  * </ul>
  *
  * @author Aaric, created on 2017-06-27T14:04.
- * @since 2.0
+ * @version 2.0
  */
+@Getter
+@Setter
+@Accessors(chain = true)
+@ToString(callSuper = true)
 public class DataPackBattery extends DataPackObject {
 
     /**
@@ -59,101 +68,5 @@ public class DataPackBattery extends DataPackObject {
 
     public DataPackBattery(DataPackObject dataPack) {
         super(dataPack);
-    }
-
-    @Override
-    public String toString() {
-        return "DataPackBattery{" +
-                "batterySysNumber=" + batterySysNumber +
-                ", batterySysIndex=" + batterySysIndex +
-                ", totalVoltage=" + totalVoltage +
-                ", totalCurrent=" + totalCurrent +
-                ", batteryVoltages=" + batteryVoltages +
-                ", batteryNumber=" + batteryNumber +
-                ", batteryStartIndex=" + batteryStartIndex +
-                ", batteryPacketNumber=" + batteryPacketNumber +
-                ", id='" + id + '\'' +
-                ", deviceName='" + deviceName + '\'' +
-                ", packId=" + packId +
-                ", protocolName='" + protocolName + '\'' +
-                ", protocolVersion='" + protocolVersion + '\'' +
-                ", deviceId='" + deviceId + '\'' +
-                ", tripId=" + tripId +
-                ", vid='" + vid + '\'' +
-                ", vin='" + vin + '\'' +
-                ", license='" + license + '\'' +
-                ", subPackTotal=" + subPackTotal +
-                ", subPackIndex=" + subPackIndex +
-                ", encryptName='" + encryptName + '\'' +
-                ", detectionTime=" + detectionTime +
-                ", _group='" + _group + '\'' +
-                ", _name='" + _name + '\'' +
-                ", _version='" + _version + '\'' +
-                ", receiveTime=" + receiveTime +
-                '}';
-    }
-
-    public Integer getBatterySysNumber() {
-        return batterySysNumber;
-    }
-
-    public void setBatterySysNumber(Integer batterySysNumber) {
-        this.batterySysNumber = batterySysNumber;
-    }
-
-    public Integer getBatterySysIndex() {
-        return batterySysIndex;
-    }
-
-    public void setBatterySysIndex(Integer batterySysIndex) {
-        this.batterySysIndex = batterySysIndex;
-    }
-
-    public Float getTotalVoltage() {
-        return totalVoltage;
-    }
-
-    public void setTotalVoltage(Float totalVoltage) {
-        this.totalVoltage = totalVoltage;
-    }
-
-    public Float getTotalCurrent() {
-        return totalCurrent;
-    }
-
-    public void setTotalCurrent(Float totalCurrent) {
-        this.totalCurrent = totalCurrent;
-    }
-
-    public List<Float> getBatteryVoltages() {
-        return batteryVoltages;
-    }
-
-    public void setBatteryVoltages(List<Float> batteryVoltages) {
-        this.batteryVoltages = batteryVoltages;
-    }
-
-    public Integer getBatteryNumber() {
-        return batteryNumber;
-    }
-
-    public void setBatteryNumber(Integer batteryNumber) {
-        this.batteryNumber = batteryNumber;
-    }
-
-    public Integer getBatteryStartIndex() {
-        return batteryStartIndex;
-    }
-
-    public void setBatteryStartIndex(Integer batteryStartIndex) {
-        this.batteryStartIndex = batteryStartIndex;
-    }
-
-    public Integer getBatteryPacketNumber() {
-        return batteryPacketNumber;
-    }
-
-    public void setBatteryPacketNumber(Integer batteryPacketNumber) {
-        this.batteryPacketNumber = batteryPacketNumber;
     }
 }

@@ -1,13 +1,22 @@
 package com.incarcloud.rooster.datapack;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+import lombok.experimental.Accessors;
+
 import java.util.Date;
 
 /**
  * 数据基类<br>
  *
  * @author Aaric, created on 2017-06-27T13:51.
- * @since 2.0
+ * @version 2.0
  */
+@Getter
+@Setter
+@Accessors(chain = true)
+@ToString
 public class DataPackObject extends DataPack {
 
     /**
@@ -74,6 +83,8 @@ public class DataPackObject extends DataPack {
 
     public DataPackObject(DataPack dataPack) {
         super(dataPack._group, dataPack._name, dataPack._version);
+        this.protocolName = dataPack._name;
+        this.protocolVersion = dataPack._version;
         this.receiveTime = dataPack.receiveTime;
     }
 
@@ -94,137 +105,5 @@ public class DataPackObject extends DataPack {
         this.subPackIndex = object.subPackIndex;
         this.encryptName = object.encryptName;
         this.detectionTime = object.detectionTime;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getDeviceName() {
-        return deviceName;
-    }
-
-    public void setDeviceName(String deviceName) {
-        this.deviceName = deviceName;
-    }
-
-    public Integer getPackId() {
-        return packId;
-    }
-
-    public void setPackId(Integer packId) {
-        this.packId = packId;
-    }
-
-    public String getProtocolName() {
-        return protocolName;
-    }
-
-    public void setProtocolName(String protocolName) {
-        this.protocolName = protocolName;
-    }
-
-    public String getProtocolVersion() {
-        return protocolVersion;
-    }
-
-    public void setProtocolVersion(String protocolVersion) {
-        this.protocolVersion = protocolVersion;
-    }
-
-    public String getDeviceId() {
-        return deviceId;
-    }
-
-    public void setDeviceId(String deviceId) {
-        this.deviceId = deviceId;
-    }
-
-    public Long getTripId() {
-        return tripId;
-    }
-
-    public void setTripId(Long tripId) {
-        this.tripId = tripId;
-    }
-
-    public String getVid() {
-        return vid;
-    }
-
-    public void setVid(String vid) {
-        this.vid = vid;
-    }
-
-    public String getVin() {
-        return vin;
-    }
-
-    public void setVin(String vin) {
-        this.vin = vin;
-    }
-
-    public String getLicense() {
-        return license;
-    }
-
-    public void setLicense(String license) {
-        this.license = license;
-    }
-
-    public Integer getSubPackTotal() {
-        return subPackTotal;
-    }
-
-    public void setSubPackTotal(Integer subPackTotal) {
-        this.subPackTotal = subPackTotal;
-    }
-
-    public Integer getSubPackIndex() {
-        return subPackIndex;
-    }
-
-    public void setSubPackIndex(Integer subPackIndex) {
-        this.subPackIndex = subPackIndex;
-    }
-
-    public String getEncryptName() {
-        return encryptName;
-    }
-
-    public void setEncryptName(String encryptName) {
-        this.encryptName = encryptName;
-    }
-
-    public Date getDetectionTime() {
-        return detectionTime;
-    }
-
-    public void setDetectionTime(Date detectionTime) {
-        this.detectionTime = detectionTime;
-    }
-
-    @Override
-    public String toString() {
-        return "DataPackObject{" +
-                "id='" + id + '\'' +
-                ", deviceName='" + deviceName + '\'' +
-                ", packId=" + packId +
-                ", protocolName='" + protocolName + '\'' +
-                ", protocolVersion='" + protocolVersion + '\'' +
-                ", deviceId='" + deviceId + '\'' +
-                ", tripId=" + tripId +
-                ", vid='" + vid + '\'' +
-                ", vin='" + vin + '\'' +
-                ", license='" + license + '\'' +
-                ", subPackTotal=" + subPackTotal +
-                ", subPackIndex=" + subPackIndex +
-                ", encryptName='" + encryptName + '\'' +
-                ", detectionTime=" + detectionTime +
-                '}';
     }
 }

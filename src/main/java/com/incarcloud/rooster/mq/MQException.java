@@ -4,7 +4,7 @@ package com.incarcloud.rooster.mq;
  * 消息队列异常
  * 
  * @author 熊广化
- *
+ * @version 1.0
  */
 public class MQException extends RuntimeException {
 

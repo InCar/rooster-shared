@@ -1,6 +1,9 @@
-package com.incarcloud.rooster.datapack;/**
- * Created by fanbeibei on 2017/8/29.
- */
+package com.incarcloud.rooster.datapack;
+
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+import lombok.experimental.Accessors;
 
 import java.util.Base64;
 import java.util.HashMap;
@@ -8,50 +11,32 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * DataPackCondition
+ *
  * @author Fan Beibei
- * @Description: 车身数据
- * @date 2017/8/29 11:05
+ * @version 1.0
  */
-public class DataPackCondition extends DataPackObject{
-
+@Getter
+@Setter
+@Accessors(chain = true)
+@ToString(callSuper = true)
+public class DataPackCondition extends DataPackObject {
 
     private List<CarCondition> conditionList;
+
     public DataPackCondition(DataPackObject object) {
         super(object);
     }
 
-    public List<CarCondition> getConditionList() {
-        return conditionList;
-    }
-
-    public void setConditionList(List<CarCondition> conditionList) {
-        this.conditionList = conditionList;
-    }
-
-    @Override
-    public String toString() {
-        return "DataPackCondition{" +
-                "conditionList=" + conditionList +
-                ", id='" + id + '\'' +
-                ", deviceName='" + deviceName + '\'' +
-                ", packId=" + packId +
-                ", protocolName='" + protocolName + '\'' +
-                ", protocolVersion='" + protocolVersion + '\'' +
-                ", deviceId='" + deviceId + '\'' +
-                ", tripId=" + tripId +
-                ", vid='" + vid + '\'' +
-                ", vin='" + vin + '\'' +
-                ", detectionTime=" + detectionTime +
-                ", _group='" + _group + '\'' +
-                ", _name='" + _name + '\'' +
-                ", _version='" + _version + '\'' +
-                ", receiveTime=" + receiveTime +
-                '}';
-    }
-
     /**
      * 车身各部件的状态
+     *
+     * @param <T>
      */
+    @Getter
+    @Setter
+    @Accessors(chain = true)
+    @ToString
     public static class CarCondition<T> {
         /**
          * 状态名称
@@ -92,44 +77,10 @@ public class DataPackCondition extends DataPackObject{
          *
          * @return
          */
-        public byte[] getData(){
+        public byte[] getData() {
             return Base64.getDecoder().decode(base64Data);
         }
-
-
-        public void setBase64Data(String base64Data) {
-            this.base64Data = base64Data;
-        }
-
-        public String getBase64Data() {
-            return base64Data;
-        }
-
-        public String getConditionName() {
-            return conditionName;
-        }
-
-        public T getConditionValue() {
-            return conditionValue;
-        }
-
-        public String getDesc() {
-            return desc;
-        }
-
-        public void setConditionName(String conditionName) {
-            this.conditionName = conditionName;
-        }
-
-        public void setConditionValue(T conditionValue) {
-            this.conditionValue = conditionValue;
-        }
-
-        public void setDesc(String desc) {
-            this.desc = desc;
-        }
     }
-
 
     private static Map<String, String> descMap = new HashMap<>();
 
@@ -139,7 +90,6 @@ public class DataPackCondition extends DataPackObject{
     public static String getConditionDesc(String conditionName) {
         return descMap.get(conditionName);
     }
-
 
     /**
      * 钥匙状态
@@ -370,8 +320,4 @@ public class DataPackCondition extends DataPackObject{
         descMap.put(CONDITIONNAME_AIR_CONDITIONER_FAN_LEVEL, "空调风扇档次");
         descMap.put(CONDITIONNAME_COSTOM_DATA, "自定义透传数据");
     }
-
-
-
-
 }

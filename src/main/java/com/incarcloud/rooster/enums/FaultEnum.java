@@ -2,9 +2,10 @@ package com.incarcloud.rooster.enums;
 
 
 /**
- * @Author acemma
- * @Date 2021/6/8 14:13
- * @Description
+ * FaultEnum
+ *
+ * @author acemma
+ * @version 1.0
  */
 public enum FaultEnum {
 
@@ -24,7 +25,6 @@ public enum FaultEnum {
     COM_FAULT_BAS(0xF00E, "COM_FAULT_BAS", "制动辅助系统"),
     COM_FAULT_ETC(0xF00F, "COM_FAULT_ETC", "车辆出入管理系统"),
     COM_FAULT_ARS(0xF010, "COM_FAULT_ARS", "主动防侧倾系统");
-
 
     private Integer id;
 

@@ -1,5 +1,10 @@
 package com.incarcloud.rooster.datapack;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+import lombok.experimental.Accessors;
+
 /**
  * 驱动电机数据<br>
  * <i>异常与无效定义：</i><br>
@@ -9,8 +14,12 @@ package com.incarcloud.rooster.datapack;
  * </ul>
  *
  * @author Aaric, created on 2017-06-27T14:04.
- * @since 2.0
+ * @version 2.0
  */
+@Getter
+@Setter
+@Accessors(chain = true)
+@ToString(callSuper = true)
 public class DataPackMotor extends DataPackObject {
 
     /**
@@ -52,92 +61,5 @@ public class DataPackMotor extends DataPackObject {
 
     public DataPackMotor(DataPackObject object) {
         super(object);
-    }
-
-    public Integer getMotorTotal() {
-        return motorTotal;
-    }
-
-    public void setMotorTotal(Integer motorTotal) {
-        this.motorTotal = motorTotal;
-    }
-
-    public Integer getMotorSeq() {
-        return motorSeq;
-    }
-
-    public void setMotorSeq(Integer motorSeq) {
-        this.motorSeq = motorSeq;
-    }
-
-    public Integer getMotorStatus() {
-        return motorStatus;
-    }
-
-    public void setMotorStatus(Integer motorStatus) {
-        this.motorStatus = motorStatus;
-    }
-
-    public Integer getControllerTemperature() {
-        return controllerTemperature;
-    }
-
-    public void setControllerTemperature(Integer controllerTemperature) {
-        this.controllerTemperature = controllerTemperature;
-    }
-
-    public Integer getSpeed() {
-        return speed;
-    }
-
-    public void setSpeed(Integer speed) {
-        this.speed = speed;
-    }
-
-    public Float getTorque() {
-        return torque;
-    }
-
-    public void setTorque(Float torque) {
-        this.torque = torque;
-    }
-
-    public Integer getMotorTemperature() {
-        return motorTemperature;
-    }
-
-    public void setMotorTemperature(Integer motorTemperature) {
-        this.motorTemperature = motorTemperature;
-    }
-
-    public Float getControllerInputVoltage() {
-        return controllerInputVoltage;
-    }
-
-    public void setControllerInputVoltage(Float controllerInputVoltage) {
-        this.controllerInputVoltage = controllerInputVoltage;
-    }
-
-    public Float getControllerDirectCurrent() {
-        return controllerDirectCurrent;
-    }
-
-    public void setControllerDirectCurrent(Float controllerDirectCurrent) {
-        this.controllerDirectCurrent = controllerDirectCurrent;
-    }
-
-    @Override
-    public String toString() {
-        return "DataPackMotor{" +
-                "motorTotal=" + motorTotal +
-                ", motorSeq=" + motorSeq +
-                ", motorStatus=" + motorStatus +
-                ", controllerTemperature=" + controllerTemperature +
-                ", speed=" + speed +
-                ", torque=" + torque +
-                ", motorTemperature=" + motorTemperature +
-                ", controllerInputVoltage=" + controllerInputVoltage +
-                ", controllerDirectCurrent=" + controllerDirectCurrent +
-                '}';
     }
 }

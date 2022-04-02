@@ -1,6 +1,5 @@
-package com.incarcloud.rooster.gather.cmd.client;/**
- * Created by fanbeibei on 2017/7/17.
- */
+package com.incarcloud.rooster.gather.cmd.client;
+
 
 import com.incarcloud.rooster.gather.cmd.CommandType;
 import com.incarcloud.rooster.gather.cmd.RespContent;
@@ -8,9 +7,10 @@ import com.incarcloud.rooster.gather.cmd.RespContent;
 import java.io.IOException;
 
 /**
+ * CommandClient的抽象实现
+ *
  * @author Fan Beibei
- * @Description: 描述
- * @date 2017/7/17 11:08
+ * @version 1.0
  */
 public interface CommandClient {
 
@@ -21,6 +21,5 @@ public interface CommandClient {
      * @param command 指令类型
      * @param args    指令参数
      */
-    public RespContent sendCommand(String vin, CommandType command, Object[] args) throws IOException;
-
+    RespContent sendCommand(String vin, CommandType command, Object[] args) throws IOException;
 }

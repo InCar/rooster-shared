@@ -8,12 +8,13 @@ import java.io.UnsupportedEncodingException;
 import java.util.Base64;
 
 /**
+ * 消息队列里的数据模式
+ *
  * @author Xiong Guanghua
- * @ClassName: MQMsg
- * @Description: 消息队列里的数据模式
- * @date 2017年6月5日 上午10:46:34
+ * @version 1.0
  */
 public class MQMsg {
+    
     /**
      * 消息的标签
      */

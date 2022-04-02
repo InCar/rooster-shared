@@ -6,7 +6,7 @@ import java.util.Set;
  * 缓存管理器
  *
  * @author Aaric, created on 2018-01-10T16:54.
- * @since 2.1.12-SNAPSHOT
+ * @version 2.1.12-SNAPSHOT
  */
 public interface ICacheManager {
 

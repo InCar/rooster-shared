@@ -14,8 +14,9 @@ import java.util.jar.JarFile;
  * 扫描Java包下类的工具类,包括引入的jar(必须是打包时Add directory entries)包中的
  *
  * @author fanbeibei
+ * @version 1.0
  */
-public class PackageUtils {
+public final class PackageUtils {
 
     /**
      * 私有构造函数
@@ -34,7 +35,6 @@ public class PackageUtils {
         List<String> clazzNames = getClassesNamesOfPackage(packageName, true);
 
         for (String cn : clazzNames) {
-            // System.out.println(s);
             try {
                 Class.forName(cn);
             } catch (ClassNotFoundException e) {
@@ -73,8 +73,6 @@ public class PackageUtils {
             } else if (type.equals("jar")) {
                 JarFile jar = ((JarURLConnection) url.openConnection()).getJarFile();
                 clazzNames.addAll(getClassNamesByJar(packageName, jar, recursive));
-            } else {// TODO 还需扩展其他协议
-
             }
 
         }
@@ -92,11 +90,13 @@ public class PackageUtils {
         File packageDir = new File(packageDirPath);
         File[] files = packageDir.listFiles();
         for (File f : files) {
-            if (f.isDirectory()) {// 是包的路径
+            if (f.isDirectory()) {
+                // 是包的路径
                 if (recursive) {
                     clazzNames.addAll(getClassNamesByFile(packageName, f.getPath(), recursive));
                 }
-            } else {// 是类的路径
+            } else {
+                // 是类的路径
                 if (f.getPath().endsWith(".class")) {
                     String fileName = f.getName();
                     clazzNames.add(packageName + "." + fileName.substring(0, fileName.length() - 6));
@@ -116,13 +116,13 @@ public class PackageUtils {
         List<String> clazzNames = new LinkedList<String>();
 
         Enumeration<JarEntry> entries = jar.entries();
-        String packagePathPrefix = packageName.replace(".", "/") + "/";//包路径前缀
+        // 包路径前缀
+        String packagePathPrefix = packageName.replace(".", "/") + "/";
 
         while (entries.hasMoreElements()) {
             // 获取jar里的一个实体，可以是目录或jar包里的其他文件 如META-INF等文件
             JarEntry entry = entries.nextElement();
             String name = entry.getName();
-            // System.out.println(name);
             /**
              * name结果如下所示
              *
@@ -145,13 +145,14 @@ public class PackageUtils {
             }
 
             if (name.startsWith(packagePathPrefix) && name.endsWith(".class")) {
-                if (recursive) {// 如果需要加载子包，则不作判断
+                if (recursive) {
+                    // 如果需要加载子包，则不作判断
                     String clazzName = name.substring(0, name.length() - 6).replace("/", ".");
                     clazzNames.add(clazzName);
-                } else {// 不需要加载子包
-                    // System.out.println(packagePathPrefix+"
-                    // "+name.substring(0, name.lastIndexOf("/")+1));
-                    if (packagePathPrefix.equals(name.substring(0, name.lastIndexOf("/") + 1))) {// 根据路径判断是否子包的类
+                } else {
+                    // 不需要加载子包
+                    // 根据路径判断是否子包的类
+                    if (packagePathPrefix.equals(name.substring(0, name.lastIndexOf("/") + 1))) {
                         String clazzName = name.substring(0, name.length() - 6).replace("/", ".");
                         clazzNames.add(clazzName);
                     }

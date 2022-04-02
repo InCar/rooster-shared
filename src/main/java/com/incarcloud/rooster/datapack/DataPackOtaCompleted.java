@@ -1,9 +1,20 @@
 package com.incarcloud.rooster.datapack;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+import lombok.experimental.Accessors;
+
 /**
  * OTA升级完成
- * Created by Kong on 2018/3/5.
+ *
+ * @author Created by Kong on 2018/3/5.
+ * @version 1.0
  */
+@Getter
+@Setter
+@Accessors(chain = true)
+@ToString(callSuper = true)
 public class DataPackOtaCompleted extends DataPackObject {
 
     /**
@@ -26,51 +37,18 @@ public class DataPackOtaCompleted extends DataPackObject {
      * “0x0E~0x7F”表示自定义失败状态。
      * “0x83~0xFE”表示自定义中间状态。
      */
-    private Integer upgradeStatus ;
+    private Integer upgradeStatus;
     /**
      * 目标软件版本
      */
-    private String version ;
+    private String version;
 
     /**
      * 升级之前软件版本
      */
-    private String oldVersion ;
+    private String oldVersion;
 
-    public DataPackOtaCompleted(DataPackObject object){
+    public DataPackOtaCompleted(DataPackObject object) {
         super(object);
-    }
-
-    public Integer getUpgradeStatus() {
-        return upgradeStatus;
-    }
-
-    public void setUpgradeStatus(Integer upgradeStatus) {
-        this.upgradeStatus = upgradeStatus;
-    }
-
-    public String getVersion() {
-        return version;
-    }
-
-    public void setVersion(String version) {
-        this.version = version;
-    }
-
-    public String getOldVersion() {
-        return oldVersion;
-    }
-
-    public void setOldVersion(String oldVersion) {
-        this.oldVersion = oldVersion;
-    }
-
-    @Override
-    public String toString() {
-        return "DataPackOtaCompleted{" +
-                "upgradeStatus=" + upgradeStatus +
-                ", version='" + version + '\'' +
-                ", oldVersion='" + oldVersion + '\'' +
-                '}';
     }
 }

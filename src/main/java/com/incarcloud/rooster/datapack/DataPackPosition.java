@@ -1,5 +1,10 @@
 package com.incarcloud.rooster.datapack;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+import lombok.experimental.Accessors;
+
 import java.util.Date;
 
 /**
@@ -12,8 +17,12 @@ import java.util.Date;
  * </ul>
  *
  * @author Aaric, created on 2017-06-27T14:05.
- * @since 2.0
+ * @version 2.0
  */
+@Getter
+@Setter
+@Accessors(chain = true)
+@ToString(callSuper = true)
 public class DataPackPosition extends DataPackObject {
 
     /**
@@ -103,119 +112,5 @@ public class DataPackPosition extends DataPackObject {
 
     public DataPackPosition(DataPackObject object) {
         super(object);
-    }
-
-    public Float getSpeed() {
-        return speed;
-    }
-
-    public void setSpeed(Float speed) {
-        this.speed = speed;
-    }
-
-    public Integer getTravelDistance() {
-        return travelDistance;
-    }
-
-    public void setTravelDistance(Integer travelDistance) {
-        this.travelDistance = travelDistance;
-    }
-
-    public Double getLongitude() {
-        return longitude;
-    }
-
-    public void setLongitude(Double longitude) {
-        this.longitude = longitude;
-    }
-
-    public Double getLatitude() {
-        return latitude;
-    }
-
-    public void setLatitude(Double latitude) {
-        this.latitude = latitude;
-    }
-
-    public Double getAltitude() {
-        return altitude;
-    }
-
-    public void setAltitude(Double altitude) {
-        this.altitude = altitude;
-    }
-
-    public Float getDirection() {
-        return direction;
-    }
-
-    public void setDirection(Float direction) {
-        this.direction = direction;
-    }
-
-    public Integer getPositioMode() {
-        return positioMode;
-    }
-
-    public void setPositioMode(Integer positioMode) {
-        this.positioMode = positioMode;
-    }
-
-    public String getPositioModeDesc() {
-        return positioModeDesc;
-    }
-
-    public void setPositioModeDesc(String positioModeDesc) {
-        this.positioModeDesc = positioModeDesc;
-    }
-
-    public Date getPositionTime() {
-        return positionTime;
-    }
-
-    public void setPositionTime(Date positionTime) {
-        this.positionTime = positionTime;
-    }
-
-    public Integer getValidStar() {
-        return validStar;
-    }
-
-    public void setValidStar(Integer validStar) {
-        this.validStar = validStar;
-    }
-
-    public String getMainPowerStatus() {
-        return mainPowerStatus;
-    }
-
-    public void setMainPowerStatus(String mainPowerStatus) {
-        this.mainPowerStatus = mainPowerStatus;
-    }
-
-    public String getEnergizedStatus() {
-        return energizedStatus;
-    }
-
-    public void setEnergizedStatus(String energizedStatus) {
-        this.energizedStatus = energizedStatus;
-    }
-
-    @Override
-    public String toString() {
-        return "DataPackPosition{" +
-                "speed=" + speed +
-                ", travelDistance=" + travelDistance +
-                ", longitude=" + longitude +
-                ", latitude=" + latitude +
-                ", altitude=" + altitude +
-                ", direction=" + direction +
-                ", positioMode=" + positioMode +
-                ", positioModeDesc='" + positioModeDesc + '\'' +
-                ", positionTime=" + positionTime +
-                ", validStar=" + validStar +
-                ", mainPowerStatus='" + mainPowerStatus + '\'' +
-                ", energizedStatus='" + energizedStatus + '\'' +
-                '}';
     }
 }

@@ -2,6 +2,7 @@ package com.incarcloud.rooster.util;
 
 import com.google.gson.Gson;
 import com.incarcloud.rooster.datapack.*;
+import org.apache.commons.lang3.time.DateFormatUtils;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -9,15 +10,13 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-import org.apache.commons.lang3.time.DateFormatUtils;
-
 /**
  * DataPackObject工具类
  *
  * @author Aaric, updated on 2018-09-06T15:27.
  * @version 2.3.0-SNAPSHOT
  */
-public class DataPackObjectUtil {
+public final class DataPackObjectUtil {
 
     /**
      * 时间格式化
@@ -185,10 +184,6 @@ public class DataPackObjectUtil {
      * 上报设备信息
      */
     public static final String DEVICE = "DEVICE";
-    /**
-     * 设备回复下行命令执行结果
-     */
-    public static final String RESULT = "RESULT";
     /**
      * 行为位置数据
      */
@@ -370,6 +365,10 @@ public class DataPackObjectUtil {
      * T-BOX ecall event信息
      */
     public static final String ECALLEVENT = "ECALLEVENT";
+    /**
+     * 远控结果
+     */
+    public static final String REMOTERESULT = "REMOTERESULT";
 
     /**
      * 获取数据类型
@@ -414,10 +413,6 @@ public class DataPackObjectUtil {
             if (clazz.equals(DataPackDevice.class)) {
                 // 上报设备信息
                 return DEVICE;
-            }
-            if (clazz.equals(DataPackResult.class)) {
-                // 设备回复下行命令执行结果
-                return RESULT;
             }
             if (clazz.equals(DataPackBehavior.class)) {
                 // 行为位置数据
@@ -567,6 +562,10 @@ public class DataPackObjectUtil {
                 // T-BOX DID 信息
                 return ECALLEVENT;
             }
+            if (clazz.equals(DataPackRemoteResult.class)) {
+                // 远控结果
+                return REMOTERESULT;
+            }
         }
         return null;
     }
@@ -624,10 +623,6 @@ public class DataPackObjectUtil {
         if (DEVICE.equals(dataType)) {
             // 分发上报设备信息
             return DataPackDevice.class;
-        }
-        if (RESULT.equals(dataType)) {
-            // 设备回复下行命令执行结果
-            return DataPackResult.class;
         }
         if (BEHAVIOR.equals(dataType)) {
             // 行为位置数据
@@ -769,15 +764,17 @@ public class DataPackObjectUtil {
             // T-BOX DID 信息
             return DataPackDidInfo.class;
         }
-
         if (ECALL.equals(dataType)) {
             // T-BOX ecall 信息
             return DataPackEcallData.class;
         }
-
         if (ECALLEVENT.equals(dataType)) {
             // T-BOX ecall 信息
             return DataPackEcallEvent.class;
+        }
+        if (REMOTERESULT.equals(dataType)) {
+            // 远控结果
+            return DataPackRemoteResult.class;
         }
         return null;
     }

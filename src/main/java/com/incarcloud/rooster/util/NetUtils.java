@@ -13,6 +13,7 @@ import java.util.regex.Pattern;
  * 解决获取本地ip地址和端口的工具类（来自dubbo框架）
  *
  * @author fanbeibei
+ * @version 1.0
  */
 public class NetUtils {
 
@@ -61,8 +62,9 @@ public class NetUtils {
      * @return
      */
     public static boolean isValidAddress(InetAddress address) {
-        if (address == null || address.isLoopbackAddress())
+        if (address == null || address.isLoopbackAddress()) {
             return false;
+        }
         String name = address.getHostAddress();
         return isValidAddress(name);
     }
@@ -77,7 +79,7 @@ public class NetUtils {
         return (host != null && !ANYHOST.equals(host) && !LOCALHOST.equals(host) && IP_PATTERN.matcher(host).matches());
     }
 
-    private static volatile InetAddress LOCAL_ADDRESS = null;
+    private static volatile InetAddress localAddress = null;
 
     /**
      * 遍历本地网卡，返回第一个合理的IP。
@@ -85,11 +87,12 @@ public class NetUtils {
      * @return 本地网卡IP
      */
     public static InetAddress getLocalAddress() {
-        if (LOCAL_ADDRESS != null)
-            return LOCAL_ADDRESS;
-        InetAddress localAddress = getLocalAddress0();
-        LOCAL_ADDRESS = localAddress;
-        return localAddress;
+        if (localAddress != null) {
+            return localAddress;
+        }
+        InetAddress localAddress2 = getLocalAddress0();
+        localAddress = localAddress2;
+        return localAddress2;
     }
 
     /**
@@ -106,11 +109,11 @@ public class NetUtils {
      * @return 本地网卡IP
      */
     private static InetAddress getLocalAddress0() {
-        InetAddress localAddress = null;
+        InetAddress localAddress2 = null;
         try {
-            localAddress = InetAddress.getLocalHost();
-            if (isValidAddress(localAddress)) {
-                return localAddress;
+            localAddress2 = InetAddress.getLocalHost();
+            if (isValidAddress(localAddress2)) {
+                return localAddress2;
             }
         } catch (Throwable e) {
             logger.warn("Failed to retriving ip address, " + e.getMessage(),
@@ -292,8 +295,9 @@ public class NetUtils {
         StringBuilder sb = new StringBuilder();
         sb.append(protocol).append("://");
         sb.append(host).append(':').append(port);
-        if (path.charAt(0) != '/')
+        if (path.charAt(0) != '/') {
             sb.append('/');
+        }
         sb.append(path);
         return sb.toString();
     }

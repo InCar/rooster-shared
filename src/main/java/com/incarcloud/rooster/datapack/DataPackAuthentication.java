@@ -1,11 +1,20 @@
 package com.incarcloud.rooster.datapack;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+import lombok.experimental.Accessors;
+
 /**
  * 终端鉴权数据
  *
  * @author Aaric, created on 2017-09-01T10:51.
- * @since 2.0
+ * @version 2.0
  */
+@Getter
+@Setter
+@Accessors(chain = true)
+@ToString(callSuper = true)
 public class DataPackAuthentication extends DataPackObject {
 
     /**
@@ -15,20 +24,5 @@ public class DataPackAuthentication extends DataPackObject {
 
     public DataPackAuthentication(DataPackObject object) {
         super(object);
-    }
-
-    public String getAuthCode() {
-        return authCode;
-    }
-
-    public void setAuthCode(String authCode) {
-        this.authCode = authCode;
-    }
-
-    @Override
-    public String toString() {
-        return "DataPackAuthentication{" +
-                "authCode='" + authCode + '\'' +
-                '}';
     }
 }

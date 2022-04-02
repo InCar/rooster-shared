@@ -6,7 +6,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-// 演示性质的DataParser,任意4个字节就解析成功
+/**
+ * 演示性质的DataParser,任意4个字节就解析成功
+ *
+ * @author Xiong Guanghua
+ * @version 1.0
+ */
 public class Any4DataParser implements IDataParser {
 
     static {

@@ -1,5 +1,10 @@
 package com.incarcloud.rooster.datapack;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+import lombok.experimental.Accessors;
+
 import java.util.List;
 
 /**
@@ -11,8 +16,12 @@ import java.util.List;
  * </ul>
  *
  * @author Aaric, created on 2017-06-27T14:05.
- * @since 2.0
+ * @version 2.0
  */
+@Getter
+@Setter
+@Accessors(chain = true)
+@ToString(callSuper = true)
 public class DataPackPeak extends DataPackObject {
 
     /**
@@ -24,24 +33,13 @@ public class DataPackPeak extends DataPackObject {
         super(object);
     }
 
-    public List<Peak> getPeakList() {
-        return peakList;
-    }
-
-    public void setPeakList(List<Peak> peakList) {
-        this.peakList = peakList;
-    }
-
-    @Override
-    public String toString() {
-        return "DataPackPeak{" +
-                "peakList=" + peakList +
-                '}';
-    }
-
     /**
      * 单个极值对象
      */
+    @Getter
+    @Setter
+    @Accessors(chain = true)
+    @ToString
     public static class Peak {
 
         /**
@@ -79,57 +77,6 @@ public class DataPackPeak extends DataPackObject {
             this.peakValue = peakValue;
             this.peakUnit = peakUnit;
             this.peakDesc = peakDesc;
-        }
-
-        public Integer getPeakId() {
-            return peakId;
-        }
-
-        public void setPeakId(Integer peakId) {
-            this.peakId = peakId;
-        }
-
-        public String getPeakName() {
-            return peakName;
-        }
-
-        public void setPeakName(String peakName) {
-            this.peakName = peakName;
-        }
-
-        public String getPeakValue() {
-            return peakValue;
-        }
-
-        public void setPeakValue(String peakValue) {
-            this.peakValue = peakValue;
-        }
-
-        public String getPeakUnit() {
-            return peakUnit;
-        }
-
-        public void setPeakUnit(String peakUnit) {
-            this.peakUnit = peakUnit;
-        }
-
-        public String getPeakDesc() {
-            return peakDesc;
-        }
-
-        public void setPeakDesc(String peakDesc) {
-            this.peakDesc = peakDesc;
-        }
-
-        @Override
-        public String toString() {
-            return "Peak{" +
-                    "peakId=" + peakId +
-                    ", peakName='" + peakName + '\'' +
-                    ", peakValue='" + peakValue + '\'' +
-                    ", peakUnit='" + peakUnit + '\'' +
-                    ", peakDesc='" + peakDesc + '\'' +
-                    '}';
         }
     }
 }

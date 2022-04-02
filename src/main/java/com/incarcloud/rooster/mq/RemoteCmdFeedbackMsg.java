@@ -1,11 +1,20 @@
 package com.incarcloud.rooster.mq;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+import lombok.experimental.Accessors;
+
 /**
  * 远程控制命令MQ反馈实体
  *
  * @author Aaric, created on 2018-01-10T16:00.
- * @since 2.1.12-SNAPSHOT
+ * @version 2.1.12-SNAPSHOT
  */
+@Getter
+@Setter
+@Accessors(chain = true)
+@ToString(callSuper = true)
 public class RemoteCmdFeedbackMsg {
 
     /**
@@ -49,53 +58,5 @@ public class RemoteCmdFeedbackMsg {
         this.packId = msg.getPackId();
         this.cmdType = msg.getCmdType();
         this.status = status;
-    }
-
-    public String getRefId() {
-        return refId;
-    }
-
-    public void setRefId(String refId) {
-        this.refId = refId;
-    }
-
-    public String getDeviceId() {
-        return deviceId;
-    }
-
-    public void setDeviceId(String deviceId) {
-        this.deviceId = deviceId;
-    }
-
-    public Integer getPackId() {
-        return packId;
-    }
-
-    public void setPackId(Integer packId) {
-        this.packId = packId;
-    }
-
-    public String getCmdType() {
-        return cmdType;
-    }
-
-    public void setCmdType(String cmdType) {
-        this.cmdType = cmdType;
-    }
-
-    public Integer getStatus() {
-        return status;
-    }
-
-    public void setStatus(Integer status) {
-        this.status = status;
-    }
-
-    public String getExceptionMessage() {
-        return exceptionMessage;
-    }
-
-    public void setExceptionMessage(String exceptionMessage) {
-        this.exceptionMessage = exceptionMessage;
     }
 }

@@ -25,9 +25,9 @@ import java.util.Set;
  * gson2.2.2
  *
  * @author fanbeibei
- * @since 2015年1月22日
+ * @version 1.0
  */
-public class GsonFactory {
+public final class GsonFactory {
 
     private static GsonFactory factory;
     private GsonBuilder gsonBuilder = new GsonBuilder();
@@ -44,7 +44,7 @@ public class GsonFactory {
      *
      * @return
      * @author fanbeibei
-     * @since 2015年1月22日
+     * @version 2015年1月22日
      */
     public Gson createGson() {
         return gsonBuilder.create();
@@ -56,7 +56,7 @@ public class GsonFactory {
      *
      * @return
      * @author fanbeibei
-     * @since 2015年1月22日
+     * @version 2015年1月22日
      */
     public static GsonFactory newInstance() {
 
@@ -79,12 +79,12 @@ public class GsonFactory {
      * @param datePattern 日期格式
      * @return
      * @author fanbeibei
-     * @since 2015年1月22日
+     * @version 2015年1月22日
      */
     public static GsonFactory newInstance(String datePattern) {
-        GsonFactory factory = new GsonFactory();
+        GsonFactory factory2 = new GsonFactory();
 
-        factory.getGsonBuilder()
+        factory2.getGsonBuilder()
                 .registerTypeAdapter(Date.class, new DateAdapter(datePattern))
                 .registerTypeAdapter(Integer.class, new IntegerAdapter())
                 .registerTypeAdapter(Long.class, new LongAdapter())
@@ -93,7 +93,7 @@ public class GsonFactory {
                 .registerTypeAdapter(Double.class, new DoubleAdapter())
                 .registerTypeAdapter(Boolean.class, new BooleanAdapter());
 
-        return factory;
+        return factory2;
     }
 
     /**
@@ -101,15 +101,15 @@ public class GsonFactory {
      * @param excludeFields 要排除的属性
      * @return
      * @author fanbeibei
-     * @since 2015年1月22日
+     * @version 2015年1月22日
      */
     public static GsonFactory newInstance(String datePattern, String... excludeFields) {
-        GsonFactory factory = new GsonFactory();
+        GsonFactory factory2 = new GsonFactory();
 
         Set<String> excludeSet = new HashSet<>(excludeFields.length);
         Collections.addAll(excludeSet, excludeFields);
 
-        factory.getGsonBuilder()
+        factory2.getGsonBuilder()
                 .registerTypeAdapter(Date.class, new DateAdapter(datePattern))
                 .registerTypeAdapter(Integer.class, new IntegerAdapter())
                 .registerTypeAdapter(Long.class, new LongAdapter())
@@ -132,14 +132,14 @@ public class GsonFactory {
                             }
                         });
 
-        return factory;
+        return factory2;
     }
 
     /**
      * 描述: Integer类型转化器，空字符串转化为Integer时不会抛异常
      *
      * @author fanbeibei
-     * @since 2015年1月15日
+     * @version 2015年1月15日
      */
     private static class IntegerAdapter extends TypeAdapter<Integer> {
 
@@ -312,7 +312,7 @@ public class GsonFactory {
 
         private String pattern;
 
-        public DateAdapter(String pattern) {
+        DateAdapter(String pattern) {
             this.pattern = pattern;
         }
 

@@ -1,13 +1,13 @@
-package com.incarcloud.rooster.gather.cmd;/**
- * Created by fanbeibei on 2017/7/17.
- */
+package com.incarcloud.rooster.gather.cmd;
 
 /**
+ * 服务器回复类型
+ *
  * @author Fan Beibei
- * @Description: 服务器回复类型
- * @date 2017/7/17 15:23
+ * @version 1.0
  */
 public enum CommandServerRespCode {
+
     /**
      * 操作成功
      */
@@ -33,5 +33,4 @@ public enum CommandServerRespCode {
      * 其他错误
      */
     OTHER_ERROR
-
 }

@@ -1,16 +1,22 @@
 package com.incarcloud.rooster.datapack;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+import lombok.experimental.Accessors;
+
 import java.util.Date;
 
 /**
- * @Title: DataPackTrip.java
- * @Project: rooster-shared-dataparser-api
- * @Package: com.incarcloud.rooster.datapack
- * @Description: 车辆行程数据
- * @author: chenz
- * @date: 2017年11月29日 下午1:56:39
- * @version: V1.0
+ * DataPackTrip
+ *
+ * @author chenz
+ * @version V1.0
  */
+@Getter
+@Setter
+@Accessors(chain = true)
+@ToString(callSuper = true)
 public class DataPackTrip extends DataPackObject {
 
     /**
@@ -78,119 +84,5 @@ public class DataPackTrip extends DataPackObject {
 
     public DataPackTrip(DataPackObject object) {
         super(object);
-    }
-
-    public DataPackPosition getStartPosition() {
-        return startPosition;
-    }
-
-    public void setStartPosition(DataPackPosition startPosition) {
-        this.startPosition = startPosition;
-    }
-
-    public DataPackPosition getEndPosition() {
-        return endPosition;
-    }
-
-    public void setEndPosition(DataPackPosition endPosition) {
-        this.endPosition = endPosition;
-    }
-
-    public Date getStartTime() {
-        return startTime;
-    }
-
-    public void setStartTime(Date startTime) {
-        this.startTime = startTime;
-    }
-
-    public Date getEndTime() {
-        return endTime;
-    }
-
-    public void setEndTime(Date endTime) {
-        this.endTime = endTime;
-    }
-
-    public void setOilWearAvg(Float oilWearAvg) {
-        this.oilWearAvg = oilWearAvg;
-    }
-
-    public Float getOilWearAvg() {
-        return oilWearAvg;
-    }
-
-    public Float getSpeedAvg() {
-        return speedAvg;
-    }
-
-    public void setSpeedAvg(Float speedAvg) {
-        this.speedAvg = speedAvg;
-    }
-
-    public Float getSpeedMax() {
-        return speedMax;
-    }
-
-    public void setSpeedMax(Float speedMax) {
-        this.speedMax = speedMax;
-    }
-
-    public Integer getTripDuration() {
-        return tripDuration;
-    }
-
-    public void setTripDuration(Integer tripDuration) {
-        this.tripDuration = tripDuration;
-    }
-
-    public Integer getMileage() {
-        return mileage;
-    }
-
-    public void setMileage(Integer mileage) {
-        this.mileage = mileage;
-    }
-
-    public Integer getRapidAccelerationTimes() {
-        return rapidAccelerationTimes;
-    }
-
-    public void setRapidAccelerationTimes(Integer rapidAccelerationTimes) {
-        this.rapidAccelerationTimes = rapidAccelerationTimes;
-    }
-
-    public Integer getRapidDecelerationTimes() {
-        return rapidDecelerationTimes;
-    }
-
-    public void setRapidDecelerationTimes(Integer rapidDecelerationTimes) {
-        this.rapidDecelerationTimes = rapidDecelerationTimes;
-    }
-
-    public Integer getSharpTurnTimes() {
-        return sharpTurnTimes;
-    }
-
-    public void setSharpTurnTimes(Integer sharpTurnTimes) {
-        this.sharpTurnTimes = sharpTurnTimes;
-    }
-
-    @Override
-    public String toString() {
-        return "DataPackTrip{" +
-                "startPosition=" + startPosition +
-                ", endPosition=" + endPosition +
-                ", startTime=" + startTime +
-                ", endTime=" + endTime +
-                ", oilWearAvg=" + oilWearAvg +
-                ", speedAvg=" + speedAvg +
-                ", speedMax=" + speedMax +
-                ", tripDuration=" + tripDuration +
-                ", mileage=" + mileage +
-                ", rapidAccelerationTimes=" + rapidAccelerationTimes +
-                ", rapidDecelerationTimes=" + rapidDecelerationTimes +
-                ", sharpTurnTimes=" + sharpTurnTimes +
-                '}';
     }
 }

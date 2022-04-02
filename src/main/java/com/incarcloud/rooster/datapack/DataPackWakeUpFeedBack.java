@@ -1,31 +1,25 @@
 package com.incarcloud.rooster.datapack;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+import lombok.experimental.Accessors;
+
 /**
  * 唤醒回馈
  *
  * @author Kong, created on 2018-06-19T11:37.
- * @since 1.2.0-SNAPSHOT
+ * @version 1.2.0-SNAPSHOT
  */
+@Getter
+@Setter
+@Accessors(chain = true)
+@ToString(callSuper = true)
 public class DataPackWakeUpFeedBack extends DataPackObject {
 
-    private Integer isSuccess ;
+    private Integer isSuccess;
 
-    public DataPackWakeUpFeedBack(DataPackObject object){
+    public DataPackWakeUpFeedBack(DataPackObject object) {
         super(object);
-    }
-
-    public Integer getIsSuccess() {
-        return isSuccess;
-    }
-
-    public void setIsSuccess(Integer isSuccess) {
-        this.isSuccess = isSuccess;
-    }
-
-    @Override
-    public String toString() {
-        return "DataPackWakeUpFeedBack{" +
-                "isSuccess=" + isSuccess +
-                '}';
     }
 }

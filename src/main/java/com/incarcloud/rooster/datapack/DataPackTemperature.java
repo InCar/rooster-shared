@@ -1,13 +1,22 @@
 package com.incarcloud.rooster.datapack;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+import lombok.experimental.Accessors;
+
 import java.util.List;
 
 /**
  * 动力蓄电池包温度数据
  *
  * @author Aaric, created on 2017-06-27T14:04.
- * @since 2.0
+ * @version 2.0
  */
+@Getter
+@Setter
+@Accessors(chain = true)
+@ToString(callSuper = true)
 public class DataPackTemperature extends DataPackObject {
 
     /**
@@ -33,47 +42,5 @@ public class DataPackTemperature extends DataPackObject {
 
     public DataPackTemperature(DataPackObject dataPack) {
         super(dataPack);
-    }
-
-    public Integer getBatterySysNumber() {
-        return batterySysNumber;
-    }
-
-    public void setBatterySysNumber(Integer batterySysNumber) {
-        this.batterySysNumber = batterySysNumber;
-    }
-
-    public Integer getSysIndex() {
-        return sysIndex;
-    }
-
-    public void setSysIndex(Integer sysIndex) {
-        this.sysIndex = sysIndex;
-    }
-
-    public Integer getNumber() {
-        return number;
-    }
-
-    public void setNumber(Integer number) {
-        this.number = number;
-    }
-
-    public List<Integer> getTemperatureList() {
-        return temperatureList;
-    }
-
-    public void setTemperatureList(List<Integer> temperatureList) {
-        this.temperatureList = temperatureList;
-    }
-
-    @Override
-    public String toString() {
-        return "DataPackTemperature{" +
-                "batterySysNumber=" + batterySysNumber +
-                ", sysIndex=" + sysIndex +
-                ", number=" + number +
-                ", temperatureList=" + temperatureList +
-                '}';
     }
 }

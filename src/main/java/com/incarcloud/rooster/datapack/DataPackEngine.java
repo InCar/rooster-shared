@@ -1,5 +1,10 @@
 package com.incarcloud.rooster.datapack;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+import lombok.experimental.Accessors;
+
 /**
  * 发动机数据<br>
  * <i>异常与无效定义：</i><br>
@@ -9,8 +14,12 @@ package com.incarcloud.rooster.datapack;
  * </ul>
  *
  * @author Aaric, created on 2017-06-27T14:05.
- * @since 2.0
+ * @version 2.0
  */
+@Getter
+@Setter
+@Accessors(chain = true)
+@ToString(callSuper = true)
 public class DataPackEngine extends DataPackObject {
 
     /**
@@ -28,38 +37,5 @@ public class DataPackEngine extends DataPackObject {
 
     public DataPackEngine(DataPackObject object) {
         super(object);
-    }
-
-    public Integer getEngineStatus() {
-        return engineStatus;
-    }
-
-    public void setEngineStatus(Integer engineStatus) {
-        this.engineStatus = engineStatus;
-    }
-
-    public Integer getRotateSpeed() {
-        return rotateSpeed;
-    }
-
-    public void setRotateSpeed(Integer rotateSpeed) {
-        this.rotateSpeed = rotateSpeed;
-    }
-
-    public Integer getConsumptionRate() {
-        return consumptionRate;
-    }
-
-    public void setConsumptionRate(Integer consumptionRate) {
-        this.consumptionRate = consumptionRate;
-    }
-
-    @Override
-    public String toString() {
-        return "DataPackEngine{" +
-                "engineStatus=" + engineStatus +
-                ", rotateSpeed=" + rotateSpeed +
-                ", consumptionRate=" + consumptionRate +
-                '}';
     }
 }

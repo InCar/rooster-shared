@@ -1,9 +1,10 @@
 package com.incarcloud.rooster.enums;
 
 /**
- * @Author acemma
- * @Date 2021/6/8 14:32
- * @Description
+ * AlarmEnum
+ *
+ * @author acemma
+ * @version 1.0
  */
 public enum AlarmEnum {
 
@@ -16,7 +17,6 @@ public enum AlarmEnum {
     COM_ALARM_OILPRESSURE(0xE007, "COM_ALARM_OILPRESSURE", "机油压力报警"),
     COM_ALARM_FUELQUANTITYINDICATING(0xE008, "COM_ALARM_FUELQUANTITYINDICATING", "油量指示报警"),
     COM_ALARM_BACKUPBATTERYENDOFLIFE(0xE009, "COM_ALARM_BACKUPBATTERYENDOFLIFE", "备用电池寿命末期报警");
-
 
     private Integer id;
 

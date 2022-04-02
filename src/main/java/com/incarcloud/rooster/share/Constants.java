@@ -1,10 +1,11 @@
 package com.incarcloud.rooster.share;
 
+
 /**
  * Rooster常量类
  *
  * @author Aaric, created on 2018-01-10T16:39.
- * @since 2.1.12-SNAPSHOT
+ * @version 2.1.12-SNAPSHOT
  */
 public interface Constants {
 
@@ -12,6 +13,16 @@ public interface Constants {
      * 默认字符集
      */
     String DEFAULT_CHARSET = "UTF-8";
+
+    /**
+     * 默认成功标记
+     */
+    String DEFAULT_SUCCESS = "SUCCESS";
+
+    /**
+     * 默认失败标记
+     */
+    String DEFAULT_FAILURE = "FAILURE";
 
     /**
      * 缓存命令空间常量

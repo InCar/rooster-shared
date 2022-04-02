@@ -172,6 +172,7 @@ public class RowKeyUtil {
      * @param time  检测时间
      * @return
      */
+    @SuppressWarnings("unchecked")
     public static String makeRowKey(String vin, Class clazz, String time) {
         return makeRowKey(vin, DataPackObjectUtil.getDataType(clazz), time);
     }
@@ -216,6 +217,7 @@ public class RowKeyUtil {
      * @param clazz 数据类型
      * @return
      */
+    @SuppressWarnings("unchecked")
     public static String makeMinRowKey(String vin, Class clazz) {
         return makeMinRowKey(vin, DataPackObjectUtil.getDataType(clazz));
     }
@@ -240,6 +242,7 @@ public class RowKeyUtil {
      * @param time 检测时间
      * @return
      */
+    @SuppressWarnings("unchecked")
     public static String makeMinRowKey(String vin, String type, Date time) {
         return makeMinRowKey(vin, type, appendTimeString(time));
     }
@@ -252,6 +255,7 @@ public class RowKeyUtil {
      * @param time  检测时间
      * @return
      */
+    @SuppressWarnings("unchecked")
     public static String makeMinRowKey(String vin, Class clazz, String time) {
         return makeMinRowKey(vin, DataPackObjectUtil.getDataType(clazz), time);
     }
@@ -296,6 +300,7 @@ public class RowKeyUtil {
      * @param clazz 数据类型
      * @return
      */
+    @SuppressWarnings("unchecked")
     public static String makeMaxRowKey(String vin, Class clazz) {
         return makeMaxRowKey(vin, DataPackObjectUtil.getDataType(clazz));
     }
@@ -332,6 +337,7 @@ public class RowKeyUtil {
      * @param time  检测时间
      * @return
      */
+    @SuppressWarnings("unchecked")
     public static String makeMaxRowKey(String vin, Class clazz, String time) {
         return makeMaxRowKey(vin, DataPackObjectUtil.getDataType(clazz), time);
     }
