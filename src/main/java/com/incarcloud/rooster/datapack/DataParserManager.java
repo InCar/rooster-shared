@@ -1,6 +1,6 @@
 package com.incarcloud.rooster.datapack;
 
-import com.incarcloud.shared.util.PackageUtils;
+import com.incarcloud.rooster.util.PackageUtils;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;

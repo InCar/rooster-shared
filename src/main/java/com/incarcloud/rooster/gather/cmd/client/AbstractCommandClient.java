@@ -1,8 +1,9 @@
 package com.incarcloud.rooster.gather.cmd.client;
 
-import com.incarcloud.shared.cmd.CommandServerRespCode;
-import com.incarcloud.shared.cmd.CommandType;
-import com.incarcloud.shared.cmd.RespContent;
+
+import com.incarcloud.rooster.gather.cmd.CommandServerRespCode;
+import com.incarcloud.rooster.gather.cmd.CommandType;
+import com.incarcloud.rooster.gather.cmd.RespContent;
 
 import java.io.IOException;
 

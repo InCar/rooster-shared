@@ -1,6 +1,5 @@
 package com.incarcloud.rooster.datapack;
 
-import com.incarcloud.shared.share.Constants;
 import io.netty.buffer.ByteBuf;
 
 import java.util.List;
@@ -59,10 +58,10 @@ public interface IDataParser {
      * deviceSn: 设备SN号(非必须，但激活和登陆必须传值)
      * adaptedSeriesType: 设备软件包适配车系(非必须，但激活和登陆必须传值)
      * }
-     * @see Constants.MetaDataMapKey 返回对象MAP键名常量说明
-     * @see Constants.AlgorithmName 加密算法常量说明
-     * @see Constants.PackType 数据包类型常量说明
-     * @see Constants.AdaptedSeriesType 设备软件包适配车系说明
+     * @see com.incarcloud.rooster.share.Constants.MetaDataMapKey 返回对象MAP键名常量说明
+     * @see com.incarcloud.rooster.share.Constants.AlgorithmName 加密算法常量说明
+     * @see com.incarcloud.rooster.share.Constants.PackType 数据包类型常量说明
+     * @see com.incarcloud.rooster.share.Constants.AdaptedSeriesType 设备软件包适配车系说明
      */
     Map<String, Object> getMetaData(ByteBuf buffer);
 
@@ -81,7 +80,7 @@ public interface IDataParser {
      * @param buffer 二进制数据包（InHandler对象中的累积缓冲的buffer）
      * @return 数据包类型：0-激活, 1-登录, 2-登出, 3-心跳或普通数据包, 4-故障
      * @author Aaric
-     * @see Constants.PackType 数据包类型常量说明
+     * @see com.incarcloud.rooster.share.Constants.PackType 数据包类型常量说明
      * @version 2.2.2-SNAPSHOT
      */
     int getPackType(ByteBuf buffer);

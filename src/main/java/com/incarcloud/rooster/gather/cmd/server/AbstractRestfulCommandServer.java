@@ -1,6 +1,7 @@
 package com.incarcloud.rooster.gather.cmd.server;
 
-import com.incarcloud.shared.util.NetUtils;
+
+import com.incarcloud.rooster.util.NetUtils;
 
 import java.net.UnknownHostException;
 
