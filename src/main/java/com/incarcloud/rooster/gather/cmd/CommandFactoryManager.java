@@ -20,7 +20,7 @@ public class CommandFactoryManager {
     public static final String BASE_DATAPACK_PACKAGE = "com.incarcloud.datapack";
 
     /**
-     * protocol -> CommandFacotry
+     * protocol -> CommandFactory
      */
     private static ConcurrentHashMap<String, Class<? extends CommandFactory>> commandFactoryClazzMap = new ConcurrentHashMap<>();
 
