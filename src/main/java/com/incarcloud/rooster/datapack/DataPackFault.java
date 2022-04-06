@@ -43,7 +43,7 @@ public class DataPackFault extends DataPackObject {
     /**
      * 故障参数信息
      */
-    private static Map<Integer, Fault> alarmMap = new HashMap<Integer, Fault>() {
+    public static Map<Integer, Fault> alarmMap = new HashMap<Integer, Fault>() {
         {
             //电子制动力分配系统故障-EBD故障
             put(0xF001, new Fault(0, "COM_FAULT_EBD", "电子制动力分配系统"));
