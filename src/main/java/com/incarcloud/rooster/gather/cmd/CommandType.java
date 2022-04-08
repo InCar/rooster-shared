@@ -56,31 +56,35 @@ public enum CommandType {
      */
     TBOX_UPLOAD_LOG,
     /**
-     * 0x82-车辆控制（0x01-车门锁控制）
+     * 0x83-车辆控制（0x01-车门锁控制）
      */
     VEHICLE_CTRL_DOOR_CAR_LOCK,
     /**
-     * 0x82-车辆控制（0x02-尾门锁控制）
+     * 0x83-车辆控制（0x02-尾门锁控制）
      */
     VEHICLE_CTRL_DOOR_TAIL_LOCK,
     /**
-     * 0x82-车辆控制（0x03-中控锁控制）
+     * 0x83-车辆控制（0x03-中控锁控制）
      */
     VEHICLE_CTRL_DOOR_ALL_LOCK,
     /**
-     * 0x82-车辆控制（0x04-闪灯控制）
+     * 0x83-车辆控制（0x04-闪灯控制）
      */
     VEHICLE_CTRL_FLASH_LIGHT,
     /**
-     * 0x82-车辆控制（0x05-鸣笛控制）
+     * 0x83-车辆控制（0x05-鸣笛控制）
      */
     VEHICLE_CTRL_WHISTLE,
     /**
-     * 0x82-车辆控制（0x06-引擎控制）
+     * 0x83-车辆控制（0x06-引擎控制）
      */
     VEHICLE_CTRL_ENGINE,
     /**
-     * 0x82-车辆控制（0x07-空调控制）
+     * 0x83-车辆控制（0x07-空调控制）
      */
-    VEHICLE_CTRL_AIR_CONDITIONER
+    VEHICLE_CTRL_AIR_CONDITIONER,
+    /**
+     * 0x8A-SDC密钥下发
+     */
+    SDC_SECRET_KEY_SEND
 }
