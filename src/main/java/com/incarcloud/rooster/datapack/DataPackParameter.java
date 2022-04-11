@@ -107,6 +107,19 @@ public class DataPackParameter extends DataPackObject {
     private String publicApn;
 
     /**
+     *  E-CALL中心号码可通过TSP下发参数修改
+     */
+    private String ecallCenterNumber;
+    /**
+     *  B-CALL中心号码可通过TSP下发参数修改
+     */
+    private String bcallCenterNumber;
+    /**
+     *  I-CALL中心号码可通过TSP下发参数修改
+     */
+    private String icallCenterNumber;
+
+    /**
      * 用来业务支撑，不能用于解析处理
      */
     public DataPackParameter() {
@@ -116,4 +129,6 @@ public class DataPackParameter extends DataPackObject {
     public DataPackParameter(DataPackObject object) {
         super(object);
     }
+
+
 }

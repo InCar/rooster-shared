@@ -111,4 +111,17 @@ public class DeviceParamSetting {
      * 公网APN
      */
     private String publicApn;
+
+    /**
+     *  E-CALL中心号码可通过TSP下发参数修改
+     */
+    private String ecallCenterNumber;
+    /**
+     *  B-CALL中心号码可通过TSP下发参数修改
+     */
+    private String bcallCenterNumber;
+    /**
+     *  I-CALL中心号码可通过TSP下发参数修改
+     */
+    private String icallCenterNumber;
 }
