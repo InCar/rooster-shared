@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import lombok.experimental.Accessors;
+import lombok.experimental.SuperBuilder;
 
 /**
  * 数据提取包
@@ -11,6 +12,7 @@ import lombok.experimental.Accessors;
  * @author Aaric, created on 2017-06-27T13:47.
  * @version 2.0
  */
+@SuperBuilder
 @Getter
 @Setter
 @Accessors(chain = true)

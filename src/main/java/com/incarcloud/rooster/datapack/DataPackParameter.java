@@ -120,6 +120,11 @@ public class DataPackParameter extends DataPackObject {
     private String icallCenterNumber;
 
     /**
+     *  碰撞报警灵敏度阈值（mG），有效值范围：0～8000（表示0mG～8000mG），最小计量单元：1mG，“0xFFFE”表示异常，“0xFFFF”表示无效。
+     */
+    private int collisionAlarmThreshold;
+
+    /**
      * 用来业务支撑，不能用于解析处理
      */
     public DataPackParameter() {

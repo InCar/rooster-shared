@@ -22,12 +22,12 @@ public final class DataParserManager {
     /**
      * 解析器关系  protocol -> parser
      */
-    private static Map<String, Class<?>> dataParserMap = new ConcurrentHashMap<>();
+    public static Map<String, Class<?>> dataParserMap = new ConcurrentHashMap<>();
 
     /**
      * 缓存解析器对象避免Eden区频繁GC
      */
-    private static Map<String, IDataParser> dataParserCache = new ConcurrentHashMap<>();
+    public static Map<String, IDataParser> dataParserCache = new ConcurrentHashMap<>();
 
 
     /**
@@ -55,7 +55,7 @@ public final class DataParserManager {
      */
     public static void loadClassOfSamePackage() {
         try {
-            PackageUtils.loadClassesOfPackage("com.incarcloud.datapack", true);
+            PackageUtils.loadClassesOfPackage("com.incarcloud.rooster.datapack", true);
         } catch (IOException e) {
             //e.printStackTrace();
         }

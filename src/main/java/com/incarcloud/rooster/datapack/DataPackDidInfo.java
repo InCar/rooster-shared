@@ -42,20 +42,6 @@ public class DataPackDidInfo extends DataPackObject {
      */
     private Integer vehicleModel;
 
-    /**
-     * IMEI
-     */
-    private String imei;
-
-    /**
-     * T-BOX SN
-     */
-    private String sn;
-
-    /**
-     * ICCID
-     */
-    private String iccid;
 
     /**
      * TSP登录状态
@@ -255,6 +241,32 @@ public class DataPackDidInfo extends DataPackObject {
      * MCU最近一次唤醒时间（单位：秒）
      */
     private Integer mcuLatestWakeUpTime;
+
+    /**
+     * IMEI
+     */
+    private String imei;
+
+    /**
+     * vin
+     * 从父类继承
+     */
+//    private String vin;
+
+    /**
+     * T-BOX SN
+     */
+    private String sn;
+
+    /**
+     * ICCID
+     */
+    private String iccid;
+
+    /**
+     * SDC密钥状态，有效值范围：”0x00”表示不存在，”0x01”表式存在，“0xFE”表示异常，“0xFF”表示无效
+     */
+    private Integer sdcSecretStatus;
 
     public DataPackDidInfo(DataPackObject object) {
         super(object);

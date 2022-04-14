@@ -124,4 +124,8 @@ public class DeviceParamSetting {
      *  I-CALL中心号码可通过TSP下发参数修改
      */
     private String icallCenterNumber;
+    /**
+     *  碰撞报警灵敏度阈值（mG），有效值范围：0～8000（表示0mG～8000mG），最小计量单元：1mG，“0xFFFE”表示异常，“0xFFFF”表示无效。
+     */
+    private int collisionAlarmThreshold;
 }

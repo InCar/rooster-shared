@@ -45,6 +45,17 @@ public class RemoteCmdFeedbackMsg {
     private Integer status;
 
     /**
+     * 发送结果
+     * 新增字段、本来可以替代status字段、为了避免影响之前逻辑
+     * 0:成功
+     * 1:校验发送截止时间失败、取消发送
+     * 2:设备离线
+     * 3:发送到设备失败、异常
+     *
+     */
+    private Integer res=0;
+
+    /**
      * 异常信息
      */
     private String exceptionMessage;
@@ -58,5 +69,14 @@ public class RemoteCmdFeedbackMsg {
         this.packId = msg.getPackId();
         this.cmdType = msg.getCmdType();
         this.status = status;
+    }
+
+    public RemoteCmdFeedbackMsg(RemoteCmdSendMsg msg, Integer status,Integer res) {
+        this.refId = msg.getRefId();
+        this.deviceId = msg.getDeviceId();
+        this.packId = msg.getPackId();
+        this.cmdType = msg.getCmdType();
+        this.status = status;
+        this.res=res;
     }
 }
