@@ -61,6 +61,10 @@ dependencies {
     compile("io.netty:netty-buffer:4.1.+")
     compile("joda-time:joda-time:2.+")
 
+    // https://mvnrepository.com/artifact/com.github.oshi/oshi-core
+    compile group: 'com.github.oshi', name: 'oshi-core', version: '6.1.6'
+
+
     testCompile("junit:junit:4.12")
 }
 
