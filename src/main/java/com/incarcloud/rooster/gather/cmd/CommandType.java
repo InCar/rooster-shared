@@ -86,5 +86,15 @@ public enum CommandType {
     /**
      * 0x8A-SDC密钥下发
      */
-    SDC_SECRET_KEY_SEND
+    SDC_SECRET_KEY_SEND,
+
+    /**
+     * 0x8B-电子围栏设置
+     */
+    ELECTRIC_FENCE_SETTING,
+
+    /**
+     * 0x8C-电子围栏查询
+     */
+    ELECTRIC_FENCE_QUERY
 }

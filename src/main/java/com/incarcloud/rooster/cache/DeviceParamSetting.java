@@ -128,4 +128,14 @@ public class DeviceParamSetting {
      *  碰撞报警灵敏度阈值（mG），有效值范围：0～8000（表示0mG～8000mG），最小计量单元：1mG，“0xFFFE”表示异常，“0xFFFF”表示无效。
      */
     private Integer collisionAlarmThreshold;
+
+    /**
+     * 电子围栏坐标计算时间间隔（s），有效值范围：1~1800（表示1s~1800s），最小计量单元：1s，“0xFFFE”表示异常，“0xFFFF”表示无效。默认值为60s
+     */
+    private Integer electricFencePeriod;
+
+    /**
+     * 电子围栏坐标计算次数（次），有效值范围：1～240（表示1次～240次），最小计量单元：1次，“0xFE”表示异常，“0xFF”表示无效。默认值为10次，例如，间隔60s，取10次坐标点，计算坐标平均值，判断是否进入/超出电子围栏
+     */
+    private Integer electricFenceCount;
 }
