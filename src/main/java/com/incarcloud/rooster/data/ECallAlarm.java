@@ -41,6 +41,11 @@ public class ECallAlarm {
      */
     private int positionType;
 
+    /**
+     * sim卡号
+     */
+    private String sim;
+
     public ECallAlarm() {
     }
 
